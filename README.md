@@ -2,7 +2,46 @@
 
 > **Your trusted gateway to authentic African adventures**
 
-Severius Travel & Adventures is a premier travel agency specializing in curated African safari experiences, cultural journeys, and luxury getaways. Based in Kenya, we bring you closer to Africa's breathtaking landscapes, diverse cultures, and world-renowned wildlife.
+Severius### Performance & SEO
+- **Server-Side Rendering** - Fast initial page loads
+- **Static Site Generation** - Optimized performance
+- **Meta Tag Optimization** - Search engine friendly
+- **Image Optimization** - Automatic image processing
+- **Mobile-First Design** - Responsive across all devices
+
+## 🚀 Deployment
+
+This application is optimized for **Vercel** deployment.
+
+### Quick Deploy (5 minutes):
+1. Push to GitHub
+2. Import to Vercel ([vercel.com/new](https://vercel.com/new))
+3. Add environment variables
+4. Deploy!
+
+**📚 Documentation**:
+- **Quick Start**: See `VERCEL_QUICKSTART.md`
+- **Complete Guide**: See `VERCEL_DEPLOYMENT.md`
+- **Migration Info**: See `MIGRATION_SUMMARY.md`
+
+### Requirements:
+- PostgreSQL database (Vercel Postgres, Neon, or Supabase)
+- Resend account (for emails)
+- PesaPal account (for payments)
+
+## 💻 Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Database**: PostgreSQL with Prisma ORM
+- **Styling**: Tailwind CSS + Framer Motion
+- **Authentication**: NextAuth.js
+- **Email**: Resend
+- **Payments**: PesaPal
+- **Deployment**: Vercel
+- **CMS**: TipTap Rich Text Editor
+
+## 📞 Contact Severius Travel& Adventures is a premier travel agency specializing in curated African safari experiences, cultural journeys, and luxury getaways. Based in Kenya, we bring you closer to Africa's breathtaking landscapes, diverse cultures, and world-renowned wildlife.
 
 ## 🏢 About Severius Travel
 
