@@ -1,0 +1,38 @@
+{
+  "source": "Lorem Picsum",
+  "license": "Public Domain (Unsplash)",
+  "url": "https://picsum.photos",
+  "note": "Images from Lorem Picsum - curated from Unsplash",
+  "images": [
+    {
+      "filename": "cover.jpg",
+      "seed": "red-elephant-19",
+      "url": "https://picsum.photos/seed/red-elephant-19/1600/900"
+    },
+    {
+      "filename": "1.jpg",
+      "seed": "tsavo-20",
+      "url": "https://picsum.photos/seed/tsavo-20/1600/900"
+    },
+    {
+      "filename": "2.jpg",
+      "seed": "waterhole-21",
+      "url": "https://picsum.photos/seed/waterhole-21/1600/900"
+    },
+    {
+      "filename": "3.jpg",
+      "seed": "savanna-22",
+      "url": "https://picsum.photos/seed/savanna-22/1600/900"
+    },
+    {
+      "filename": "4.jpg",
+      "seed": "kenya-23",
+      "url": "https://picsum.photos/seed/kenya-23/1600/900"
+    },
+    {
+      "filename": "5.jpg",
+      "seed": "sunset-24",
+      "url": "https://picsum.photos/seed/sunset-24/1600/900"
+    }
+  ]
+}

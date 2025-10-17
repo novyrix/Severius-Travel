@@ -1,0 +1,229 @@
+{
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "tours": "Tours",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Sign In",
+    "logout": "Logout",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "Discover Your Next Adventure",
+    "subtitle": "Explore amazing destinations worldwide",
+    "searchPlaceholder": "Where do you want to go?"
+  },
+  "tours": {
+    "title": "Our Tours",
+    "days": "Days",
+    "from": "From",
+    "perPerson": "per person",
+    "bookNow": "Book Now",
+    "viewDetails": "View Details",
+    "photoGallery": "Photo Gallery",
+    "tourOverview": "Tour Overview",
+    "tourHighlights": "Tour Highlights",
+    "dayByDayItinerary": "Day-by-Day Itinerary",
+    "whatsIncluded": "What's Included & Excluded",
+    "includedInPrice": "Included in Price",
+    "notIncluded": "Not Included",
+    "tourRequirements": "Tour Requirements",
+    "faqs": "Frequently Asked Questions",
+    "bookThisTour": "Book This Tour",
+    "askQuestion": "Ask a Question",
+    "duration": "Duration",
+    "difficulty": "Difficulty",
+    "accommodation": "Accommodation",
+    "meals": "Meals",
+    "groupSize": "Group Size",
+    "bestTimeToVisit": "Best Time to Visit",
+    "day": "Day",
+    "activities": "Activities",
+    "secureBooking": "Secure Booking",
+    "expertGuides": "Expert Guides",
+    "bestPriceGuarantee": "Best Price Guarantee",
+    "needHelp": "Need Help?",
+    "people": "People",
+    "flagshipTour": "Flagship Tour",
+    "location": "Location"
+  },
+  "booking": {
+    "title": "Book Your Tour",
+    "travelers": "Number of Travelers",
+    "startDate": "Start Date",
+    "contactName": "Full Name",
+    "contactEmail": "Email Address",
+    "contactPhone": "Phone Number",
+    "submit": "Proceed to Payment",
+    "total": "Total Amount"
+  },
+  "footer": {
+    "company": "Company",
+    "destinations": "Destinations",
+    "support": "Support",
+    "newsletter": "Subscribe to Our Newsletter",
+    "newsletterText": "Get the latest travel deals and tips",
+    "subscribe": "Subscribe",
+    "copyright": "All rights reserved"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "about": {
+    "hero": {
+      "badge": "Est. 2014",
+      "title": "About Severius Travel",
+      "subtitle": "Your trusted gateway to authentic African adventures"
+    },
+    "story": {
+      "title": "Who We Are",
+      "intro": "Severius Travel is your trusted gateway to authentic African adventures. We specialize in crafting unforgettable travel experiences that bring you closer to Africa's breathtaking landscapes, diverse cultures, and world-renowned wildlife.",
+      "description": "Based in Kenya, Severius Travel offers curated tours across East, Southern, and North Africa, as well as luxury island escapes and cultural journeys. From the sweeping savannahs of the Maasai Mara to the vibrant streets of Marrakech and the crystal-clear waters of Seychelles — we bring you closer to the continent's most extraordinary destinations.",
+      "commitment": "What sets us apart is our commitment to personalized service. We don't just sell tours — we design journeys that reflect your interests, pace, and style. Whether you're seeking a luxury safari, a romantic getaway, or a deep cultural immersion, our experienced team ensures every moment is meaningful and stress-free."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To make Africa's most beautiful destinations accessible, seamless, and inspiring for travelers from all over the world — through expert planning, trusted partnerships, and a genuine passion for discovery."
+    },
+    "values": {
+      "title": "Why Choose Severius Travel",
+      "subtitle": "Experience the difference of traveling with a company that truly cares",
+      "items": {
+        "personalized": {
+          "title": "Personalized Service",
+          "description": "Every journey is tailored to your interests, pace, and style"
+        },
+        "expertise": {
+          "title": "Local Expertise",
+          "description": "Deep knowledge of African destinations and cultures"
+        },
+        "safety": {
+          "title": "Safety First",
+          "description": "Trusted partners and international safety standards"
+        },
+        "quality": {
+          "title": "Quality Assured",
+          "description": "Handpicked accommodations and authentic experiences"
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "Dedicated assistance before, during, and after your trip"
+        },
+        "sustainable": {
+          "title": "Sustainable Travel",
+          "description": "Committed to responsible and eco-friendly tourism"
+        }
+      }
+    },
+    "offer": {
+      "title": "What We Offer",
+      "item1": "Handcrafted tour packages across top African destinations",
+      "item2": "Personalized service and local expertise",
+      "item3": "Seamless booking and secure online payments",
+      "item4": "Trusted accommodation and activity partners",
+      "item5": "Dedicated support before, during, and after your trip"
+    },
+    "destinations": {
+      "title": "Where We Take You",
+      "subtitle": "Explore Africa's most breathtaking destinations"
+    },
+    "stats": {
+      "travelers": "Happy Travelers",
+      "destinations": "Destinations",
+      "experience": "Years Experience",
+      "rating": "Average Rating"
+    },
+    "cta": {
+      "title": "Let Severius Travel Handle The Details",
+      "description": "So you can focus on the journey. Start planning your dream African adventure today.",
+      "button1": "Explore Tours",
+      "button2": "Contact Us"
+    }
+  },
+  "faq": {
+    "hero": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about planning your African adventure"
+    },
+    "allQuestions": "All Questions",
+    "stillHaveQuestions": "Still Have Questions?",
+    "popularTopics": "Popular Topics"
+  },
+  "contact": {
+    "hero": {
+      "title": "Get In Touch",
+      "subtitle": "We'd love to hear from you! Whether you're ready to plan your dream African adventure or simply have a few questions, our team is here to help."
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message Sent!",
+      "successMessage": "We'll get back to you within 24 hours."
+    },
+    "officeHours": "Office Hours",
+    "whyReachOut": "Why Reach Out?",
+    "support247": "24/7 Support"
+  },
+  "dashboard": {
+    "title": "My Dashboard",
+    "welcome": "Welcome back, {{name}}!",
+    "stats": {
+      "totalBookings": "Total Bookings",
+      "confirmedTours": "Confirmed Tours",
+      "pendingPayment": "Pending Payment"
+    },
+    "myBookings": "My Bookings",
+    "noBookings": "You haven't made any bookings yet.",
+    "browseTours": "Browse Tours",
+    "booked": "Booked",
+    "ref": "Ref",
+    "completePayment": "Complete Payment",
+    "viewTour": "View Tour",
+    "noImage": "No image"
+  },
+  "admin": {
+    "title": "Admin",
+    "recentBookings": "Recent Bookings"
+  },
+  "payment": {
+    "backToDashboard": "Back to Dashboard",
+    "completePayment": "Complete Payment",
+    "bookingReference": "Booking Reference",
+    "bookingDetails": "Booking Details",
+    "duration": "Duration",
+    "days": "Days",
+    "bookingDate": "Booking Date",
+    "status": "Status",
+    "paymentSummary": "Payment Summary",
+    "totalAmount": "Total Amount",
+    "securePayment": "Secure Payment",
+    "securePaymentDesc": "Your payment information is encrypted and secure. We use PesaPal, a trusted payment gateway.",
+    "acceptedMethods": "Accepted Payment Methods",
+    "creditDebitCards": "Credit/Debit Cards",
+    "bankTransfer": "Bank Transfer",
+    "termsAgreement": "By completing this payment, you agree to our Terms of Service and confirm that you have read our Cancellation Policy.",
+    "success": {
+      "title": "Payment Successful!",
+      "thankYou": "Thank you for your booking. Your payment has been processed successfully.",
+      "confirmationEmail": "A confirmation email has been sent to your email address with all the details.",
+      "viewBookings": "View My Bookings",
+      "browseMore": "Browse More Tours"
+    }
+  },
+  "VerifyEmailSent": {
+    "metaTitle": "Check Your Email - Severius Adventures",
+    "metaDescription": "We've sent you a verification email. Please check your inbox to complete your registration."
+  }
+}

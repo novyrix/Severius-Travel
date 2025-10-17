@@ -1,0 +1,65 @@
+[
+  {
+    "filename": "hero.jpg",
+    "name": "hero",
+    "query": "african safari adventure travel sunset landscape",
+    "photographer": "Ian Talmacs",
+    "photographer_url": "https://unsplash.com/@iantalmacs",
+    "unsplash_url": "https://unsplash.com/photos/a-river-that-has-a-bunch-of-boats-on-it-14X-xplo5tU",
+    "download_date": "2025-10-16T09:22:52.378Z"
+  },
+  {
+    "filename": "kenya.jpg",
+    "name": "kenya",
+    "query": "maasai mara kenya wildlife safari",
+    "photographer": "Gabriel Schumacher",
+    "photographer_url": "https://unsplash.com/@gabriels501",
+    "unsplash_url": "https://unsplash.com/photos/a-close-up-of-an-elephant-in-a-field-iMN3B1ODOSs",
+    "download_date": "2025-10-16T09:22:54.189Z"
+  },
+  {
+    "filename": "tanzania.jpg",
+    "name": "tanzania",
+    "query": "serengeti tanzania wildebeest migration",
+    "photographer": "Dawn Westveld",
+    "photographer_url": "https://unsplash.com/@dawnw73",
+    "unsplash_url": "https://unsplash.com/photos/bulls-and-zebras-grazing-on-grass-plains-ZFPUm2G9T1w",
+    "download_date": "2025-10-16T09:22:55.870Z"
+  },
+  {
+    "filename": "south-africa.jpg",
+    "name": "south-africa",
+    "query": "cape town south africa table mountain",
+    "photographer": "Deklerk Basson",
+    "photographer_url": "https://unsplash.com/@dkbasson",
+    "unsplash_url": "https://unsplash.com/photos/grey-asphalt-road-beside-mountain-under-blue-sky-9Jy4kmjuJus",
+    "download_date": "2025-10-16T09:22:57.486Z"
+  },
+  {
+    "filename": "morocco.jpg",
+    "name": "morocco",
+    "query": "marrakech morocco desert sahara",
+    "photographer": "Y K",
+    "photographer_url": "https://unsplash.com/@yokeboy",
+    "unsplash_url": "https://unsplash.com/photos/people-riding-on-camel-during-daytime-7V1DnVStvik",
+    "download_date": "2025-10-16T09:22:59.204Z"
+  },
+  {
+    "filename": "seychelles.jpg",
+    "name": "seychelles",
+    "query": "seychelles beach paradise tropical",
+    "photographer": "Datingscout",
+    "photographer_url": "https://unsplash.com/@datingscout",
+    "unsplash_url": "https://unsplash.com/photos/a-beach-with-rocks-and-trees-vLCSiR7v0dU",
+    "download_date": "2025-10-16T09:23:00.962Z"
+  },
+  {
+    "filename": "egypt.jpg",
+    "name": "egypt",
+    "query": "egypt pyramids giza cairo ancient",
+    "photographer": "Chris Andrawes",
+    "photographer_url": "https://unsplash.com/@candrawes",
+    "unsplash_url": "https://unsplash.com/photos/a-group-of-people-riding-horses-in-front-of-a-pyramid-75q9AxjIUr8",
+    "download_date": "2025-10-16T09:23:02.760Z"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "filename": "main-hero.jpg",
+    "name": "main-hero",
+    "query": "african safari adventure wild nature landscape",
+    "photographer": "Darya Luganskaya",
+    "photographer_url": "https://unsplash.com/@dlugansky",
+    "unsplash_url": "https://unsplash.com/photos/two-antelopes-walking-on-a-grassy-hillside-uNZ1sDBuX5Y",
+    "download_date": "2025-10-16T09:23:21.500Z"
+  },
+  {
+    "filename": "secondary.jpg",
+    "name": "secondary",
+    "query": "travel adventure exploring world nature",
+    "photographer": "sunnie",
+    "photographer_url": "https://unsplash.com/@thatrecklessboy",
+    "unsplash_url": "https://unsplash.com/photos/a-person-driving-a-car-pAhCN-m0n8E",
+    "download_date": "2025-10-16T09:23:23.179Z"
+  }
+]

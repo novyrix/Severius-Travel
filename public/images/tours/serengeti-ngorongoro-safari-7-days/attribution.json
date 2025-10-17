@@ -1,0 +1,38 @@
+{
+  "source": "Lorem Picsum",
+  "license": "Public Domain (Unsplash)",
+  "url": "https://picsum.photos",
+  "note": "Images from Lorem Picsum - curated from Unsplash",
+  "images": [
+    {
+      "filename": "cover.jpg",
+      "seed": "serengeti-25",
+      "url": "https://picsum.photos/seed/serengeti-25/1600/900"
+    },
+    {
+      "filename": "1.jpg",
+      "seed": "ngorongoro-26",
+      "url": "https://picsum.photos/seed/ngorongoro-26/1600/900"
+    },
+    {
+      "filename": "2.jpg",
+      "seed": "migration-27",
+      "url": "https://picsum.photos/seed/migration-27/1600/900"
+    },
+    {
+      "filename": "3.jpg",
+      "seed": "tanzania-28",
+      "url": "https://picsum.photos/seed/tanzania-28/1600/900"
+    },
+    {
+      "filename": "4.jpg",
+      "seed": "lions-29",
+      "url": "https://picsum.photos/seed/lions-29/1600/900"
+    },
+    {
+      "filename": "5.jpg",
+      "seed": "wildlife-30",
+      "url": "https://picsum.photos/seed/wildlife-30/1600/900"
+    }
+  ]
+}

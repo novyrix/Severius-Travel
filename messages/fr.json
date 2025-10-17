@@ -1,0 +1,225 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "destinations": "Destinations",
+    "tours": "Circuits",
+    "blog": "Blog",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Se connecter",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord"
+  },
+  "hero": {
+    "title": "Découvrez votre prochaine aventure",
+    "subtitle": "Explorez des destinations extraordinaires",
+    "searchPlaceholder": "Où voulez-vous aller?"
+  },
+  "tours": {
+    "title": "Nos Circuits",
+    "days": "Jours",
+    "from": "À partir de",
+    "perPerson": "par personne",
+    "bookNow": "Réserver maintenant",
+    "viewDetails": "Voir les détails",
+    "photoGallery": "Galerie de Photos",
+    "tourOverview": "Aperçu du Circuit",
+    "tourHighlights": "Points Forts du Circuit",
+    "dayByDayItinerary": "Itinéraire Jour par Jour",
+    "whatsIncluded": "Ce qui est Inclus et Exclu",
+    "includedInPrice": "Inclus dans le Prix",
+    "notIncluded": "Non Inclus",
+    "tourRequirements": "Exigences du Circuit",
+    "faqs": "Questions Fréquemment Posées",
+    "bookThisTour": "Réserver ce Circuit",
+    "askQuestion": "Poser une Question",
+    "duration": "Durée",
+    "difficulty": "Difficulté",
+    "accommodation": "Hébergement",
+    "meals": "Repas",
+    "groupSize": "Taille du Groupe",
+    "bestTimeToVisit": "Meilleure Période pour Visiter",
+    "day": "Jour",
+    "activities": "Activités",
+    "secureBooking": "Réservation Sécurisée",
+    "expertGuides": "Guides Experts",
+    "bestPriceGuarantee": "Garantie du Meilleur Prix",
+    "needHelp": "Besoin d'Aide?",
+    "people": "Personnes",
+    "flagshipTour": "Circuit Phare",
+    "location": "Emplacement"
+  },
+  "booking": {
+    "title": "Réservez votre circuit",
+    "travelers": "Nombre de voyageurs",
+    "startDate": "Date de début",
+    "contactName": "Nom complet",
+    "contactEmail": "Adresse e-mail",
+    "contactPhone": "Numéro de téléphone",
+    "submit": "Procéder au paiement",
+    "total": "Montant total"
+  },
+  "footer": {
+    "company": "Entreprise",
+    "destinations": "Destinations",
+    "support": "Support",
+    "newsletter": "Abonnez-vous à notre newsletter",
+    "newsletterText": "Recevez les dernières offres de voyage",
+    "subscribe": "S'abonner",
+    "copyright": "Tous droits réservés"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "close": "Fermer"
+  },
+  "about": {
+    "hero": {
+      "badge": "Établi en 2014",
+      "title": "À Propos de Severius Travel",
+      "subtitle": "Votre porte d'entrée de confiance vers des aventures africaines authentiques"
+    },
+    "story": {
+      "title": "Qui Nous Sommes",
+      "intro": "Severius Travel est votre porte d'entrée de confiance vers des aventures africaines authentiques. Nous nous spécialisons dans la création d'expériences de voyage inoubliables qui vous rapprochent des paysages à couper le souffle, des cultures diverses et de la faune de renommée mondiale de l'Afrique.",
+      "description": "Basé au Kenya, Severius Travel propose des circuits sélectionnés en Afrique de l'Est, en Afrique australe et en Afrique du Nord, ainsi que des escapades insulaires de luxe et des voyages culturels. Des vastes savanes du Maasai Mara aux rues animées de Marrakech et aux eaux cristallines des Seychelles, nous vous rapprochons des destinations les plus extraordinaires du continent.",
+      "commitment": "Ce qui nous distingue, c'est notre engagement envers un service personnalisé. Nous ne vendons pas seulement des circuits - nous concevons des voyages qui reflètent vos intérêts, votre rythme et votre style. Que vous recherchiez un safari de luxe, une escapade romantique ou une immersion culturelle profonde, notre équipe expérimentée veille à ce que chaque moment soit significatif et sans stress."
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Rendre les plus belles destinations d'Afrique accessibles, fluides et inspirantes pour les voyageurs du monde entier - grâce à une planification experte, des partenariats de confiance et une véritable passion pour la découverte."
+    },
+    "values": {
+      "title": "Pourquoi Choisir Severius Travel",
+      "subtitle": "Découvrez la différence de voyager avec une entreprise qui se soucie vraiment",
+      "items": {
+        "personalized": {
+          "title": "Service Personnalisé",
+          "description": "Chaque voyage est adapté à vos intérêts, votre rythme et votre style"
+        },
+        "expertise": {
+          "title": "Expertise Locale",
+          "description": "Connaissance approfondie des destinations et des cultures africaines"
+        },
+        "safety": {
+          "title": "Sécurité d'Abord",
+          "description": "Partenaires de confiance et normes internationales de sécurité"
+        },
+        "quality": {
+          "title": "Qualité Assurée",
+          "description": "Hébergements sélectionnés et expériences authentiques"
+        },
+        "support": {
+          "title": "Support 24/7",
+          "description": "Assistance dédiée avant, pendant et après votre voyage"
+        },
+        "sustainable": {
+          "title": "Voyage Durable",
+          "description": "Engagé dans un tourisme responsable et écologique"
+        }
+      }
+    },
+    "offer": {
+      "title": "Ce Que Nous Offrons",
+      "item1": "Forfaits touristiques artisanaux dans les principales destinations africaines",
+      "item2": "Service personnalisé et expertise locale",
+      "item3": "Réservation fluide et paiements en ligne sécurisés",
+      "item4": "Partenaires d'hébergement et d'activités de confiance",
+      "item5": "Support dédié avant, pendant et après votre voyage"
+    },
+    "destinations": {
+      "title": "Où Nous Vous Emmenons",
+      "subtitle": "Explorez les destinations les plus époustouflantes d'Afrique"
+    },
+    "stats": {
+      "travelers": "Voyageurs Satisfaits",
+      "destinations": "Destinations",
+      "experience": "Années d'Expérience",
+      "rating": "Note Moyenne"
+    },
+    "cta": {
+      "title": "Laissez Severius Travel Gérer Les Détails",
+      "description": "Afin que vous puissiez vous concentrer sur le voyage. Commencez à planifier votre aventure africaine de rêve dès aujourd'hui.",
+      "button1": "Explorer les Circuits",
+      "button2": "Contactez-Nous"
+    }
+  },
+  "faq": {
+    "hero": {
+      "title": "Questions Fréquemment Posées",
+      "subtitle": "Tout ce que vous devez savoir pour planifier votre aventure africaine"
+    },
+    "allQuestions": "Toutes les Questions",
+    "stillHaveQuestions": "Vous Avez Encore des Questions?",
+    "popularTopics": "Sujets Populaires"
+  },
+  "contact": {
+    "hero": {
+      "title": "Contactez-Nous",
+      "subtitle": "Nous aimerions avoir de vos nouvelles! Que vous soyez prêt à planifier votre aventure africaine de rêve ou que vous ayez simplement quelques questions, notre équipe est là pour vous aider."
+    },
+    "form": {
+      "name": "Nom Complet",
+      "email": "Adresse E-mail",
+      "phone": "Numéro de Téléphone",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer le Message",
+      "sending": "Envoi...",
+      "success": "Message Envoyé!",
+      "successMessage": "Nous vous répondrons dans les 24 heures."
+    },
+    "officeHours": "Heures d'Ouverture",
+    "whyReachOut": "Pourquoi Nous Contacter?",
+    "support247": "Support 24/7"
+  },
+  "dashboard": {
+    "title": "Mon Tableau de Bord",
+    "welcome": "Bienvenue, {{name}}!",
+    "stats": {
+      "totalBookings": "Réservations Totales",
+      "confirmedTours": "Tours Confirmés",
+      "pendingPayment": "Paiement en Attente"
+    },
+    "myBookings": "Mes Réservations",
+    "noBookings": "Vous n'avez encore effectué aucune réservation.",
+    "browseTours": "Parcourir les Tours",
+    "booked": "Réservé",
+    "ref": "Réf",
+    "completePayment": "Finaliser le Paiement",
+    "viewTour": "Voir le Tour",
+    "noImage": "Pas d'image"
+  },
+  "admin": {
+    "title": "Administration",
+    "recentBookings": "Réservations Récentes"
+  },
+  "payment": {
+    "backToDashboard": "Retour au Tableau de Bord",
+    "completePayment": "Finaliser le Paiement",
+    "bookingReference": "Référence de Réservation",
+    "bookingDetails": "Détails de la Réservation",
+    "duration": "Durée",
+    "days": "Jours",
+    "bookingDate": "Date de Réservation",
+    "status": "Statut",
+    "paymentSummary": "Résumé du Paiement",
+    "totalAmount": "Montant Total",
+    "securePayment": "Paiement Sécurisé",
+    "securePaymentDesc": "Vos informations de paiement sont cryptées et sécurisées. Nous utilisons PesaPal, une passerelle de paiement de confiance.",
+    "acceptedMethods": "Méthodes de Paiement Acceptées",
+    "creditDebitCards": "Cartes de Crédit/Débit",
+    "bankTransfer": "Virement Bancaire",
+    "termsAgreement": "En finalisant ce paiement, vous acceptez nos Conditions de Service et confirmez que vous avez lu notre Politique d'Annulation.",
+    "success": {
+      "title": "Paiement Réussi!",
+      "thankYou": "Merci pour votre réservation. Votre paiement a été traité avec succès.",
+      "confirmationEmail": "Un e-mail de confirmation a été envoyé à votre adresse e-mail avec tous les détails.",
+      "viewBookings": "Voir Mes Réservations",
+      "browseMore": "Parcourir Plus de Tours"
+    }
+  }
+}
