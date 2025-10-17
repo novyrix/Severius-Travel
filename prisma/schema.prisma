@@ -10,7 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
   // Note: For local dev with SQLite, set both to "file:./prisma/dev.db"
-  // For production (Vercel), use PostgreSQL connection strings
+  // For production (Vercel/Neon), use PostgreSQL connection strings
+  // DATABASE_URL = Pooled connection (via pgbouncer)
+  // DIRECT_URL = Direct connection (for migrations)
 }
 
 /// Enums
