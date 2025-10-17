@@ -9,6 +9,8 @@ import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import { ToursTable } from '@/components/admin/tours-table';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminToursPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');

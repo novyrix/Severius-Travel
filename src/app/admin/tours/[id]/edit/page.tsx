@@ -4,13 +4,15 @@ import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { TourEditForm } from '@/components/admin/tour-edit-form';
 
-export default async function EditTourPage({ params }: { params: { id: string } }) {
+export default async function EditTourPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');
 
+  const { id } = await params;
+
   // Fetch the tour with all relations
   const tour = await prisma.tour.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: {
       country: {
         include: {

@@ -9,6 +9,8 @@ import { Badge } from '@/components/ui/badge';
 import { formatCurrency } from '@/lib/utils';
 import { CheckCircle, XCircle, Clock } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminBookingsPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');

@@ -19,4 +19,5 @@ Allow: /
 Host: https://severiusadventuresandtravel.com
 
 # Sitemaps
+Sitemap: https://severiusadventuresandtravel.com/sitemap.xml
 Sitemap: https://severiusadventuresandtravel.com/server-sitemap.xml

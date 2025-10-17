@@ -9,6 +9,8 @@ import { Badge } from '@/components/ui/badge';
 import { Shield, User, Mail, CheckCircle, XCircle } from 'lucide-react';
 import { UserActions } from '@/components/admin/user-actions';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminUsersPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');

@@ -1,3 +1,5 @@
+'use client';
+
 import { Wrench, Clock, Mail, Twitter, Facebook, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
 

@@ -5,6 +5,8 @@ import { redirect } from 'next/navigation';
 import { AdminLayout } from '@/components/admin/admin-layout';
 import { TourForm } from '@/components/admin/tour-form';
 
+export const dynamic = 'force-dynamic';
+
 export default async function NewTourPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');

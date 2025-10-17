@@ -9,6 +9,8 @@ import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import { BlogTable } from '@/components/admin/blog-table';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminBlogPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');

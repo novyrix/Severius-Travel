@@ -221,5 +221,9 @@
       "viewBookings": "Voir Mes Réservations",
       "browseMore": "Parcourir Plus de Tours"
     }
+  },
+  "VerifyEmailSent": {
+    "metaTitle": "Vérifiez Votre Email - Severius Adventures",
+    "metaDescription": "Nous vous avons envoyé un e-mail de vérification. Veuillez vérifier votre boîte de réception pour terminer votre inscription."
   }
 }

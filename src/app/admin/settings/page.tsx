@@ -8,6 +8,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Settings, Globe, Mail, Phone, MapPin, Save, Building } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminSettingsPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');

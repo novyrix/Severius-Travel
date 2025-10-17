@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import type { ReactNode } from 'react';
+import { Suspense } from 'react';
 import { HeaderNew } from '../components/header-new';
 import { Footer } from '../components/footer';
 import { WhatsAppWidget } from '../components/whatsapp-widget';
@@ -99,7 +100,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         )}
       </head>
       <body className="min-h-dvh bg-[rgb(245,243,241)] text-neutral-900 flex flex-col pb-16 lg:pb-0">
-        <ProgressBar />
+        <Suspense fallback={null}>
+          <ProgressBar />
+        </Suspense>
         <I18nProvider>
           <CurrencyProvider>
             <SessionProviders>

@@ -6,6 +6,8 @@ import { AdminLayout } from '@/components/admin/admin-layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { TrendingUp, Users, Plane, Calendar, DollarSign, Eye } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminAnalyticsPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');
