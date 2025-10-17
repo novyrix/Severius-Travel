@@ -10,7 +10,7 @@ import { formatCurrency, formatDate } from '@/lib/utils';
 import { GlassCard } from '@/components/admin/glass-card';
 
 export default async function AdminPage() {
-  const session = await getServerSession(authOptions as any);
+  const session = await getServerSession(authOptions as any) as any;
   if (!session) redirect('/login');
 
   // Get statistics

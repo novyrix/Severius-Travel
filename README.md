@@ -2,32 +2,121 @@
 
 > **Your trusted gateway to authentic African adventures**
 
-Severius### Performance & SEO
-- **Server-Side Rendering** - Fast initial page loads
-- **Static Site Generation** - Optimized performance
-- **Meta Tag Optimization** - Search engine friendly
-- **Image Optimization** - Automatic image processing
-- **Mobile-First Design** - Responsive across all devices
+A modern, full-featured travel booking platform specializing in African safari experi## 📁 Project Structure
 
-## 🚀 Deployment
+```
+severius-travel/
+├── src/
+│   ├── app/              # Next.js App Router
+│   │   ├── api/          # API endpoints
+│   │   ├── [locale]/     # i18n pages
+│   │   └── admin/        # Admin dashboard
+│   ├── components/       # React components
+│   ├── lib/             # Utilities & helpers
+│   └── styles/          # Global styles
+├── prisma/
+│   ├── schema.prisma    # Database schema
+│   ├── seed.ts          # Database seeding
+│   └── migrations/      # Migration files
+├── public/              # Static assets
+├── messages/            # i18n translations
+└── DEPLOYMENT.md        # Deployment guide
+```
 
-This application is optimized for **Vercel** deployment.
+## 🔧 Available Scripts
 
-### Quick Deploy (5 minutes):
+```bash
+npm run dev              # Start development server
+npm run build            # Build for production
+npm run start            # Start production server
+npm run lint             # Run ESLint
+npm run typecheck        # Run TypeScript checks
+npm run seed             # Seed database
+npx prisma studio        # Open Prisma Studio
+npx prisma migrate dev   # Run migrations (dev)
+```
+
+## 🌍 Environment Variables
+
+See `.env.example` for all required variables. Key variables:
+
+- `DATABASE_URL` - PostgreSQL connection string
+- `NEXTAUTH_SECRET` - Authentication secret
+- `RESEND_API_KEY` - Email service API key
+- `PESAPAL_CONSUMER_KEY` - Payment gateway key
+
+## 📞 Contact Severius Travel
+
+**Office**: Westlands, Nairobi, Kenya  
+**Email**: info@severiusadventuresandtravel.com  
+**Phone**: +254 780 419 605  
+**Website**: [severiusadventuresandtravel.com](https://severiusadventuresandtravel.com)
+
+## 📝 License
+
+© 2024 Severius Travel & Adventures. All rights reserved.
+
+---
+
+*Creating unforgettable African adventures since 2014* ✨journeys, and luxury getaways. Built with Next.js 15, TypeScript, and optimized for Vercel deployment.
+
+## 🚀 Quick Start
+
+### Local Development
+```bash
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your credentials
+
+# Run database migrations
+npx prisma migrate dev
+
+# Seed the database
+npm run seed
+
+# Start development server
+npm run dev
+```
+
+Visit `http://localhost:3000`
+
+### Deploy to Vercel
+See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for complete deployment guide.
+
+**Quick Deploy:**
 1. Push to GitHub
-2. Import to Vercel ([vercel.com/new](https://vercel.com/new))
+2. Import to Vercel
 3. Add environment variables
 4. Deploy!
 
-**📚 Documentation**:
-- **Quick Start**: See `VERCEL_QUICKSTART.md`
-- **Complete Guide**: See `VERCEL_DEPLOYMENT.md`
-- **Migration Info**: See `MIGRATION_SUMMARY.md`
+## ✨ Features
 
-### Requirements:
-- PostgreSQL database (Vercel Postgres, Neon, or Supabase)
-- Resend account (for emails)
-- PesaPal account (for payments)
+### 🎨 **User Features**
+- Multi-language support (English, Spanish, French)
+- Advanced tour search & filtering
+- Interactive photo galleries
+- Real-time booking system
+- Secure payment processing (PesaPal)
+- Personal dashboard for managing bookings
+- Responsive mobile-first design
+
+### 👨‍💼 **Admin Features**
+- Complete tour management
+- Booking & payment oversight
+- Rich text blog editor (TipTap)
+- Customer communication tools
+- Analytics dashboard
+
+### 🛡️ **Security & Performance**
+- NextAuth.js authentication
+- CSRF & XSS protection
+- Rate limiting on API routes
+- Server-side rendering
+- Image optimization
+- SEO optimized
 
 ## 💻 Tech Stack
 
@@ -41,11 +130,9 @@ This application is optimized for **Vercel** deployment.
 - **Deployment**: Vercel
 - **CMS**: TipTap Rich Text Editor
 
-## 📞 Contact Severius Travel& Adventures is a premier travel agency specializing in curated African safari experiences, cultural journeys, and luxury getaways. Based in Kenya, we bring you closer to Africa's breathtaking landscapes, diverse cultures, and world-renowned wildlife.
-
 ## 🏢 About Severius Travel
 
-Founded in 2014, Severius Travel has been creating unforgettable travel experiences across East Africa, Southern Africa, and North Africa. We don't just sell tours—we design personalized journeys that reflect your interests, pace, and style.
+Founded in 2014, Severius Travel has been creating unforgettable travel experiences across East Africa, Southern Africa, and North Africa. We design personalized journeys that reflect your interests, pace, and style.
 
 ### 🌟 Our Mission
 To make Africa's most beautiful destinations accessible, seamless, and inspiring for travelers worldwide through expert planning, trusted partnerships, and genuine passion for discovery.
