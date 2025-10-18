@@ -62,3 +62,5 @@ prisma/dev.db-journal
 *.log
 .cache/
 *.seed
+
+.vercel

@@ -95,111 +95,24 @@ model Post {
   updatedAt DateTime @updatedAt
 }
 
-/// Travel domain
-model Region {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-  code String @unique
-
-  countries Country[]
-}
-
-model Country {
-  id        Int     @id @default(autoincrement())
-  name      String
-  iso2      String  @unique
-  slug      String  @unique
-  regionId  Int
-  region    Region  @relation(fields: [regionId], references: [id])
-  tours     Tour[]
-}
-
-model Tour {
-  id          String      @id @default(cuid())
-  title       String
-  slug        String      @unique
-  description String
-  price       Int         // Base price in USD
-  priceEUR    Int?        // Price in EUR
-  priceGBP    Int?        // Price in GBP
-  priceKES    Int?        // Price in KES
-  published   Boolean     @default(true)
-  durationDays Int        @default(3)
-  
-  // Location details
-  countryId   Int
-  country     Country     @relation(fields: [countryId], references: [id])
-  city        String?
-  latitude    Float?
-  longitude   Float?
-  
-  // Tour details
-  difficulty  String?     // Easy, Moderate, Challenging, Strenuous
-  maxGroupSize Int?       @default(12)
-  minGroupSize Int?       @default(2)
-  ageRestriction String?  // "18+", "All ages", etc.
-  
-  // Accommodation & Meals
-  accommodationType String? // Hotel, Lodge, Camping, Mixed
-  mealPlan    String?     // Full Board, Half Board, Breakfast Only
-  
-  // Timing
-  bestMonths  String?     // JSON array of best months to visit
-  
-  // Rich content (JSON fields)
-  highlights  String?     // JSON array of tour highlights
-  inclusions  String?     // JSON array of what's included
-  exclusions  String?     // JSON array of what's not included
-  itinerary   String?     // JSON array of detailed daily itinerary
-  faqs        String?     // JSON array of FAQs
-  requirements String?    // JSON array of required documents/items
-  
-  // Gallery
-  coverImage  String?     // Main cover image URL
-  gallery     String?     // JSON array of gallery image URLs
-  
-  // SEO
-  metaDescription String?
-  keywords    String?
-  
-  // Relations
-  images   TourImage[]
-  days     TourDay[]
-  bookings Booking[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model TourImage {
-  id     Int    @id @default(autoincrement())
-  url    String
-  alt    String?
-  order  Int     @default(0)
-  tourId String
-  tour   Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
-}
-
-model TourDay {
-  id        Int    @id @default(autoincrement())
-  dayNumber Int
-  title     String
-  details   String
-  tourId    String
-  tour      Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
-}
-
+/// Booking model - Tours are now hardcoded in the codebase
 model Booking {
   id        String        @id @default(cuid())
   ref       String        @unique
   status    BookingStatus @default(PENDING)
   amount    Int
-
+  
+  // Tour reference (slug of the hardcoded tour)
+  tourSlug  String
+  tourTitle String        // Store tour title for reference
+  
+  // Booking details
+  startDate DateTime?
+  guests    Int           @default(1)
+  
+  // Customer info
   userId String
   user   User @relation(fields: [userId], references: [id])
-
-  tourId String
-  tour   Tour @relation(fields: [tourId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

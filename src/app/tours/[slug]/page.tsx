@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, MapPin, Users, Check, X, ChevronDown, Star, TrendingUp, Shield, Award, Utensils, Home, AlertCircle } from 'lucide-react';
-import { prisma } from '@/lib/prisma';
+import { getTourBySlug } from '@/data/tours';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -15,45 +15,26 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-async function getTour(slug: string) {
-  const tour = await prisma.tour.findUnique({
-    where: { slug, published: true },
-    include: {
-      country: {
-        include: { region: true },
-      },
-      images: {
-        orderBy: { order: 'asc' },
-      },
-      days: {
-        orderBy: { dayNumber: 'asc' },
-      },
-    },
-  });
-
-  return tour;
-}
-
 export default async function TourDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const tour = await getTour(slug);
+  const tour = getTourBySlug(slug);
   const t = await getTranslations('tours');
 
   if (!tour) {
     notFound();
   }
 
-  // Parse JSON fields
-  const gallery = tour.gallery ? JSON.parse(tour.gallery as string) : [];
-  const highlights = tour.highlights ? JSON.parse(tour.highlights as string) : [];
-  const inclusions = tour.inclusions ? JSON.parse(tour.inclusions as string) : [];
-  const exclusions = tour.exclusions ? JSON.parse(tour.exclusions as string) : [];
-  const faqs = tour.faqs ? JSON.parse(tour.faqs as string) : [];
-  const itinerary = tour.itinerary ? JSON.parse(tour.itinerary as string) : [];
-  const requirements = tour.requirements ? JSON.parse(tour.requirements as string) : [];
-  const bestMonths = tour.bestMonths ? JSON.parse(tour.bestMonths as string) : [];
+  // Data is already structured, no need to parse JSON
+  const gallery = tour.gallery;
+  const highlights = tour.highlights;
+  const inclusions = tour.inclusions;
+  const exclusions = tour.exclusions;
+  const faqs = tour.faqs;
+  const itinerary = tour.itinerary;
+  const requirements = tour.requirements;
+  const bestMonths = tour.bestMonths;
 
-  const mainImage = tour.images[0];
+  const mainImage = tour.coverImage;
 
   return (
     <main className="min-h-screen bg-neutral-50 dark:bg-neutral-900">
@@ -61,17 +42,7 @@ export default async function TourDetailPage({ params }: PageProps) {
       <section className="relative h-[600px] bg-neutral-900">
         {mainImage ? (
           <Image
-            src={mainImage.url}
-            alt={mainImage.alt || tour.title}
-            fill
-            className="object-cover opacity-80"
-            priority
-            sizes="100vw"
-            unoptimized={mainImage.url.includes('unsplash.com')}
-          />
-        ) : tour.coverImage ? (
-          <Image
-            src={tour.coverImage}
+            src={mainImage}
             alt={tour.title}
             fill
             className="object-cover opacity-80"
@@ -90,7 +61,7 @@ export default async function TourDetailPage({ params }: PageProps) {
           <div className="max-w-4xl">
             <div className="flex items-center gap-2 text-white/90 mb-3">
               <MapPin className="w-5 h-5" />
-              <span className="text-lg">{tour.city || tour.country.name}, {tour.country.name}</span>
+              <span className="text-lg">{tour.city || tour.country}, {tour.country}</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
               {tour.title}

@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { prisma } from '@/lib/prisma';
+import { getAllTours, searchTours as searchToursData, getToursByRegion, getToursByCountry } from '@/data/tours';
 import { TourCard } from '@/components/tour-card';
 import { SearchBar } from '@/components/search-bar';
 import { Card, CardContent } from '@/components/ui/card';
@@ -13,46 +13,24 @@ async function getTours(searchParams: { [key: string]: string | string[] | undef
   const region = typeof searchParams.region === 'string' ? searchParams.region : '';
   const country = typeof searchParams.country === 'string' ? searchParams.country : '';
   
-  const where: any = { published: true };
+  // Get tours from static data
+  let tours = getAllTours();
   
+  // Apply filters
   if (search) {
-    where.OR = [
-      { title: { contains: search } },
-      { description: { contains: search } },
-      { country: { name: { contains: search } } },
-    ];
+    tours = searchToursData(search);
+  } else if (region) {
+    tours = getToursByRegion(region);
+  } else if (country) {
+    tours = getToursByCountry(country);
   }
   
-  if (region) {
-    where.country = { region: { code: region } };
-  }
+  // Get unique regions and countries from tours
+  const regionsSet = new Set(tours.map(t => t.region));
+  const countriesSet = new Set(tours.map(t => ({ code: t.countryCode, name: t.country })));
   
-  if (country) {
-    where.country = { slug: country };
-  }
-
-  const [tours, regions, countries] = await Promise.all([
-    prisma.tour.findMany({
-      where,
-      include: {
-        country: {
-          include: {
-            region: true,
-          },
-        },
-        images: {
-          orderBy: { order: 'asc' },
-          take: 1,
-        },
-      },
-      orderBy: { createdAt: 'desc' },
-    }),
-    prisma.region.findMany({ orderBy: { name: 'asc' } }),
-    prisma.country.findMany({ 
-      orderBy: { name: 'asc' },
-      include: { _count: { select: { tours: true } } }
-    }),
-  ]);
+  const regions = Array.from(regionsSet).map(name => ({ name, code: name.toLowerCase().replace(/\s+/g, '-') }));
+  const countries = Array.from(countriesSet);
 
   return { tours, regions, countries };
 }
@@ -123,19 +101,24 @@ export default async function ToursPage({ searchParams }: PageProps) {
                     Countries
                   </h3>
                   <div className="space-y-2 max-h-96 overflow-y-auto">
-                    {countries.filter(c => c._count.tours > 0).map((country) => (
-                      <a
-                        key={country.id}
-                        href={`/tours?country=${country.slug}`}
-                        className={`block px-3 py-2 rounded-md text-sm transition-colors ${
-                          activeCountry === country.slug
-                            ? 'bg-[rgb(var(--color-gold))] text-white'
-                            : 'hover:bg-neutral-100'
-                        }`}
-                      >
-                        {country.name} ({country._count.tours})
-                      </a>
-                    ))}
+                    {countries.map((country: any) => {
+                      const countryTours = getAllTours().filter(t => t.countryCode === country.code);
+                      if (countryTours.length === 0) return null;
+                      
+                      return (
+                        <a
+                          key={country.code}
+                          href={`/tours?country=${country.code}`}
+                          className={`block px-3 py-2 rounded-md text-sm transition-colors ${
+                            activeCountry === country.code
+                              ? 'bg-[rgb(var(--color-gold))] text-white'
+                              : 'hover:bg-neutral-100'
+                          }`}
+                        >
+                          {country.name} ({countryTours.length})
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               </CardContent>

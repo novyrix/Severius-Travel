@@ -7,9 +7,10 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useCurrency } from './providers/currency-provider';
+import type { Tour } from '@/data/tours';
 
 interface TourCardProps {
-  tour: {
+  tour: Tour | {
     id: string;
     slug: string;
     title: string;
@@ -29,9 +30,11 @@ interface TourCardProps {
 
 export function TourCard({ tour }: TourCardProps) {
   const { formatPrice } = useCurrency();
-  // Use coverImage if available, otherwise fall back to images array
-  const imageUrl = tour.coverImage || tour.images[0]?.url;
-  const imageAlt = tour.images[0]?.alt || tour.title;
+  
+  // Handle both static Tour type and database tour type
+  const imageUrl = tour.coverImage || ('images' in tour && tour.images[0]?.url) || '';
+  const imageAlt = ('images' in tour && tour.images[0]?.alt) || tour.title;
+  const countryName = typeof tour.country === 'string' ? tour.country : tour.country.name;
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow group">
@@ -68,7 +71,7 @@ export function TourCard({ tour }: TourCardProps) {
         <div className="flex items-center gap-4 text-sm text-neutral-600 mb-3">
           <div className="flex items-center gap-1">
             <MapPin className="w-4 h-4" />
-            <span>{tour.country.name}</span>
+            <span>{countryName}</span>
           </div>
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
