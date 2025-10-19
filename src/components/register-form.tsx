@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Mail, Lock, User, Plane } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { HONEYPOT_FIELDS } from "@/lib/honeypot";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -19,6 +20,7 @@ export function RegisterForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [formTimestamp] = useState(Date.now().toString());
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,6 +61,12 @@ export function RegisterForm() {
           name: formData.name,
           email: formData.email,
           password: formData.password,
+          // Honeypot fields (empty for real users)
+          [HONEYPOT_FIELDS.website]: "",
+          [HONEYPOT_FIELDS.url]: "",
+          [HONEYPOT_FIELDS.phone]: "",
+          [HONEYPOT_FIELDS.company]: "",
+          [HONEYPOT_FIELDS.timestamp]: formTimestamp,
         }),
       });
 
