@@ -15,12 +15,42 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(creds) {
-        if (!creds?.email || !creds?.password) return null;
-        const user = await prisma.user.findUnique({ where: { email: creds.email } });
-        if (!user || !user.hashedPassword) return null;
+        if (!creds?.email || !creds?.password) {
+          console.log('❌ Missing credentials');
+          return null;
+        }
+        
+        console.log('🔍 Attempting login for:', creds.email);
+        
+        const user = await prisma.user.findUnique({ 
+          where: { email: creds.email.toLowerCase() } 
+        });
+        
+        if (!user) {
+          console.log('❌ User not found:', creds.email);
+          return null;
+        }
+        
+        if (!user.hashedPassword) {
+          console.log('❌ User has no password:', creds.email);
+          return null;
+        }
+        
+        console.log('🔐 Verifying password...');
         const ok = compareSync(creds.password, user.hashedPassword);
-        if (!ok) return null;
-        return { id: user.id, email: user.email ?? undefined, name: user.name ?? undefined } as any;
+        
+        if (!ok) {
+          console.log('❌ Invalid password for:', creds.email);
+          return null;
+        }
+        
+        console.log('✅ Login successful for:', creds.email);
+        return { 
+          id: user.id, 
+          email: user.email ?? undefined, 
+          name: user.name ?? undefined,
+          role: user.role 
+        } as any;
       },
     }),
   ],

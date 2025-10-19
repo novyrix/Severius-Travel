@@ -13,14 +13,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Normalize email to lowercase
+    const normalizedEmail = email.toLowerCase();
+
     // Find user by email
     const user = await prisma.user.findUnique({
-      where: { email: email.toLowerCase() }
+      where: { email: normalizedEmail }
     });
 
     // Always return success to prevent email enumeration
     if (!user) {
-      console.log('❌ Password reset requested for non-existent email:', email);
+      console.log('❌ Password reset requested for non-existent email:', normalizedEmail);
       return NextResponse.json(
         {
           success: true,

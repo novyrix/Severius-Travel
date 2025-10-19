@@ -72,6 +72,8 @@ export function RegisterForm() {
 
       // Account created successfully
       if (data.success && data.autoLogin) {
+        console.log("🔄 Starting auto-login process...");
+        
         // Auto-login the user
         const { signIn } = await import("next-auth/react");
         
@@ -81,8 +83,10 @@ export function RegisterForm() {
           redirect: false,
         });
 
+        console.log("Login result:", loginResult);
+
         if (loginResult?.error) {
-          console.error("Auto-login failed:", loginResult.error);
+          console.error("❌ Auto-login failed:", loginResult.error);
           setError("Account created but login failed. Please login manually.");
           setIsLoading(false);
           // Redirect to login page as fallback
@@ -90,10 +94,25 @@ export function RegisterForm() {
           return;
         }
 
-        // Successfully logged in, redirect to dashboard
-        console.log("✅ User registered and logged in successfully");
-        router.push("/dashboard");
+        if (loginResult?.ok) {
+          console.log("✅ User registered and logged in successfully");
+          
+          // Wait a moment for session to be established
+          await new Promise(resolve => setTimeout(resolve, 500));
+          
+          // Refresh router to get new session
+          router.refresh();
+          
+          // Redirect to dashboard
+          window.location.href = "/dashboard";
+        } else {
+          console.error("❌ Login result not ok:", loginResult);
+          setError("Account created but login failed. Please login manually.");
+          setIsLoading(false);
+          setTimeout(() => router.push("/login?registered=true"), 2000);
+        }
       } else {
+        console.log("⚠️ Auto-login flag not set, redirecting to login");
         // Fallback to login page if auto-login flag is not set
         router.push("/login?registered=true");
       }

@@ -45,6 +45,9 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { name, email, password } = body;
 
+    // Normalize email to lowercase
+    const normalizedEmail = email?.toLowerCase();
+
     // Check honeypot fields
     const honeypotCheck = checkHoneypot({
       [HONEYPOT_FIELDS.website]: body[HONEYPOT_FIELDS.website],
@@ -81,7 +84,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Validation
-    if (!email || !password) {
+    if (!normalizedEmail || !password) {
       return NextResponse.json(
         { message: 'Email and password are required' },
         { status: 400 }
@@ -97,7 +100,7 @@ export async function POST(req: NextRequest) {
 
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
-      where: { email }
+      where: { email: normalizedEmail }
     });
 
     if (existingUser) {
@@ -114,7 +117,7 @@ export async function POST(req: NextRequest) {
     const user = await prisma.user.create({
       data: {
         name: name || null,
-        email,
+        email: normalizedEmail,
         hashedPassword,
         role: 'USER',
         isActive: true,
