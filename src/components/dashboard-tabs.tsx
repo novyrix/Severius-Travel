@@ -53,21 +53,22 @@ export function DashboardTabs({ bookings, user }: Props) {
   return (
     <div>
       {/* Tabs */}
-      <div className="flex gap-2 mb-6 border-b border-neutral-200">
+      <div className="flex gap-1 md:gap-2 mb-4 md:mb-6 border-b border-neutral-200 overflow-x-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-3 font-medium transition-colors border-b-2 ${
+              className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base font-medium transition-colors border-b-2 whitespace-nowrap ${
                 activeTab === tab.id
                   ? 'border-[rgb(var(--color-gold))] text-[rgb(var(--color-gold))]'
                   : 'border-transparent text-neutral-600 hover:text-neutral-900'
               }`}
             >
               <Icon className="w-4 h-4" />
-              {tab.label}
+              <span className="hidden sm:inline">{tab.label}</span>
+              <span className="sm:hidden">{tab.label.split(' ')[tab.label.split(' ').length - 1]}</span>
             </button>
           );
         })}
@@ -142,23 +143,23 @@ export function DashboardTabs({ bookings, user }: Props) {
                         </div>
 
                         <div className="flex items-center justify-between">
-                          <div className="text-lg font-bold text-[rgb(var(--color-gold))]">
+                          <div className="text-base md:text-lg font-bold text-[rgb(var(--color-gold))]">
                             {formatCurrency(booking.amount)}
                           </div>
-                          <div className="flex gap-2">
+                          <div className="flex flex-col sm:flex-row gap-2">
                             {booking.status === 'PENDING' && (
                               <Link href={`/payment/${booking.ref}`}>
-                                <Button size="sm">Complete Payment</Button>
+                                <Button size="sm" className="text-xs md:text-sm">Complete Payment</Button>
                               </Link>
                             )}
                             {booking.status === 'PAID' && (
-                              <Button variant="outline" size="sm">
+                              <Button variant="outline" size="sm" className="text-xs md:text-sm hidden md:flex">
                                 <Download className="w-4 h-4 mr-2" />
                                 Receipt
                               </Button>
                             )}
                             <Link href={`/tours/${booking.tour.slug}`}>
-                              <Button variant="outline" size="sm">
+                              <Button variant="outline" size="sm" className="text-xs md:text-sm">
                                 View Tour
                               </Button>
                             </Link>
@@ -202,28 +203,28 @@ export function DashboardTabs({ bookings, user }: Props) {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" defaultValue={user.name || ''} />
+                  <Label htmlFor="name" className="text-sm">Full Name</Label>
+                  <Input id="name" defaultValue={user.name || ''} className="text-sm" />
                 </div>
                 <div>
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" defaultValue={user.email} disabled className="bg-neutral-50" />
+                  <Label htmlFor="email" className="text-sm">Email Address</Label>
+                  <Input id="email" type="email" defaultValue={user.email} disabled className="bg-neutral-50 text-sm" />
                 </div>
                 <div>
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="+254 123 456 789" />
+                  <Label htmlFor="phone" className="text-sm">Phone Number</Label>
+                  <Input id="phone" type="tel" placeholder="+254 123 456 789" className="text-sm" />
                 </div>
                 <div>
-                  <Label htmlFor="country">Country</Label>
-                  <Input id="country" placeholder="Kenya" />
+                  <Label htmlFor="country" className="text-sm">Country</Label>
+                  <Input id="country" placeholder="Kenya" className="text-sm" />
                 </div>
               </div>
 
-              <div className="flex gap-2">
-                <Button>Save Changes</Button>
-                <Button variant="outline">Cancel</Button>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <Button className="w-full sm:w-auto">Save Changes</Button>
+                <Button variant="outline" className="w-full sm:w-auto">Cancel</Button>
               </div>
             </div>
           </CardContent>
@@ -254,12 +255,12 @@ export function DashboardTabs({ bookings, user }: Props) {
                           <p className="text-sm text-neutral-600">Booking Ref: {booking.ref}</p>
                         </div>
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm">
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <Button variant="outline" size="sm" className="text-xs md:text-sm w-full sm:w-auto">
                           <Download className="w-4 h-4 mr-2" />
                           Download PDF
                         </Button>
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm" className="text-xs md:text-sm w-full sm:w-auto">
                           <FileText className="w-4 h-4 mr-2" />
                           View
                         </Button>

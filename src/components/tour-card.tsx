@@ -32,8 +32,8 @@ export function TourCard({ tour }: TourCardProps) {
   const { formatPrice } = useCurrency();
   
   // Handle both static Tour type and database tour type
-  const imageUrl = tour.coverImage || ('images' in tour && tour.images[0]?.url) || '';
-  const imageAlt = ('images' in tour && tour.images[0]?.alt) || tour.title;
+  const imageUrl = tour.coverImage || ('images' in tour && tour.images?.[0]?.url) || '';
+  const imageAlt = ('images' in tour && tour.images?.[0]?.alt) || tour.title;
   const countryName = typeof tour.country === 'string' ? tour.country : tour.country.name;
 
   return (

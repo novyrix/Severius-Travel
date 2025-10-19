@@ -39,41 +39,41 @@ export default async function DashboardPage() {
   const t = await getTranslations('dashboard');
 
   return (
-    <main className="min-h-screen bg-neutral-50 py-12">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-[rgb(var(--color-brown))] mb-2">
+    <main className="min-h-screen bg-neutral-50 py-6 md:py-12 pb-20 md:pb-12">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-[rgb(var(--color-brown))] mb-2">
             {t('title')}
           </h1>
-          <p className="text-neutral-600">
+          <p className="text-sm md:text-base text-neutral-600">
             Welcome back, {session.user.name || session.user.email}!
           </p>
         </div>
 
         {/* Stats */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-3 md:gap-6 mb-6 md:mb-8">
           <Card>
-            <CardContent className="p-6">
-              <div className="text-3xl font-bold text-[rgb(var(--color-gold))]">
+            <CardContent className="p-4 md:p-6">
+              <div className="text-2xl md:text-3xl font-bold text-[rgb(var(--color-gold))]">
                 {bookings.length}
               </div>
-              <div className="text-sm text-neutral-600 mt-1">{t('stats.totalBookings')}</div>
+              <div className="text-xs md:text-sm text-neutral-600 mt-1">{t('stats.totalBookings')}</div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-6">
-              <div className="text-3xl font-bold text-green-600">
+            <CardContent className="p-4 md:p-6">
+              <div className="text-2xl md:text-3xl font-bold text-green-600">
                 {bookings.filter(b => b.status === 'PAID').length}
               </div>
-              <div className="text-sm text-neutral-600 mt-1">{t('stats.confirmedTours')}</div>
+              <div className="text-xs md:text-sm text-neutral-600 mt-1">{t('stats.confirmedTours')}</div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-6">
-              <div className="text-3xl font-bold text-yellow-600">
+            <CardContent className="p-4 md:p-6">
+              <div className="text-2xl md:text-3xl font-bold text-yellow-600">
                 {bookings.filter(b => b.status === 'PENDING').length}
               </div>
-              <div className="text-sm text-neutral-600 mt-1">{t('stats.pendingPayment')}</div>
+              <div className="text-xs md:text-sm text-neutral-600 mt-1">{t('stats.pendingPayment')}</div>
             </CardContent>
           </Card>
         </div>

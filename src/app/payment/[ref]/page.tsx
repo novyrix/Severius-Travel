@@ -1,14 +1,15 @@
 import { notFound, redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
-import { ArrowLeft, CreditCard, Shield } from 'lucide-react';
+import { ArrowLeft, Shield } from 'lucide-react';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { getTourBySlug } from '@/data/tours';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { formatCurrency, formatDate } from '@/lib/utils';
-import { PaymentButton } from '@/components/payment-button';
+import { WhatsAppPaymentButton } from '@/components/whatsapp-payment-button';
+import Image from 'next/image';
 
 interface PageProps {
   params: Promise<{ ref: string }>;
@@ -126,15 +127,23 @@ export default async function PaymentPage({ params }: PageProps) {
               </div>
 
               <div className="border-t pt-4">
-                <PaymentButton bookingRef={booking.ref} amount={booking.amount} />
+                <WhatsAppPaymentButton 
+                  bookingRef={booking.ref} 
+                  amount={booking.amount}
+                  tourTitle={booking.tourTitle}
+                  guests={booking.guests || 1}
+                  startDate={booking.startDate?.toISOString() || new Date().toISOString()}
+                  userName={booking.user.name || 'Guest'}
+                  userEmail={booking.user.email || 'No email'}
+                />
               </div>
 
               <div className="flex items-start gap-3 text-sm text-neutral-600 bg-neutral-50 p-4 rounded-lg">
                 <Shield className="w-5 h-5 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-medium mb-1">Secure Payment</p>
+                  <p className="font-medium mb-1">Secure Booking</p>
                   <p className="text-xs">
-                    Your payment information is encrypted and secure. We use PesaPal, a trusted payment gateway.
+                    Your booking details will be sent directly to our team via WhatsApp. We'll confirm your reservation and send payment instructions within 24 hours.
                   </p>
                 </div>
               </div>
@@ -144,19 +153,28 @@ export default async function PaymentPage({ params }: PageProps) {
           {/* Payment Methods */}
           <Card>
             <CardHeader>
-              <CardTitle>Accepted Payment Methods</CardTitle>
+              <CardTitle>How It Works</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 text-sm">
-                  <CreditCard className="w-5 h-5" />
-                  <span>Credit/Debit Cards</span>
+            <CardContent className="space-y-3">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center font-bold">1</div>
+                <div>
+                  <p className="font-medium">Send Booking via WhatsApp</p>
+                  <p className="text-sm text-neutral-600">Click the button above to send your booking details</p>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="font-semibold">M-PESA</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center font-bold">2</div>
+                <div>
+                  <p className="font-medium">Receive Confirmation</p>
+                  <p className="text-sm text-neutral-600">Our team will confirm availability and send payment details</p>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <span>Bank Transfer</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center font-bold">3</div>
+                <div>
+                  <p className="font-medium">Complete Payment</p>
+                  <p className="text-sm text-neutral-600">Pay via M-PESA, bank transfer, or credit card as instructed</p>
                 </div>
               </div>
             </CardContent>
