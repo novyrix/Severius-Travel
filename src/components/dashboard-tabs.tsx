@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { formatCurrency, formatDate } from '@/lib/utils';
+import { getTourBySlug } from '@/data/tours';
 
 interface Booking {
   id: string;
@@ -17,17 +18,10 @@ interface Booking {
   amount: number;
   status: string;
   createdAt: Date;
-  tour: {
-    title: string;
-    slug: string;
-    country: {
-      name: string;
-    };
-    images: Array<{
-      url: string;
-      alt: string | null;
-    }>;
-  };
+  tourSlug: string;
+  tourTitle: string;
+  startDate?: Date | null;
+  guests: number;
 }
 
 interface User {
@@ -84,7 +78,10 @@ export function DashboardTabs({ bookings, user }: Props) {
             {bookings.length > 0 ? (
               <div className="space-y-4">
                 {bookings.map((booking) => {
-                  const mainImage = booking.tour.images[0];
+                  // Get tour data from static tours
+                  const tour = getTourBySlug(booking.tourSlug);
+                  const mainImage = tour?.coverImage || tour?.gallery?.[0];
+                  
                   return (
                     <div
                       key={booking.id}
@@ -94,8 +91,8 @@ export function DashboardTabs({ bookings, user }: Props) {
                       <div className="relative w-full md:w-48 h-32 flex-shrink-0 rounded-lg overflow-hidden bg-neutral-100">
                         {mainImage ? (
                           <Image
-                            src={mainImage.url}
-                            alt={mainImage.alt || booking.tour.title}
+                            src={mainImage}
+                            alt={booking.tourTitle}
                             fill
                             className="object-cover"
                             sizes="(max-width: 768px) 100vw, 192px"
@@ -112,11 +109,11 @@ export function DashboardTabs({ bookings, user }: Props) {
                         <div className="flex items-start justify-between gap-4 mb-2">
                           <div>
                             <h3 className="font-semibold text-lg text-[rgb(var(--color-brown))]">
-                              {booking.tour.title}
+                              {booking.tourTitle}
                             </h3>
                             <div className="flex items-center gap-2 text-sm text-neutral-600">
                               <MapPin className="w-4 h-4" />
-                              <span>{booking.tour.country.name}</span>
+                              <span>{tour?.country || 'Unknown'}</span>
                             </div>
                           </div>
                           <Badge
@@ -158,11 +155,13 @@ export function DashboardTabs({ bookings, user }: Props) {
                                 Receipt
                               </Button>
                             )}
-                            <Link href={`/tours/${booking.tour.slug}`}>
-                              <Button variant="outline" size="sm" className="text-xs md:text-sm">
-                                View Tour
-                              </Button>
-                            </Link>
+                            {tour && (
+                              <Link href={`/tours/${tour.slug}`}>
+                                <Button variant="outline" size="sm" className="text-xs md:text-sm">
+                                  View Tour
+                                </Button>
+                              </Link>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -251,7 +250,7 @@ export function DashboardTabs({ bookings, user }: Props) {
                           <FileText className="w-5 h-5 text-[rgb(var(--color-gold))]" />
                         </div>
                         <div>
-                          <h4 className="font-medium">{booking.tour.title} - Itinerary</h4>
+                          <h4 className="font-medium">{booking.tourTitle} - Itinerary</h4>
                           <p className="text-sm text-neutral-600">Booking Ref: {booking.ref}</p>
                         </div>
                       </div>
