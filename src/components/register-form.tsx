@@ -69,6 +69,11 @@ export function RegisterForm() {
         status: response.status,
         data: data
       });
+      console.log("🔍 Checking flags:", {
+        hasSuccess: data.success,
+        hasAutoLogin: data.autoLogin,
+        fullData: JSON.stringify(data, null, 2)
+      });
 
       if (!response.ok) {
         setError(data.error || data.message || "Failed to create account");
@@ -77,7 +82,8 @@ export function RegisterForm() {
       }
 
       // Account created successfully
-      if (data.success && data.autoLogin) {
+      if (data.success) {
+        console.log("✅ Account created successfully!");
         console.log("🔄 Starting auto-login process...");
         console.log("📧 Email:", formData.email);
         console.log("🔑 Password length:", formData.password.length);
@@ -126,9 +132,10 @@ export function RegisterForm() {
           setTimeout(() => router.push("/login?registered=true"), 2000);
         }
       } else {
-        console.log("⚠️ Auto-login flag not set, redirecting to login");
-        // Fallback to login page if auto-login flag is not set
-        router.push("/login?registered=true");
+        // Registration failed
+        console.log("❌ Registration failed");
+        setError(data.message || "Failed to create account");
+        setIsLoading(false);
       }
     } catch (error) {
       console.error("Registration error:", error);
