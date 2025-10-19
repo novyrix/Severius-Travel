@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { pesapalService } from '@/lib/services/pesapal';
+import { getTourBySlug } from '@/data/tours';
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,7 +26,6 @@ export async function POST(request: NextRequest) {
         user: { email: session.user.email },
       },
       include: {
-        tour: true,
         user: true,
       },
     });
@@ -36,6 +36,12 @@ export async function POST(request: NextRequest) {
 
     if (booking.status === 'PAID') {
       return NextResponse.json({ error: 'Booking already paid' }, { status: 400 });
+    }
+
+    // Get tour details from static data
+    const tour = getTourBySlug(booking.tourSlug);
+    if (!tour) {
+      return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
     }
 
     // Check if PesaPal is configured
@@ -83,7 +89,7 @@ export async function POST(request: NextRequest) {
       bookingRef: booking.ref,
       amount: booking.amount,
       currency: 'USD',
-      description: `Payment for ${booking.tour.title}`,
+      description: `Payment for ${booking.tourTitle}`,
       callbackUrl: `${process.env.NEXTAUTH_URL}/api/payments/callback?ref=${bookingRef}`,
       firstName: booking.user.name?.split(' ')[0] || 'Customer',
       lastName: booking.user.name?.split(' ').slice(1).join(' ') || '',

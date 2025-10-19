@@ -19,7 +19,6 @@ export default async function AdminBookingsPage() {
     prisma.booking.findMany({
       include: {
         user: { select: { name: true, email: true } },
-        tour: { select: { title: true, slug: true } }
       },
       orderBy: { createdAt: 'desc' }
     }),
@@ -121,7 +120,7 @@ export default async function AdminBookingsPage() {
                       </td>
                       <td className="py-4">
                         <p className="text-sm font-medium text-[rgb(var(--color-brown))]">
-                          {booking.tour.title}
+                          {booking.tourTitle}
                         </p>
                       </td>
                       <td className="py-4 text-sm font-medium">

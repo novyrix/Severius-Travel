@@ -11,12 +11,11 @@ import { formatCurrency, generateBookingRef } from '@/lib/utils';
 
 interface BookingFormProps {
   tour: {
-    id: string;
     slug: string;
     title: string;
     price: number;
     durationDays: number;
-    country: { name: string };
+    country: string;
   };
 }
 
@@ -49,7 +48,8 @@ export function BookingForm({ tour }: BookingFormProps) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          tourId: tour.id,
+          tourSlug: tour.slug,
+          tourTitle: tour.title,
           ref: bookingRef,
           amount: totalAmount,
           travelers,
@@ -88,7 +88,7 @@ export function BookingForm({ tour }: BookingFormProps) {
             <h3 className="font-semibold text-lg text-[rgb(var(--color-brown))]">
               {tour.title}
             </h3>
-            <p className="text-neutral-600">{tour.country.name}</p>
+            <p className="text-neutral-600">{tour.country}</p>
           </div>
           <div className="flex justify-between text-sm">
             <span className="text-neutral-600">Duration:</span>

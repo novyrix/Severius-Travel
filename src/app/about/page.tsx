@@ -203,12 +203,12 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-amber-600 via-orange-600 to-amber-700 text-white">
+      <section className="py-20 bg-gradient-to-br from-[rgb(var(--color-brown))] via-[rgb(var(--color-gold))] to-[rgb(var(--color-brown))] text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {stats.map((stat) => (
               <div key={stat.key} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">
+                <div className="text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg">
                   {stat.number}
                 </div>
                 <div className="text-lg md:text-xl opacity-90">
@@ -221,23 +221,23 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-br from-[rgb(var(--color-brown))] to-[rgb(var(--color-brown))]/90">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               {t('about.cta.title')}
             </h2>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-white/90 mb-8">
               {t('about.cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/tours">
-                <Button size="lg" className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white px-8 py-6 text-lg">
+                <Button size="lg" className="bg-[rgb(var(--color-gold))] hover:bg-[rgb(var(--color-gold))]/90 text-white px-8 py-6 text-lg transform hover:scale-105 transition-all shadow-xl">
                   {t('about.cta.button1')}
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-2 border-amber-600 text-amber-600 hover:bg-amber-50 px-8 py-6 text-lg">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg transform hover:scale-105 transition-all">
                   {t('about.cta.button2')}
                 </Button>
               </Link>

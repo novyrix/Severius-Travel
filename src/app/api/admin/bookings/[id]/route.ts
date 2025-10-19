@@ -35,7 +35,6 @@ export async function PUT(
       where: { id },
       data: { status },
       include: {
-        tour: true,
         user: true,
       },
     });

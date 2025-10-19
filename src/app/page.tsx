@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { prisma } from '../lib/prisma';
+import { getAllTours } from '@/data/tours';
 import { SearchBar } from '@/components/search-bar';
 import { TourCard } from '@/components/tour-card';
 import { Button } from '@/components/ui/button';
@@ -8,119 +9,94 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Clock } from 'lucide-react';
 import { AnimatedFeatures } from '@/components/animated-features';
+import { HeroSlider } from '@/components/hero-slider';
+import { FeaturedToursCarousel } from '@/components/featured-tours-carousel';
+import { Marquee } from '@/components/marquee';
 
 export default async function HomePage() {
-  const [regions, featuredTours, posts] = await Promise.all([
-    prisma.region.findMany({ orderBy: { name: 'asc' } }),
-    prisma.tour.findMany({ 
-      take: 6, 
-      where: { published: true },
-      orderBy: { createdAt: 'desc' }, 
-      include: { 
-        country: true,
-        images: {
-          orderBy: { order: 'asc' },
-          take: 1,
-        },
-      } 
-    }),
-    prisma.post.findMany({ 
-      take: 3, 
-      where: { published: true },
-      orderBy: { createdAt: 'desc' } 
-    }),
-  ]);
+  const allTours = getAllTours();
+  const featuredTours = allTours.slice(0, 6); // Get first 6 tours
+  
+  const posts = await prisma.post.findMany({ 
+    take: 3, 
+    where: { published: true },
+    orderBy: { createdAt: 'desc' } 
+  });
+
+  // Get unique countries from tours
+  const countries = [...new Set(allTours.map(tour => tour.country))].sort();
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[500px] sm:h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/60 z-10" />
-        <Image
-          src="https://images.unsplash.com/photo-1523805009345-7448845a9e53"
-          alt="Travel destination"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div className="relative z-20 container mx-auto px-6 text-center text-white">
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
-            Severius Travel & Adventures
-          </h1>
-          <p className="text-base sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto drop-shadow-md px-4">
-            Discover extraordinary journeys across the globe. Create memories that last a lifetime.
-          </p>
-          <div className="flex justify-center">
-            <SearchBar />
-          </div>
-        </div>
-      </section>
+      {/* Modern Hero Slider with Featured Tours */}
+      <HeroSlider featuredTours={featuredTours} />
 
       {/* Features */}
       <AnimatedFeatures />
 
-      {/* Featured Tours */}
-      <section className="py-12 md:py-16 bg-neutral-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[rgb(var(--color-brown))] mb-4">Featured Tours</h2>
-            <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
-              Handpicked adventures for unforgettable experiences
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {featuredTours.map((tour) => (
-              <TourCard key={tour.id} tour={tour} />
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/tours">
-              <Button size="lg" variant="brown">
-                View All Tours
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Regions */}
-      <section className="py-12 md:py-16 bg-neutral-50">
+      {/* Destinations */}
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-[rgb(var(--color-brown))] mb-4">
-              Explore by Region
+              Explore by Destination
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Discover the world's most captivating destinations across continents
+              Discover the world's most captivating destinations
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {regions.map((region) => {
-              const regionImages: Record<string, string> = {
-                'AF': 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80',
-                'EU': 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80',
-                'AS': 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80',
-                'NA': 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80',
-                'SA': 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&q=80',
-                'OC': 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&q=80',
+            {countries.map((country) => {
+              // Map country names to country codes and local image filenames
+              const countryCodeMap: Record<string, string> = {
+                'Kenya': 'KE',
+                'Tanzania': 'TZ',
+                'Uganda': 'UG',
+                'Rwanda': 'RW',
+                'South Africa': 'ZA',
+                'Botswana': 'BW',
+                'Zimbabwe': 'ZW',
+                'Namibia': 'NA',
+                'Zambia': 'ZM',
               };
-              const regionDescriptions: Record<string, string> = {
-                'AF': 'Safari adventures, wildlife & ancient wonders',
-                'EU': 'Historic cities, art & cultural treasures',
-                'AS': 'Ancient temples, beaches & vibrant cultures',
-                'NA': 'Natural wonders & diverse landscapes',
-                'SA': 'Amazon rainforests & ancient civilizations',
-                'OC': 'Pristine beaches & unique wildlife',
+              
+              const countryImageMap: Record<string, string> = {
+                'Kenya': '/images/destinations/Kenya.jpg',
+                'Tanzania': '/images/destinations/Tanzania.jpg',
+                'Uganda': '/images/destinations/Uganda.jpg',
+                'Rwanda': '/images/destinations/Rwanda.jpg',
+                'South Africa': '/images/destinations/South Africa.jpg',
+                'Botswana': '/images/destinations/Botswana.jpg',
+                'Zimbabwe': '/images/destinations/Zimbabwe.jpg',
+                'Namibia': '/images/destinations/Namibia.jpg',
+                'Zambia': '/images/destinations/zambia.jpg',
               };
+              
+              const countryDescriptions: Record<string, string> = {
+                'Kenya': 'Safari adventures, wildlife & the Great Migration',
+                'Tanzania': 'Serengeti plains, Kilimanjaro & Zanzibar beaches',
+                'Uganda': 'Gorilla trekking, Murchison Falls & Queen Elizabeth',
+                'Rwanda': 'Mountain gorillas, volcanoes & Lake Kivu',
+                'South Africa': 'Cape Town, wildlife safaris & wine country',
+                'Botswana': 'Okavango Delta, Chobe elephants & pristine wilderness',
+                'Zimbabwe': 'Victoria Falls, Hwange wildlife & ancient ruins',
+                'Namibia': 'Desert dunes, Etosha wildlife & dramatic landscapes',
+                'Zambia': 'Walking safaris, Victoria Falls & South Luangwa',
+              };
+              
+              const countryCode = countryCodeMap[country] || 'KE';
+              const imageUrl = countryImageMap[country] || countryImageMap['Kenya'];
+              const tourCount = allTours.filter(t => t.country === country).length;
+              
+              // Skip if no tours for this country
+              if (tourCount === 0) return null;
+              
               return (
-                <Link key={region.id} href={`/tours?region=${region.code}`}>
+                <Link key={country} href={`/tours?country=${countryCode}`}>
                   <div className="group relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer">
                     <Image
-                      src={regionImages[region.code] || regionImages['AF']}
-                      alt={region.name}
+                      src={imageUrl}
+                      alt={country}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                       sizes="(max-width: 768px) 100vw, 33vw"
@@ -128,13 +104,13 @@ export default async function HomePage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                       <h3 className="text-3xl font-bold mb-2 group-hover:text-[rgb(212,175,55)] transition-colors">
-                        {region.name}
+                        {country}
                       </h3>
                       <p className="text-white/90 text-sm mb-4">
-                        {regionDescriptions[region.code] || 'Discover amazing destinations'}
+                        {countryDescriptions[country] || 'Discover amazing adventures'}
                       </p>
                       <div className="inline-flex items-center gap-2 text-sm font-semibold text-[rgb(212,175,55)] group-hover:gap-4 transition-all">
-                        Explore Tours
+                        {tourCount} {tourCount === 1 ? 'Tour' : 'Tours'} Available
                         <span className="text-lg">→</span>
                       </div>
                     </div>
@@ -145,6 +121,31 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Featured Tours Carousel */}
+      <section className="py-12 md:py-16 bg-neutral-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-[rgb(var(--color-brown))] mb-4">Featured Tours</h2>
+            <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
+              Handpicked adventures for unforgettable experiences
+            </p>
+          </div>
+
+          <FeaturedToursCarousel tours={featuredTours} />
+
+          <div className="text-center mt-12">
+            <Link href="/tours">
+              <Button size="lg" variant="brown">
+                View All Tours
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Marquee */}
+      <Marquee />
 
       {/* Blog Posts */}
       {posts.length > 0 && (

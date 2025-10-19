@@ -184,10 +184,10 @@ export default async function TourDetailPage({ params }: PageProps) {
                                 </div>
                               )}
                               <div className="flex flex-wrap gap-4 text-sm text-neutral-600 dark:text-neutral-400">
-                                {day.meals && day.meals.length > 0 && (
+                                {day.meals && (
                                   <div className="flex items-center gap-1.5">
                                     <Utensils className="w-4 h-4" />
-                                    <span>{day.meals.join(', ')}</span>
+                                    <span>{day.meals}</span>
                                   </div>
                                 )}
                                 {day.accommodation && (

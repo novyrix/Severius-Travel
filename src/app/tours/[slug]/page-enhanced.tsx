@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, MapPin, Users, Check, X, ChevronDown, Star, TrendingUp, Shield, Award, Utensils, Home, AlertCircle } from 'lucide-react';
-import { prisma } from '@/lib/prisma';
+import { getTourBySlug } from '@/data/tours';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -13,60 +13,19 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-async function getTour(slug: string) {
-  const tour = await prisma.tour.findUnique({
-    where: { slug, published: true },
-    include: {
-      country: {
-        include: { region: true },
-      },
-      images: {
-        orderBy: { order: 'asc' },
-      },
-      days: {
-        orderBy: { dayNumber: 'asc' },
-      },
-    },
-  });
-
-  return tour;
-}
-
 export default async function TourDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const tour = await getTour(slug);
+  const tour = getTourBySlug(slug);
 
   if (!tour) {
     notFound();
   }
 
-  // Parse JSON fields
-  const gallery = tour.gallery ? JSON.parse(tour.gallery as string) : [];
-  const highlights = tour.highlights ? JSON.parse(tour.highlights as string) : [];
-  const inclusions = tour.inclusions ? JSON.parse(tour.inclusions as string) : [];
-  const exclusions = tour.exclusions ? JSON.parse(tour.exclusions as string) : [];
-  const faqs = tour.faqs ? JSON.parse(tour.faqs as string) : [];
-  const itinerary = tour.itinerary ? JSON.parse(tour.itinerary as string) : [];
-  const requirements = tour.requirements ? JSON.parse(tour.requirements as string) : [];
-  const bestMonths = tour.bestMonths ? JSON.parse(tour.bestMonths as string) : [];
-
-  const mainImage = tour.images[0];
-
   return (
     <main className="min-h-screen bg-neutral-50 dark:bg-neutral-900">
       {/* Hero Section */}
       <section className="relative h-[600px] bg-neutral-900">
-        {mainImage ? (
-          <Image
-            src={mainImage.url}
-            alt={mainImage.alt || tour.title}
-            fill
-            className="object-cover opacity-80"
-            priority
-            sizes="100vw"
-            unoptimized={mainImage.url.includes('unsplash.com')}
-          />
-        ) : tour.coverImage ? (
+        {tour.coverImage ? (
           <Image
             src={tour.coverImage}
             alt={tour.title}
@@ -87,7 +46,7 @@ export default async function TourDetailPage({ params }: PageProps) {
           <div className="max-w-4xl">
             <div className="flex items-center gap-2 text-white/90 mb-3">
               <MapPin className="w-5 h-5" />
-              <span className="text-lg">{tour.city || tour.country.name}, {tour.country.name}</span>
+              <span className="text-lg">{tour.city || tour.country}, {tour.country}</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
               {tour.title}
@@ -121,13 +80,13 @@ export default async function TourDetailPage({ params }: PageProps) {
           <div className="lg:col-span-2 space-y-8">
             
             {/* Image Gallery */}
-            {gallery && gallery.length > 0 && (
+            {tour.gallery && tour.gallery.length > 0 && (
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl">Photo Gallery</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ImageGallery images={gallery} tourName={tour.title} />
+                  <ImageGallery images={tour.gallery} tourName={tour.title} />
                 </CardContent>
               </Card>
             )}
@@ -150,18 +109,18 @@ export default async function TourDetailPage({ params }: PageProps) {
               </CardContent>
             </Card>
 
-            {/* Highlights */}
-            {highlights && highlights.length > 0 && (
+            {/* tour.highlights */}
+            {tour.highlights && tour.highlights.length > 0 && (
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl flex items-center gap-2">
                     <Star className="w-6 h-6 text-[rgb(var(--color-gold))]" />
-                    Tour Highlights
+                    Tour tour.highlights
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-3">
-                    {highlights.map((highlight: string, index: number) => (
+                    {tour.highlights.map((highlight: string, index: number) => (
                       <div key={index} className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                         <span className="text-neutral-700 dark:text-neutral-300">{highlight}</span>
@@ -172,15 +131,15 @@ export default async function TourDetailPage({ params }: PageProps) {
               </Card>
             )}
 
-            {/* Detailed Itinerary */}
-            {itinerary && itinerary.length > 0 && (
+            {/* Detailed tour.itinerary */}
+            {tour.itinerary && tour.itinerary.length > 0 && (
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">Day-by-Day Itinerary</CardTitle>
+                  <CardTitle className="text-2xl">Day-by-Day tour.itinerary</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
-                    {itinerary.map((day: any, index: number) => (
+                    {tour.itinerary.map((day: any, index: number) => (
                       <details key={index} className="group border border-neutral-200 dark:border-neutral-700 rounded-lg p-5 cursor-pointer hover:shadow-md transition-shadow">
                         <summary className="flex items-start gap-4 list-none">
                           <div className="flex-shrink-0">
@@ -233,23 +192,23 @@ export default async function TourDetailPage({ params }: PageProps) {
               </Card>
             )}
 
-            {/* Inclusions & Exclusions */}
-            {(inclusions.length > 0 || exclusions.length > 0) && (
+            {/* tour.inclusions & tour.exclusions */}
+            {(tour.inclusions.length > 0 || tour.exclusions.length > 0) && (
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl">What's Included & Excluded</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-6">
-                    {/* Inclusions */}
-                    {inclusions.length > 0 && (
+                    {/* tour.inclusions */}
+                    {tour.inclusions.length > 0 && (
                       <div>
                         <h4 className="font-semibold text-green-700 dark:text-green-400 mb-3 flex items-center gap-2">
                           <Check className="w-5 h-5" />
                           Included in Price
                         </h4>
                         <ul className="space-y-2">
-                          {inclusions.map((item: string, index: number) => (
+                          {tour.inclusions.map((item: string, index: number) => (
                             <li key={index} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300">
                               <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                               <span>{item}</span>
@@ -259,15 +218,15 @@ export default async function TourDetailPage({ params }: PageProps) {
                       </div>
                     )}
 
-                    {/* Exclusions */}
-                    {exclusions.length > 0 && (
+                    {/* tour.exclusions */}
+                    {tour.exclusions.length > 0 && (
                       <div>
                         <h4 className="font-semibold text-red-700 dark:text-red-400 mb-3 flex items-center gap-2">
                           <X className="w-5 h-5" />
                           Not Included
                         </h4>
                         <ul className="space-y-2">
-                          {exclusions.map((item: string, index: number) => (
+                          {tour.exclusions.map((item: string, index: number) => (
                             <li key={index} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300">
                               <X className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
                               <span>{item}</span>
@@ -281,18 +240,18 @@ export default async function TourDetailPage({ params }: PageProps) {
               </Card>
             )}
 
-            {/* Requirements */}
-            {requirements && requirements.length > 0 && (
+            {/* tour.requirements */}
+            {tour.requirements && tour.requirements.length > 0 && (
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl flex items-center gap-2">
                     <AlertCircle className="w-6 h-6 text-blue-600" />
-                    Tour Requirements
+                    Tour tour.requirements
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="grid md:grid-cols-2 gap-3">
-                    {requirements.map((requirement: string, index: number) => (
+                    {tour.requirements.map((requirement: string, index: number) => (
                       <li key={index} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300">
                         <Shield className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                         <span>{requirement}</span>
@@ -303,15 +262,15 @@ export default async function TourDetailPage({ params }: PageProps) {
               </Card>
             )}
 
-            {/* FAQs */}
-            {faqs && faqs.length > 0 && (
+            {/* tour.faqs */}
+            {tour.faqs && tour.faqs.length > 0 && (
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl">Frequently Asked Questions</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {faqs.map((faq: any, index: number) => (
+                    {tour.faqs.map((faq: any, index: number) => (
                       <details key={index} className="group border-b border-neutral-200 dark:border-neutral-700 pb-4 cursor-pointer">
                         <summary className="font-semibold text-[rgb(var(--color-brown))] dark:text-[rgb(var(--color-gold))] list-none flex items-start justify-between gap-4 hover:text-[rgb(var(--color-gold))] transition-colors">
                           <span>{faq.question}</span>
@@ -390,14 +349,14 @@ export default async function TourDetailPage({ params }: PageProps) {
                 </div>
 
                 {/* Best Time to Visit */}
-                {bestMonths && bestMonths.length > 0 && (
+                {tour.bestMonths && tour.bestMonths.length > 0 && (
                   <div className="pt-4 border-t">
                     <h4 className="font-semibold mb-3 flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
                       Best Time to Visit
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      {bestMonths.map((month: string, index: number) => (
+                      {tour.bestMonths.map((month: string, index: number) => (
                         <Badge key={index} variant="secondary" className="text-xs">
                           {month}
                         </Badge>
@@ -451,3 +410,6 @@ export default async function TourDetailPage({ params }: PageProps) {
     </main>
   );
 }
+
+
+

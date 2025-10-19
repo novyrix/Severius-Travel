@@ -99,7 +99,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         )}
       </head>
-      <body className="min-h-dvh bg-[rgb(245,243,241)] text-neutral-900 flex flex-col pb-16 lg:pb-0">
+      <body className="min-h-dvh bg-[rgb(245,243,241)] text-neutral-900 flex flex-col pb-16 lg:pb-0" suppressHydrationWarning>
         <Suspense fallback={null}>
           <ProgressBar />
         </Suspense>

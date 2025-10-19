@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { hashSync } from 'bcryptjs';
-import { sendVerificationEmail } from '@/lib/email-verification';
 import { rateLimit, getClientIp, isIpBlocked, RATE_LIMITS } from '@/lib/rate-limit';
 import { checkHoneypot, validateFormTiming, detectSuspiciousPatterns, HONEYPOT_FIELDS } from '@/lib/honeypot';
 
@@ -111,7 +110,7 @@ export async function POST(req: NextRequest) {
     // Hash password
     const hashedPassword = hashSync(password, 10);
 
-    // Create user
+    // Create user with email auto-verified (email verification disabled)
     const user = await prisma.user.create({
       data: {
         name: name || null,
@@ -119,32 +118,18 @@ export async function POST(req: NextRequest) {
         hashedPassword,
         role: 'USER',
         isActive: true,
-        emailVerified: null // Not verified yet
+        emailVerified: new Date() // Auto-verify since email system is not working
       }
     });
 
-    // Send verification email
-    const emailResult = await sendVerificationEmail(
-      email,
-      name || 'Traveler'
-    );
-
-    if (!emailResult.success) {
-      console.error('Failed to send verification email:', emailResult.error);
-      return NextResponse.json(
-        { 
-          error: 'Failed to send verification email',
-          message: 'Account created but email could not be sent. Please try resending the verification email.'
-        },
-        { status: 500 }
-      );
-    }
+    // Email verification system disabled - Resend not configured
+    // Users can now login immediately after registration
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Account created successfully!',
-        redirectTo: `/verify-email-sent?email=${encodeURIComponent(email)}`
+        message: 'Account created successfully! You can now login.',
+        redirectTo: `/login`
       },
       { status: 201 }
     );

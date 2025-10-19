@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { AdminLayout } from '@/components/admin/admin-layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { TrendingUp, Users, Plane, Calendar, DollarSign, Eye } from 'lucide-react';
+import { getAllTours, getTourBySlug } from '@/data/tours';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,10 +13,12 @@ export default async function AdminAnalyticsPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/login');
 
+  // Get tour count from static data
+  const totalTours = getAllTours().length;
+
   // Fetch analytics data
   const [
     totalUsers,
-    totalTours,
     totalBookings,
     totalRevenue,
     recentBookings,
@@ -23,7 +26,6 @@ export default async function AdminAnalyticsPage() {
     userGrowth,
   ] = await Promise.all([
     prisma.user.count(),
-    prisma.tour.count(),
     prisma.booking.count(),
     prisma.booking.aggregate({
       where: { status: 'PAID' },
@@ -33,12 +35,11 @@ export default async function AdminAnalyticsPage() {
       take: 10,
       orderBy: { createdAt: 'desc' },
       include: {
-        tour: { select: { title: true } },
         user: { select: { name: true, email: true } },
       },
     }),
     prisma.booking.groupBy({
-      by: ['tourId'],
+      by: ['tourSlug'],
       _count: { id: true },
       orderBy: { _count: { id: 'desc' } },
       take: 5,
@@ -52,16 +53,10 @@ export default async function AdminAnalyticsPage() {
     }),
   ]);
 
-  // Get tour details for top tours
-  const topTourIds = topTours.map((t) => t.tourId);
-  const tourDetails = await prisma.tour.findMany({
-    where: { id: { in: topTourIds } },
-    select: { id: true, title: true },
-  });
-
+  // Get tour details from static data
   const topToursWithDetails = topTours.map((t) => ({
     ...t,
-    tour: tourDetails.find((td) => td.id === t.tourId),
+    tour: getTourBySlug(t.tourSlug),
   }));
 
   return (
@@ -139,7 +134,7 @@ export default async function AdminAnalyticsPage() {
             <div className="space-y-3">
               {topToursWithDetails.map((item, index) => (
                 <div
-                  key={item.tourId}
+                  key={item.tourSlug}
                   className="flex items-center justify-between p-3 bg-neutral-50 rounded-lg"
                 >
                   <div className="flex items-center gap-3">
@@ -180,7 +175,7 @@ export default async function AdminAnalyticsPage() {
                       <td className="py-3 text-sm">
                         {booking.user?.name || booking.user?.email || 'Unknown'}
                       </td>
-                      <td className="py-3 text-sm">{booking.tour.title}</td>
+                      <td className="py-3 text-sm">{booking.tourTitle}</td>
                       <td className="py-3 text-sm">
                         {new Date(booking.createdAt).toLocaleDateString()}
                       </td>

@@ -22,17 +22,6 @@ async function getUserBookings(userEmail: string) {
 
   const bookings = await prisma.booking.findMany({
     where: { userId: user.id },
-    include: {
-      tour: {
-        include: {
-          country: true,
-          images: {
-            take: 1,
-            orderBy: { order: 'asc' },
-          },
-        },
-      },
-    },
     orderBy: { createdAt: 'desc' },
   });
 

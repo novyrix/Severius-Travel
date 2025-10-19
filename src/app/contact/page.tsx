@@ -356,7 +356,7 @@ export default function ContactPage() {
                         type="submit"
                         size="lg"
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-lg h-14 font-semibold"
+                        className="w-full bg-[rgb(var(--color-gold))] hover:bg-[rgb(var(--color-gold))]/90 text-white text-lg h-14 font-semibold transition-all transform hover:scale-[1.02]"
                       >
                         {isSubmitting ? (
                           <span className="flex items-center justify-center gap-2">
@@ -439,7 +439,7 @@ export default function ContactPage() {
       {/* CTA Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-gray-900 to-gray-800 text-white border-0">
+          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-[rgb(var(--color-brown))] to-[rgb(var(--color-brown))]/90 text-white border-0 shadow-2xl">
             <CardContent className="p-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to Start Your Adventure?
@@ -448,10 +448,10 @@ export default function ContactPage() {
                 Don't wait! Explore our handpicked tours and start planning your dream African getaway today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-amber-600 hover:bg-amber-700 text-lg px-8">
+                <Button asChild size="lg" className="bg-[rgb(var(--color-gold))] hover:bg-[rgb(var(--color-gold))]/90 text-white text-lg px-8 transform hover:scale-105 transition-all shadow-lg">
                   <Link href="/tours">Browse Tours</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 text-lg px-8">
+                <Button asChild size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 transform hover:scale-105 transition-all">
                   <Link href="/faq">Read FAQs</Link>
                 </Button>
               </div>

@@ -65,17 +65,13 @@ export function RegisterForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Failed to create account");
+        setError(data.error || data.message || "Failed to create account");
         setIsLoading(false);
         return;
       }
 
-      // Account created successfully, redirect to waiting page
-      if (data.redirectTo) {
-        router.push(data.redirectTo);
-      } else {
-        router.push(`/verify-email-sent?email=${encodeURIComponent(formData.email)}`);
-      }
+      // Account created successfully, redirect to login
+      router.push("/login?registered=true");
     } catch (error) {
       setError("Something went wrong. Please try again.");
       setIsLoading(false);

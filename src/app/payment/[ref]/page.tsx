@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft, CreditCard, Shield } from 'lucide-react';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { getTourBySlug } from '@/data/tours';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { formatCurrency, formatDate } from '@/lib/utils';
@@ -20,11 +21,6 @@ async function getBooking(ref: string, userEmail: string) {
       user: { email: userEmail },
     },
     include: {
-      tour: {
-        include: {
-          country: true,
-        },
-      },
       user: true,
     },
   });
@@ -43,6 +39,12 @@ export default async function PaymentPage({ params }: PageProps) {
   const booking = await getBooking(ref, session.user.email);
 
   if (!booking) {
+    notFound();
+  }
+
+  // Get tour details from static data
+  const tour = getTourBySlug(booking.tourSlug);
+  if (!tour) {
     notFound();
   }
 
@@ -80,15 +82,15 @@ export default async function PaymentPage({ params }: PageProps) {
             <CardContent className="space-y-4">
               <div>
                 <h3 className="font-semibold text-lg text-[rgb(var(--color-brown))]">
-                  {booking.tour.title}
+                  {booking.tourTitle}
                 </h3>
-                <p className="text-neutral-600">{booking.tour.country.name}</p>
+                <p className="text-neutral-600">{tour.country}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-neutral-600">Duration:</span>
-                  <p className="font-medium">{booking.tour.durationDays} Days</p>
+                  <p className="font-medium">{tour.durationDays} Days</p>
                 </div>
                 <div>
                   <span className="text-neutral-600">Booking Date:</span>

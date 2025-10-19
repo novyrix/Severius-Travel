@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { getAllTours } from '@/data/tours';
 
 const prisma = new PrismaClient();
 
@@ -7,11 +8,8 @@ export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://severiustours.com';
 
   try {
-    // Fetch all published tours
-    const tours = await prisma.tour.findMany({
-      where: { published: true },
-      select: { slug: true, updatedAt: true },
-    });
+    // Get all tours from static data
+    const tours = getAllTours();
 
     // Fetch all published blog posts
     const posts = await prisma.post.findMany({
@@ -19,14 +17,8 @@ export async function GET() {
       select: { slug: true, updatedAt: true },
     });
 
-    // Fetch all countries and regions
-    const countries = await prisma.country.findMany({
-      select: { slug: true },
-    });
-
-    const regions = await prisma.region.findMany({
-      select: { code: true },
-    });
+    // Get unique countries from tours
+    const countries = [...new Set(tours.map(tour => tour.country))];
 
     // Build XML sitemap
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -40,7 +32,7 @@ export async function GET() {
           (tour) => `
       <url>
         <loc>${baseUrl}/tours/${tour.slug}</loc>
-        <lastmod>${tour.updatedAt.toISOString()}</lastmod>
+        <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
       </url>`
@@ -61,17 +53,7 @@ export async function GET() {
         .map(
           (country) => `
       <url>
-        <loc>${baseUrl}/destinations/${country.slug}</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-      </url>`
-        )
-        .join('')}
-      ${regions
-        .map(
-          (region) => `
-      <url>
-        <loc>${baseUrl}/destinations/region/${region.code.toLowerCase()}</loc>
+        <loc>${baseUrl}/destinations/${country.toLowerCase().replace(/\s+/g, '-')}</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
       </url>`

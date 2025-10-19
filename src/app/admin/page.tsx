@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { GlassCard } from '@/components/admin/glass-card';
+import { getAllTours } from '@/data/tours';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,10 +16,12 @@ export default async function AdminPage() {
   const session = await getServerSession(authOptions as any) as any;
   if (!session) redirect('/login');
 
+  // Get tour count from static data
+  const totalTours = getAllTours().length;
+
   // Get statistics
   const [
     totalUsers,
-    totalTours,
     totalPosts,
     totalBookings,
     pendingBookings,
@@ -27,7 +30,6 @@ export default async function AdminPage() {
     newsletterSubscribers
   ] = await Promise.all([
     prisma.user.count(),
-    prisma.tour.count({ where: { published: true } }),
     prisma.post.count({ where: { published: true } }),
     prisma.booking.count(),
     prisma.booking.count({ where: { status: 'PENDING' } }),
@@ -38,7 +40,7 @@ export default async function AdminPage() {
     prisma.booking.findMany({
       take: 10,
       orderBy: { createdAt: 'desc' },
-      include: { tour: true, user: true }
+      include: { user: true }
     }),
     prisma.newsletter.count({ where: { subscribed: true } })
   ]);
@@ -159,7 +161,7 @@ export default async function AdminPage() {
                     <tr key={booking.id} className="border-b last:border-0">
                       <td className="py-3 text-sm font-mono">{booking.ref}</td>
                       <td className="py-3 text-sm">{booking.user.name || booking.user.email}</td>
-                      <td className="py-3 text-sm">{booking.tour.title}</td>
+                      <td className="py-3 text-sm">{booking.tourTitle}</td>
                       <td className="py-3 text-sm font-medium">{formatCurrency(booking.amount)}</td>
                       <td className="py-3">
                         <Badge variant={booking.status === 'PAID' ? 'success' : booking.status === 'PENDING' ? 'warning' : 'destructive'}>

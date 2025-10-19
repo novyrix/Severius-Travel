@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { getTourBySlug } from '@/data/tours';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,11 +13,17 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { tourId, ref, amount, travelers, startDate, contactName, contactEmail, contactPhone } = body;
+    const { tourSlug, ref, amount, travelers, startDate, contactName, contactEmail, contactPhone } = body;
 
     // Validate required fields
-    if (!tourId || !ref || !amount) {
+    if (!tourSlug || !ref || !amount) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    // Validate tour exists in static data
+    const tour = getTourBySlug(tourSlug);
+    if (!tour) {
+      return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
     }
 
     // Get user ID from session
@@ -35,14 +42,13 @@ export async function POST(request: NextRequest) {
         amount: parseInt(amount),
         status: 'PENDING',
         userId: user.id,
-        tourId,
+        tourSlug,
+        tourTitle: tour.title,
+        startDate: startDate ? new Date(startDate) : undefined,
+        guests: travelers || 1,
       },
       include: {
-        tour: {
-          include: {
-            country: true,
-          },
-        },
+        user: true,
       },
     });
 
@@ -74,17 +80,6 @@ export async function GET(request: NextRequest) {
 
     const bookings = await prisma.booking.findMany({
       where: { userId: user.id },
-      include: {
-        tour: {
-          include: {
-            country: true,
-            images: {
-              take: 1,
-              orderBy: { order: 'asc' },
-            },
-          },
-        },
-      },
       orderBy: { createdAt: 'desc' },
     });
 

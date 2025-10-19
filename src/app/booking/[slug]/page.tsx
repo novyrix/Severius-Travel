@@ -1,34 +1,16 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { prisma } from '@/lib/prisma';
+import { getTourBySlug } from '@/data/tours';
 import { BookingForm } from '@/components/booking-form';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-async function getTour(slug: string) {
-  const tour = await prisma.tour.findUnique({
-    where: { slug, published: true },
-    select: {
-      id: true,
-      slug: true,
-      title: true,
-      price: true,
-      durationDays: true,
-      country: {
-        select: { name: true },
-      },
-    },
-  });
-
-  return tour;
-}
-
 export default async function BookingPage({ params }: PageProps) {
   const { slug } = await params;
-  const tour = await getTour(slug);
+  const tour = getTourBySlug(slug);
 
   if (!tour) {
     notFound();

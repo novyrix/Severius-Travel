@@ -27,10 +27,17 @@ async function getTours(searchParams: { [key: string]: string | string[] | undef
   
   // Get unique regions and countries from tours
   const regionsSet = new Set(tours.map(t => t.region));
-  const countriesSet = new Set(tours.map(t => ({ code: t.countryCode, name: t.country })));
+  
+  // Get unique countries by code (avoiding duplicates)
+  const countryMap = new Map<string, { code: string; name: string }>();
+  tours.forEach(t => {
+    if (!countryMap.has(t.countryCode)) {
+      countryMap.set(t.countryCode, { code: t.countryCode, name: t.country });
+    }
+  });
   
   const regions = Array.from(regionsSet).map(name => ({ name, code: name.toLowerCase().replace(/\s+/g, '-') }));
-  const countries = Array.from(countriesSet);
+  const countries = Array.from(countryMap.values());
 
   return { tours, regions, countries };
 }
@@ -81,7 +88,7 @@ export default async function ToursPage({ searchParams }: PageProps) {
                     </a>
                     {regions.map((region) => (
                       <a
-                        key={region.id}
+                        key={region.code}
                         href={`/tours?region=${region.code}`}
                         className={`block px-3 py-2 rounded-md text-sm transition-colors ${
                           activeRegion === region.code

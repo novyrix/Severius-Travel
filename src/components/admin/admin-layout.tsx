@@ -15,16 +15,11 @@ export async function AdminLayout({ children }: { children: ReactNode }) {
   // Check if user is admin
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
-    select: { role: true, emailVerified: true, isActive: true },
+    select: { role: true, isActive: true },
   });
 
   if (!user) {
     redirect('/login');
-  }
-
-  // Check email verification
-  if (!user.emailVerified) {
-    redirect('/verify-email?message=Please verify your email to access the dashboard');
   }
 
   // Check if active

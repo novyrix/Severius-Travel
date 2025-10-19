@@ -30,13 +30,12 @@ export const authOptions: NextAuthOptions = {
         token.userId = (user as any).id;
       }
       
-      // Fetch latest user data on each request to check verification status
+      // Fetch latest user data on each request
       if (token.email) {
         const dbUser = await prisma.user.findUnique({
           where: { email: token.email },
           select: {
             id: true,
-            emailVerified: true,
             isActive: true,
             role: true
           }
@@ -44,7 +43,6 @@ export const authOptions: NextAuthOptions = {
         
         if (dbUser) {
           token.userId = dbUser.id;
-          token.emailVerified = !!dbUser.emailVerified;
           token.isActive = dbUser.isActive;
           token.role = dbUser.role;
         }
@@ -55,7 +53,6 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       if (token?.userId) {
         (session as any).userId = token.userId as string;
-        (session as any).emailVerified = token.emailVerified;
         (session as any).isActive = token.isActive;
         (session as any).role = token.role;
       }

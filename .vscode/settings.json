@@ -1,0 +1,120 @@
+{
+  // ============================================
+  // VS CODE PERFORMANCE OPTIMIZATION SETTINGS
+  // ============================================
+  
+  // 1. EXCLUDE node_modules FROM FILE WATCHING (HUGE RAM SAVER)
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true,
+    "**/build/**": true,
+    "**/.cache/**": true
+  },
+  
+  // 2. EXCLUDE FROM SEARCH (FASTER SEARCHES)
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.git": true,
+    "**/.cache": true
+  },
+  
+  // 3. EXCLUDE FROM FILE EXPLORER (LESS CLUTTER)
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.next": true,
+    "**/node_modules": false // Keep visible but not watched
+  },
+  
+  // 4. TYPESCRIPT PERFORMANCE
+  "typescript.tsserver.maxTsServerMemory": 4096, // Limit TS server to 4GB
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.surveys.enabled": false,
+  
+  // 5. EDITOR PERFORMANCE
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "on",
+  "editor.wordBasedSuggestions": "matchingDocuments",
+  "editor.parameterHints.enabled": true,
+  "editor.formatOnSave": false, // Disable auto-format to save RAM
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never"
+  },
+  
+  // 6. EXTENSIONS
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  
+  // 7. GIT PERFORMANCE
+  "git.enabled": true,
+  "git.autorefresh": false, // Disable auto-refresh to save CPU
+  "git.autofetch": false,
+  
+  // 8. FILE SAVE PERFORMANCE
+  "files.autoSave": "off", // Manual save only
+  "files.hotExit": "onExitAndWindowClose",
+  
+  // 9. DISABLE TELEMETRY
+  "telemetry.telemetryLevel": "off",
+  
+  // 10. TERMINAL PERFORMANCE
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.enablePersistentSessions": false,
+  
+  // 11. BREADCRUMBS (OPTIONAL - DISABLE IF STILL SLOW)
+  "breadcrumbs.enabled": true,
+  
+  // 12. MINIMAP (DISABLE FOR RAM SAVINGS)
+  "editor.minimap.enabled": false,
+  
+  // 13. LIMIT RECENT FILES
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 10,
+  "workbench.editor.limit.perEditorGroup": true,
+  
+  // 14. DISABLE UNUSED FEATURES
+  "workbench.enableExperiments": false,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  
+  // 15. NEXT.JS SPECIFIC
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  
+  // 16. PRISMA
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  
+  // 17. RECOMMENDED FORMATTERS
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

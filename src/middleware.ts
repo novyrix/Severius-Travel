@@ -31,7 +31,7 @@ function addSecurityHeaders(response: NextResponse) {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Protected routes that require email verification
+  // Protected routes that require authentication (email verification removed)
   const protectedRoutes = ['/dashboard', '/admin', '/booking'];
   const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
 
@@ -49,15 +49,7 @@ export async function middleware(request: NextRequest) {
       return addSecurityHeaders(response);
     }
 
-    // If email not verified, redirect to verify-email page
-    if (!token.emailVerified) {
-      const verifyUrl = new URL('/verify-email', request.url);
-      // Allow access to verify-email page itself
-      if (pathname !== '/verify-email') {
-        const response = NextResponse.redirect(verifyUrl);
-        return addSecurityHeaders(response);
-      }
-    }
+    // Email verification check removed - users can access once logged in
 
     // If inactive, redirect to login with error
     if (token.isActive === false) {

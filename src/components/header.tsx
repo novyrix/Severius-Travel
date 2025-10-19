@@ -23,24 +23,21 @@ export function Header() {
             />
             Severius Travel
           </Link>
-          <div className="hidden md:flex items-center gap-4">
-            <Link href="/tours" className="text-sm text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
+          <div className="hidden md:flex items-center gap-6">
+            <Link href="/tours" className="text-sm font-medium text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
               {t('nav.tours')}
             </Link>
-            <Link href="/about" className="text-sm text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
+            <Link href="/about" className="text-sm font-medium text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
               {t('nav.about')}
             </Link>
-            <Link href="/blog" className="text-sm text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
+            <Link href="/blog" className="text-sm font-medium text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
               {t('nav.blog')}
             </Link>
-            <Link href="/faq" className="text-sm text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
+            <Link href="/faq" className="text-sm font-medium text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
               FAQ
             </Link>
-            <Link href="/contact" className="text-sm text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
+            <Link href="/contact" className="text-sm font-medium text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
               {t('nav.contact')}
-            </Link>
-            <Link href="/admin" className="text-sm text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">
-              Admin
             </Link>
           </div>
         </div>
