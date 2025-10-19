@@ -33,29 +33,32 @@ interface Region {
 
 const regions: Region[] = [
   {
-    name: "Africa",
-    slug: "AF",
+    name: "East Africa",
+    slug: "EA",
     icon: <Mountain className="w-6 h-6" />,
-    description: "Safari adventures & wildlife",
+    description: "Kenya, Tanzania, Uganda, Rwanda",
   },
   {
-    name: "Europe",
-    slug: "EU",
-    icon: <Building2 className="w-6 h-6" />,
-    description: "Historic cities & culture",
+    name: "Southern Africa",
+    slug: "SA",
+    icon: <Compass className="w-6 h-6" />,
+    description: "South Africa, Botswana, Namibia, Zimbabwe, Zambia",
   },
   {
-    name: "Asia",
-    slug: "AS",
+    name: "Islands",
+    slug: "IS",
     icon: <Palmtree className="w-6 h-6" />,
-    description: "Ancient temples & beaches",
+    description: "Zanzibar & Seychelles beaches",
   },
 ];
 
 const popularDestinations = [
-  { name: "Maasai Mara, Kenya", href: "/tours/maasai-mara-safari", image: "🦁" },
-  { name: "Paris, France", href: "/tours/paris-city-tour", image: "🗼" },
-  { name: "Bangkok, Thailand", href: "/tours/bangkok-adventure", image: "🛕" },
+  { name: "Maasai Mara, Kenya", href: "/tours?country=Kenya", image: "🦁" },
+  { name: "Serengeti, Tanzania", href: "/tours?country=Tanzania", image: "🐘" },
+  { name: "Victoria Falls, Zimbabwe", href: "/tours?country=Zimbabwe", image: "�" },
+  { name: "Okavango Delta, Botswana", href: "/tours?country=Botswana", image: "🦒" },
+  { name: "Kruger Park, South Africa", href: "/tours?country=South%20Africa", image: "🦏" },
+  { name: "Zanzibar Beaches", href: "/tours?country=Zanzibar", image: "🏝️" },
 ];
 
 export function HeaderNew() {

@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TourCard } from './tour-card';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import type { Tour } from '@/data/tours';
 
 interface FeaturedToursCarouselProps {
@@ -12,75 +13,69 @@ interface FeaturedToursCarouselProps {
 export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
 
   useEffect(() => {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
       handleNext();
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, tours.length, currentIndex]);
 
   const handleNext = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+    setDirection('right');
     setCurrentIndex((prev) => (prev + 1) % tours.length);
-    
-    // Smooth scroll animation
-    if (carouselRef.current) {
-      carouselRef.current.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-    }
-    
-    setTimeout(() => setIsTransitioning(false), 600);
   };
 
   const handlePrev = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+    setDirection('left');
     setCurrentIndex((prev) => (prev - 1 + tours.length) % tours.length);
     setIsAutoPlaying(false);
-    
-    // Smooth scroll animation
-    if (carouselRef.current) {
-      carouselRef.current.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-    }
-    
-    setTimeout(() => setIsTransitioning(false), 600);
   };
 
   const handleDotClick = (index: number) => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+    setDirection(index > currentIndex ? 'right' : 'left');
     setCurrentIndex(index);
     setIsAutoPlaying(false);
-    
-    // Smooth scroll animation
-    if (carouselRef.current) {
-      carouselRef.current.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-    }
-    
-    setTimeout(() => setIsTransitioning(false), 600);
   };
 
   const getVisibleTours = () => {
     const visible = [];
     for (let i = 0; i < 3; i++) {
       const index = (currentIndex + i) % tours.length;
-      visible.push(tours[index]);
+      visible.push({ tour: tours[index], position: i });
     }
     return visible;
   };
 
   const visibleTours = getVisibleTours();
 
+  // Animation variants for smooth sliding
+  const slideVariants = {
+    enter: (direction: 'left' | 'right') => ({
+      x: direction === 'right' ? '100%' : '-100%',
+      opacity: 0,
+      scale: 0.8,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction: 'left' | 'right') => ({
+      x: direction === 'right' ? '-100%' : '100%',
+      opacity: 0,
+      scale: 0.8,
+    }),
+  };
+
   return (
     <div className="relative py-8">
       {/* Carousel Container */}
-      <div className="relative overflow-visible px-8">
+      <div className="relative overflow-hidden px-8">
         {/* Left Fade */}
         <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-neutral-50 via-neutral-50/80 to-transparent z-10 pointer-events-none" />
         
@@ -88,36 +83,49 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
         <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-neutral-50 via-neutral-50/80 to-transparent z-10 pointer-events-none" />
 
         {/* Tours Grid */}
-        <div 
-          ref={carouselRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          style={{
-            transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-          }}
-        >
-          {visibleTours.map((tour, idx) => (
-            <div
-              key={`${tour.id}-${currentIndex}-${idx}`}
-              className="transition-all duration-600 ease-out will-change-transform"
-              style={{
-                opacity: idx === 1 ? 1 : 0.7,
-                transform: `scale(${idx === 1 ? 1.02 : 0.95}) translateY(${idx === 1 ? '0px' : '10px'}) translateX(${isTransitioning ? (idx === 0 ? '-100%' : idx === 2 ? '100%' : '0') : '0'})`,
-                transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
-            >
-              <div className={idx === 1 ? 'shadow-2xl' : 'shadow-lg'}>
-                <TourCard tour={tour} />
-              </div>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <AnimatePresence mode="popLayout" custom={direction}>
+            {visibleTours.map(({ tour, position }, idx) => (
+              <motion.div
+                key={`${tour.id}-${currentIndex}`}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: 'spring', stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.3 },
+                  scale: { duration: 0.3 },
+                }}
+                style={{
+                  gridColumn: idx + 1,
+                }}
+                className={position === 1 ? 'shadow-2xl' : 'shadow-lg'}
+              >
+                <motion.div
+                  animate={{
+                    scale: position === 1 ? 1.05 : 0.95,
+                    y: position === 1 ? 0 : 10,
+                    opacity: position === 1 ? 1 : 0.7,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: 'easeOut',
+                  }}
+                >
+                  <TourCard tour={tour} />
+                </motion.div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
 
       {/* Navigation Buttons */}
       <button
         onClick={handlePrev}
-        disabled={isTransitioning}
-        className="absolute left-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-neutral-100 shadow-lg border border-neutral-200 transition-all group z-20 ml-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="absolute left-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-neutral-100 shadow-lg border border-neutral-200 transition-all group z-20 ml-2"
         aria-label="Previous tours"
       >
         <ChevronLeft className="w-6 h-6 text-[rgb(var(--color-brown))] group-hover:scale-110 transition-transform" />
@@ -128,8 +136,7 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
           handleNext();
           setIsAutoPlaying(false);
         }}
-        disabled={isTransitioning}
-        className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-neutral-100 shadow-lg border border-neutral-200 transition-all group z-20 mr-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-neutral-100 shadow-lg border border-neutral-200 transition-all group z-20 mr-2"
         aria-label="Next tours"
       >
         <ChevronRight className="w-6 h-6 text-[rgb(var(--color-brown))] group-hover:scale-110 transition-transform" />
@@ -141,8 +148,7 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            disabled={isTransitioning}
-            className={`transition-all disabled:cursor-not-allowed ${
+            className={`transition-all ${
               index === currentIndex
                 ? 'w-8 h-2 bg-[rgb(var(--color-gold))]'
                 : 'w-2 h-2 bg-neutral-300 hover:bg-neutral-400'
