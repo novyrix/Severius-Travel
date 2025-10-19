@@ -73,16 +73,16 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
   };
 
   return (
-    <div className="relative py-8">
+    <div className="relative py-4 md:py-8">
       {/* Carousel Container */}
-      <div className="relative overflow-hidden px-8">
-        {/* Left Fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-neutral-50 via-neutral-50/80 to-transparent z-10 pointer-events-none" />
+      <div className="relative overflow-hidden px-4 md:px-8">
+        {/* Left Fade - Hidden on mobile */}
+        <div className="hidden md:block absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-neutral-50 via-neutral-50/80 to-transparent z-10 pointer-events-none" />
         
-        {/* Right Fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-neutral-50 via-neutral-50/80 to-transparent z-10 pointer-events-none" />
+        {/* Right Fade - Hidden on mobile */}
+        <div className="hidden md:block absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-neutral-50 via-neutral-50/80 to-transparent z-10 pointer-events-none" />
 
-        {/* Tours Grid */}
+        {/* Tours Grid - 1 card on mobile, 3 on desktop */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout" custom={direction}>
             {visibleTours.map(({ tour, position }, idx) => (
@@ -101,7 +101,7 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
                 style={{
                   gridColumn: idx + 1,
                 }}
-                className={position === 1 ? 'shadow-2xl' : 'shadow-lg'}
+                className={`${idx > 0 ? 'hidden md:block' : ''} ${position === 1 ? 'shadow-2xl' : 'shadow-lg'}`}
               >
                 <motion.div
                   animate={{
@@ -125,10 +125,10 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
       {/* Navigation Buttons */}
       <button
         onClick={handlePrev}
-        className="absolute left-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-neutral-100 shadow-lg border border-neutral-200 transition-all group z-20 ml-2"
+        className="absolute left-0 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-white hover:bg-neutral-100 shadow-lg border border-neutral-200 transition-all group z-20 ml-1 md:ml-2"
         aria-label="Previous tours"
       >
-        <ChevronLeft className="w-6 h-6 text-[rgb(var(--color-brown))] group-hover:scale-110 transition-transform" />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-[rgb(var(--color-brown))] group-hover:scale-110 transition-transform" />
       </button>
       
       <button
@@ -136,21 +136,21 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
           handleNext();
           setIsAutoPlaying(false);
         }}
-        className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white hover:bg-neutral-100 shadow-lg border border-neutral-200 transition-all group z-20 mr-2"
+        className="absolute right-0 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-white hover:bg-neutral-100 shadow-lg border border-neutral-200 transition-all group z-20 mr-1 md:mr-2"
         aria-label="Next tours"
       >
-        <ChevronRight className="w-6 h-6 text-[rgb(var(--color-brown))] group-hover:scale-110 transition-transform" />
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-[rgb(var(--color-brown))] group-hover:scale-110 transition-transform" />
       </button>
 
       {/* Dots Indicator */}
-      <div className="flex justify-center gap-2 mt-8">
+      <div className="flex justify-center gap-2 mt-6 md:mt-8">
         {tours.map((_, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
             className={`transition-all ${
               index === currentIndex
-                ? 'w-8 h-2 bg-[rgb(var(--color-gold))]'
+                ? 'w-6 md:w-8 h-2 bg-[rgb(var(--color-gold))]'
                 : 'w-2 h-2 bg-neutral-300 hover:bg-neutral-400'
             } rounded-full`}
             aria-label={`Go to slide ${index + 1}`}

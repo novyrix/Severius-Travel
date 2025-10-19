@@ -93,8 +93,8 @@ export function Footer() {
   return (
     <footer className="bg-[rgb(var(--color-brown))] text-white">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-6">
@@ -266,12 +266,12 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container mx-auto px-6 py-6">
+        <div className="container mx-auto px-4 md:px-6 py-6 pb-20 lg:pb-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-            <p>
+            <p className="text-center md:text-left">
               © {new Date().getFullYear()} Severius Adventures & Travel. All rights reserved.
             </p>
-            <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
+            <div className="flex flex-wrap gap-3 md:gap-4 lg:gap-6 justify-center text-xs md:text-sm">
               <Link
                 href="/privacy"
                 className="hover:text-[rgb(var(--color-gold))] transition-colors"
