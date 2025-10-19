@@ -18,8 +18,24 @@ export function LoginFormNew() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Get return URL from query params
+  // Get return URL and email from query params
   const returnUrl = searchParams.get("returnUrl") || searchParams.get("callbackUrl");
+  const emailParam = searchParams.get("email");
+  const registered = searchParams.get("registered");
+
+  // Pre-fill email if provided in URL
+  useEffect(() => {
+    if (emailParam) {
+      setEmail(emailParam);
+    }
+  }, [emailParam]);
+
+  // Show success message if just registered
+  useEffect(() => {
+    if (registered === "true") {
+      setError(""); // Clear any errors
+    }
+  }, [registered]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

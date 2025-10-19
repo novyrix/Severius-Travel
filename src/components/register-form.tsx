@@ -64,6 +64,12 @@ export function RegisterForm() {
 
       const data = await response.json();
 
+      console.log("📦 Registration API response:", {
+        ok: response.ok,
+        status: response.status,
+        data: data
+      });
+
       if (!response.ok) {
         setError(data.error || data.message || "Failed to create account");
         setIsLoading(false);
@@ -73,24 +79,32 @@ export function RegisterForm() {
       // Account created successfully
       if (data.success && data.autoLogin) {
         console.log("🔄 Starting auto-login process...");
+        console.log("📧 Email:", formData.email);
+        console.log("🔑 Password length:", formData.password.length);
         
         // Auto-login the user
         const { signIn } = await import("next-auth/react");
         
+        // IMPORTANT: Use the exact same email that was stored (lowercase)
         const loginResult = await signIn("credentials", {
-          email: formData.email,
+          email: formData.email.toLowerCase(), // ✅ Normalize to match DB
           password: formData.password,
           redirect: false,
         });
 
-        console.log("Login result:", loginResult);
+        console.log("🔐 Login result:", loginResult);
 
         if (loginResult?.error) {
           console.error("❌ Auto-login failed:", loginResult.error);
-          setError("Account created but login failed. Please login manually.");
+          
+          // Show helpful error message
+          setError(`Account created successfully! However, auto-login failed. Please login manually with email: ${formData.email.toLowerCase()}`);
           setIsLoading(false);
-          // Redirect to login page as fallback
-          setTimeout(() => router.push("/login?registered=true"), 2000);
+          
+          // Redirect to login page with email pre-filled
+          setTimeout(() => {
+            router.push(`/login?registered=true&email=${encodeURIComponent(formData.email.toLowerCase())}`);
+          }, 3000);
           return;
         }
 
