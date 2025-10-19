@@ -200,7 +200,7 @@ export function LoginFormNew() {
                 <span className="ml-2 text-sm text-neutral-600">Remember me</span>
               </label>
               <a
-                href="#"
+                href="/forgot-password"
                 className="text-sm text-[rgb(var(--color-gold))] hover:text-[rgb(var(--color-brown))] font-medium"
               >
                 Forgot password?

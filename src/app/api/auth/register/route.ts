@@ -122,21 +122,55 @@ export async function POST(req: NextRequest) {
       }
     });
 
-    // Email verification system disabled - Resend not configured
-    // Users can now login immediately after registration
+    console.log('✅ User created successfully:', { 
+      id: user.id, 
+      email: user.email, 
+      name: user.name,
+      role: user.role,
+      timestamp: new Date().toISOString()
+    });
 
+    // Return success with auto-login flag
     return NextResponse.json(
       {
         success: true,
-        message: 'Account created successfully! You can now login.',
-        redirectTo: `/login`
+        autoLogin: true, // Flag for frontend to auto-login
+        user: {
+          id: user.id,
+          email: user.email,
+          name: user.name
+        },
+        message: 'Account created successfully! Redirecting to dashboard...',
       },
       { status: 201 }
     );
   } catch (error: any) {
-    console.error('Registration error:', error);
+    console.error('❌ Registration error:', {
+      error: error.message,
+      stack: error.stack,
+      code: error.code,
+      meta: error.meta,
+      timestamp: new Date().toISOString()
+    });
+    
+    // Handle specific Prisma errors
+    if (error.code === 'P2002') {
+      return NextResponse.json(
+        { 
+          success: false,
+          message: 'An account with this email already exists. Please login instead.',
+          errorCode: 'DUPLICATE_EMAIL'
+        },
+        { status: 400 }
+      );
+    }
+    
     return NextResponse.json(
-      { message: 'Internal server error' },
+      { 
+        success: false,
+        message: 'Failed to create account. Please try again.',
+        errorCode: 'SERVER_ERROR'
+      },
       { status: 500 }
     );
   }

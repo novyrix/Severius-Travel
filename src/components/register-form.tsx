@@ -70,9 +70,35 @@ export function RegisterForm() {
         return;
       }
 
-      // Account created successfully, redirect to login
-      router.push("/login?registered=true");
+      // Account created successfully
+      if (data.success && data.autoLogin) {
+        // Auto-login the user
+        const { signIn } = await import("next-auth/react");
+        
+        const loginResult = await signIn("credentials", {
+          email: formData.email,
+          password: formData.password,
+          redirect: false,
+        });
+
+        if (loginResult?.error) {
+          console.error("Auto-login failed:", loginResult.error);
+          setError("Account created but login failed. Please login manually.");
+          setIsLoading(false);
+          // Redirect to login page as fallback
+          setTimeout(() => router.push("/login?registered=true"), 2000);
+          return;
+        }
+
+        // Successfully logged in, redirect to dashboard
+        console.log("✅ User registered and logged in successfully");
+        router.push("/dashboard");
+      } else {
+        // Fallback to login page if auto-login flag is not set
+        router.push("/login?registered=true");
+      }
     } catch (error) {
+      console.error("Registration error:", error);
       setError("Something went wrong. Please try again.");
       setIsLoading(false);
     }

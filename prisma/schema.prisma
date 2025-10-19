@@ -32,6 +32,10 @@ model User {
   hashedPassword String?
   role          String    @default("USER") // USER or ADMIN
   isActive      Boolean   @default(true)
+  
+  // Password reset fields
+  resetToken       String?   @unique
+  resetTokenExpiry DateTime?
 
   accounts Account[]
   sessions Session[]
