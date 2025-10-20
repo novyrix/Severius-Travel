@@ -6,22 +6,30 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/components/providers/i18n-provider'
+import { 
+  Sparkles, 
+  Compass, 
+  Shield, 
+  Award, 
+  MessageCircle, 
+  Globe 
+} from 'lucide-react'
 
 const values = [
-  { key: 'personalized', icon: '🌟' },
-  { key: 'expertise', icon: '🧭' },
-  { key: 'safety', icon: '�️' },
-  { key: 'quality', icon: '💎' },
-  { key: 'support', icon: '💬' },
-  { key: 'sustainable', icon: '🌍' },
+  { key: 'personalized', icon: Sparkles },
+  { key: 'expertise', icon: Compass },
+  { key: 'safety', icon: Shield },
+  { key: 'quality', icon: Award },
+  { key: 'support', icon: MessageCircle },
+  { key: 'sustainable', icon: Globe },
 ]
 
 const destinations = [
   { name: 'Maasai Mara', country: 'Kenya', type: 'Wildlife Safari', emoji: '🦁', image: '/images/about/kenya.jpg' },
   { name: 'Serengeti', country: 'Tanzania', type: 'National Park', emoji: '🦒', image: '/images/about/tanzania.jpg' },
-  { name: 'Marrakech', country: 'Morocco', type: 'Cultural City', emoji: '🏛️', image: '/images/about/morocco.jpg' },
+  { name: 'Victoria Falls', country: 'Zimbabwe', type: 'Natural Wonder', emoji: '💦', image: '/images/about/morocco.jpg' },
   { name: 'Cape Town', country: 'South Africa', type: 'Coastal City', emoji: '🏔️', image: '/images/about/south-africa.jpg' },
-  { name: 'Seychelles', country: 'Seychelles', type: 'Island Paradise', emoji: '🏝️', image: '/images/about/seychelles.jpg' },
+  { name: 'Okavango Delta', country: 'Botswana', type: 'Wildlife Delta', emoji: '🐊', image: '/images/about/seychelles.jpg' },
   { name: 'Zanzibar', country: 'Tanzania', type: 'Beach Resort', emoji: '🏖️', image: '/images/about/egypt.jpg' },
 ]
 
@@ -111,19 +119,24 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {values.map((value) => (
-              <Card key={value.key} className="border-2 hover:border-amber-500 transition-all hover:shadow-lg">
-                <CardContent className="p-6">
-                  <div className="text-4xl mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">
-                    {t(`about.values.items.${value.key}.title`)}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {t(`about.values.items.${value.key}.description`)}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+            {values.map((value) => {
+              const IconComponent = value.icon;
+              return (
+                <Card key={value.key} className="border-2 hover:border-[rgb(var(--color-gold))] transition-all hover:shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="mb-4">
+                      <IconComponent className="w-12 h-12 text-[rgb(var(--color-gold))]" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">
+                      {t(`about.values.items.${value.key}.title`)}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {t(`about.values.items.${value.key}.description`)}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
 
           {/* What We Offer */}
