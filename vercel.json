@@ -1,7 +1,7 @@
 {
   "buildCommand": "prisma generate && prisma migrate deploy && next build",
   "framework": "nextjs",
-  "installCommand": "npm install",
+  "installCommand": "npm ci --prefer-offline --no-audit || npm install --prefer-offline --no-audit || npm install",
   "devCommand": "next dev",
   "regions": ["iad1"],
   "functions": {
