@@ -36,7 +36,7 @@ export function WhatsAppWidget() {
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="group relative flex items-center justify-center w-16 h-16 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110"
+          className="group relative flex items-center justify-center w-16 h-16 bg-[rgb(var(--color-gold))] hover:bg-[rgb(var(--color-brown))] text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110"
           aria-label="Contact us on WhatsApp"
         >
           <AnimatePresence mode="wait">
@@ -69,9 +69,9 @@ export function WhatsAppWidget() {
             )}
           </AnimatePresence>
 
-          {/* Pulse Animation */}
+          {/* Subtle Glow - No Blinking */}
           {!isOpen && (
-            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75" />
+            <span className="absolute inset-0 rounded-full bg-[rgb(var(--color-gold))]/20 blur-sm -z-10" />
           )}
         </button>
       </motion.div>
@@ -87,9 +87,9 @@ export function WhatsAppWidget() {
             className="fixed bottom-28 right-6 z-40 w-80 bg-white rounded-2xl shadow-2xl overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-[#075E54] text-white p-4">
+            <div className="bg-[rgb(var(--color-brown))] text-white p-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2">
+                <div className="w-12 h-12 rounded-full bg-[rgb(var(--color-gold))]/20 flex items-center justify-center p-2">
                   <Image 
                     src="/images/whatsapp.svg" 
                     alt="WhatsApp" 
@@ -121,7 +121,7 @@ export function WhatsAppWidget() {
             <div className="p-4">
               <button
                 onClick={openWhatsApp}
-                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm"
+                className="w-full bg-[rgb(var(--color-gold))] hover:bg-[rgb(var(--color-brown))] text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm"
               >
                 <Image 
                   src="/images/whatsapp.svg" 
