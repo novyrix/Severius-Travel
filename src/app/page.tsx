@@ -12,6 +12,9 @@ import { AnimatedFeatures } from '@/components/animated-features';
 import { HeroSlider } from '@/components/hero-slider';
 import { FeaturedToursCarousel } from '@/components/featured-tours-carousel';
 import { Marquee } from '@/components/marquee';
+import { homeMetadata } from '@/lib/metadata';
+
+export const metadata = homeMetadata;
 
 export default async function HomePage() {
   const allTours = getAllTours();

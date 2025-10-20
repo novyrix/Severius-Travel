@@ -1,11 +1,8 @@
-import { Metadata } from "next";
 import { Suspense } from "react";
 import { LoginFormNew } from "@/components/login-form-new";
+import { loginMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Login | Severius Travel",
-  description: "Login to your account",
-};
+export const metadata = loginMetadata;
 
 export default function LoginPage() {
   return (

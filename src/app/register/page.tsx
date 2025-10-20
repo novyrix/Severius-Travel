@@ -1,11 +1,9 @@
 import { RegisterForm } from "@/components/register-form";
 import { Plane } from "lucide-react";
 import Link from "next/link";
+import { registerMetadata } from "@/lib/metadata";
 
-export const metadata = {
-  title: "Create Account - Severius Adventures & Travel",
-  description: "Join Severius Adventures & Travel and start booking your dream tours today.",
-};
+export const metadata = registerMetadata;
 
 export default function RegisterPage() {
   return (

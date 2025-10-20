@@ -10,6 +10,9 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
+import { dashboardMetadata } from '@/lib/metadata';
+
+export const metadata = dashboardMetadata;
 import { getTranslations } from 'next-intl/server';
 import { DashboardTabs } from '@/components/dashboard-tabs';
 

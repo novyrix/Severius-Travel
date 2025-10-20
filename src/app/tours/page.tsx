@@ -3,6 +3,9 @@ import { getAllTours, searchTours as searchToursData, getToursByRegion, getTours
 import { TourCard } from '@/components/tour-card';
 import { SearchBar } from '@/components/search-bar';
 import { Card, CardContent } from '@/components/ui/card';
+import { toursMetadata } from '@/lib/metadata';
+
+export const metadata = toursMetadata;
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
