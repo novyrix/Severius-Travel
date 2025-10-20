@@ -34,31 +34,31 @@ interface Region {
 const regions: Region[] = [
   {
     name: "East Africa",
-    slug: "EA",
+    slug: "East Africa",
     icon: <Mountain className="w-6 h-6" />,
     description: "Kenya, Tanzania, Uganda, Rwanda",
   },
   {
     name: "Southern Africa",
-    slug: "SA",
+    slug: "Southern Africa",
     icon: <Compass className="w-6 h-6" />,
     description: "South Africa, Botswana, Namibia, Zimbabwe, Zambia",
   },
   {
     name: "Islands",
-    slug: "IS",
+    slug: "Islands",
     icon: <Palmtree className="w-6 h-6" />,
     description: "Zanzibar & Seychelles beaches",
   },
 ];
 
 const popularDestinations = [
-  { name: "Maasai Mara, Kenya", href: "/tours?country=Kenya", image: "🦁" },
-  { name: "Serengeti, Tanzania", href: "/tours?country=Tanzania", image: "🐘" },
-  { name: "Victoria Falls, Zimbabwe", href: "/tours?country=Zimbabwe", image: "�" },
-  { name: "Okavango Delta, Botswana", href: "/tours?country=Botswana", image: "🦒" },
-  { name: "Kruger Park, South Africa", href: "/tours?country=South%20Africa", image: "🦏" },
-  { name: "Zanzibar Beaches", href: "/tours?country=Zanzibar", image: "🏝️" },
+  { name: "Maasai Mara, Kenya", href: "/tours?country=KE", image: "🦁" },
+  { name: "Serengeti, Tanzania", href: "/tours?country=TZ", image: "🐘" },
+  { name: "Victoria Falls, Zimbabwe", href: "/tours?country=ZW", image: "💦" },
+  { name: "Okavango Delta, Botswana", href: "/tours?country=BW", image: "🦒" },
+  { name: "Kruger Park, South Africa", href: "/tours?country=ZA", image: "🦏" },
+  { name: "Zanzibar Beaches", href: "/tours?country=TZ", image: "🏝️" },
 ];
 
 export function HeaderNew() {
@@ -205,6 +205,12 @@ export function HeaderNew() {
               About
             </Link>
             <Link
+              href="/faq"
+              className="text-sm font-medium text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors"
+            >
+              FAQ
+            </Link>
+            <Link
               href="/contact"
               className="text-sm font-medium text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors"
             >
@@ -310,6 +316,13 @@ export function HeaderNew() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   About
+                </Link>
+                <Link
+                  href="/faq"
+                  className="block px-4 py-2 text-neutral-700 hover:bg-neutral-50 rounded-lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  FAQ
                 </Link>
                 <Link
                   href="/contact"
