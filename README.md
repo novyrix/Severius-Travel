@@ -1,162 +1,322 @@
-# Severius Travel & Adventures 🌍
+# Severius Adventures & Travel# Severius Travel & Adventures 🌍
 
-> **Your trusted gateway to authentic African adventures**
 
-A modern, full-featured travel booking platform specializing in African safari experiences, cultural journeys, and luxury getaways. Built with Next.js 15, TypeScript, PostgreSQL, and optimized for Vercel deployment.
 
-## 🚀 Quick Start
+> Your Gateway to Unforgettable African Adventures> **Your trusted gateway to authentic African adventures**
 
-### Local Development
+
+
+[![Live Site](https://img.shields.io/badge/Live-severiusadventuresandtravel.com-brown)](https://severiusadventuresandtravel.com)A modern, full-featured travel booking platform specializing in African safari experiences, cultural journeys, and luxury getaways. Built with Next.js 15, TypeScript, PostgreSQL, and optimized for Vercel deployment.
+
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.5-black)](https://nextjs.org/)
+
+[![License](https://img.shields.io/badge/License-Proprietary-red)](#)## 🚀 Quick Start
+
+
+
+---### Local Development
+
 ```bash
-# Install dependencies
+
+## 🌍 About Severius Travel# Install dependencies
+
 npm install
 
+Severius Adventures & Travel is a premier travel company specializing in authentic African safari experiences, cultural tours, and adventure packages across East Africa and beyond. We create unforgettable journeys that connect travelers with the natural beauty, wildlife, and rich cultures of Africa.
+
 # Set up environment variables
-cp .env.example .env
+
+### 🎯 Our Missioncp .env.example .env
+
 # Edit .env with your Neon PostgreSQL credentials
 
+To provide world-class travel experiences that inspire, educate, and create lasting memories while promoting sustainable tourism and supporting local communities.
+
 # Run database migrations
-npx prisma migrate dev
 
-# Start development server
+---npx prisma migrate dev
+
+
+
+## ✨ Featured Destinations# Start development server
+
 npm run dev
-```
 
-Visit `http://localhost:3000`
+- **🇰🇪 Kenya** - Maasai Mara, Amboseli, Diani Beach```
 
-### Deploy to Vercel
+- **🇹🇿 Tanzania** - Serengeti, Kilimanjaro, Zanzibar
+
+- **🇺🇬 Uganda** - Bwindi Forest, Murchison FallsVisit `http://localhost:3000`
+
+- **🇷🇼 Rwanda** - Volcanoes National Park, Gorilla Trekking
+
+- **🇿🇦 South Africa** - Kruger, Cape Town, Garden Route### Deploy to Vercel
+
 See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for complete deployment guide.
+
+---
 
 ## ✨ Features
 
-### 🎨 **User Features**
-- Multi-language support (English, Spanish, French)
-- 24 curated safari tours across 9 African countries
-- Advanced tour search & filtering
-- Interactive photo galleries (130+ high-quality images)
-- Real-time booking system
-- Secure payment processing (PesaPal - M-PESA, Cards, Bank Transfer)
-- Personal dashboard for managing bookings
-- Responsive mobile-first design
+## 🚀 What We Offer
 
-### 👨‍💼 **Admin Features**
-- Complete user management
+### 🎨 **User Features**
+
+### Safari Packages- Multi-language support (English, Spanish, French)
+
+Expert-guided wildlife safaris with guaranteed wildlife sightings and luxury accommodations.- 24 curated safari tours across 9 African countries
+
+- Advanced tour search & filtering
+
+### Cultural Tours- Interactive photo galleries (130+ high-quality images)
+
+Immersive experiences with local communities, traditional ceremonies, and authentic African culture.- Real-time booking system
+
+- Secure payment processing (PesaPal - M-PESA, Cards, Bank Transfer)
+
+### Adventure Activities- Personal dashboard for managing bookings
+
+Hiking, mountain climbing, hot air balloon safaris, and water sports.- Responsive mobile-first design
+
+
+
+### Beach Holidays### 👨‍💼 **Admin Features**
+
+Pristine coastal getaways in Zanzibar, Diani, and other tropical paradises.- Complete user management
+
 - Booking & payment oversight
-- Rich text blog editor (TipTap)
-- Analytics dashboard
+
+### Custom Itineraries- Rich text blog editor (TipTap)
+
+Tailored travel experiences designed around your preferences and budget.- Analytics dashboard
+
 - Email campaign management
 
-### 🛡️ **Security & Performance**
-- NextAuth.js authentication (auto-verified registration)
-- Honeypot & rate limiting protection
-- Server-side rendering & static generation
-- Image optimization
-- SEO optimized with dynamic sitemaps
+---
 
-## 💻 Tech Stack
+### 🛡️ **Security & Performance**
+
+## 💼 Why Choose Severius?- NextAuth.js authentication (auto-verified registration)
+
+- Honeypot & rate limiting protection
+
+✅ **Expert Local Guides** - Knowledgeable guides with deep local expertise  - Server-side rendering & static generation
+
+✅ **Competitive Pricing** - Best value safari packages with no hidden fees  - Image optimization
+
+✅ **24/7 Support** - Round-the-clock customer service and on-ground assistance  - SEO optimized with dynamic sitemaps
+
+✅ **Sustainable Tourism** - Eco-friendly practices and community support  
+
+✅ **Flexible Booking** - Easy online booking with flexible payment options  ## 💻 Tech Stack
+
+✅ **Safety First** - Comprehensive travel insurance and safety protocols
 
 - **Framework**: Next.js 15.5.5 (App Router)
-- **Language**: TypeScript 5.5.4
+
+---- **Language**: TypeScript 5.5.4
+
 - **Database**: PostgreSQL (Neon) with Prisma ORM 6.17.1
-- **Styling**: Tailwind CSS 4.1.14 + Framer Motion
+
+## 📞 Contact Us- **Styling**: Tailwind CSS 4.1.14 + Framer Motion
+
 - **Authentication**: NextAuth.js 4.24.11
-- **Payments**: PesaPal API
-- **Deployment**: Vercel
+
+**Head Office:**  - **Payments**: PesaPal API
+
+Westlands, Nairobi, Kenya- **Deployment**: Vercel
+
 - **Email**: Resend API (optional)
 
-## 📁 Project Structure
+**Email:**  
 
-```
-severius-travel/
+info@severiusadventuresandtravel.com## 📁 Project Structure
+
+
+
+**Phone:**  ```
+
++254 780 419 605severius-travel/
+
 ├── src/
-│   ├── app/              # Next.js App Router
-│   │   ├── api/          # API endpoints
+
+**Website:**  │   ├── app/              # Next.js App Router
+
+[severiusadventuresandtravel.com](https://severiusadventuresandtravel.com)│   │   ├── api/          # API endpoints
+
 │   │   ├── admin/        # Admin dashboard
-│   │   ├── dashboard/    # User dashboard
-│   │   ├── tours/        # Tour pages
-│   │   └── blog/         # Blog pages
-│   ├── components/       # React components
-│   │   ├── ui/          # Reusable UI components
+
+**Social Media:**  │   │   ├── dashboard/    # User dashboard
+
+- [Facebook](https://www.facebook.com/severiustravels/)│   │   ├── tours/        # Tour pages
+
+- [Instagram](https://www.instagram.com/severiustravels/)│   │   └── blog/         # Blog pages
+
+- [TikTok](https://www.tiktok.com/@severius.travels)│   ├── components/       # React components
+
+- [TripAdvisor](https://www.tripadvisor.com/Attraction_Review-g482864-d33033760-Reviews-Severius_Adventures_And_Travels-Embu_Eastern_Province.html)│   │   ├── ui/          # Reusable UI components
+
 │   │   └── admin/       # Admin components
-│   ├── data/            # Static tour data (24 tours)
+
+---│   ├── data/            # Static tour data (24 tours)
+
 │   ├── lib/             # Utilities & helpers
-│   └── styles/          # Global styles
+
+## 🌟 Popular Tours│   └── styles/          # Global styles
+
 ├── prisma/
-│   ├── schema.prisma    # Database schema
-│   └── migrations/      # Migration files
-├── public/
-│   └── images/          # 130+ tour & destination images
-├── messages/            # i18n translations (en, es, fr)
+
+### Wildlife Safaris│   ├── schema.prisma    # Database schema
+
+- **Maasai Mara Great Migration** - 5 Days│   └── migrations/      # Migration files
+
+- **Serengeti & Ngorongoro Crater** - 7 Days  ├── public/
+
+- **Uganda Gorilla Trekking** - 4 Days│   └── images/          # 130+ tour & destination images
+
+- **Rwanda Primate Adventure** - 6 Days├── messages/            # i18n translations (en, es, fr)
+
 └── scripts/
-    └── delete-all-blogs.ts  # Database management utility
-```
 
-## 🔧 Available Scripts
+### Beach & Island Escapes    └── delete-all-blogs.ts  # Database management utility
 
-```bash
-npm run dev              # Start development server
-npm run build            # Build for production
-npm run start            # Start production server
+- **Zanzibar Beach Paradise** - 5 Days```
+
+- **Diani Beach Getaway** - 4 Days
+
+- **Coastal Kenya Explorer** - 6 Days## 🔧 Available Scripts
+
+
+
+### Mountain Adventures```bash
+
+- **Mount Kilimanjaro Climb** - 8 Daysnpm run dev              # Start development server
+
+- **Mount Kenya Expedition** - 5 Daysnpm run build            # Build for production
+
+- **Rwenzori Mountains Trek** - 9 Daysnpm run start            # Start production server
+
 npm run lint             # Run ESLint
-npx prisma studio        # Open Prisma Studio (database GUI)
+
+[View All Tours →](https://severiusadventuresandtravel.com/tours)npx prisma studio        # Open Prisma Studio (database GUI)
+
 npx prisma migrate dev   # Run database migrations
-npx tsx scripts/delete-all-blogs.ts  # Clear blog posts
+
+---npx tsx scripts/delete-all-blogs.ts  # Clear blog posts
+
 ```
+
+## 🎓 Travel Resources
 
 ## 🌍 Environment Variables
 
-Create `.env` file with these variables:
+- **Blog** - Travel tips, destination guides, and safari stories
 
-```env
+- **FAQ** - Answers to common questions about our toursCreate `.env` file with these variables:
+
+- **Booking Policy** - Terms and conditions for bookings
+
+- **Travel Tips** - Essential information for African travel```env
+
 # Database (Neon PostgreSQL)
-DATABASE_URL="postgresql://..."
+
+---DATABASE_URL="postgresql://..."
+
 DIRECT_URL="postgresql://..."
 
-# Authentication
-NEXTAUTH_URL="https://severiusadventuresandtravel.com"
-NEXTAUTH_SECRET="your-secret-here"
+## 🏆 Awards & Recognition
 
-# PesaPal Payment Gateway
+# Authentication
+
+- Featured on TripAdvisorNEXTAUTH_URL="https://severiusadventuresandtravel.com"
+
+- Trusted by thousands of happy travelersNEXTAUTH_SECRET="your-secret-here"
+
+- Certified tour operator in Kenya, Tanzania, Uganda, and Rwanda
+
+- Member of local tourism associations# PesaPal Payment Gateway
+
 PESAPAL_CONSUMER_KEY="your-key"
-PESAPAL_CONSUMER_SECRET="your-secret"
+
+---PESAPAL_CONSUMER_SECRET="your-secret"
+
 PESAPAL_ENVIRONMENT="sandbox" # or "live"
 
+## 📱 Book Your Adventure Today
+
 # Site Configuration
-NEXT_PUBLIC_SITE_URL="https://severiusadventuresandtravel.com"
+
+Visit our website to explore tours, check availability, and book your dream African adventure:NEXT_PUBLIC_SITE_URL="https://severiusadventuresandtravel.com"
+
 NEXT_PUBLIC_WHATSAPP_NUMBER="254780419605"
-NEXT_PUBLIC_CONTACT_EMAIL="info@severiusadventuresandtravel.com"
 
-# Optional: Email Service
+**[Browse Tours](https://severiusadventuresandtravel.com/tours)** | **[Contact Us](https://severiusadventuresandtravel.com/contact)** | **[Get a Quote](https://severiusadventuresandtravel.com/contact)**NEXT_PUBLIC_CONTACT_EMAIL="info@severiusadventuresandtravel.com"
+
+
+
+---# Optional: Email Service
+
 RESEND_API_KEY="re_..."
-```
 
-## 🗄️ Database
+## 📄 Legal```
 
-### Neon PostgreSQL (Production)
+
+
+© 2025 Severius Adventures & Travel. All rights reserved.## 🗄️ Database
+
+
+
+This website and its contents are proprietary to Severius Adventures & Travel. Unauthorized use, reproduction, or distribution is prohibited.### Neon PostgreSQL (Production)
+
 - **Provider**: Neon (Vercel's managed PostgreSQL)
-- **Connection**: Pooled via pgbouncer (9 connections)
-- **Region**: us-east-1 (AWS)
-- **SSL**: Required
+
+- [Privacy Policy](https://severiusadventuresandtravel.com/privacy)- **Connection**: Pooled via pgbouncer (9 connections)
+
+- [Terms & Conditions](https://severiusadventuresandtravel.com/terms)- **Region**: us-east-1 (AWS)
+
+- [Cookie Policy](https://severiusadventuresandtravel.com/cookie-policy)- **SSL**: Required
+
+- [Booking Policy](https://severiusadventuresandtravel.com/booking-policy)
 
 ### Database Models
-- **User** - Authentication & profiles
+
+---- **User** - Authentication & profiles
+
 - **Booking** - Tour reservations
-- **Post** - Blog content
+
+## 🔒 Technology- **Post** - Blog content
+
 - **Newsletter** - Email subscriptions
-- **Session** - NextAuth sessions
+
+Built with modern web technologies to ensure a fast, secure, and seamless booking experience:- **Session** - NextAuth sessions
+
 - **Account** - OAuth accounts
 
-### Management
-```bash
-# View database in browser
-npx prisma studio
+- **Framework:** Next.js 15 with App Router
 
-# Check migration status
+- **Database:** PostgreSQL with Prisma ORM### Management
+
+- **Authentication:** NextAuth.js```bash
+
+- **Payments:** Pesapal & PayPal Integration# View database in browser
+
+- **Email:** Resend APInpx prisma studio
+
+- **Hosting:** Vercel
+
+- **Languages:** TypeScript, React# Check migration status
+
 npx prisma migrate status
 
+---
+
 # Apply migrations
-npx prisma migrate deploy
+
+**Made with ❤️ in Kenya 🇰🇪**npx prisma migrate deploy
+
 ```
+
+*Experience the magic of Africa with Severius Adventures & Travel*
 
 ## 🌍 Featured Destinations
 
