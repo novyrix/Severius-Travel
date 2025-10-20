@@ -52,31 +52,35 @@ export function LoginFormNew() {
       if (result?.error) {
         setError("Invalid email or password");
         setIsLoading(false);
-      } else {
-        // Fetch user session to determine role
-        const response = await fetch("/api/auth/session");
-        const sessionData = await response.json();
+        return;
+      }
 
-        if (sessionData?.user) {
-          // Determine redirect based on role and return URL
-          let redirectPath = "/dashboard";
+      // Success - redirect based on returnUrl or role
+      if (result?.ok) {
+        // Wait a moment for session to be established
+        await new Promise(resolve => setTimeout(resolve, 300));
 
-          if (returnUrl) {
-            // If there's a return URL, use it
-            redirectPath = returnUrl;
-          } else if (sessionData.user.role === "ADMIN") {
-            // Admin goes to admin dashboard
-            redirectPath = "/admin";
+        // Determine redirect path
+        if (returnUrl && returnUrl.startsWith('/')) {
+          // Use the callback URL from booking or other pages
+          window.location.href = returnUrl;
+        } else {
+          // Fetch session to get role
+          const response = await fetch("/api/auth/session");
+          const sessionData = await response.json();
+
+          if (sessionData?.user?.role === "ADMIN") {
+            window.location.href = "/admin";
           } else {
-            // Regular user goes to dashboard
-            redirectPath = "/dashboard";
+            window.location.href = "/dashboard";
           }
-
-          router.push(redirectPath);
-          router.refresh();
         }
+      } else {
+        setError("An error occurred. Please try again.");
+        setIsLoading(false);
       }
     } catch (err) {
+      console.error("Login error:", err);
       setError("An error occurred. Please try again.");
       setIsLoading(false);
     }

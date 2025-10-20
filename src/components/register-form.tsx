@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Mail, Lock, User, Plane } from "lucide-react";
 import { Button } from "./ui/button";
@@ -10,6 +10,8 @@ import { HONEYPOT_FIELDS } from "@/lib/honeypot";
 
 export function RegisterForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || searchParams.get("returnUrl");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -131,8 +133,11 @@ export function RegisterForm() {
           // Refresh router to get new session
           router.refresh();
           
-          // Redirect to dashboard
-          window.location.href = "/dashboard";
+          // Redirect to callback URL or dashboard
+          const redirectUrl = callbackUrl && callbackUrl.startsWith('/') 
+            ? callbackUrl 
+            : "/dashboard";
+          window.location.href = redirectUrl;
         } else {
           console.error("❌ Login result not ok:", loginResult);
           setError("Account created but login failed. Please login manually.");
