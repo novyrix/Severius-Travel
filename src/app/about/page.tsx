@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/components/providers/i18n-provider'
+import { AnimatedCounter } from '@/components/animated-counter'
 import { 
   Sparkles, 
   Compass, 
@@ -34,10 +35,10 @@ const destinations = [
 ]
 
 const stats = [
-  { key: 'travelers', number: '500+' },
-  { key: 'destinations', number: '50+' },
-  { key: 'experience', number: '10+' },
-  { key: 'rating', number: '4.9/5' },
+  { key: 'travelers', value: 125, suffix: '+' },
+  { key: 'destinations', value: 15, suffix: '+' },
+  { key: 'experience', value: 5, suffix: '+' },
+  { key: 'rating', value: 4.9, suffix: '/5', decimals: true },
 ]
 
 export default function AboutPage() {
@@ -221,9 +222,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {stats.map((stat) => (
               <div key={stat.key} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg">
-                  {stat.number}
-                </div>
+                <AnimatedCounter
+                  end={stat.value}
+                  suffix={stat.suffix}
+                  duration={2500}
+                  className="text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg"
+                />
                 <div className="text-lg md:text-xl opacity-90">
                   {t(`about.stats.${stat.key}`)}
                 </div>
