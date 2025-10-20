@@ -1,17 +1,17 @@
 {
-  "name": "Severius Travel & Adventures",
+  "name": "Severius Adventures & Travel",
   "short_name": "Severius Travel",
   "description": "Authentic African safari and adventure tours",
   "icons": [
     {
-      "src": "/images/logo.svg",
+      "src": "/images/logo/portrait.png",
       "sizes": "192x192",
-      "type": "image/svg+xml"
+      "type": "image/png"
     },
     {
-      "src": "/images/logo.svg",
+      "src": "/images/logo/portrait.png",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/png"
     }
   ],
   "theme_color": "#D4AF37",

@@ -13,6 +13,7 @@ import { GoogleAnalytics } from '../components/analytics/GoogleAnalytics';
 import Script from 'next/script';
 
 export const metadata = {
+  metadataBase: new URL('https://severiusadventuresandtravel.com'),
   title: 'Severius Adventures & Travel | Authentic African Safari & Adventure Tours',
   description: 'Experience unforgettable African safaris, cultural tours, and adventure travel with Severius Adventures & Travel. Expert-guided tours across Kenya, Tanzania, Egypt, and beyond.',
   keywords: 'African safari, Kenya tours, Tanzania safari, Egypt tours, adventure travel, wildlife safari, Maasai Mara, cultural tours, travel Africa',
@@ -24,7 +25,7 @@ export const metadata = {
     siteName: 'Severius Adventures & Travel',
     images: [
       {
-        url: 'https://severiusadventuresandtravel.com/images/logo.png',
+        url: '/images/logo/landscape.png',
         width: 1200,
         height: 630,
         alt: 'Severius Adventures & Travel Logo',
@@ -37,11 +38,20 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Severius Adventures & Travel',
     description: 'Experience unforgettable African safaris and cultural tours',
-    images: ['https://severiusadventuresandtravel.com/images/logo.png'],
+    images: ['/images/logo/landscape.png'],
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
   },
   manifest: '/site.webmanifest',
 };
