@@ -3621,7 +3621,7 @@ export const tours: Tour[] = [
     country: 'Tanzania',
     countryCode: 'TZ',
     city: 'Zanzibar',
-    region: 'East Africa',
+    region: 'Islands',
     latitude: -6.1659,
     longitude: 39.2026,
     

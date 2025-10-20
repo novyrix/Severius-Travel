@@ -362,7 +362,8 @@ export async function sendContactFormNotification(
  * Send newsletter welcome email
  */
 export async function sendNewsletterWelcome(to: string) {
-  const subject = 'Welcome to Severius Tours Newsletter! 📬';
+  const baseUrl = process.env.NEXTAUTH_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const subject = 'Welcome to Severius Travel Newsletter! 🌍✈️';
   const html = `
     <!DOCTYPE html>
     <html>
@@ -373,68 +374,157 @@ export async function sendNewsletterWelcome(to: string) {
           body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #333333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
             max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           }
           .header {
-            background: linear-gradient(135deg, #4E342E 0%, #D4AF37 100%);
+            background: linear-gradient(135deg, rgb(101, 67, 33) 0%, rgb(184, 134, 11) 100%);
             color: white;
             padding: 40px 20px;
             text-align: center;
-            border-radius: 12px 12px 0 0;
+          }
+          .logo {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 20px;
           }
           .content {
-            background: #ffffff;
             padding: 40px 30px;
-            border: 1px solid #e0e0e0;
-            border-top: none;
           }
-          .footer {
-            background: #f5f5f5;
-            padding: 20px;
+          .welcome-title {
+            color: rgb(101, 67, 33);
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 20px;
             text-align: center;
-            font-size: 12px;
-            color: #666;
-            border-radius: 0 0 12px 12px;
           }
           .benefits {
-            background: #FFF9E6;
-            padding: 20px;
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF4D6 100%);
+            padding: 24px;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 24px 0;
+            border-left: 4px solid rgb(184, 134, 11);
+          }
+          .benefits h3 {
+            color: rgb(101, 67, 33);
+            margin: 0 0 16px;
+            font-size: 18px;
+          }
+          .benefits ul {
+            margin: 0;
+            padding-left: 20px;
+          }
+          .benefits li {
+            margin: 8px 0;
+            color: #555555;
+          }
+          .cta-button {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, rgb(101, 67, 33) 0%, rgb(184, 134, 11) 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 24px 0;
+            text-align: center;
+          }
+          .footer {
+            background-color: #f8f8f8;
+            padding: 24px 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #888888;
+          }
+          .footer p {
+            margin: 8px 0;
+          }
+          .footer a {
+            color: rgb(101, 67, 33);
+            text-decoration: none;
+          }
+          .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgb(184, 134, 11), transparent);
+            margin: 24px 0;
           }
         </style>
       </head>
       <body>
-        <div class="header">
-          <h1 style="margin: 0; font-size: 28px;">📬 Welcome to Our Newsletter!</h1>
-        </div>
-        <div class="content">
-          <h2 style="color: #4E342E;">You're In! 🎉</h2>
-          <p>Thank you for subscribing to the Severius Tours newsletter!</p>
-          
-          <div class="benefits">
-            <strong>Here's what you'll receive:</strong>
-            <ul>
-              <li>🌍 Exclusive travel deals and promotions</li>
-              <li>✈️ New tour announcements</li>
-              <li>📸 Travel inspiration and tips</li>
-              <li>🎁 Special subscriber-only offers</li>
-            </ul>
+        <div class="container">
+          <div class="header">
+            <img src="${baseUrl}/images/logo/landscape.png" alt="Severius Travel" class="logo" />
+            <h1 style="margin: 0; font-size: 32px; font-weight: 700;">Welcome Aboard! 🎉</h1>
           </div>
-
-          <p>Stay tuned for amazing travel opportunities coming your way!</p>
           
-          <p style="margin-top: 30px;">
-            Happy travels,<br>
-            <strong>The Severius Tours Team</strong>
-          </p>
-        </div>
-        <div class="footer">
-          <p>© ${new Date().getFullYear()} Severius Tours. All rights reserved.</p>
-          <p><a href="${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/unsubscribe">Unsubscribe</a></p>
+          <div class="content">
+            <h2 class="welcome-title">You're Part of the Adventure Now!</h2>
+            
+            <p style="font-size: 16px; color: #555555; margin-bottom: 20px;">
+              Thank you for subscribing to the Severius Travel newsletter! We're thrilled to have you join our community of adventure seekers and travel enthusiasts.
+            </p>
+            
+            <div class="benefits">
+              <h3>🌟 Here's What You'll Receive:</h3>
+              <ul>
+                <li><strong>🦁 Exclusive Safari Deals</strong> - Early access to special promotions and discounts</li>
+                <li><strong>✈️ New Tour Announcements</strong> - Be the first to know about exciting new destinations</li>
+                <li><strong>📸 Travel Inspiration</strong> - Stunning photos, stories, and tips from across Africa</li>
+                <li><strong>🎁 Subscriber-Only Offers</strong> - Special perks just for our newsletter family</li>
+                <li><strong>🗺️ Destination Guides</strong> - Expert advice on the best times to visit and what to see</li>
+              </ul>
+            </div>
+
+            <div class="divider"></div>
+
+            <p style="font-size: 16px; color: #555555; margin-bottom: 24px; text-align: center;">
+              Ready to start exploring? Browse our amazing tour packages and find your next adventure!
+            </p>
+
+            <div style="text-align: center;">
+              <a href="${baseUrl}/tours" class="cta-button">
+                🌍 Explore Our Tours
+              </a>
+            </div>
+
+            <div class="divider"></div>
+            
+            <p style="margin-top: 30px; color: #666666;">
+              <strong>Stay tuned</strong> for amazing travel opportunities, insider tips, and exclusive deals coming your way!
+            </p>
+
+            <p style="margin-top: 24px; color: #888888; font-size: 14px;">
+              Happy travels,<br>
+              <strong style="color: rgb(101, 67, 33); font-size: 16px;">The Severius Travel Team</strong>
+            </p>
+          </div>
+          
+          <div class="footer">
+            <p><strong>Severius Adventures & Travel</strong></p>
+            <p>Your trusted partner for unforgettable African adventures</p>
+            <p style="margin-top: 16px;">
+              📧 <a href="mailto:info@severiusadventuresandtravel.com">info@severiusadventuresandtravel.com</a> | 
+              📞 +254 780 419 605
+            </p>
+            <p style="margin-top: 12px; font-size: 11px; color: #aaa;">
+              © ${new Date().getFullYear()} Severius Adventures & Travel. All rights reserved.
+            </p>
+            <p style="margin-top: 8px;">
+              <a href="${baseUrl}/api/newsletter/unsubscribe?email=${encodeURIComponent(to)}">Unsubscribe</a> | 
+              <a href="${baseUrl}/privacy">Privacy Policy</a>
+            </p>
+          </div>
         </div>
       </body>
     </html>

@@ -80,8 +80,8 @@ export default function ImageGallery({ images, tourName }: ImageGalleryProps) {
           </div>
         </div>
 
-        {/* Thumbnail grid */}
-        {images.slice(1, 5).map((image, index) => (
+        {/* Thumbnail grid - only show if there are more images */}
+        {images.length > 1 && images.slice(1, Math.min(5, images.length)).map((image, index) => (
           <div
             key={index + 1}
             className="relative h-24 md:h-[122px] cursor-pointer overflow-hidden rounded-lg group"
@@ -105,7 +105,7 @@ export default function ImageGallery({ images, tourName }: ImageGalleryProps) {
             onClick={() => openLightbox(5)}
           >
             <Image
-              src={images[5]}
+              src={images[5] || images[0]}
               alt={`${tourName} - More images`}
               fill
               className="object-cover opacity-60"

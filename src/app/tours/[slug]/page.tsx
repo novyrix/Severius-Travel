@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, Clock, MapPin, Users, Check, X, ChevronDown, Star, TrendingUp, Shield, Award, Utensils, Home, AlertCircle } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, Check, X, ChevronDown, Star, TrendingUp, Shield, Award, Utensils, Home, AlertCircle, HelpCircle } from 'lucide-react';
 import { getTourBySlug } from '@/data/tours';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -281,19 +281,31 @@ export default async function TourDetailPage({ params }: PageProps) {
             {faqs && faqs.length > 0 && (
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">{t('faqs')}</CardTitle>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <HelpCircle className="w-6 h-6 text-[rgb(var(--color-gold))]" />
+                    {t('faqs')}
+                  </CardTitle>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+                    Commonly asked questions about this tour
+                  </p>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {faqs.map((faq: any, index: number) => (
-                      <details key={index} className="group border-b border-neutral-200 dark:border-neutral-700 pb-4 cursor-pointer">
-                        <summary className="font-semibold text-[rgb(var(--color-brown))] dark:text-[rgb(var(--color-gold))] list-none flex items-start justify-between gap-4 hover:text-[rgb(var(--color-gold))] transition-colors">
-                          <span>{faq.question}</span>
-                          <ChevronDown className="w-5 h-5 flex-shrink-0 mt-1 transition-transform group-open:rotate-180" />
+                      <details 
+                        key={index} 
+                        className="group bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden transition-all hover:shadow-md"
+                      >
+                        <summary className="font-semibold text-[rgb(var(--color-brown))] dark:text-[rgb(var(--color-gold))] list-none flex items-start justify-between gap-4 p-4 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                          <span className="flex-1">{faq.question}</span>
+                          <ChevronDown className="w-5 h-5 flex-shrink-0 mt-0.5 text-[rgb(var(--color-gold))] transition-transform duration-300 group-open:rotate-180" />
                         </summary>
-                        <p className="mt-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                          {faq.answer}
-                        </p>
+                        <div className="px-4 pb-4 pt-2">
+                          <div className="h-px bg-gradient-to-r from-[rgb(var(--color-gold))]/50 via-[rgb(var(--color-brown))]/20 to-transparent mb-3"></div>
+                          <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </div>
                       </details>
                     ))}
                   </div>
