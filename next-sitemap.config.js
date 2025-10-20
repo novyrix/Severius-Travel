@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://severiustours.com',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://severiusadventuresandtravel.com',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   exclude: [
@@ -28,12 +28,22 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://severiustours.com'}/server-sitemap.xml`,
+      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://severiusadventuresandtravel.com'}/server-sitemap.xml`,
     ],
   },
   changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 5000,
+  additionalPaths: async (config) => {
+    return [
+      {
+        loc: '/',
+        changefreq: 'daily',
+        priority: 1.0,
+        lastmod: new Date().toISOString(),
+      },
+    ];
+  },
   transform: async (config, path) => {
     // Custom priority for different routes
     let priority = config.priority;
@@ -50,7 +60,7 @@ module.exports = {
       changefreq = 'weekly';
     } else if (path.startsWith('/destinations')) {
       priority = 0.8;
-      changefreq = 'monthly';
+      changefreq: 'monthly';
     } else if (path === '/about' || path === '/contact') {
       priority = 0.6;
       changefreq = 'monthly';
@@ -61,6 +71,7 @@ module.exports = {
       changefreq,
       priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      alternateRefs: config.alternateRefs ?? [],
     };
   },
 };
