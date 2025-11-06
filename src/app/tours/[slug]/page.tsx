@@ -37,7 +37,7 @@ export default async function TourDetailPage({ params }: PageProps) {
   const mainImage = tour.coverImage;
 
   return (
-    <main className="min-h-screen bg-neutral-50 dark:bg-neutral-900">
+    <main className="min-h-screen bg-[rgb(245,243,241)]">
       {/* Hero Section */}
       <section className="relative h-[600px] bg-neutral-900">
         {mainImage ? (
@@ -112,12 +112,12 @@ export default async function TourDetailPage({ params }: PageProps) {
                 <CardTitle className="text-2xl">{t('tourOverview')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
+                <p className="text-neutral-900 leading-relaxed mb-6">
                   {tour.description}
                 </p>
                 
                 {tour.metaDescription && tour.metaDescription !== tour.description && (
-                  <p className="text-neutral-600 dark:text-neutral-400 italic">
+                  <p className="text-neutral-700 italic">
                     {tour.metaDescription}
                   </p>
                 )}
@@ -138,7 +138,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                     {highlights.map((highlight: string, index: number) => (
                       <div key={index} className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-neutral-700 dark:text-neutral-300">{highlight}</span>
+                        <span className="text-neutral-900">{highlight}</span>
                       </div>
                     ))}
                   </div>
@@ -155,7 +155,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                 <CardContent>
                   <div className="space-y-6">
                     {itinerary.map((day: any, index: number) => (
-                      <details key={index} className="group border border-neutral-200 dark:border-neutral-700 rounded-lg p-5 cursor-pointer hover:shadow-md transition-shadow">
+                      <details key={index} className="group border border-neutral-200 rounded-lg p-5 cursor-pointer hover:shadow-md transition-shadow bg-white">
                         <summary className="flex items-start gap-4 list-none">
                           <div className="flex-shrink-0">
                             <div className="w-14 h-14 rounded-full bg-[rgb(var(--color-gold))]/10 flex items-center justify-center border-2 border-[rgb(var(--color-gold))]">
@@ -165,12 +165,12 @@ export default async function TourDetailPage({ params }: PageProps) {
                             </div>
                           </div>
                           <div className="flex-1">
-                            <h4 className="font-bold text-lg text-[rgb(var(--color-brown))] dark:text-[rgb(var(--color-gold))] mb-1 group-open:mb-3">
+                            <h4 className="font-bold text-lg text-[rgb(var(--color-brown))] mb-1 group-open:mb-3">
                               {day.title}
                             </h4>
                             <ChevronDown className="inline-block w-5 h-5 text-neutral-500 transition-transform group-open:rotate-180 mb-2" />
                             <div className="hidden group-open:block">
-                              <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
+                              <p className="text-neutral-900 leading-relaxed mb-4">
                                 {day.description}
                               </p>
                               {day.activities && day.activities.length > 0 && (
@@ -183,7 +183,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                                   </div>
                                 </div>
                               )}
-                              <div className="flex flex-wrap gap-4 text-sm text-neutral-600 dark:text-neutral-400">
+                              <div className="flex flex-wrap gap-4 text-sm text-neutral-700">
                                 {day.meals && (
                                   <div className="flex items-center gap-1.5">
                                     <Utensils className="w-4 h-4" />
@@ -224,7 +224,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                         </h4>
                         <ul className="space-y-2">
                           {inclusions.map((item: string, index: number) => (
-                            <li key={index} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300">
+                            <li key={index} className="flex items-start gap-2 text-sm text-neutral-900">
                               <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                               <span>{item}</span>
                             </li>
@@ -236,13 +236,13 @@ export default async function TourDetailPage({ params }: PageProps) {
                     {/* Exclusions */}
                     {exclusions.length > 0 && (
                       <div>
-                        <h4 className="font-semibold text-red-700 dark:text-red-400 mb-3 flex items-center gap-2">
+                        <h4 className="font-semibold text-red-700 mb-3 flex items-center gap-2">
                           <X className="w-5 h-5" />
                           {t('notIncluded')}
                         </h4>
                         <ul className="space-y-2">
                           {exclusions.map((item: string, index: number) => (
-                            <li key={index} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300">
+                            <li key={index} className="flex items-start gap-2 text-sm text-neutral-900">
                               <X className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
                               <span>{item}</span>
                             </li>
@@ -267,7 +267,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                 <CardContent>
                   <ul className="grid md:grid-cols-2 gap-3">
                     {requirements.map((requirement: string, index: number) => (
-                      <li key={index} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300">
+                      <li key={index} className="flex items-start gap-2 text-sm text-neutral-900">
                         <Shield className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                         <span>{requirement}</span>
                       </li>
@@ -294,15 +294,15 @@ export default async function TourDetailPage({ params }: PageProps) {
                     {faqs.map((faq: any, index: number) => (
                       <details 
                         key={index} 
-                        className="group bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden transition-all hover:shadow-md"
+                        className="group bg-white rounded-lg border border-neutral-200 overflow-hidden transition-all hover:shadow-md"
                       >
-                        <summary className="font-semibold text-[rgb(var(--color-brown))] dark:text-[rgb(var(--color-gold))] list-none flex items-start justify-between gap-4 p-4 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                        <summary className="font-semibold text-[rgb(var(--color-brown))] list-none flex items-start justify-between gap-4 p-4 cursor-pointer hover:bg-neutral-50 transition-colors">
                           <span className="flex-1">{faq.question}</span>
                           <ChevronDown className="w-5 h-5 flex-shrink-0 mt-0.5 text-[rgb(var(--color-gold))] transition-transform duration-300 group-open:rotate-180" />
                         </summary>
                         <div className="px-4 pb-4 pt-2">
                           <div className="h-px bg-gradient-to-r from-[rgb(var(--color-gold))]/50 via-[rgb(var(--color-brown))]/20 to-transparent mb-3"></div>
-                          <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                          <p className="text-neutral-900 leading-relaxed">
                             {faq.answer}
                           </p>
                         </div>
