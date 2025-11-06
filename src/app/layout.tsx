@@ -42,11 +42,12 @@ export const metadata = {
   },
   icons: {
     icon: [
+      { url: '/images/logo/severius-icon.png', type: 'image/png' },
+      { url: '/images/logo/portrait.png', sizes: '192x192', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico' },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    shortcut: '/images/logo/severius-icon.png',
+    apple: '/images/logo/portrait.png',
   },
   manifest: '/site.webmanifest',
 };
