@@ -51,6 +51,13 @@ export interface Tour {
   // SEO
   metaDescription: string;
   keywords: string[];
+  
+  // Promotion & Featured
+  featured?: boolean; // For homepage featured section
+  promoted?: boolean; // For Google Ads campaigns
+  specialOffer?: string; // e.g., "EARLY BIRD OFFER - Pay for 2 Nights & Get 1 Night FREE"
+  offerValidUntil?: string; // e.g., "30th June 2026"
+  badge?: string; // e.g., "LIMITED TIME", "LUXURY", "BEST VALUE"
 }
 
 export interface DayItinerary {
@@ -71,6 +78,233 @@ export interface FAQ {
  * Professional tours with realistic pricing, detailed itineraries, and SEO optimization
  */
 export const tours: Tour[] = [
+  // ==========================================
+  // PROMOTED/FEATURED TOURS (Google Ads Campaign)
+  // ==========================================
+  
+  {
+    id: 'ke-luxury-circuit-001',
+    title: 'Maasai Mara – Lake Nakuru – Amboseli | 7 Nights / 8 Days Luxury Safari',
+    slug: 'maasai-mara-lake-nakuru-amboseli-luxury-safari-8-days',
+    description: 'Unlock the ultimate Kenya luxury safari with an exclusive EARLY BIRD OFFER at the 5-star Olare Mara Kempinski — Pay for 2 Nights & Get 1 Night FREE in one of the most prestigious luxury tented camps in the Maasai Mara. Experience the best of Kenya\'s wild: private conservancy game drives in the legendary Olare Motorogi Conservancy, flamingo-filled scenes at Lake Nakuru, and unforgettable elephant encounters in Amboseli, right under Mount Kilimanjaro. Your luxury safari circuit includes 3 nights at the 5-star Olare Mara Kempinski (with 1 night FREE), stays at The Cliff (Nakuru) & Ol Tukai Lodge (Amboseli), bush dinners, sundowners, complimentary bespoke massage, guided bush walks, Maasai cultural visit, and more.',
+    price: 6480,
+    priceEUR: 6100,
+    priceGBP: 5400,
+    priceKES: 850000,
+    published: true,
+    durationDays: 8,
+    
+    // Promotion flags
+    featured: true,
+    promoted: true,
+    specialOffer: 'EARLY BIRD OFFER: Pay for 2 Nights & Get 1 Night FREE at 5-Star Olare Mara Kempinski',
+    offerValidUntil: '30th June 2026',
+    badge: 'LIMITED TIME - LUXURY',
+    
+    // Location
+    country: 'Kenya',
+    countryCode: 'KE',
+    city: 'Nairobi',
+    region: 'East Africa',
+    latitude: -1.2921,
+    longitude: 36.8219,
+    
+    difficulty: 'Easy',
+    maxGroupSize: 6,
+    minGroupSize: 2,
+    ageRestriction: 'Suitable for all ages',
+    
+    accommodationType: '5-Star Luxury Tented Camp & Premium Lodges',
+    mealPlan: 'All-Inclusive (Breakfast, Lunch, Dinner, Drinks, Snacks)',
+    
+    bestMonths: ['January', 'February', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    
+    highlights: [
+      '✓ 3 nights at 5-star Olare Mara Kempinski (with 1 night FREE - EARLY BIRD OFFER)',
+      '✓ Private conservancy game drives in exclusive Olare Motorogi Conservancy',
+      '✓ Bush dinners under the stars with sundowner cocktails',
+      '✓ Complimentary bespoke massage at Olare Mara Kempinski spa',
+      '✓ Guided bush walks with expert naturalists',
+      '✓ Maasai cultural visit and traditional ceremonies',
+      '✓ Flamingo & rhino viewing in Lake Nakuru National Park',
+      '✓ Amboseli game drives with iconic Mount Kilimanjaro views',
+      '✓ All-inclusive meals + complimentary laundry service',
+      '✓ Return land transfers in luxury 4×4 vehicles',
+      '✓ All conservancy & national park fees covered',
+      '✓ Optional: Hot air balloon safari over the Maasai Mara',
+    ],
+    
+    inclusions: [
+      'All park entrance and conservancy fees (Olare Motorogi, Lake Nakuru, Amboseli)',
+      'Professional English-speaking safari guide throughout',
+      '3 nights at 5-star Olare Mara Kempinski (Pay for 2, Get 1 FREE)',
+      '2 nights at The Cliff Nakuru',
+      '2 nights at Ol Tukai Lodge Amboseli',
+      'All meals (breakfast, lunch, dinner) - all-inclusive',
+      'Premium house drinks (wine, spirits, soft drinks)',
+      'Complimentary bespoke massage at Olare Mara Kempinski',
+      'Bush dinners and sundowner experiences',
+      'Guided bush walks with armed ranger',
+      'Maasai cultural village visit',
+      'Game drives in luxury 4×4 Land Cruiser with pop-up roof',
+      'Bottled mineral water during game drives',
+      'Nairobi hotel/airport pickup and drop-off',
+      'All land transfers between parks',
+      'Complimentary laundry service at all properties',
+      'Flying Doctors emergency evacuation insurance',
+      'Government taxes and levies',
+    ],
+    
+    exclusions: [
+      'International flights to/from Kenya',
+      'Kenya visa fees (USD $50 for most nationalities, apply online)',
+      'Travel and medical insurance',
+      'Optional hot air balloon safari over Maasai Mara (USD $450 per person)',
+      'Tips and gratuities for guide and lodge staff (suggested $15-20 per person per day)',
+      'Personal expenses and souvenirs',
+      'Premium alcoholic beverages beyond house selection',
+      'Spa treatments beyond complimentary massage',
+      'Any activities not mentioned in inclusions',
+    ],
+    
+    itinerary: [
+      {
+        day: 1,
+        title: 'Nairobi to Olare Mara Kempinski - Luxury Safari Begins',
+        description: 'Your exclusive luxury Kenya safari begins with pickup from your Nairobi hotel or Jomo Kenyatta International Airport at 7:00 AM. Enjoy the scenic 5-6 hour drive to the Maasai Mara region, traveling through the Great Rift Valley with a stopover at the spectacular viewpoint for photos and refreshments. Arrive at the prestigious 5-star Olare Mara Kempinski in time for a gourmet lunch (around 1:00 PM). Check into your luxurious tented suite with floor-to-ceiling windows overlooking the Olare Motorogi Conservancy. The Olare Mara Kempinski is one of the most exclusive properties in Kenya, featuring just 10 opulent tents with private decks, outdoor bathtubs, and personalized butler service. After settling in and a brief rest, embark on your first afternoon game drive (4:00 PM - 7:00 PM) in the private Olare Motorogi Conservancy - an exclusive 33,000-acre wildlife haven adjacent to the Maasai Mara Reserve with just 6 camps and limited vehicle access, ensuring uncrowded, intimate wildlife encounters. Your expert guide will help spot the Big Five, massive elephant herds, graceful giraffes, and various antelope species. The conservancy offers walking safaris and off-road driving privileges not permitted in the main reserve. Enjoy sundowner cocktails at a scenic spot as the sun sets over the endless savanna. Return to camp for your first bush dinner under the African stars, followed by an evening around the campfire. Overnight in supreme luxury.',
+        meals: 'Lunch, Dinner, Drinks',
+        accommodation: 'Olare Mara Kempinski (5-Star Luxury Tented Camp)',
+      },
+      {
+        day: 2,
+        title: 'Full Day Olare Motorogi Conservancy - Private Game Viewing',
+        description: 'Rise early for an optional sunrise game drive (6:30 AM - 10:00 AM) when predators are most active and the savanna comes alive with golden morning light. The private conservancy offers exceptional predator sightings with resident lion prides, leopards often spotted in acacia trees, and the occasional cheetah. Return to camp for a sumptuous brunch and leisure time to relax, enjoy your complimentary bespoke massage at the spa, read by the pool, or simply watch wildlife from your private deck. After lunch and a siesta, head out for an extensive afternoon game drive (4:00 PM - 7:00 PM) exploring different areas of the conservancy. Your guide uses radio communication with other guides to locate special sightings - perhaps a leopard with cubs or a pride of lions on the hunt. The conservancy\'s exclusive nature means you\'ll often have sightings to yourselves. Enjoy sundowner drinks and canapés at a scenic location before returning for dinner. Optional: Arrange a romantic private bush dinner setup just for your party. Overnight at Olare Mara Kempinski.',
+        meals: 'Breakfast, Lunch, Dinner, Drinks',
+        accommodation: 'Olare Mara Kempinski (5-Star Luxury Tented Camp)',
+      },
+      {
+        day: 3,
+        title: 'Olare Conservancy - Bush Walks & Maasai Cultural Experience',
+        description: 'Today offers a mix of activities showcasing the conservancy\'s diversity. Begin with a guided bush walk (7:00 AM - 9:00 AM) accompanied by an armed ranger and expert naturalist. Walking in the African bush provides an entirely different perspective - tracking animals on foot, learning about smaller creatures, insects, plants, and medicinal uses of vegetation. You\'ll gain appreciation for the intricate ecosystem beyond the big game. Return to camp for breakfast and relaxation. Optional: Take another game drive OR enjoy a leisurely morning at camp with its infinity pool, library, and wildlife viewing from the comfort of your tent. After lunch, visit a traditional Maasai village (3:00 PM - 5:00 PM) to learn about their fascinating semi-nomadic culture, witness traditional jumping dances (adumu), see inside a manyatta (traditional house made of cow dung and mud), and purchase authentic handcrafted beadwork directly from Maasai women artisans. The Maasai have coexisted with wildlife for centuries, and your visit supports community development. Evening game drive (5:30 PM - 7:30 PM) for any species you may have missed. Tonight enjoy a special bush dinner setup with lanterns, gourmet cuisine, and the sounds of the African night. Overnight at Olare Mara Kempinski.',
+        meals: 'Breakfast, Lunch, Dinner, Drinks',
+        accommodation: 'Olare Mara Kempinski (5-Star Luxury Tented Camp) - FREE NIGHT with Early Bird Offer',
+      },
+      {
+        day: 4,
+        title: 'Olare Mara to Lake Nakuru - Flamingo Paradise',
+        description: 'After a leisurely breakfast and a final morning at this extraordinary camp (optional short game drive 7:00-9:00 AM), check out around 10:00 AM and begin the journey to Lake Nakuru National Park (approximately 5-6 hours drive, 280km). Travel through the scenic Great Rift Valley, passing rural Maasai villages and agricultural lands. Stop for lunch at a local restaurant en route. Arrive at Lake Nakuru and check into The Cliff Nakuru, a luxury lodge perched dramatically on a cliff with sweeping views over Lake Nakuru below (around 4:00 PM). Enjoy welcome drinks and settle into your comfortable room. Late afternoon (5:00 PM - 6:30 PM), enter Lake Nakuru National Park for your first game drive. The park is famous for its incredible birdlife, particularly the massive flocks of lesser flamingos that sometimes number over a million, creating a stunning pink shoreline (best November-March when water alkalinity is optimal). Even when flamingo numbers are lower, the park hosts over 400 other bird species including pelicans, cormorants, and marabou storks. Lake Nakuru is also a rhino sanctuary with one of Kenya\'s highest concentrations of both black and white rhinos - sightings are almost guaranteed. Also spot Rothschild giraffes (rare subspecies), waterbucks, zebras, and if lucky, leopards in the acacia forests. Return to The Cliff for dinner with panoramic views. Overnight at The Cliff.',
+        meals: 'Breakfast, Lunch, Dinner',
+        accommodation: 'The Cliff Nakuru (Premium Lodge)',
+      },
+      {
+        day: 5,
+        title: 'Lake Nakuru to Amboseli - Under Kilimanjaro\'s Shadow',
+        description: 'After early breakfast (7:00 AM), enjoy a final morning game drive in Lake Nakuru (7:30 AM - 10:00 AM) to spot any species missed yesterday and capture beautiful morning photographs of the lake and wildlife. Visit Baboon Cliff for spectacular panoramic views over the entire lake and surrounding landscape. Exit the park around 10:30 AM and begin the journey to Amboseli National Park (approximately 6-7 hours, 400km via Nairobi). Stop in Nairobi for lunch at a nice restaurant (around 1:00 PM). Continue the drive south toward the Tanzania border and Amboseli. As you approach, the landscape transforms into open savanna with the magnificent snow-capped peak of Mount Kilimanjaro dominating the horizon (weather permitting - best views early morning and late evening before clouds obscure it). Arrive at Ol Tukai Lodge in Amboseli around 5:00 PM for check-in. Ol Tukai is Amboseli\'s premier lodge, located in the heart of the park with rooms offering direct views of Kilimanjaro and wildlife roaming the grounds. Quick freshen-up before an evening game drive (5:30 PM - 7:00 PM). Amboseli is famous for its massive elephant herds - some of the largest bulls in Kenya with impressively long tusks. Watch herds of 50+ elephants moving across the plains with Kilimanjaro as backdrop - one of Africa\'s most iconic safari scenes. Return to lodge for dinner. Overnight at Ol Tukai Lodge.',
+        meals: 'Breakfast, Lunch, Dinner',
+        accommodation: 'Ol Tukai Lodge Amboseli (Premium Lodge)',
+      },
+      {
+        day: 6,
+        title: 'Full Day Amboseli - Elephant Paradise & Kili Views',
+        description: 'Wake before sunrise (5:30 AM) for the best time to see Mount Kilimanjaro clearly - early morning before clouds gather around the summit. Depart for sunrise game drive (6:00 AM - 10:00 AM) positioning yourselves for stunning photographs of elephants with Kilimanjaro in background. Amboseli offers some of the world\'s best elephant photography opportunities. The park\'s five distinct habitats - open plains, acacia woodland, swamps, marshland, and Lake Amboseli - support diverse wildlife including large buffalo herds, wildebeest, zebras, gazelles, and predators. Drive to the park\'s swamps fed by underground springs from Kilimanjaro\'s melting snow - these permanent water sources attract concentrations of wildlife even in dry season. Watch hippos wallowing and elephants bathing. Return to lodge for breakfast around 10:30 AM. Midday at leisure - relax by the pool, enjoy the lodge\'s facilities, or simply watch wildlife from your room or the viewing deck. After lunch and siesta, another game drive (4:00 PM - 7:00 PM) exploring different areas. Optional: hike Observation Hill (short 30-minute walk) for 360-degree panoramic views of the entire park, lake, swamps, and of course Kilimanjaro. Sundowner drinks at a scenic spot before returning to lodge. Farewell dinner tonight. Overnight at Ol Tukai Lodge.',
+        meals: 'Breakfast, Lunch, Dinner',
+        accommodation: 'Ol Tukai Lodge Amboseli (Premium Lodge)',
+      },
+      {
+        day: 7,
+        title: 'Amboseli Final Morning - Last Elephant Encounters',
+        description: 'One final early morning game drive (6:00 AM - 9:00 AM) to bid farewell to Amboseli and its magnificent elephants, and hopefully catch one last clear view of Kilimanjaro at sunrise. This morning offers final opportunities for any photographs you may have missed. Return to lodge for hearty breakfast (9:30 AM) and pack up. Check out around 10:30 AM and begin the drive back to Nairobi (approximately 4 hours, 240km). Stop en route at Emali or similar for lunch and restrooms. Arrive in Nairobi by mid-afternoon (2:30-3:00 PM). Depending on your onward plans: Drop-off at your Nairobi hotel for those extending stay, OR transfer to Jomo Kenyatta International Airport for evening/night departures (flights after 6:00 PM recommended). If you have a late evening flight, optional activities include visiting the Giraffe Centre, Karen Blixen Museum, or lunch at the famous Carnivore Restaurant. Overnight at Nairobi hotel if continuing.',
+        meals: 'Breakfast, Lunch',
+        accommodation: 'Nairobi hotel (own arrangement) or Depart',
+      },
+      {
+        day: 8,
+        title: 'Departure - Kwaheri Kenya!',
+        description: 'If you overnight in Nairobi, enjoy a leisurely breakfast and final morning in Kenya\'s capital. Depending on your flight schedule, optional morning activities include last-minute shopping at Kazuri Beads, Maasai Market (if it\'s a market day), or Village Market shopping mall. Airport transfer for your international departure flight. Your luxury 8-day Kenya safari concludes with unforgettable memories of the Big Five, magnificent elephants, Kilimanjaro\'s majesty, and the exclusive luxury of Olare Mara Kempinski. Kwaheri (goodbye) and karibu tena (welcome again)!',
+        meals: 'Breakfast',
+        accommodation: 'None (end of tour)',
+      },
+    ],
+    
+    faqs: [
+      {
+        question: 'What makes this luxury safari different from standard safaris?',
+        answer: 'This is a premium luxury experience featuring: 1) OLARE MARA KEMPINSKI - one of Kenya\'s most exclusive 5-star properties with only 10 tents, personal butler service, and all-inclusive amenities. 2) PRIVATE CONSERVANCY - game drives in the exclusive Olare Motorogi Conservancy with just 6 camps and limited vehicles, ensuring uncrowded, intimate wildlife encounters and privileges like off-road driving and walking safaris not available in the main Maasai Mara Reserve. 3) ALL-INCLUSIVE - meals, drinks, laundry, spa treatment included (not typical in standard safaris). 4) SPECIAL OFFER - Pay for 2 nights, get 1 FREE at the Kempinski (saving over $1,000 per person). 5) PREMIUM ACCOMMODATIONS - all three properties (Kempinski, The Cliff, Ol Tukai) are top-tier. This is bucket-list luxury safari for special occasions, honeymoons, or travelers seeking the finest Kenya offers.',
+      },
+      {
+        question: 'Is the "Pay for 2 Nights, Get 1 Free" offer really included in the $6,480 price?',
+        answer: 'YES! The $6,480 per person price already reflects the EARLY BIRD OFFER discount. Without this offer, the safari would cost significantly more (standard rates for 3 nights at Olare Mara Kempinski alone exceed $4,500 per person). This offer is valid for bookings made before the offer expiry date (30th June 2026) for travel throughout the year. The offer is subject to availability, so early booking is essential - the Kempinski has only 10 tents and books up months in advance. Once you confirm, your rate is locked in. This represents exceptional value for a luxury safari of this caliber.',
+      },
+      {
+        question: 'What is Olare Motorogi Conservancy and why is it better than the main Maasai Mara?',
+        answer: 'Olare Motorogi Conservancy is a private 33,000-acre wildlife area directly bordering the Maasai Mara National Reserve\'s northwestern edge. It\'s managed by local Maasai landowners who lease their land for conservation instead of cattle grazing. ADVANTAGES OVER MAIN RESERVE: 1) EXCLUSIVITY - only 6 camps with maximum ~60 guests vs. thousands in main reserve, 2) VEHICLE LIMITS - strict limits on vehicles per sighting (often just your vehicle alone), 3) OFF-ROAD DRIVING - allowed here, not in main reserve (better predator tracking), 4) NIGHT DRIVES - permitted (spot nocturnal animals), 5) WALKING SAFARIS - allowed with armed guides, 6) SAME WILDLIFE - animals freely roam between conservancy and reserve (no fences), so you see all the same species including migration, but in exclusive setting. The conservancy offers the Maasai Mara experience without crowds - ultimate luxury safari.',
+      },
+      {
+        question: 'Can I see the Great Migration on this safari?',
+        answer: 'It depends on timing. The Great Migration is present in the Maasai Mara region from approximately July through October, with peak river crossings August-September. If you travel during these months, you\'ll witness millions of wildebeest, zebras, and gazelles in the Olare Conservancy and Mara Reserve, including dramatic Mara River crossings. HOWEVER, even outside migration season, Olare offers phenomenal year-round wildlife viewing - the conservancy has resident populations of lions, leopards, elephants, buffaloes, and all plains game. Many experienced safari-goers prefer visiting outside migration months (January-June, November-December) to avoid peak season crowds, enjoy lower rates, and experience the same incredible wildlife without the "tourist circus" of migration season. Either way, this luxury safari delivers world-class game viewing.',
+      },
+      {
+        question: 'Is 8 days too long for a safari? Will I get bored?',
+        answer: 'No! This 8-day itinerary is perfectly paced visiting three distinct Kenyan destinations with different ecosystems, wildlife concentrations, and experiences. OLARE MARA (3 nights): private conservancy game drives, bush walks, cultural visits, ultimate luxury. LAKE NAKURU (2 nights): flamingos, rhino sanctuary, birdlife, Rift Valley scenery. AMBOSELI (2 nights): elephant photography paradise, Kilimanjaro views, swamps, different landscape. Each destination offers unique highlights preventing monotony. The luxury accommodations provide comfortable bases to relax between activities. Many guests wish they had MORE time. If 8 days feels too long, we can customize to 6 days (removing Lake Nakuru), but most travelers find the full circuit perfectly balanced showcasing Kenya\'s diversity.',
+      },
+      {
+        question: 'What should I pack for this luxury safari?',
+        answer: 'CLOTHING: Neutral-colored casual wear (khaki, beige, olive, brown) - avoid bright colors and camouflage. Long pants and long-sleeved shirts (sun/insect protection), light jacket or fleece (early morning drives can be cold), comfortable walking shoes, sunhat, sunglasses. SMART CASUAL for dinners at Olare Mara Kempinski (no formal wear required but nicer than day clothes). ESSENTIALS: Good camera with telephoto lens (200-400mm), extra batteries and memory cards, binoculars, sunscreen SPF 50+, insect repellent, personal medications. LUXURY PERKS: laundry service included so pack light, toiletries provided at all properties, charging facilities available. OPTIONAL: flashlight/headlamp, e-reader for downtime, notebook for journaling. Luggage limit: soft bags recommended (easier for vehicle packing), typically 15kg limit if flying between destinations.',
+      },
+      {
+        question: 'Is this safari suitable for families with children?',
+        answer: 'Yes! This luxury safari is excellent for families. All accommodations welcome children (minimum ages vary by property - Olare Mara Kempinski typically 8+, others younger). FAMILY-FRIENDLY FEATURES: 1) EASY ACTIVITIES - game drives are vehicle-based (safe for kids), 2) SHORT DRIVING DAYS - broken up with stops, 3) COMFORTABLE ACCOMMODATIONS - spacious tents/rooms, pools at properties, 4) ALL-INCLUSIVE - no worrying about food, picky eaters accommodated, 5) ENGAGING WILDLIFE - children love seeing elephants, lions, giraffes in the wild. Some properties offer family tents/connecting rooms. Guides adjust commentary for children. Consider children\'s attention spans - 8+ works best. Teenagers especially love the experience. Private safaris allow flexibility for family needs. Discounts available for children under 12.',
+      },
+      {
+        question: 'What is your cancellation policy for this luxury safari?',
+        answer: 'CANCELLATION FEES: Bookings canceled 90+ days before departure: 25% cancellation fee (lose deposit). 60-89 days: 50% cancellation fee. 30-59 days: 75% cancellation fee. Less than 30 days: 100% (no refund). IMPORTANT: Once Olare Mara Kempinski confirms your booking (typically 7-14 days after deposit), their strict cancellation policies apply - luxury properties have high costs and limited inventory. RECOMMENDATION: Purchase comprehensive travel insurance covering trip cancellations, medical emergencies, and evacuation (mandatory for Kenya). Insurance should be bought at time of booking to cover unforeseen circumstances (illness, family emergencies, etc.). We can recommend insurance providers. Early booking secures your spot at this exclusive property and special offer rate.',
+      },
+    ],
+    
+    requirements: [
+      'Valid passport with at least 6 months validity from return date',
+      'Kenya eVisa ($50 USD) - apply online at evisa.go.ke 7-14 days before travel',
+      'Yellow fever vaccination certificate (required if arriving from endemic countries)',
+      'Comprehensive travel insurance covering medical emergencies, evacuation, and trip cancellation',
+      'Good physical health suitable for 4×4 vehicle travel',
+      'Camera with telephoto lens (200-400mm recommended) for wildlife photography',
+      'Binoculars for enhanced wildlife and bird viewing',
+      'Sun protection: hat, sunglasses, SPF 50+ sunscreen',
+      'Insect repellent with DEET',
+      'Neutral-colored clothing (khaki, beige, olive) - avoid bright colors',
+    ],
+    
+    coverImage: '/images/googleads/IMG-20251115-WA0011.jpg',
+    gallery: [
+      '/images/googleads/IMG-20251115-WA0011.jpg',
+      '/images/googleads/IMG-20251115-WA0012.jpg',
+      '/images/googleads/IMG-20251115-WA0013.jpg',
+      '/images/googleads/IMG-20251115-WA0014.jpg',
+      '/images/googleads/IMG-20251115-WA0015.jpg',
+      '/images/googleads/IMG-20251115-WA0016.jpg',
+      '/images/googleads/IMG-20251115-WA0017.jpg',
+      '/images/googleads/WhatsApp Image 2025-11-15 at 17.18.24_eca29e7c.jpg',
+      '/images/googleads/WhatsApp Image 2025-11-15 at 17.18.26_f6c395d7.jpg',
+      '/images/googleads/WhatsApp Image 2025-11-15 at 17.18.27_30957211.jpg',
+    ],
+    
+    metaDescription: 'Luxury 8-day Kenya safari: Olare Mara Kempinski 5-star (Pay 2 Get 1 FREE), Lake Nakuru flamingos & rhinos, Amboseli elephants under Kilimanjaro. Early Bird Offer valid until June 2026. Book your dream luxury African safari!',
+    keywords: [
+      'luxury Kenya safari',
+      'Olare Mara Kempinski',
+      '5 star safari Kenya',
+      'Maasai Mara luxury',
+      'Kenya safari packages',
+      'Amboseli Kilimanjaro',
+      'Lake Nakuru safari',
+      'luxury African safari',
+      'Kenya honeymoon safari',
+      'exclusive safari Kenya',
+      'private conservancy safari',
+      'Kenya Big Five luxury',
+    ],
+  },
+  
   // ==========================================
   // KENYA TOURS (4 tours)
   // ==========================================
@@ -3933,5 +4167,19 @@ export function searchTours(query: string): Tour[] {
  * Get featured tours (e.g., for homepage)
  */
 export function getFeaturedTours(limit: number = 3): Tour[] {
-  return tours.filter(tour => tour.published).slice(0, limit);
+  return tours.filter(tour => tour.published && tour.featured).slice(0, limit);
+}
+
+/**
+ * Get promoted tours (for Google Ads campaigns)
+ */
+export function getPromotedTours(limit: number = 10): Tour[] {
+  return tours.filter(tour => tour.published && tour.promoted).slice(0, limit);
+}
+
+/**
+ * Get all tours with special offers
+ */
+export function getToursWithOffers(): Tour[] {
+  return tours.filter(tour => tour.published && tour.specialOffer);
 }
