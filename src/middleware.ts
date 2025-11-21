@@ -4,21 +4,21 @@ import { getToken } from 'next-auth/jwt';
 
 // Security Headers
 function addSecurityHeaders(response: NextResponse) {
-  // Prevent clickjacking
-  response.headers.set('X-Frame-Options', 'DENY');
-  
+  // Allow embedding in novyrix.com for portfolio showcase, deny others
+  response.headers.set('X-Frame-Options', 'ALLOW-FROM https://novyrix.com');
+
   // Prevent MIME sniffing
   response.headers.set('X-Content-Type-Options', 'nosniff');
-  
+
   // XSS Protection
   response.headers.set('X-XSS-Protection', '1; mode=block');
-  
+
   // Referrer Policy
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  
+
   // Permissions Policy
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  
+
   // Content Security Policy
   response.headers.set(
     'Content-Security-Policy',
@@ -28,9 +28,10 @@ function addSecurityHeaders(response: NextResponse) {
     "img-src 'self' data: https: blob:; " +
     "font-src 'self' data:; " +
     "connect-src 'self' https://www.google-analytics.com https://www.google.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com https://region1.analytics.google.com; " +
-    "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net;"
+    "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net; " +
+    "frame-ancestors 'self' https://novyrix.com https://*.novyrix.com;"
   );
-  
+
   return response;
 }
 
@@ -42,9 +43,9 @@ export async function middleware(request: NextRequest) {
   const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
 
   if (isProtectedRoute) {
-    const token = await getToken({ 
+    const token = await getToken({
       req: request,
-      secret: process.env.NEXTAUTH_SECRET 
+      secret: process.env.NEXTAUTH_SECRET
     });
 
     // If not logged in, redirect to login
