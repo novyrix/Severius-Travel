@@ -3,6 +3,8 @@
  * Documentation: https://developer.pesapal.com/
  */
 
+import { logger } from '../logger';
+
 interface PesaPalConfig {
   consumerKey: string;
   consumerSecret: string;
@@ -92,7 +94,7 @@ class PesaPalService {
 
     logger.log('🔐 Requesting PesaPal token from:', `${this.baseUrl}/api/Auth/RequestToken`);
     logger.log('📤 With consumer key:', this.config.consumerKey?.substring(0, 10) + '...');
-    
+
     const response = await fetch(`${this.baseUrl}/api/Auth/RequestToken`, {
       method: 'POST',
       headers: {
