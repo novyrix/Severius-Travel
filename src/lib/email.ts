@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { logger } from './logger';
 
 // Initialize Resend with API key from environment
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -18,8 +19,8 @@ interface SendEmailOptions {
  */
 export async function sendEmail({ to, subject, html, text }: SendEmailOptions) {
   if (!process.env.RESEND_API_KEY) {
-    console.warn('⚠️  RESEND_API_KEY not configured. Email not sent.');
-    console.log('📧 Would send email:', { to, subject });
+    logger.warn('⚠️  RESEND_API_KEY not configured. Email not sent.');
+    logger.log('📧 Would send email:', { to, subject });
     return { success: false, error: 'Email service not configured' };
   }
 
@@ -32,10 +33,10 @@ export async function sendEmail({ to, subject, html, text }: SendEmailOptions) {
       text: text || undefined,
     });
 
-    console.log('✅ Email sent successfully:', data);
+    logger.log('✅ Email sent successfully:', data);
     return { success: true, data };
   } catch (error) {
-    console.error('❌ Error sending email:', error);
+    logger.error('❌ Error sending email:', error);
     return { success: false, error };
   }
 }

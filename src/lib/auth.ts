@@ -3,6 +3,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { prisma } from './prisma';
 import { compareSync } from 'bcryptjs';
+import { logger } from './logger';
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -16,35 +17,35 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(creds) {
         if (!creds?.email || !creds?.password) {
-          console.log('❌ Missing credentials');
+          logger.log('❌ Missing credentials');
           return null;
         }
         
-        console.log('🔍 Attempting login for:', creds.email);
+        logger.log('🔍 Attempting login for:', creds.email);
         
         const user = await prisma.user.findUnique({ 
           where: { email: creds.email.toLowerCase() } 
         });
         
         if (!user) {
-          console.log('❌ User not found:', creds.email);
+          logger.log('❌ User not found:', creds.email);
           return null;
         }
         
         if (!user.hashedPassword) {
-          console.log('❌ User has no password:', creds.email);
+          logger.log('❌ User has no password:', creds.email);
           return null;
         }
         
-        console.log('🔐 Verifying password...');
+        logger.log('🔐 Verifying password...');
         const ok = compareSync(creds.password, user.hashedPassword);
         
         if (!ok) {
-          console.log('❌ Invalid password for:', creds.email);
+          logger.log('❌ Invalid password for:', creds.email);
           return null;
         }
         
-        console.log('✅ Login successful for:', creds.email);
+        logger.log('✅ Login successful for:', creds.email);
         return { 
           id: user.id, 
           email: user.email ?? undefined, 

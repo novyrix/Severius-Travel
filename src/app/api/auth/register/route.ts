@@ -57,7 +57,6 @@ export async function POST(req: NextRequest) {
     });
 
     if (honeypotCheck.isBot) {
-      console.warn(`Bot detected in registration: ${honeypotCheck.reason}`, { ip: clientIp });
       // Return success to not alert the bot
       return NextResponse.json(
         { message: 'Registration successful! Please check your email.' },
@@ -68,7 +67,6 @@ export async function POST(req: NextRequest) {
     // Validate form timing
     const timingCheck = validateFormTiming(body[HONEYPOT_FIELDS.timestamp]);
     if (!timingCheck.valid) {
-      console.warn(`Suspicious timing in registration: ${timingCheck.reason}`, { ip: clientIp });
       // Return success to not alert the bot
       return NextResponse.json(
         { message: 'Registration successful! Please check your email.' },
@@ -79,7 +77,6 @@ export async function POST(req: NextRequest) {
     // Detect suspicious patterns
     const suspiciousCheck = detectSuspiciousPatterns({ name, email });
     if (suspiciousCheck.suspicious) {
-      console.warn('Suspicious registration patterns detected:', suspiciousCheck.reasons, { ip: clientIp });
       // Allow but log for review
     }
 

@@ -73,7 +73,6 @@ I would like to proceed with this booking and arrange payment details.
       }, 2000);
       
     } catch (error) {
-      console.error('WhatsApp payment error:', error);
       alert('Failed to initiate WhatsApp payment. Please try again.');
       setLoading(false);
     }

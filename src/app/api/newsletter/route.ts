@@ -46,7 +46,6 @@ export async function POST(request: Request) {
     });
 
     if (honeypotCheck.isBot) {
-      console.warn(`Bot detected in newsletter subscription: ${honeypotCheck.reason}`, { ip: clientIp });
       // Return success to not alert the bot
       return NextResponse.json(
         { message: 'Successfully subscribed to newsletter!' },
@@ -57,7 +56,6 @@ export async function POST(request: Request) {
     // Validate form timing
     const timingCheck = validateFormTiming(body[HONEYPOT_FIELDS.timestamp]);
     if (!timingCheck.valid) {
-      console.warn(`Suspicious timing in newsletter: ${timingCheck.reason}`, { ip: clientIp });
       return NextResponse.json(
         { message: 'Successfully subscribed to newsletter!' },
         { status: 201 }
@@ -117,9 +115,8 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.error('Newsletter subscription error:', error);
     return NextResponse.json(
-      { error: 'Failed to subscribe. Please try again later.' },
+      { error: 'Subscription failed. Please try again.' },
       { status: 500 }
     );
   }

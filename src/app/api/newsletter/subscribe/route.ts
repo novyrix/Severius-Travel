@@ -58,7 +58,6 @@ export async function POST(request: NextRequest) {
       message: 'Successfully subscribed to newsletter!',
     });
   } catch (error) {
-    console.error('Newsletter subscription error:', error);
     return NextResponse.json(
       { error: 'Failed to subscribe. Please try again.' },
       { status: 500 }

@@ -90,8 +90,8 @@ class PesaPalService {
       return this.token;
     }
 
-    console.log('🔐 Requesting PesaPal token from:', `${this.baseUrl}/api/Auth/RequestToken`);
-    console.log('📤 With consumer key:', this.config.consumerKey?.substring(0, 10) + '...');
+    logger.log('🔐 Requesting PesaPal token from:', `${this.baseUrl}/api/Auth/RequestToken`);
+    logger.log('📤 With consumer key:', this.config.consumerKey?.substring(0, 10) + '...');
     
     const response = await fetch(`${this.baseUrl}/api/Auth/RequestToken`, {
       method: 'POST',
@@ -107,15 +107,15 @@ class PesaPalService {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('❌ PesaPal auth failed:', response.status, response.statusText, errorText);
+      logger.error('❌ PesaPal auth failed:', response.status, response.statusText, errorText);
       throw new Error(`PesaPal auth failed: ${response.status} ${response.statusText}`);
     }
 
     const data: PesaPalAuthResponse = await response.json();
-    console.log('🔑 PesaPal auth response:', JSON.stringify(data, null, 2));
+    logger.log('🔑 PesaPal auth response:', JSON.stringify(data, null, 2));
 
     if (data.error || data.status !== '200') {
-      console.error('❌ PesaPal auth error:', data);
+      logger.error('❌ PesaPal auth error:', data);
       throw new Error(`PesaPal auth error: ${data.message || data.error || 'Unknown error'}`);
     }
 

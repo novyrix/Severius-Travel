@@ -43,7 +43,6 @@ export async function GET(request: NextRequest) {
     // Payment pending
     return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/payment/pending?ref=${merchantReference}`);
   } catch (error) {
-    console.error('Payment callback error:', error);
     return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/payment/failed?error=processing_error`);
   }
 }

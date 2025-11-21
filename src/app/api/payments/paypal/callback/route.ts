@@ -51,13 +51,11 @@ export async function GET(request: NextRequest) {
         );
       }
     } catch (error) {
-      console.error('PayPal capture error:', error);
       return NextResponse.redirect(
         new URL(`/payment/${bookingRef}?error=Payment capture failed`, request.url)
       );
     }
   } catch (error) {
-    console.error('Payment callback error:', error);
     return NextResponse.redirect(
       new URL('/payment/error?message=Payment processing error', request.url)
     );

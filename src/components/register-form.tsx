@@ -74,17 +74,6 @@ export function RegisterForm() {
 
       const data = await response.json();
 
-      console.log("📦 Registration API response:", {
-        ok: response.ok,
-        status: response.status,
-        data: data
-      });
-      console.log("🔍 Checking flags:", {
-        hasSuccess: data.success,
-        hasAutoLogin: data.autoLogin,
-        fullData: JSON.stringify(data, null, 2)
-      });
-
       if (!response.ok) {
         setError(data.error || data.message || "Failed to create account");
         setIsLoading(false);

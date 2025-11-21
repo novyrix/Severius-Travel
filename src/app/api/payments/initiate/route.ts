@@ -47,7 +47,6 @@ export async function POST(request: NextRequest) {
     // Check if PesaPal is configured
     if (!pesapalService.isConfigured()) {
       // In development without PesaPal configured, simulate payment
-      console.warn('PesaPal not configured. Simulating payment in development mode.');
       console.log('To configure PesaPal, set PESAPAL_CONSUMER_KEY and PESAPAL_CONSUMER_SECRET in .env');
       
       // Update booking status to PAID (for development only)
@@ -67,21 +66,16 @@ export async function POST(request: NextRequest) {
     
     // If IPN ID is not set, register IPN automatically
     if (!notificationId) {
-      console.log('IPN ID not found, registering IPN...');
       try {
         notificationId = await pesapalService.registerIPN();
-        console.log('IPN registered successfully:', notificationId);
         console.log('⚠️ Please add this to your .env file: PESAPAL_IPN_ID=' + notificationId);
       } catch (error) {
-        console.error('Failed to register IPN:', error);
         return NextResponse.json(
           { error: 'Failed to register payment notification URL', details: error instanceof Error ? error.message : 'Unknown error' },
           { status: 500 }
         );
       }
     }
-
-    console.log('Submitting payment order to PesaPal...');
     console.log('Booking:', { ref: booking.ref, amount: booking.amount, currency: 'USD' });
 
     // Submit payment order to PesaPal
@@ -97,15 +91,11 @@ export async function POST(request: NextRequest) {
       phoneNumber: '+254700000000', // You should collect this during booking
       notificationId,
     });
-
-    console.log('Payment response received:', paymentResponse);
-
     return NextResponse.json({
       orderTrackingId: paymentResponse.order_tracking_id,
       redirectUrl: paymentResponse.redirect_url,
     });
   } catch (error) {
-    console.error('Payment initiation error:', error);
     return NextResponse.json(
       { error: 'Failed to initiate payment', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }

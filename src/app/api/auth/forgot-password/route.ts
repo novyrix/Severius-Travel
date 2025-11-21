@@ -186,7 +186,6 @@ export async function POST(req: NextRequest) {
 
     // Always return success to prevent email enumeration
     if (!user) {
-      console.log('❌ Password reset requested for non-existent email:', normalizedEmail);
       return NextResponse.json(
         {
           success: true,
@@ -219,9 +218,6 @@ export async function POST(req: NextRequest) {
     // Generate reset URL
     const baseUrl = process.env.NEXTAUTH_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     const resetUrl = `${baseUrl}/reset-password?token=${resetToken}`;
-    
-    console.log('🔗 Password reset URL:', resetUrl);
-
     // Send password reset email
     try {
       // Generate the email HTML

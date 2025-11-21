@@ -20,11 +20,11 @@ export default async function HomePage() {
   const allTours = getAllTours();
   const featuredTours = allTours.slice(0, 6); // Get first 6 tours
   const promotedTours = getPromotedTours(3); // Get promoted tours for special offers
-  
-  const posts = await prisma.post.findMany({ 
-    take: 3, 
+
+  const posts = await prisma.post.findMany({
+    take: 3,
     where: { published: true },
-    orderBy: { createdAt: 'desc' } 
+    orderBy: { createdAt: 'desc' }
   });
 
   // Get unique countries from tours
@@ -41,7 +41,7 @@ export default async function HomePage() {
           {/* Background decorative elements */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[rgb(212,175,55)]/20 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
-          
+
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             {/* Section Header */}
             <div className="text-center mb-12">
@@ -154,8 +154,8 @@ export default async function HomePage() {
                           </div>
 
                           {/* CTA Button */}
-                          <Button 
-                            size="lg" 
+                          <Button
+                            size="lg"
                             className="w-full bg-gradient-to-r from-[rgb(212,175,55)] to-amber-600 hover:from-amber-600 hover:to-[rgb(212,175,55)] text-white font-bold shadow-lg group-hover:shadow-xl transition-all"
                           >
                             View Details & Book Now
@@ -219,7 +219,7 @@ export default async function HomePage() {
                 'Namibia': 'NA',
                 'Zambia': 'ZM',
               };
-              
+
               const countryImageMap: Record<string, string> = {
                 'Kenya': '/images/destinations/Kenya.jpg',
                 'Tanzania': '/images/destinations/Tanzania.jpg',
@@ -231,7 +231,7 @@ export default async function HomePage() {
                 'Namibia': '/images/destinations/Namibia.jpg',
                 'Zambia': '/images/destinations/zambia.jpg',
               };
-              
+
               const countryDescriptions: Record<string, string> = {
                 'Kenya': 'Safari adventures, wildlife & the Great Migration',
                 'Tanzania': 'Serengeti plains, Kilimanjaro & Zanzibar beaches',
@@ -243,14 +243,14 @@ export default async function HomePage() {
                 'Namibia': 'Desert dunes, Etosha wildlife & dramatic landscapes',
                 'Zambia': 'Walking safaris, Victoria Falls & South Luangwa',
               };
-              
+
               const countryCode = countryCodeMap[country] || 'KE';
               const imageUrl = countryImageMap[country] || countryImageMap['Kenya'];
               const tourCount = allTours.filter(t => t.country === country).length;
-              
+
               // Skip if no tours for this country
               if (tourCount === 0) return null;
-              
+
               return (
                 <Link key={country} href={`/tours?country=${countryCode}`}>
                   <div className="group relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer">
@@ -344,21 +344,21 @@ export default async function HomePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 text-xs text-brown-600 mb-3">
                         <Clock className="w-3.5 h-3.5" />
                         <span>5 min read</span>
                       </div>
-                      
+
                       <h3 className="text-xl font-bold text-brown-800 mb-3 group-hover:text-gold-600 transition-colors line-clamp-2 leading-snug">
                         {post.title}
                       </h3>
-                      
+
                       <p className="text-brown-600 text-sm line-clamp-3 leading-relaxed">
                         {post.excerpt || post.content.slice(0, 150) + '...'}
                       </p>
-                      
+
                       <div className="mt-4 pt-4 border-t border-brown-100">
                         <div className="flex items-center justify-between">
                           <span className="text-sm text-brown-500 font-medium">Read More</span>
@@ -376,9 +376,9 @@ export default async function HomePage() {
 
             <div className="text-center">
               <Link href="/blog">
-                <Button 
-                  variant="outline" 
-                  size="lg" 
+                <Button
+                  variant="outline"
+                  size="lg"
                   className="border-2 border-brown-600 text-brown-700 hover:bg-brown-50 hover:border-gold-600 hover:text-gold-700 transition-all duration-200"
                 >
                   Read More Stories

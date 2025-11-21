@@ -22,7 +22,13 @@ function addSecurityHeaders(response: NextResponse) {
   // Content Security Policy
   response.headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com;"
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com; " +
+    "style-src 'self' 'unsafe-inline'; " +
+    "img-src 'self' data: https: blob:; " +
+    "font-src 'self' data:; " +
+    "connect-src 'self' https://www.google-analytics.com https://www.google.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com https://region1.analytics.google.com; " +
+    "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net;"
   );
   
   return response;

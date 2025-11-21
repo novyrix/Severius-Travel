@@ -14,7 +14,7 @@ export interface Tour {
   priceKES: number;
   published: boolean;
   durationDays: number;
-  
+
   // Location
   country: string;
   countryCode: string;
@@ -22,20 +22,20 @@ export interface Tour {
   region: string;
   latitude?: number;
   longitude?: number;
-  
+
   // Tour details
   difficulty: 'Easy' | 'Moderate' | 'Challenging' | 'Strenuous';
   maxGroupSize: number;
   minGroupSize: number;
   ageRestriction?: string;
-  
+
   // Accommodation & Meals
   accommodationType: string;
   mealPlan: string;
-  
+
   // Timing
   bestMonths: string[];
-  
+
   // Rich content
   highlights: string[];
   inclusions: string[];
@@ -43,15 +43,15 @@ export interface Tour {
   itinerary: DayItinerary[];
   faqs: FAQ[];
   requirements: string[];
-  
+
   // Images
   coverImage: string;
   gallery: string[];
-  
+
   // SEO
   metaDescription: string;
   keywords: string[];
-  
+
   // Promotion & Featured
   featured?: boolean; // For homepage featured section
   promoted?: boolean; // For Google Ads campaigns
@@ -81,7 +81,7 @@ export const tours: Tour[] = [
   // ==========================================
   // PROMOTED/FEATURED TOURS (Google Ads Campaign)
   // ==========================================
-  
+
   {
     id: 'ke-luxury-circuit-001',
     title: 'Maasai Mara – Lake Nakuru – Amboseli | 7 Nights / 8 Days Luxury Safari',
@@ -93,14 +93,14 @@ export const tours: Tour[] = [
     priceKES: 850000,
     published: true,
     durationDays: 8,
-    
+
     // Promotion flags
     featured: true,
     promoted: true,
     specialOffer: 'EARLY BIRD OFFER: Pay for 2 Nights & Get 1 Night FREE at 5-Star Olare Mara Kempinski',
     offerValidUntil: '30th June 2026',
     badge: 'LIMITED TIME - LUXURY',
-    
+
     // Location
     country: 'Kenya',
     countryCode: 'KE',
@@ -108,17 +108,17 @@ export const tours: Tour[] = [
     region: 'East Africa',
     latitude: -1.2921,
     longitude: 36.8219,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'Suitable for all ages',
-    
+
     accommodationType: '5-Star Luxury Tented Camp & Premium Lodges',
     mealPlan: 'All-Inclusive (Breakfast, Lunch, Dinner, Drinks, Snacks)',
-    
+
     bestMonths: ['January', 'February', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    
+
     highlights: [
       '✓ 3 nights at 5-star Olare Mara Kempinski (with 1 night FREE - EARLY BIRD OFFER)',
       '✓ Private conservancy game drives in exclusive Olare Motorogi Conservancy',
@@ -133,7 +133,7 @@ export const tours: Tour[] = [
       '✓ All conservancy & national park fees covered',
       '✓ Optional: Hot air balloon safari over the Maasai Mara',
     ],
-    
+
     inclusions: [
       'All park entrance and conservancy fees (Olare Motorogi, Lake Nakuru, Amboseli)',
       'Professional English-speaking safari guide throughout',
@@ -154,7 +154,7 @@ export const tours: Tour[] = [
       'Flying Doctors emergency evacuation insurance',
       'Government taxes and levies',
     ],
-    
+
     exclusions: [
       'International flights to/from Kenya',
       'Kenya visa fees (USD $50 for most nationalities, apply online)',
@@ -166,7 +166,7 @@ export const tours: Tour[] = [
       'Spa treatments beyond complimentary massage',
       'Any activities not mentioned in inclusions',
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -225,7 +225,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)',
       },
     ],
-    
+
     faqs: [
       {
         question: 'What makes this luxury safari different from standard safaris?',
@@ -260,7 +260,7 @@ export const tours: Tour[] = [
         answer: 'CANCELLATION FEES: Bookings canceled 90+ days before departure: 25% cancellation fee (lose deposit). 60-89 days: 50% cancellation fee. 30-59 days: 75% cancellation fee. Less than 30 days: 100% (no refund). IMPORTANT: Once Olare Mara Kempinski confirms your booking (typically 7-14 days after deposit), their strict cancellation policies apply - luxury properties have high costs and limited inventory. RECOMMENDATION: Purchase comprehensive travel insurance covering trip cancellations, medical emergencies, and evacuation (mandatory for Kenya). Insurance should be bought at time of booking to cover unforeseen circumstances (illness, family emergencies, etc.). We can recommend insurance providers. Early booking secures your spot at this exclusive property and special offer rate.',
       },
     ],
-    
+
     requirements: [
       'Valid passport with at least 6 months validity from return date',
       'Kenya eVisa ($50 USD) - apply online at evisa.go.ke 7-14 days before travel',
@@ -273,7 +273,7 @@ export const tours: Tour[] = [
       'Insect repellent with DEET',
       'Neutral-colored clothing (khaki, beige, olive) - avoid bright colors',
     ],
-    
+
     coverImage: '/images/googleads/IMG-20251115-WA0011.jpg',
     gallery: [
       '/images/googleads/IMG-20251115-WA0011.jpg',
@@ -287,7 +287,7 @@ export const tours: Tour[] = [
       '/images/googleads/WhatsApp Image 2025-11-15 at 17.18.26_f6c395d7.jpg',
       '/images/googleads/WhatsApp Image 2025-11-15 at 17.18.27_30957211.jpg',
     ],
-    
+
     metaDescription: 'Luxury 8-day Kenya safari: Olare Mara Kempinski 5-star (Pay 2 Get 1 FREE), Lake Nakuru flamingos & rhinos, Amboseli elephants under Kilimanjaro. Early Bird Offer valid until June 2026. Book your dream luxury African safari!',
     keywords: [
       'luxury Kenya safari',
@@ -304,11 +304,11 @@ export const tours: Tour[] = [
       'Kenya Big Five luxury',
     ],
   },
-  
+
   // ==========================================
   // KENYA TOURS (4 tours)
   // ==========================================
-  
+
   {
     id: 'ke-maasai-mara-classic-001',
     title: 'Classic Maasai Mara Safari - 5 Days',
@@ -320,24 +320,24 @@ export const tours: Tour[] = [
     priceKES: 375000,
     published: true,
     durationDays: 5,
-    
+
     country: 'Kenya',
     countryCode: 'KE',
     city: 'Maasai Mara',
     region: 'East Africa',
     latitude: -1.5,
     longitude: 35.14,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'Suitable for all ages',
-    
+
     accommodationType: 'Luxury Tented Camp',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['July', 'August', 'September', 'October', 'January', 'February'],
-    
+
     highlights: [
       'Witness the Great Wildebeest Migration (July-October)',
       'Encounter all Big Five animals - lion, leopard, elephant, buffalo, rhino',
@@ -348,7 +348,7 @@ export const tours: Tour[] = [
       'Optional hot air balloon safari over the Mara plains',
       'Sundowner drinks in the African wilderness'
     ],
-    
+
     inclusions: [
       'All park entrance and conservation fees',
       'Professional English-speaking safari guide',
@@ -360,7 +360,7 @@ export const tours: Tour[] = [
       'Maasai village cultural visit',
       'Flying Doctors emergency evacuation insurance'
     ],
-    
+
     exclusions: [
       'International flights to/from Kenya',
       'Kenya visa fees (USD $50 for most nationalities)',
@@ -371,7 +371,7 @@ export const tours: Tour[] = [
       'Alcoholic and premium beverages',
       'Any activities not mentioned in inclusions'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -409,7 +409,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Will I see the Great Wildebeest Migration?',
@@ -444,7 +444,7 @@ export const tours: Tour[] = [
         answer: 'Most nationalities require a visa for Kenya. The eVisa costs USD $50 and must be obtained online at www.ecitizen.go.ke before travel (allow 7-14 days for processing). Some nationalities can obtain visa on arrival, but we recommend applying in advance to avoid delays. Your passport must be valid for at least 6 months beyond your intended stay. Children under 16 traveling with parents are exempt from visa fees. Contact us for specific requirements for your nationality.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with at least 6 months validity',
       'Kenya eVisa ($50 USD, apply at www.ecitizen.go.ke)',
@@ -453,7 +453,7 @@ export const tours: Tour[] = [
       'Good physical health suitable for 4×4 vehicle travel on rough roads',
       'Respect for wildlife and local communities'
     ],
-    
+
     coverImage: '/images/tours/Kenya Masaai Mara.jpg',
     gallery: [
       '/images/tours/Kenya Masaai Mara.jpg',
@@ -462,7 +462,7 @@ export const tours: Tour[] = [
       '/images/tours/Kenya Masaai Mara4.jpg',
       '/images/tours/Kenya Masaai Mara5.jpg',
     ],
-    
+
     metaDescription: 'Experience a 5-day luxury Maasai Mara safari in Kenya. Witness the Great Migration, see the Big Five, and stay in premium tented camps. Expert guides, cultural visits, and unforgettable wildlife encounters. Book your dream African safari today!',
     keywords: ['Maasai Mara safari', 'Kenya wildlife tour', 'Great Migration safari', 'Big Five Kenya', 'luxury safari Kenya', 'Maasai Mara tours', 'African safari vacation', 'Kenya safari packages', 'wildlife photography safari', 'Maasai cultural tour']
   },
@@ -478,24 +478,24 @@ export const tours: Tour[] = [
     priceKES: 255000,
     published: true,
     durationDays: 4,
-    
+
     country: 'Kenya',
     countryCode: 'KE',
     city: 'Amboseli',
     region: 'East Africa',
     latitude: -2.6527,
     longitude: 37.2606,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'Suitable for all ages. Excellent for families.',
-    
+
     accommodationType: 'Mid-Range Lodge',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'October', 'January', 'February'],
-    
+
     highlights: [
       'Iconic views of Mount Kilimanjaro, Africa\'s highest peak (5,895m)',
       'Close encounters with largest elephant herds in Kenya',
@@ -506,7 +506,7 @@ export const tours: Tour[] = [
       'Sundowner experiences with Kilimanjaro backdrop',
       'Opportunity to meet Maasai communities living around the park'
     ],
-    
+
     inclusions: [
       'All national park entrance and conservation fees',
       'Professional English-speaking safari guide/driver',
@@ -519,7 +519,7 @@ export const tours: Tour[] = [
       'Flying Doctors air ambulance cover',
       'Government taxes and levies'
     ],
-    
+
     exclusions: [
       'International and domestic flights',
       'Kenya visa ($50 USD e-Visa)',
@@ -531,7 +531,7 @@ export const tours: Tour[] = [
       'Any meals not specified in the itinerary',
       'Optional activities not mentioned'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -562,7 +562,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'When is the best time to see Mount Kilimanjaro clearly?',
@@ -597,7 +597,7 @@ export const tours: Tour[] = [
         answer: 'Amboseli is considered a low to moderate malaria risk area. The risk is highest during and just after rainy seasons (March-May, November). Most travelers take antimalarial medication as a precaution, though some opt not to due to the relatively lower risk compared to other African safari destinations. Consult your travel medicine doctor for personalized advice based on your health history and travel dates. Regardless, use insect repellent with DEET, wear long sleeves/pants in evening, and sleep under provided mosquito nets.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with minimum 6 months validity from return date',
       'Kenya e-Visa ($50) - apply online at www.ecitizen.go.ke 7-14 days before travel',
@@ -607,7 +607,7 @@ export const tours: Tour[] = [
       'Camera with telephoto lens (200-400mm ideal) for wildlife photography',
       'Sun protection (hat, sunscreen SPF 50+, sunglasses) essential'
     ],
-    
+
     coverImage: '/images/tours/Kenya Amboseli.jpg',
     gallery: [
       '/images/tours/Kenya Amboseli.jpg',
@@ -615,7 +615,7 @@ export const tours: Tour[] = [
       '/images/tours/Kenya Amboseli3.jpg',
       '/images/tours/Kenya Amboseli4.jpg',
     ],
-    
+
     metaDescription: '4-day Amboseli safari with stunning Mt. Kilimanjaro views and close elephant encounters. Perfect for photographers and nature lovers. Mid-range lodges, expert guides, and incredible wildlife. Book your Kenya Amboseli safari adventure today!',
     keywords: ['Amboseli safari', 'Kilimanjaro view safari', 'Kenya elephant safari', 'Amboseli National Park tour', 'photography safari Kenya', 'Amboseli tours', 'Mt Kilimanjaro Kenya', 'Kenya wildlife photography', 'Amboseli safari packages', 'elephant watching Kenya']
   },
@@ -631,24 +631,24 @@ export const tours: Tour[] = [
     priceKES: 165000,
     published: true,
     durationDays: 3,
-    
+
     country: 'Kenya',
     countryCode: 'KE',
     city: 'Nakuru',
     region: 'East Africa',
     latitude: -0.3031,
     longitude: 36.0800,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 8,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome. Hell\'s Gate cycling suitable for ages 12+',
-    
+
     accommodationType: 'Standard Lodge',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['January', 'February', 'March', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    
+
     highlights: [
       'Witness millions of lesser flamingos at Lake Nakuru (seasonal, best Nov-Mar)',
       'Track endangered black and white rhinos in rhino sanctuary',
@@ -659,7 +659,7 @@ export const tours: Tour[] = [
       'Visit local fishing villages and flower farms',
       'Budget-friendly weekend escape from Nairobi (perfect 3-day safari)'
     ],
-    
+
     inclusions: [
       'All national park entrance fees (Nakuru, Hell\'s Gate, Crescent Island)',
       'Professional safari guide/driver throughout',
@@ -673,7 +673,7 @@ export const tours: Tour[] = [
       'Nairobi hotel pickup and drop-off',
       'Government taxes'
     ],
-    
+
     exclusions: [
       'International flights',
       'Kenya visa ($50 USD)',
@@ -684,7 +684,7 @@ export const tours: Tour[] = [
       'Personal expenses and laundry',
       'Meals not mentioned in itinerary'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -708,7 +708,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Can I see flamingos year-round at Lake Nakuru?',
@@ -743,7 +743,7 @@ export const tours: Tour[] = [
         answer: 'Excellent! This tour offers diverse photography opportunities: flamingo masses creating pink shorelines, rhinos at close range, panoramic Rift Valley vistas, hippos in water, birds in flight (fish eagles hunting), walking among giraffes on Crescent Island, dramatic Hell\'s Gate rock formations and gorges, and colorful sunsets over the lakes. The variety of landscapes - alkaline lake, freshwater lake, gorges, cliffs - provides changing backdrops. Best light is early morning and late afternoon. Bring a telephoto lens (200-400mm) for wildlife and a wide-angle for landscapes.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6 months validity',
       'Kenya eVisa ($50 USD) from www.ecitizen.go.ke',
@@ -753,7 +753,7 @@ export const tours: Tour[] = [
       'Binoculars recommended for bird watching',
       'Camera with telephoto lens for wildlife photography'
     ],
-    
+
     coverImage: '/images/tours/Kenya Nakuru-Naivasha.jpg',
     gallery: [
       '/images/tours/Kenya Nakuru-Naivasha.jpg',
@@ -761,7 +761,7 @@ export const tours: Tour[] = [
       '/images/tours/Kenya Nakuru-Naivasha4.jpg',
       '/images/tours/Kenya Nakuru-Naivasha5.jpg',
     ],
-    
+
     metaDescription: '3-day Kenya lakes safari: Lake Nakuru flamingos, rhino tracking, Lake Naivasha boat ride, Crescent Island walking safari, and Hell\'s Gate cycling. Perfect weekend getaway from Nairobi. Bird watching paradise with 450+ species. Book now!',
     keywords: ['Lake Nakuru safari', 'Lake Naivasha tour', 'Kenya lakes safari', 'flamingo watching Kenya', 'Hell\'s Gate cycling', 'Crescent Island walking safari', 'Kenya bird watching', 'weekend safari Nairobi', 'Rift Valley lakes tour', 'Kenya budget safari']
   },
@@ -777,24 +777,24 @@ export const tours: Tour[] = [
     priceKES: 450000,
     published: true,
     durationDays: 7,
-    
+
     country: 'Kenya',
     countryCode: 'KE',
     city: 'Mombasa',
     region: 'East Africa',
     latitude: -4.0435,
     longitude: 39.6682,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome. Ideal for families and honeymooners.',
-    
+
     accommodationType: 'Mixed - Safari Lodge + Beach Resort',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'October', 'December', 'January', 'February', 'March'],
-    
+
     highlights: [
       'Witness the famous "red elephants" of Tsavo East (dust bathing gives red color)',
       'Visit spectacular Lugard Falls and crocodile-filled Galana River',
@@ -807,7 +807,7 @@ export const tours: Tour[] = [
       'Water sports including kayaking, jet skiing, and paddleboarding',
       'Sunset dhow cruise along Diani coastline'
     ],
-    
+
     inclusions: [
       'All park entrance fees (Tsavo East, Kisite-Mpunguti Marine Park)',
       'Professional safari guide for Tsavo portion',
@@ -822,7 +822,7 @@ export const tours: Tour[] = [
       'Flying Doctors emergency evacuation cover',
       'All government taxes and levies'
     ],
-    
+
     exclusions: [
       'International flights to/from Kenya',
       'Kenya visa ($50 USD e-Visa)',
@@ -835,7 +835,7 @@ export const tours: Tour[] = [
       'Personal expenses and souvenirs',
       'Domestic flights (safari can be upgraded to include Nairobi-Mombasa flight)'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -887,7 +887,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Can I extend my beach stay beyond 7 days?',
@@ -922,7 +922,7 @@ export const tours: Tour[] = [
         answer: 'Yes, all lodges and resorts cater to dietary requirements including vegetarian, vegan, gluten-free, halal, and food allergies. Please inform us at booking so we notify accommodations in advance. Safari lodges typically serve buffet meals with multiple vegetarian options (Indian influence means excellent vegetarian cuisine). Coastal resorts offer abundant fresh seafood but also vegetarian dishes. Swahili cuisine has many naturally vegetarian coconut-based curries and vegetable dishes. Vegan options are increasingly available. If you have strict dietary needs, bringing supplementary snacks is advisable though generally unnecessary.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with minimum 6 months validity',
       'Kenya e-Visa ($50 USD) - apply at www.ecitizen.go.ke 7-14 days before travel',
@@ -933,7 +933,7 @@ export const tours: Tour[] = [
       'Malaria prophylaxis recommended (consult travel doctor)',
       'Travel insurance covering medical emergencies and activities'
     ],
-    
+
     coverImage: '/images/tours/Kenya Nairobi-Mombasa.jpg',
     gallery: [
       '/images/tours/Kenya Nairobi-Mombasa.jpg',
@@ -942,7 +942,7 @@ export const tours: Tour[] = [
       '/images/tours/Kenya Nairobi-Mombasa4.jpg',
       '/images/tours/Kenya Nairobi-Mombasa5.jpg',
     ],
-    
+
     metaDescription: '7-day Kenya safari and beach combination: Tsavo East red elephants, Lugard Falls, pristine Diani Beach, snorkeling with dolphins, Wasini Island. Perfect blend of wildlife adventure and tropical relaxation. Book your dream Kenya vacation!',
     keywords: ['Kenya safari and beach', 'Tsavo Diani combo', 'Kenya beach vacation', 'Mombasa safari tour', 'Diani Beach holiday', 'Kisite Marine Park snorkeling', 'Kenya honeymoon package', 'Tsavo red elephants', 'Wasini Island tour', 'Kenya grand safari']
   },
@@ -959,24 +959,24 @@ export const tours: Tour[] = [
     priceKES: 365000,
     published: true,
     durationDays: 3,
-    
+
     country: 'Uganda',
     countryCode: 'UG',
     city: 'Bwindi',
     region: 'East Africa',
     latitude: -1.0667,
     longitude: 29.6500,
-    
+
     difficulty: 'Challenging',
     maxGroupSize: 8,
     minGroupSize: 1,
     ageRestriction: 'Minimum age 15 years (strict enforcement)',
-    
+
     accommodationType: 'Mid-Range Lodge',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'December', 'January', 'February'],
-    
+
     highlights: [
       'One gorilla trekking permit ($700 value) included',
       'Spend 1 hour with endangered mountain gorillas in the wild',
@@ -988,7 +988,7 @@ export const tours: Tour[] = [
       'Only ~1,100 mountain gorillas remain worldwide',
       'Life-changing wildlife encounter'
     ],
-    
+
     inclusions: [
       'One gorilla trekking permit per person ($700 USD)',
       'All ground transportation in 4×4 vehicle',
@@ -1001,7 +1001,7 @@ export const tours: Tour[] = [
       'Government taxes',
       'Airport/hotel pickup in Kigali or Entebbe'
     ],
-    
+
     exclusions: [
       'International flights',
       'Visa: Uganda ($50) or Rwanda ($50) depending on entry point',
@@ -1014,7 +1014,7 @@ export const tours: Tour[] = [
       'Additional activities',
       'Medical evacuation insurance (recommended)'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -1038,7 +1038,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Is gorilla trekking physically difficult? What fitness level is needed?',
@@ -1073,7 +1073,7 @@ export const tours: Tour[] = [
         answer: 'No. If you have any cold, flu, cough, diarrhea, or infectious illness on trek day, you will NOT be permitted to visit gorillas. Gorillas share 98% of human DNA and are highly susceptible to human diseases which can be fatal to them. Park authorities enforce this strictly - rangers assess health at headquarters and will deny entry if you appear ill (no refund). This rule protects critically endangered gorillas. If you feel illness coming, notify organizers immediately - permits can sometimes be rescheduled (not guaranteed) or transferred to another person in your group. Purchase comprehensive travel insurance covering permit costs. Maintain excellent health practices before your trek: avoid sick people, wash hands frequently, eat carefully.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Uganda visa ($50) OR Rwanda visa ($50) depending on entry point',
@@ -1085,7 +1085,7 @@ export const tours: Tour[] = [
       'Long pants, long sleeves, waterproof hiking boots',
       'No flash photography allowed with gorillas'
     ],
-    
+
     coverImage: '/images/tours/Uganda-Bwindi-Gorillas.jpg',
     gallery: [
       '/images/tours/Uganda-Bwindi-Gorillas.jpg',
@@ -1094,7 +1094,7 @@ export const tours: Tour[] = [
       '/images/tours/Uganda-Bwindi-Gorillas4.jpg',
       '/images/tours/Uganda-Bwindi-Gorillas5.jpg',
     ],
-    
+
     metaDescription: '3-day Uganda gorilla trekking in Bwindi Impenetrable Forest. Permit included ($700 value). Spend 1 hour with endangered mountain gorillas. Life-changing wildlife encounter. Expert guides. Book your dream gorilla safari now!',
     keywords: ['Uganda gorilla trekking', 'Bwindi gorilla safari', 'mountain gorilla tour', 'Uganda gorilla permit', 'gorilla trekking Bwindi', 'Uganda wildlife tour', 'East Africa gorillas', 'gorilla habituation', 'Bwindi Impenetrable Forest', 'Uganda primate safari']
   },
@@ -1110,24 +1110,24 @@ export const tours: Tour[] = [
     priceKES: 242000,
     published: true,
     durationDays: 4,
-    
+
     country: 'Uganda',
     countryCode: 'UG',
     city: 'Masindi',
     region: 'East Africa',
     latitude: 2.2500,
     longitude: 31.7833,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 8,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome, family-friendly',
-    
+
     accommodationType: 'Mid-Range Lodge',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['December', 'January', 'February', 'June', 'July', 'August', 'September'],
-    
+
     highlights: [
       'Witness Murchison Falls - world\'s most powerful waterfall by volume',
       'Boat cruise to falls base on the Victoria Nile River',
@@ -1139,7 +1139,7 @@ export const tours: Tour[] = [
       'Uganda\'s largest park (3,893 sq km) with diverse ecosystems',
       'Visit Ziwa Rhino Sanctuary en route'
     ],
-    
+
     inclusions: [
       'All park entrance fees (Murchison Falls, Ziwa Rhino Sanctuary)',
       'Professional English-speaking driver-guide',
@@ -1154,7 +1154,7 @@ export const tours: Tour[] = [
       'Kampala/Entebbe pickup and drop-off',
       'Government taxes'
     ],
-    
+
     exclusions: [
       'International flights',
       'Uganda visa ($50 e-Visa)',
@@ -1166,7 +1166,7 @@ export const tours: Tour[] = [
       'Optional chimpanzee tracking in Budongo Forest ($90)',
       'Optional sport fishing permits'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -1197,7 +1197,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'How does Murchison Falls compare to Victoria Falls or Niagara Falls?',
@@ -1232,7 +1232,7 @@ export const tours: Tour[] = [
         answer: 'This 4-day itinerary is ideal for experiencing Murchison Falls comprehensively: arriving via Ziwa Rhinos (Day 1), full day with game drives and boat cruise (Day 2), additional morning drive and optional activities (Day 3), and returning (Day 4). Shorter 3-day itineraries are possible but rushed, eliminating Ziwa or reducing game drives. 5-6 day itineraries allow add-ons like chimpanzee tracking in Budongo, hot air ballooning, sport fishing, or visiting the southern sector of the park. For a grand Uganda safari, 7-10 days combining Murchison with Bwindi gorilla trekking and Queen Elizabeth National Park showcases Uganda\'s incredible diversity.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Uganda e-Visa ($50) from www.visas.immigration.go.ug',
@@ -1244,7 +1244,7 @@ export const tours: Tour[] = [
       'Camera with zoom lens (200mm+)',
       'Light, neutral-colored clothing'
     ],
-    
+
     coverImage: '/images/tours/Uganda-Murchison-Falls.jpg',
     gallery: [
       '/images/tours/Uganda-Murchison-Falls.jpg',
@@ -1253,7 +1253,7 @@ export const tours: Tour[] = [
       '/images/tours/Uganda-Murchison-Falls4.jpg',
       '/images/tours/Uganda-Murchison-Falls5.jpg',
     ],
-    
+
     metaDescription: '4-day Murchison Falls safari in Uganda\'s largest park. Witness world\'s most powerful waterfall, Nile boat cruise, track rare Rothschild giraffes, Big Four game viewing, Ziwa rhino tracking. Adventure of a lifetime!',
     keywords: ['Murchison Falls safari', 'Uganda wildlife tour', 'Nile River cruise Uganda', 'Rothschild giraffe safari', 'Uganda national parks', 'Murchison Falls boat cruise', 'Ziwa rhino sanctuary', 'Uganda safari packages', 'East Africa safaris', 'Uganda adventure tour']
   },
@@ -1270,24 +1270,24 @@ export const tours: Tour[] = [
     priceKES: 445000,
     published: true,
     durationDays: 6,
-    
+
     country: 'Tanzania',
     countryCode: 'TZ',
     city: 'Arusha',
     region: 'East Africa',
     latitude: -2.1540,
     longitude: 34.6857,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome, family-friendly safari',
-    
+
     accommodationType: 'Tented Camp & Lodge Mix',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['January', 'February', 'March', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    
+
     highlights: [
       'Witness the Great Migration - over 2 million animals on the move',
       'Dramatic Mara River crossings (July-October in northern Serengeti)',
@@ -1300,7 +1300,7 @@ export const tours: Tour[] = [
       'Over 500 bird species',
       'Luxury tented camps in prime wildlife locations'
     ],
-    
+
     inclusions: [
       'All park entrance fees (Serengeti, Ngorongoro, Tarangire, Lake Manyara)',
       'Professional safari guide throughout',
@@ -1315,7 +1315,7 @@ export const tours: Tour[] = [
       'Kilimanjaro/Arusha airport transfers',
       'Government taxes and conservation fees'
     ],
-    
+
     exclusions: [
       'International flights',
       'Tanzania visa ($50 USD)',
@@ -1328,7 +1328,7 @@ export const tours: Tour[] = [
       'Optional cultural tours in Arusha',
       'Additional accommodation before/after safari'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -1373,7 +1373,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'When is the best time to see the Great Migration river crossings?',
@@ -1408,7 +1408,7 @@ export const tours: Tour[] = [
         answer: 'ESSENTIAL: Camera with telephoto zoom lens (200-400mm or 100-400mm) for wildlife photography - kit lenses (18-55mm) are insufficient. Animals maintain distance requiring zoom. Extra batteries (cold nights drain them), large memory cards (you\'ll take thousands of photos), lens cleaning cloth (dusty conditions). OPTIONAL: Second body with wide-angle lens (16-35mm) for landscapes and vehicle shots, beanbag (stabilizes camera on vehicle window/roof), polarizing filter (reduces glare), backup camera. Settings tips: Use fast shutter speed (1/1000+) for action, high ISO (800-3200) as light is often limited in early morning/evening, continuous autofocus (animals move), burst mode. Most safari vehicles have charging ports. Consider trip insurance covering camera gear. Bring enough equipment - no stores in the parks!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Tanzania visa ($50 USD single entry) - available on arrival or e-Visa online',
@@ -1421,7 +1421,7 @@ export const tours: Tour[] = [
       'Sun protection: hat, sunglasses, SPF 50+ sunscreen',
       'Warm layers for early morning drives (can be cold)'
     ],
-    
+
     coverImage: '/images/tours/Tanzania-Serengeti.jpg',
     gallery: [
       '/images/tours/Tanzania-Serengeti.jpg',
@@ -1430,7 +1430,7 @@ export const tours: Tour[] = [
       '/images/tours/Tanzania-Serengeti4.jpg',
       '/images/tours/Tanzania-Serengeti5.jpg',
     ],
-    
+
     metaDescription: '6-day Tanzania safari: witness Great Migration, Serengeti endless plains, Ngorongoro Crater Big Five, Tarangire elephants. River crossings, calving season, predator action. Luxury tented camps. Book your dream safari!',
     keywords: ['Serengeti safari', 'Great Migration Tanzania', 'Tanzania wildlife tour', 'Ngorongoro Crater safari', 'Tanzania safari packages', 'Serengeti migration tour', 'Tanzania Big Five', 'African safari Tanzania', 'Serengeti wildebeest migration', 'Tanzania northern circuit']
   },
@@ -1446,24 +1446,24 @@ export const tours: Tour[] = [
     priceKES: 287000,
     published: true,
     durationDays: 6,
-    
+
     country: 'Tanzania',
     countryCode: 'TZ',
     city: 'Moshi',
     region: 'East Africa',
     latitude: -3.0674,
     longitude: 37.3556,
-    
+
     difficulty: 'Strenuous',
     maxGroupSize: 12,
     minGroupSize: 1,
     ageRestriction: 'Minimum age 10 years, maximum 65 years (good health required)',
-    
+
     accommodationType: 'Mountain Huts',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['January', 'February', 'June', 'July', 'August', 'September', 'October'],
-    
+
     highlights: [
       'Summit Uhuru Peak - 5,895m, Africa\'s highest point, world\'s highest free-standing mountain',
       'Marangu Route - only Kilimanjaro route with hut accommodation (more comfortable)',
@@ -1476,7 +1476,7 @@ export const tours: Tour[] = [
       'Achievable for fit trekkers without technical climbing skills',
       'Life-changing accomplishment and bragging rights'
     ],
-    
+
     inclusions: [
       'Kilimanjaro National Park entrance fees and permits',
       'Professional certified mountain guide (KINAPA licensed)',
@@ -1492,7 +1492,7 @@ export const tours: Tour[] = [
       'Emergency oxygen and first aid kit',
       'Government taxes and rescue fees'
     ],
-    
+
     exclusions: [
       'International flights',
       'Tanzania visa ($50 USD)',
@@ -1505,7 +1505,7 @@ export const tours: Tour[] = [
       'Optional safari before/after climb',
       'Laundry and personal expenses'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -1550,7 +1550,7 @@ export const tours: Tour[] = [
         accommodation: 'Springlands Hotel or similar in Moshi (included) or airport transfer for departures'
       }
     ],
-    
+
     faqs: [
       {
         question: 'What is the success rate for reaching Uhuru Peak on the Marangu Route?',
@@ -1585,7 +1585,7 @@ export const tours: Tour[] = [
         answer: 'Kilimanjaro National Park regulations REQUIRE all climbers to hire registered guides and porters - independent/solo climbing is prohibited for safety and economic reasons (supporting local employment). However, you can book as a solo traveler and climb with just your private guide and porter team (minimum 1 guide + 2-3 porters), or join a group departure with other trekkers. SOLO BOOKING (private climb): More expensive ($2,200-2,500) as you cover full crew costs, but you set the pace and have flexibility. GROUP BOOKING: More affordable ($1,800-2,200) sharing costs with others, social experience, but must accommodate group pace and preferences. Both options work well. Solo travelers concerned about social isolation can often join scheduled group departures coordinated by operators.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Tanzania visa ($50 USD)',
@@ -1598,7 +1598,7 @@ export const tours: Tour[] = [
       'Sufficient funds for tips ($250-300) and emergencies',
       'Yellow fever vaccination if arriving from endemic countries'
     ],
-    
+
     coverImage: '/images/tours/Tanzania-Kilimanjaro.jpg',
     gallery: [
       '/images/tours/Tanzania-Kilimanjaro.jpg',
@@ -1607,7 +1607,7 @@ export const tours: Tour[] = [
       '/images/tours/Tanzania-Kilimanjaro4.jpg',
       '/images/tours/Tanzania-Kilimanjaro5.jpg',
     ],
-    
+
     metaDescription: '6-day Kilimanjaro trek via Marangu Route. Summit Africa\'s highest peak (5,895m). Mountain hut accommodation, experienced guides, 65-70% success rate. Conquer the Roof of Africa. Book your Kilimanjaro adventure now!',
     keywords: ['Kilimanjaro trek', 'Marangu Route Kilimanjaro', 'climb Kilimanjaro', 'Tanzania mountain trekking', 'Uhuru Peak summit', 'Kilimanjaro tours', 'Africa highest peak', 'Kilimanjaro Marangu', 'Tanzania trekking', 'Seven Summits']
   },
@@ -1623,24 +1623,24 @@ export const tours: Tour[] = [
     priceKES: 320000,
     published: true,
     durationDays: 4,
-    
+
     country: 'Tanzania',
     countryCode: 'TZ',
     city: 'Arusha',
     region: 'East Africa',
     latitude: -3.1792,
     longitude: 35.7529,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome, excellent for families',
-    
+
     accommodationType: 'Lodge',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['January', 'February', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    
+
     highlights: [
       'Ngorongoro Crater - UNESCO World Heritage Site, Africa\'s Eden',
       'Highest concentration of predators in Africa (lions, hyenas, jackals)',
@@ -1653,7 +1653,7 @@ export const tours: Tour[] = [
       'Compact 4-day itinerary perfect for time-limited travelers',
       'Luxury lodges with stunning crater rim views'
     ],
-    
+
     inclusions: [
       'All park entrance fees (Ngorongoro Conservation Area, Lake Manyara)',
       'Ngorongoro Crater descent permit',
@@ -1669,7 +1669,7 @@ export const tours: Tour[] = [
       'Airport transfers (Kilimanjaro/Arusha)',
       'Government taxes'
     ],
-    
+
     exclusions: [
       'International flights',
       'Tanzania visa ($50 USD)',
@@ -1682,7 +1682,7 @@ export const tours: Tour[] = [
       'Optional activities (nature walks, cultural tours)',
       'Laundry services'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -1713,7 +1713,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour) or optional Arusha hotel'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Why focus on Ngorongoro and Manyara instead of including Serengeti?',
@@ -1748,7 +1748,7 @@ export const tours: Tour[] = [
         answer: 'Yes! This itinerary uses mid-range lodges (comfortable, good amenities, stunning locations) but can be upgraded: LUXURY UPGRADES (Ngorongoro): Ngorongoro Crater Lodge ($800-1,200/night) - arguably Africa\'s most luxurious safari lodge with opulent suites, butler service, and unparalleled crater views. &Beyond Ngorongoro Crater Camp - exclusive tented camp on crater rim. LUXURY UPGRADES (Manyara): Lake Manyara Tree Lodge - the ONLY lodge inside Lake Manyara National Park, stunning treehouse-style accommodation in fever tree forest. &Beyond Lake Manyara Kilimamoja Lodge - boutique property with infinity pool. BUDGET OPTIONS: Camping safaris available reducing costs significantly (sleeping in tents at public campsites vs lodges) but less comfortable. Mid-range lodges offer the best value-comfort-experience balance for most travelers. Discuss preferences when booking.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Tanzania visa ($50 USD) - e-Visa online or visa on arrival',
@@ -1761,7 +1761,7 @@ export const tours: Tour[] = [
       'Sun protection (hat, sunglasses, SPF 50+ sunscreen)',
       'Warm layers for early morning game drives'
     ],
-    
+
     coverImage: '/images/tours/Tanzania-Ngorongoro.jpg',
     gallery: [
       '/images/tours/Tanzania-Ngorongoro.jpg',
@@ -1770,12 +1770,12 @@ export const tours: Tour[] = [
       '/images/tours/Tanzania-Ngorongoro4.jpg',
       '/images/tours/Tanzania-Ngorongoro5.jpg',
     ],
-    
+
     metaDescription: '4-day Tanzania safari: Ngorongoro Crater Big Five, black rhinos, highest predator density in Africa, Lake Manyara tree-climbing lions. Perfect for time-limited travelers. Luxury crater rim lodges. Book now!',
     keywords: ['Ngorongoro Crater safari', 'Tanzania Big Five', 'Lake Manyara lions', 'Tanzania safari 4 days', 'Ngorongoro wildlife', 'Tanzania crater tour', 'black rhino safari', 'Tanzania northern circuit', 'Ngorongoro Crater tours', 'Tanzania short safari']
   },
 
-  // RWANDA TOURS  
+  // RWANDA TOURS
   {
     id: 'rw-volcanoes-gorillas-001',
     title: 'Rwanda Gorilla Trekking - Volcanoes National Park 3 Days',
@@ -1787,24 +1787,24 @@ export const tours: Tour[] = [
     priceKES: 418000,
     published: true,
     durationDays: 3,
-    
+
     country: 'Rwanda',
     countryCode: 'RW',
     city: 'Musanze',
     region: 'East Africa',
     latitude: -1.4851,
     longitude: 29.6352,
-    
+
     difficulty: 'Moderate',
     maxGroupSize: 8,
     minGroupSize: 1,
     ageRestriction: 'Minimum age 15 years (strictly enforced)',
-    
+
     accommodationType: 'Luxury Lodge',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'December', 'January', 'February'],
-    
+
     highlights: [
       'One gorilla trekking permit ($1,500 value) included',
       'Spend 1 magical hour with mountain gorillas in the wild',
@@ -1817,7 +1817,7 @@ export const tours: Tour[] = [
       'Easy access - only 2 hours from Kigali',
       'Combine with Kigali city tour and genocide memorial'
     ],
-    
+
     inclusions: [
       'One gorilla trekking permit per person ($1,500 USD)',
       'Professional English/French-speaking guide',
@@ -1831,7 +1831,7 @@ export const tours: Tour[] = [
       'Airport transfers (Kigali International)',
       'Government taxes'
     ],
-    
+
     exclusions: [
       'International flights',
       'Rwanda visa ($50 USD) or East Africa Tourist Visa ($100)',
@@ -1844,7 +1844,7 @@ export const tours: Tour[] = [
       'Additional activities',
       'Laundry services'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -1868,7 +1868,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour) or Kigali hotel for late flights'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Why are Rwanda gorilla permits $1,500 vs Uganda\'s $700? Is it worth the extra cost?',
@@ -1903,7 +1903,7 @@ export const tours: Tour[] = [
         answer: 'BEST TIMES (Dry Seasons): JUNE-SEPTEMBER - driest months, easier hiking, clearer volcano views, peak season (book permits 6-12 months ahead), highest prices. DECEMBER-FEBRUARY - short dry season, good conditions, less crowded than June-September. RAINY SEASONS: MARCH-MAY (long rains) and OCTOBER-NOVEMBER (short rains) - muddy slippery trails, challenging hiking, rain likely, BUT advantages include fewer tourists, discounted accommodation, lush vegetation, baby gorillas often born this period. TRUTH: Gorilla trekking operates year-round with 99%+ success rate regardless of season - gorillas don\'t disappear in rain, they just get wet (and more playful!). Bamboo forests receive rain year-round anyway. Bring waterproof gear always. If your only available dates are rainy season - GO ANYWAY. The gorilla encounter is life-changing regardless of weather.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Rwanda visa ($50 USD) or East Africa Tourist Visa ($100 for Rwanda+Uganda+Kenya)',
@@ -1916,7 +1916,7 @@ export const tours: Tour[] = [
       'Long pants and sleeves (protection from nettles)',
       'Rain gear year-round (rain possible any season)'
     ],
-    
+
     coverImage: '/images/tours/Rwanda-Volcanoes.jpg',
     gallery: [
       '/images/tours/Rwanda-Volcanoes.jpg',
@@ -1925,7 +1925,7 @@ export const tours: Tour[] = [
       '/images/tours/Rwanda-Volcanoes4.jpg',
       '/images/tours/Rwanda-Volcanoes5.jpg',
     ],
-    
+
     metaDescription: '3-day Rwanda gorilla trekking in Volcanoes National Park. $1,500 permit included. Luxury lodges, shorter easier treks, stunning volcano views. Meet endangered mountain gorillas. Book your Rwanda gorilla adventure!',
     keywords: ['Rwanda gorilla trekking', 'Volcanoes National Park', 'gorilla permits Rwanda', 'Rwanda wildlife tour', 'mountain gorillas Rwanda', 'Dian Fossey grave', 'Rwanda gorilla safari', 'Virunga mountains', 'Rwanda primate trekking', 'luxury gorilla trek']
   },
@@ -1941,24 +1941,24 @@ export const tours: Tour[] = [
     priceKES: 215000,
     published: true,
     durationDays: 2,
-    
+
     country: 'Rwanda',
     countryCode: 'RW',
     city: 'Kayonza',
     region: 'East Africa',
     latitude: -1.9468,
     longitude: 30.7467,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome, family-friendly',
-    
+
     accommodationType: 'Luxury Tented Camp',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'December', 'January', 'February'],
-    
+
     highlights: [
       'Rwanda\'s only Big Five destination (lions reintroduced 2015, rhinos 2017)',
       'Conservation success story - park completely recovered from civil war',
@@ -1971,7 +1971,7 @@ export const tours: Tour[] = [
       'Perfect combination with gorilla trekking for complete Rwanda experience',
       'Luxury Magashi Camp or Ruzizi Tented Lodge accommodation'
     ],
-    
+
     inclusions: [
       'Akagera National Park entrance fees',
       'Professional safari guide',
@@ -1984,7 +1984,7 @@ export const tours: Tour[] = [
       'Kigali hotel/airport pickup and drop-off',
       'Government taxes'
     ],
-    
+
     exclusions: [
       'International flights',
       'Rwanda visa ($50) or East Africa Tourist Visa ($100)',
@@ -1996,7 +1996,7 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Laundry services'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -2013,7 +2013,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour) or Kigali hotel'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Can I really see the Big Five in Akagera National Park?',
@@ -2048,7 +2048,7 @@ export const tours: Tour[] = [
         answer: 'Akagera offers range of accommodations: LUXURY: Magashi Camp (ultra-luxury $800+/night, only 6 tents, stunning lake views, exceptional service, all-inclusive) - Africa\'s top safari camp standard. Ruzizi Tented Lodge ($250-350/night, comfortable tented rooms on stilts over Lake Ihema, excellent mid-range luxury). Karenge Bush Camp ($150-250/night, intimate camp in remote location). MID-RANGE: Akagera Game Lodge ($100-150/night, historic lodge, lake views, affordable comfort). BUDGET: Public campsites ($30/person, bring own camping gear) at designated sites like Shakani, Muyumba, basic facilities. RECOMMENDATION: Ruzizi Tented Lodge or Akagera Game Lodge balance comfort, location, and value. Budget campers save significantly but need self-sufficiency. Luxury Magashi worth splurge for honeymoons/special occasions. Book accommodations when reserving park permits.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Rwanda visa ($50) or East Africa Tourist Visa ($100)',
@@ -2061,7 +2061,7 @@ export const tours: Tour[] = [
       'Neutral-colored clothing',
       'Insect repellent for mosquitoes'
     ],
-    
+
     coverImage: '/images/tours/Rwanda-Akagera.jpg',
     gallery: [
       '/images/tours/Rwanda-Akagera.jpg',
@@ -2070,7 +2070,7 @@ export const tours: Tour[] = [
       '/images/tours/Rwanda-Akagera4.jpg',
       '/images/tours/Rwanda-Akagera5.jpg',
     ],
-    
+
     metaDescription: '2-day Akagera National Park safari in Rwanda. Big Five destination, lions reintroduced 2015, black rhinos 2017. Boat cruise Lake Ihema, conservation success story. Perfect with gorilla trekking. Book now!',
     keywords: ['Akagera safari', 'Rwanda Big Five', 'Akagera National Park', 'Rwanda wildlife safari', 'Lake Ihema boat cruise', 'Rwanda safari tours', 'Akagera lions', 'Rwanda conservation', 'East Africa safari', 'Rwanda safari packages']
   },
@@ -2087,24 +2087,24 @@ export const tours: Tour[] = [
     priceKES: 346000,
     published: true,
     durationDays: 5,
-    
+
     country: 'South Africa',
     countryCode: 'ZA',
     city: 'Cape Town',
     region: 'Southern Africa',
     latitude: -33.9249,
     longitude: 18.4241,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 8,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome, family-friendly',
-    
+
     accommodationType: 'Boutique Hotel',
     mealPlan: 'Bed & Breakfast (some lunches/dinners included)',
-    
+
     bestMonths: ['September', 'October', 'November', 'December', 'January', 'February', 'March', 'April'],
-    
+
     highlights: [
       'Table Mountain cable car ride - iconic flat-topped mountain with 360° views',
       'Robben Island tour - UNESCO site where Mandela imprisoned 18 years',
@@ -2117,7 +2117,7 @@ export const tours: Tour[] = [
       'Vibrant food scene including traditional Cape Malay cuisine',
       'Optional: Great White shark cage diving'
     ],
-    
+
     inclusions: [
       'Professional guide throughout',
       'All ground transportation in comfortable vehicle',
@@ -2131,7 +2131,7 @@ export const tours: Tour[] = [
       'Airport transfers',
       'Some lunches as specified'
     ],
-    
+
     exclusions: [
       'International flights',
       'South Africa visa (many nationalities visa-free up to 90 days)',
@@ -2143,7 +2143,7 @@ export const tours: Tour[] = [
       'Tips for guide and hotel staff',
       'Personal expenses and souvenirs'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -2181,7 +2181,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Is Cape Town safe for tourists?',
@@ -2216,7 +2216,7 @@ export const tours: Tour[] = [
         answer: 'Yes! This itinerary is flexible. DIETARY REQUIREMENTS: All accommodations and restaurants accommodate vegetarian, vegan, gluten-free, halal, kosher, and allergy requirements - inform us at booking and we notify providers. South African cuisine has excellent vegetarian options (Cape Malay curries, bobotie can be made veggie, abundant fresh produce). INTEREST CUSTOMIZATION: Replace wine tasting with craft beer tour (Cape Town has thriving craft scene), add adventure activities (kitesurfing, hiking, rock climbing), include more art/culture (museums, galleries, street art tours in Woodstock), focus on history (apartheid museums, District Six), add beach relaxation days. Cape Town accommodates all interests. Private tours can fully customize; group tours have some flexibility. Discuss preferences when booking for tailored experience.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity and 2+ blank pages',
       'South Africa visa (many nationalities visa-free up to 90 days - check requirements)',
@@ -2229,7 +2229,7 @@ export const tours: Tour[] = [
       'Adapter for South African plugs (Type M - large 3-round-pin)',
       'Swimwear if visiting beaches'
     ],
-    
+
     coverImage: '/images/tours/south-africa-cape-town.jpg',
     gallery: [
       '/images/tours/south-africa-cape-town.jpg',
@@ -2238,7 +2238,7 @@ export const tours: Tour[] = [
       '/images/tours/south-africa-cape-town4.jpg',
       '/images/tours/south-africa-cape-town5.jpg',
     ],
-    
+
     metaDescription: '5-day Cape Town tour: Table Mountain, Robben Island, Cape Peninsula penguins, Cape Winelands. World-class city, stunning scenery, wine tasting, rich history. Book your Cape Town adventure!',
     keywords: ['Cape Town tours', 'Table Mountain cable car', 'Robben Island tour', 'Cape Winelands', 'South Africa vacation', 'Cape Point penguins', 'Stellenbosch wine tasting', 'Cape Town highlights', 'South Africa tourism', 'Cape Town packages']
   },
@@ -2254,24 +2254,24 @@ export const tours: Tour[] = [
     priceKES: 313000,
     published: true,
     durationDays: 4,
-    
+
     country: 'South Africa',
     countryCode: 'ZA',
     city: 'Kruger Park',
     region: 'Southern Africa',
     latitude: -23.9884,
     longitude: 31.5547,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome, excellent for families',
-    
+
     accommodationType: 'Safari Lodge',
     mealPlan: 'Full Board (Breakfast, Lunch, Dinner)',
-    
+
     bestMonths: ['April', 'May', 'June', 'July', 'August', 'September', 'October'],
-    
+
     highlights: [
       'Big Five viewing - lions, leopards, elephants, buffaloes, rhinos',
       'One of Africa\'s largest game reserves (19,485 sq km)',
@@ -2284,7 +2284,7 @@ export const tours: Tour[] = [
       'Excellent photographic opportunities',
       'Malaria-free winter season (May-September)'
     ],
-    
+
     inclusions: [
       'Kruger National Park entrance fees',
       'Professional safari guide throughout',
@@ -2298,7 +2298,7 @@ export const tours: Tour[] = [
       'Johannesburg/Hoedspruit airport transfers',
       'Government conservation fees'
     ],
-    
+
     exclusions: [
       'International flights to South Africa',
       'Domestic flights (Johannesburg to Hoedspruit/Nelspruit optional)',
@@ -2311,7 +2311,7 @@ export const tours: Tour[] = [
       'Personal expenses and curio purchases',
       'Spa treatments at lodges'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -2342,7 +2342,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'What are the chances of seeing the Big Five in Kruger?',
@@ -2377,7 +2377,7 @@ export const tours: Tour[] = [
         answer: 'LUXURY LODGES (This Tour, $400-1,200/night): Sabi Sabi, Lion Sands, Singita, Ulusaba - Ultra-luxury with exceptional service, gourmet dining, private decks, plunge pools, outstanding guiding. Located in private reserves bordering Kruger (no fences, animals move freely) allowing off-road driving and walking safaris. All-inclusive pricing. MID-RANGE LODGES ($150-300/night): Protea Kruger Gate, Pestana Kruger, Kapama - Comfortable lodges outside park gates, good amenities, quality game drives. BUDGET OPTIONS: SANParks Rest Camps inside Kruger ($50-150/night) - Skukuza, Lower Sabie, Satara offer self-catering cottages, camping, basic comfort, restaurant. Perfect for self-drive safaris. Ultra-budget: Camping ($15-30/night). RECOMMENDATION: Luxury lodges offer vastly superior wildlife viewing due to private concessions, expert guides, better vehicle positioning. Mid-range balances comfort and cost. Budget rest camps work well for self-drivers or multiple-visit regulars. Your choice depends on budget, safari priorities, and comfort expectations.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'South Africa visa (many nationalities visa-free up to 90 days)',
@@ -2391,7 +2391,7 @@ export const tours: Tour[] = [
       'Sun protection (hat, sunglasses, SPF 50+ sunscreen)',
       'Insect repellent with DEET'
     ],
-    
+
     coverImage: '/images/tours/south-africa-kruger.jpg',
     gallery: [
       '/images/tours/south-africa-kruger.jpg',
@@ -2400,7 +2400,7 @@ export const tours: Tour[] = [
       '/images/tours/south-africa-kruger4.jpg',
       '/images/tours/south-africa-kruger5.jpg',
     ],
-    
+
     metaDescription: '4-day Kruger National Park safari: Big Five viewing, luxury lodges, expert guides, sunrise/sunset game drives. South Africa\'s premier wildlife destination. 147 mammal species. Book your Kruger safari adventure!',
     keywords: ['Kruger safari', 'Kruger National Park', 'South Africa safari', 'Big Five safari', 'Kruger game drives', 'South Africa wildlife', 'Kruger tours', 'African safari', 'Kruger Park packages', 'South Africa safari tours']
   },
@@ -2416,24 +2416,24 @@ export const tours: Tour[] = [
     priceKES: 372000,
     published: true,
     durationDays: 7,
-    
+
     country: 'South Africa',
     countryCode: 'ZA',
     city: 'Knysna',
     region: 'Southern Africa',
     latitude: -34.0365,
     longitude: 23.0475,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 8,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome, family-friendly',
-    
+
     accommodationType: 'Boutique Hotels & Guesthouses',
     mealPlan: 'Bed & Breakfast (some dinners included)',
-    
+
     bestMonths: ['September', 'October', 'November', 'December', 'January', 'February', 'March', 'April'],
-    
+
     highlights: [
       'Knysna Lagoon and famous Heads - iconic Garden Route landmark',
       'Tsitsikamma National Park - indigenous forests and suspension bridges',
@@ -2446,7 +2446,7 @@ export const tours: Tour[] = [
       'Wilderness National Park - lakes, forests, and birdlife',
       'Mossel Bay - historical maritime town and Diaz Museum'
     ],
-    
+
     inclusions: [
       'Comfortable rental vehicle (sedan or SUV) for entire trip',
       'Comprehensive vehicle insurance (CDW)',
@@ -2463,7 +2463,7 @@ export const tours: Tour[] = [
       'Roadside assistance 24/7',
       'Government tourism fees'
     ],
-    
+
     exclusions: [
       'International flights to South Africa',
       'Domestic flights (optional Cape Town start instead of driving from Johannesburg)',
@@ -2476,7 +2476,7 @@ export const tours: Tour[] = [
       'Tips and personal expenses',
       'Additional park entrance fees beyond Tsitsikamma'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -2528,7 +2528,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Can I self-drive the Garden Route or should I book a guided tour?',
@@ -2563,7 +2563,7 @@ export const tours: Tour[] = [
         answer: 'VEHICLE RECOMMENDATIONS: SEDAN/COMPACT CAR (Toyota Corolla, VW Polo, similar) - BEST CHOICE for Garden Route. WHY: N2 highway and all Garden Route roads are TARRED/PAVED (no 4×4 needed), Fuel efficient (important for 1,500km), Easy parking in towns, Cheaper rental ($25-40/day vs SUV $50-80/day), Adequate for 2 people with luggage. SUV/CROSSOVER (Toyota RAV4, Nissan X-Trail) - RECOMMENDED IF: 4 people traveling (more space/comfort), Lots of luggage, Want higher driving position (better views), Planning 4×4 detours (Baviaanskloof, mountain passes). NOT NECESSARY for standard Garden Route. LUXURY/CONVERTIBLE - FUN OPTION: Garden Route is one of world\'s great driving roads. Convertible (weather permitting) or premium sedan adds to experience. Budget accordingly ($80-150/day). AVOID: Basic manual transmission if unfamiliar (rent automatic - costs $5-10/day more, worth it for driving left-side), Huge vehicles (parking difficult in historic towns), Motorcycles (rain possible, luggage limited). FEATURES TO REQUEST: GPS navigation or smartphone mount, Bluetooth audio (great playlists enhance road trip!), Air conditioning (summer essential), Good trunk space (6 nights luggage plus shopping). INSURANCE: CRITICAL - purchase CDW (Collision Damage Waiver) and theft protection. Roads safe but accidents happen. Cost $15-25/day extra, eliminates liability. ONE-WAY RENTAL: Possible Cape Town → Port Elizabeth or reverse ($50-100 fee). Saves backtracking. VERDICT: Standard sedan/compact adequate for 95% of travelers. Spend rental savings on activities, meals, accommodation upgrades. Driving itself is the attraction - vehicle less important than route!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'South Africa visa (many nationalities visa-free up to 90 days)',
@@ -2579,7 +2579,7 @@ export const tours: Tour[] = [
       'Camera for spectacular scenery',
       'Sunscreen SPF 50+ and sunglasses'
     ],
-    
+
     coverImage: '/images/tours/south-africa-garden-route.jpg',
     gallery: [
       '/images/tours/south-africa-garden-route.jpg',
@@ -2588,7 +2588,7 @@ export const tours: Tour[] = [
       '/images/tours/south-africa-garden-route4.jpg',
       '/images/tours/south-africa-garden-route5.jpg',
     ],
-    
+
     metaDescription: '7-day Garden Route road trip: Knysna Lagoon, Tsitsikamma forests, Plettenberg Bay beaches, Storms River Bridge, whale watching Hermanus, Route 62 wines. South Africa\'s scenic coastal drive. Book now!',
     keywords: ['Garden Route', 'South Africa road trip', 'Knysna tours', 'Tsitsikamma National Park', 'Plettenberg Bay', 'Storms River Bridge', 'Hermanus whale watching', 'Route 62', 'South Africa self-drive', 'Garden Route packages']
   },
@@ -2605,24 +2605,24 @@ export const tours: Tour[] = [
     priceKES: 495000,
     published: true,
     durationDays: 4,
-    
+
     country: 'Botswana',
     countryCode: 'BW',
     city: 'Okavango Delta',
     region: 'Southern Africa',
     latitude: -19.2833,
     longitude: 22.7333,
-    
+
     difficulty: 'Moderate',
     maxGroupSize: 8,
     minGroupSize: 2,
     ageRestriction: '12+ recommended (some camps accept younger)',
-    
+
     accommodationType: 'Luxury Safari Camp',
     mealPlan: 'Full Board (All Meals & Most Drinks)',
-    
+
     bestMonths: ['May', 'June', 'July', 'August', 'September', 'October'],
-    
+
     highlights: [
       'Mokoro canoe safaris through pristine Delta waterways',
       'Big Five viewing - lions, leopards, elephants, buffaloes, rhinos (rare)',
@@ -2635,7 +2635,7 @@ export const tours: Tour[] = [
       'UNESCO World Heritage Site - largest inland delta',
       'Night drives with spotlight wildlife viewing'
     ],
-    
+
     inclusions: [
       'Return flights Maun to Delta camp (light aircraft)',
       'Luxury safari camp accommodation 3 nights',
@@ -2650,7 +2650,7 @@ export const tours: Tour[] = [
       'Park/conservation fees',
       'Emergency medical evacuation insurance within Botswana'
     ],
-    
+
     exclusions: [
       'International flights to Botswana',
       'Flights to/from Maun (gateway city)',
@@ -2663,7 +2663,7 @@ export const tours: Tour[] = [
       'Spa treatments at some camps',
       'Personal expenses and curio purchases'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -2694,7 +2694,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Why is Okavango Delta safari so expensive compared to other African safaris?',
@@ -2729,7 +2729,7 @@ export const tours: Tour[] = [
         answer: 'POLICIES VARY BY CAMP: Most luxury Okavango camps have MINIMUM AGE RESTRICTIONS (typically 8-12 years) due to safety considerations and adult-focused luxury experience. Some camps are ADULTS ONLY (16+). A FEW FAMILY-FRIENDLY camps welcome children all ages with appropriate supervision. REASONS FOR RESTRICTIONS: 1. SAFETY - Walking safaris with dangerous animals require maturity and ability to follow instructions instantly. Mokoros tip if children fidget. Open vehicles near lions/elephants need calm behavior. 2. OPEN VEHICLES - No enclosed protection, children must stay seated, quiet during sightings. 3. EARLY WAKE-UPS - 5:30 AM starts difficult for young children. 4. LONG ACTIVITIES - 3-4 hour drives/excursions require sitting still, patience. 5. ADULT ATMOSPHERE - Luxury camps cater to couples, honeymooners, adult safari enthusiasts. Children can disrupt ambiance. FAMILY-FRIENDLY OPTIONS: CAMPS ACCEPTING CHILDREN - Vumbura Plains, Chitabe, Khwai Tented Camp, Kanana (verify current policies). FAMILY SAFARI PROGRAMS - Some camps offer shortened activities, children\'s nature programs, private vehicles for families. PRIVATE MOBILE SAFARIS - Custom family safaris can accommodate children better than permanent camps. SELF-DRIVE MOREMI - Public campgrounds have no age restrictions, families camp/drive independently (requires safari experience and proper vehicle). AGE RECOMMENDATIONS: 8-12+ for luxury camps (depending on child\'s maturity, safari interest), 12+ ideal for full appreciation, 5+ for self-drive camping (parents\' judgment). ALTERNATIVE: Chobe National Park more family-friendly (boat safaris easier for kids, shorter drives, more accessible). VERDICT: Okavango Delta is premium adult safari destination. Families with mature, safari-interested children 10+ can have incredible experience at family-friendly camps. Younger children better suited to Chobe, Kruger (South Africa), or beach destinations.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity beyond return date',
       'Botswana visa ($30-100 depending on nationality, many nationalities visa-free)',
@@ -2746,7 +2746,7 @@ export const tours: Tour[] = [
       'Warm layers (winter mornings 5-10°C)',
       'Sun protection and insect repellent'
     ],
-    
+
     coverImage: '/images/tours/Botswana Okavango Delta.jpg',
     gallery: [
       '/images/tours/Botswana Okavango Delta.jpg',
@@ -2755,7 +2755,7 @@ export const tours: Tour[] = [
       '/images/tours/Botswana Okavango Delta4.jpg',
       '/images/tours/Botswana Okavango Delta5.jpg',
     ],
-    
+
     metaDescription: '4-day Okavango Delta luxury safari: Mokoro canoes, Big Five, walking safaris, boat cruises, water-based camps. UNESCO wilderness, 400+ birds. Exclusive remote Africa. Book ultimate delta experience!',
     keywords: ['Okavango Delta safari', 'Botswana safari', 'mokoro canoe safari', 'Okavango Delta tours', 'luxury safari Botswana', 'water safari Africa', 'Big Five Botswana', 'Okavango wilderness', 'delta safari packages', 'Botswana wildlife']
   },
@@ -2771,24 +2771,24 @@ export const tours: Tour[] = [
     priceKES: 287000,
     published: true,
     durationDays: 3,
-    
+
     country: 'Botswana',
     countryCode: 'BW',
     city: 'Kasane',
     region: 'Southern Africa',
     latitude: -17.8167,
     longitude: 25.1500,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 12,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome, family-friendly',
-    
+
     accommodationType: 'Safari Lodge',
     mealPlan: 'Full Board (All Meals)',
-    
+
     bestMonths: ['May', 'June', 'July', 'August', 'September', 'October', 'November'],
-    
+
     highlights: [
       'World\'s highest elephant concentration (50,000-120,000 elephants)',
       'Chobe River boat cruises - elephants swimming, hippos, crocodiles',
@@ -2801,7 +2801,7 @@ export const tours: Tour[] = [
       'Savuti Marsh wildlife spectacle (optional)',
       'Excellent photographic opportunities from water and land'
     ],
-    
+
     inclusions: [
       'Kasane airport/Victoria Falls transfers',
       'Safari lodge accommodation 2 nights',
@@ -2815,7 +2815,7 @@ export const tours: Tour[] = [
       'Conservation fees',
       'Government tourism levy'
     ],
-    
+
     exclusions: [
       'International flights to Botswana',
       'Flights to Kasane or Victoria Falls',
@@ -2828,7 +2828,7 @@ export const tours: Tour[] = [
       'Spa treatments at lodge',
       'Personal expenses and curio purchases'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -2852,7 +2852,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'How many elephants will I actually see in Chobe?',
@@ -2887,7 +2887,7 @@ export const tours: Tour[] = [
         answer: 'YES! Chobe is EXCELLENT for families with children, more so than most African safari destinations. FAMILY-FRIENDLY FACTORS: 1. BOAT CRUISES - Children love boat safaris! Seeing elephants swim, hippos yawn, crocodiles bask from water is exciting and less physically demanding than long game drives. Boats allow movement (unlike confined vehicles), bathrooms onboard (some boats), and engaging perspective. 2. WILDLIFE GUARANTEES - Children appreciate guaranteed sightings. Chobe delivers elephants in huge numbers (kids marvel at babies playing!), hippos (fascination factor high), crocodiles (thrilling for kids), buffaloes (massive herds impress). Seeing 100+ elephants maintains child interest unlike hit-or-miss leopard searching. 3. SHORTER ACTIVITIES - Game drives 3-4 hours (manageable for children 6+), boat cruises 3 hours with sundowners (fun for kids - sodas/snacks served). Less exhausting than full-day East African game drives. 4. SAFETY - Lodges have family rooms, fenced grounds (many), swimming pools (entertainment during midday heat), and child-friendly dining. 5. ACCOMMODATION VARIETY - Budget to luxury options accommodate family budgets. Some lodges offer family suites, interconnecting rooms, kids\' programs. 6. EDUCATIONAL VALUE - Children learn wildlife biology, conservation, ecosystems, African geography. Life-changing educational experience beating any classroom. AGE RECOMMENDATIONS: 6+ years ideal (understand safety rules, appreciate wildlife, handle early wake-ups), 4-5 years possible with patient parents (shorter attention spans, naptime needs), Under 4 years challenging (safety protocols difficult, activity timing problematic). CHALLENGES: Early wake-ups (6:00 AM = grumpy kids?), Sitting still/quietly when animals nearby (essential safety), Hot midday temperatures (pool time helps), Malaria precautions (mosquito nets, repellent, prophylaxis Nov-Apr). FAMILY SAFARI TIPS: Book private vehicle (flexibility for bathroom breaks, younger children), Choose family-friendly lodge (ask about children\'s programs, family rooms, pool), Involve children in wildlife checklists/spotting games (engagement tool), Bring entertainment for midday downtime (tablets, books, games), Set realistic expectations (explain safety rules before arrival). COMPARISON: Chobe more family-suitable than Okavango Delta (which has stricter age limits 8-12+ at most camps due to mokoro/walking safari safety) or walking-safari-intensive destinations. VERDICT: Chobe is top-tier African family safari destination. Boat cruises + guaranteed elephants + safety + variety = winning combination for children 6+ years. Many families cite Chobe as highlight of African trip and transformative for children\'s wildlife appreciation.'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Botswana visa ($30-100 or visa-free for many nationalities)',
@@ -2904,7 +2904,7 @@ export const tours: Tour[] = [
       'No specific fitness requirements (easy safari)',
       'Suitable for all ages (family-friendly)'
     ],
-    
+
     coverImage: '/images/tours/Botswana chobe.jpg',
     gallery: [
       '/images/tours/Botswana chobe.jpg',
@@ -2913,7 +2913,7 @@ export const tours: Tour[] = [
       '/images/tours/Botswana Chobe4.jpg',
       '/images/tours/Botswana Chobe5.jpg',
     ],
-    
+
     metaDescription: '3-day Chobe National Park safari: World\'s highest elephant concentration, river cruises, Big Five, buffalo herds, hippos, crocodiles. Perfect Victoria Falls combo. Family-friendly Botswana wildlife!',
     keywords: ['Chobe National Park', 'Chobe safari', 'Botswana elephants', 'Chobe River cruise', 'Kasane safari', 'Victoria Falls combo', 'Botswana wildlife', 'elephant safari Africa', 'Chobe tours', 'Botswana safari packages']
   },
@@ -2930,24 +2930,24 @@ export const tours: Tour[] = [
     priceKES: 254000,
     published: true,
     durationDays: 3,
-    
+
     country: 'Zimbabwe',
     countryCode: 'ZW',
     city: 'Victoria Falls',
     region: 'Southern Africa',
     latitude: -17.9243,
     longitude: 25.8572,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 15,
     minGroupSize: 2,
     ageRestriction: 'All ages (adventure activities have varying age restrictions)',
-    
+
     accommodationType: 'Hotel/Lodge',
     mealPlan: 'Bed & Breakfast',
-    
+
     bestMonths: ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
-    
+
     highlights: [
       'Victoria Falls - UNESCO World Heritage, Seven Natural Wonders',
       'Guided tour of falls with 16 viewpoints (Zimbabwe side)',
@@ -2960,7 +2960,7 @@ export const tours: Tour[] = [
       'Victoria Falls town and vibrant craft markets',
       'Easily combined with Chobe (1 hour) or Hwange safaris'
     ],
-    
+
     inclusions: [
       'Victoria Falls Airport transfers',
       'Hotel/lodge accommodation 2 nights',
@@ -2972,7 +2972,7 @@ export const tours: Tour[] = [
       'Professional tour guide',
       'Government tourism levy'
     ],
-    
+
     exclusions: [
       'International flights to Zimbabwe',
       'Zimbabwe visa ($30-50 single entry, $45-55 double/KAZA)',
@@ -2987,7 +2987,7 @@ export const tours: Tour[] = [
       'Tips for guides and activity operators',
       'Personal expenses and curio purchases'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -3011,7 +3011,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'What is the best time of year to visit Victoria Falls?',
@@ -3042,7 +3042,7 @@ export const tours: Tour[] = [
         answer: 'ABSOLUTELY! Victoria Falls combines perfectly with several safari destinations creating comprehensive Southern Africa itineraries: 1. CHOBE NATIONAL PARK, BOTSWANA (★★★★★ Perfect Combo): DISTANCE - 65km (1-1.5 hours road transfer). LOGISTICS - Easy border crossing (Kazungula), day trips or 2-3 night extensions. APPEAL - World\'s highest elephant concentration, river cruises, Big Five viewing. COMBINATION - 3 days Victoria Falls + 3 days Chobe = 6-day perfect Zimbabwe-Botswana trip balancing natural wonder and wildlife. TOUR OPERATORS - Offer combined packages handling all logistics. COST - Combined $2,500-4,000 depending on Chobe accommodation level. 2. HWANGE NATIONAL PARK, ZIMBABWE (★★★★ Excellent): DISTANCE - 190km (2.5 hours drive). LOGISTICS - Road transfer or short flight. APPEAL - Zimbabwe\'s largest park (14,650 sq km), excellent Big Five, 40,000+ elephants, wild dogs, painted dogs, diverse habitats. COMBINATION - 3 days Victoria Falls + 3 days Hwange = 6-day Zimbabwe safari+falls trip. COST - Combined $2,200-3,800. 3. OKAVANGO DELTA, BOTSWANA (★★★★★ Ultimate Luxury): DISTANCE - Fly Kasane (near Victoria Falls) to Maun (1 hour flight). LOGISTICS - Requires flights, more complex but doable. APPEAL - Mokoro safaris, luxury water-based camps, exclusive wilderness, UNESCO World Heritage. COMBINATION - 3 days Victoria Falls + 3 days Chobe + 4 days Okavango = 10-day ultimate Botswana-Zimbabwe trip. COST - Combined $5,500-8,000+ (Okavango luxury pricing). 4. KRUGER NATIONAL PARK, SOUTH AFRICA (★★★ Requires Flights): DISTANCE - Fly Victoria Falls-Johannesburg-Kruger (3-4 hours total). LOGISTICS - More complex (two flights, different country) but worthwhile. APPEAL - World-class Big Five safari, excellent infrastructure, reliable wildlife. COMBINATION - 3 days Victoria Falls + 4 days Kruger = 7-day Zimbabwe-South Africa highlights. COST - Combined $3,200-5,000. 5. NAMIBIA (★★★ Adventure Option): DISTANCE - Fly Victoria Falls-Windhoek (1.5 hours) or epic road trip. APPEAL - Sossusvlei dunes, Etosha National Park, desert landscapes, adventure. COMBINATION - Victoria Falls + Namibia = 10-14 day overland adventure. MOST POPULAR COMBINATIONS: Victoria Falls + Chobe (easiest, best value, perfect 6 days), Victoria Falls + Chobe + Okavango (ultimate Botswana safari 10 days), Victoria Falls + Hwange + Chobe (comprehensive Zimbabwe-Botswana 9 days), Cape Town + Garden Route + Victoria Falls + Chobe (3-week South African grand tour). LOGISTICS TIPS: Allow 1 day minimum for Victoria Falls (better 2-3 days), Most safaris need 3-4 days minimum (proper wildlife viewing), Use tour operators for combined packages (simpler than DIY), Book flights early (limited seats small aircraft), Verify visa requirements (multiple countries = multiple visas). VERDICT: Victoria Falls as standalone = 3 days perfect. Extended with Chobe = 6 days ideal Zimbabwe-Botswana trip. Extended with Chobe + Okavango = 10 days ultimate bucket-list Southern Africa experience. Falls + safari combination creates balanced trip: natural wonder + wildlife + adventure!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity and 2+ blank pages',
       'Zimbabwe visa ($30-50 on arrival or e-visa, KAZA Univisa $80 covers Zimbabwe+Zambia)',
@@ -3059,7 +3059,7 @@ export const tours: Tour[] = [
       'Sun protection (hat, sunglasses, SPF 50+ sunscreen)',
       'Insect repellent'
     ],
-    
+
     coverImage: '/images/tours/Zimbabwe-Victoria-Falls.jpg',
     gallery: [
       '/images/tours/Zimbabwe-Victoria-Falls.jpg',
@@ -3068,7 +3068,7 @@ export const tours: Tour[] = [
       '/images/tours/Zimbabwe-Victoria-Falls4.jpg',
       '/images/tours/Zimbabwe-Victoria-Falls5.jpg',
     ],
-    
+
     metaDescription: '3-day Victoria Falls experience: Guided falls tour, Zambezi sunset cruise, rainbows, Seven Natural Wonders. Optional bungee, helicopter, rafting. Perfect Chobe combo. Zimbabwe bucket-list!',
     keywords: ['Victoria Falls', 'Zimbabwe tours', 'Victoria Falls Zimbabwe', 'Seven Natural Wonders', 'Zambezi River cruise', 'Victoria Falls activities', 'bungee jumping Victoria Falls', 'helicopter flight Falls', 'Zimbabwe tourism', 'Victoria Falls packages']
   },
@@ -3084,24 +3084,24 @@ export const tours: Tour[] = [
     priceKES: 274000,
     published: true,
     durationDays: 4,
-    
+
     country: 'Zimbabwe',
     countryCode: 'ZW',
     city: 'Hwange',
     region: 'Southern Africa',
     latitude: -18.3630,
     longitude: 26.5000,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 6,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome (some camps have minimum age 8)',
-    
+
     accommodationType: 'Safari Lodge',
     mealPlan: 'Full Board (All Meals)',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'October', 'November'],
-    
+
     highlights: [
       'Zimbabwe\'s largest national park (14,650 sq km of wilderness)',
       'One of Africa\'s largest elephant populations (40,000-60,000 elephants)',
@@ -3114,7 +3114,7 @@ export const tours: Tour[] = [
       'Night drives with spotlight wildlife viewing',
       'Easy combination with Victoria Falls (2.5 hours away)'
     ],
-    
+
     inclusions: [
       'Victoria Falls or Hwange Airport transfers',
       'Safari lodge accommodation 3 nights',
@@ -3128,7 +3128,7 @@ export const tours: Tour[] = [
       'Conservation levies',
       'Government tourism fees'
     ],
-    
+
     exclusions: [
       'International flights to Zimbabwe',
       'Domestic flights (optional Hwange Airport connection)',
@@ -3141,7 +3141,7 @@ export const tours: Tour[] = [
       'Spa treatments at some lodges',
       'Personal expenses and curio purchases'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -3172,7 +3172,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'How does Hwange National Park compare to Kruger, Serengeti, or Chobe?',
@@ -3203,7 +3203,7 @@ export const tours: Tour[] = [
         answer: 'YES, Hwange can be excellent for families with children, though some considerations apply: FAMILY-FRIENDLY FACTORS: 1. BIG ANIMAL GUARANTEE - Children love elephants! Hwange delivers 100% elephant sightings in big numbers (thrilling for kids). Buffaloes, zebras, giraffes also consistent (animals children recognize). 2. SAFARI ACTIVITIES - Game drives from comfortable vehicles (easier than walking safaris for young kids), Morning/afternoon drives (manageable durations 3-4 hours with breaks), Waterholes provide predictable sightings (less "boring searching" time). 3. EDUCATIONAL VALUE - Children learn wildlife biology, ecosystems, conservation, African geography. Transformative educational experience! Guides often engage children with tracking lessons, animal facts, junior ranger experiences. 4. ACCOMMODATION - Some Hwange lodges cater to families: family suites/tents, swimming pools (midday entertainment), children\'s programs at select lodges, flexible activity schedules for families. 5. SAFETY - Lodges have security protocols, guided activities supervised, enclosed dining areas (animals can\'t enter), generally safe environment (supervised). AGE RESTRICTIONS: VARIES BY LODGE - Many luxury lodges have minimum ages (commonly 6-8 years, some 12+) due to open vehicle safety, dangerous animals, adult-focused atmosphere. FAMILY-SPECIFIC LODGES - Hwange Main Camp, Robins Camp, Sinamatella Camp (SANParks camps) accept all ages, budget-friendly, self-catering. Private camps like The Hide have family policies (verify before booking). CHALLENGES FOR FAMILIES: 1. EARLY WAKE-UPS - 5:30 AM starts difficult for young children (tired, grumpy kids = unhappy safari). 2. SITTING STILL/QUIETLY - Essential when animals nearby (safety + respect). Young children struggle with this requirement. 3. LONG DRIVES - 3-4 hours in vehicle with bathroom breaks challenging for under-8s. 4. DANGEROUS ANIMALS - Elephants, buffalo, lions present. Children must follow safety rules perfectly (impulse control required). 5. HEAT - October-November 35-40°C midday uncomfortable for young children (dehydration risk). 6. LIMITED ACTIVITIES - Hwange focused on game drives (vs child-friendly destinations with varied activities). AGE RECOMMENDATIONS: 8+ YEARS IDEAL - Understand safety rules, appreciate wildlife, handle schedules, remember experience meaningfully. 6-7 YEARS POSSIBLE - With patient parents, mature children, shorter drives, family-focused lodges. UNDER 6 YEARS CHALLENGING - Limited by lodge policies, safety concerns, attention spans (consider waiting). FAMILY SAFARI TIPS: Book private vehicle (flexibility for bathroom breaks, rest stops, pace), Choose family-friendly lodge (ask about children\'s programs, family suites, pool), Set realistic expectations (explain safety rules before arrival, involve kids in wildlife checklists), Bring entertainment for midday downtime (tablets, books, games loaded - wi-fi limited!), Schedule breaks (not every game drive - allow pool/rest time), Consider shorter safari (2-3 days Hwange vs 4 days if children tire). COMPARISON: Hwange MORE suitable than Okavango Delta (stricter age limits 8-12+ due to mokoro/walking safaris), LESS suitable than Chobe (boat safaris easier for kids, shorter activities), SIMILAR to Kruger (both land-based game drives, age-dependent). ALTERNATIVE: If children under 8, consider Chobe + Victoria Falls combination (boat safaris, falls viewing, shorter activities, more varied) vs Hwange intensity. VERDICT: Hwange excellent for families with children 8+ years who are safari-interested, well-behaved, excited about wildlife. Younger children 6-7 possible at family lodges with patient parents. Under 6, consider waiting until child can fully appreciate and safely participate. Many families rate Hwange safari as transformative for children - seeing elephants by hundreds, lions, painted dogs, African wilderness instills lifelong conservation appreciation!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity and blank pages',
       'Zimbabwe visa ($30-50 on arrival or e-visa, KAZA Univisa $80)',
@@ -3220,7 +3220,7 @@ export const tours: Tour[] = [
       'No specific fitness requirements (easy safari)',
       'Suitable for ages 8+ (lodge policies vary)'
     ],
-    
+
     coverImage: '/images/tours/Zimbabwe-Hwange.jpg',
     gallery: [
       '/images/tours/Zimbabwe-Hwange.jpg',
@@ -3229,7 +3229,7 @@ export const tours: Tour[] = [
       '/images/tours/Zimbabwe-Hwange4.jpg',
       '/images/tours/Zimbabwe-Hwange5.jpg',
     ],
-    
+
     metaDescription: '4-day Hwange National Park safari: 40,000 elephants, Big Five, African painted dogs, exclusive game drives, pumped waterholes. Zimbabwe\'s premier safari. Perfect Victoria Falls combo!',
     keywords: ['Hwange National Park', 'Hwange safari', 'Zimbabwe safari', 'African painted dogs', 'wild dogs Zimbabwe', 'Big Five Zimbabwe', 'elephant safari', 'Hwange tours', 'Zimbabwe wildlife', 'Hwange packages']
   },
@@ -3246,24 +3246,24 @@ export const tours: Tour[] = [
     priceKES: 345000,
     published: true,
     durationDays: 5,
-    
+
     country: 'Namibia',
     countryCode: 'NA',
     city: 'Sossusvlei',
     region: 'Southern Africa',
     latitude: -24.7286,
     longitude: 15.2920,
-    
+
     difficulty: 'Moderate',
     maxGroupSize: 8,
     minGroupSize: 2,
     ageRestriction: '8+ recommended (dune climbing physically demanding)',
-    
+
     accommodationType: 'Desert Lodge',
     mealPlan: 'Full Board (All Meals)',
-    
+
     bestMonths: ['March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
-    
+
     highlights: [
       'Sossusvlei - iconic massive red sand dunes (300m+ high)',
       'Dead Vlei - surreal landscape with 900-year-old dead trees',
@@ -3276,7 +3276,7 @@ export const tours: Tour[] = [
       'Luxury desert lodges with infinity pools overlooking dunes',
       'Spectacular photography opportunities at sunrise/sunset'
     ],
-    
+
     inclusions: [
       'Windhoek Airport transfers or self-drive vehicle rental',
       'Luxury desert lodge accommodation 4 nights',
@@ -3291,7 +3291,7 @@ export const tours: Tour[] = [
       '4×4 shuttle into Sossusvlei (final 5km)',
       'Conservation fees'
     ],
-    
+
     exclusions: [
       'International flights to Namibia',
       'Namibia visa (many nationalities visa-free up to 90 days)',
@@ -3304,7 +3304,7 @@ export const tours: Tour[] = [
       'Gratuities for guides and lodge staff',
       'Personal expenses and curio purchases'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -3342,7 +3342,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'How difficult is climbing the Big Daddy dune? Can anyone do it?',
@@ -3369,7 +3369,7 @@ export const tours: Tour[] = [
         answer: 'Sossusvlei/Namib Desert ranks among world\'s MOST SPECTACULAR desert landscapes: SOSSUSVLEI VS SAHARA DESERT (Morocco/Algeria/Egypt): DUNE HEIGHT - Sossusvlei wins (Big Daddy 325m vs Sahara tallest ~250m Erg Chebbi Morocco), COLORS - Sossusvlei wins dramatically (burnt-orange iron-oxide vs Sahara\'s tan), ACCESSIBILITY - Sossusvlei superior (luxury lodges, good roads vs Sahara\'s remote challenging access), UNIQUENESS - Dead Vlei (Sossusvlei exclusive feature) vs Sahara\'s oases/dunes, TOURISM - Sahara busier (Morocco\'s Erg Chebbi crowded), SIZE - Sahara vastly larger (9 million sq km vs Namib 81,000 sq km) but Sossusvlei more photogenic concentration. VERDICT - Sossusvlei more dramatic colors, higher dunes, better infrastructure. Sahara wins cultural experiences (Berber communities, historical sites). SOSSUSVLEI VS WADI RUM, JORDAN: LANDSCAPES - Different (Sossusvlei pure sand dunes vs Wadi Rum rock formations + sand), COLORS - Sossusvlei red-orange vs Wadi Rum red-brown, SCALE - Sossusvlei dunes taller, Wadi Rum rock formations more varied, CULTURE - Wadi Rum wins (Bedouin experiences, historical significance vs Sossusvlei pure nature), ACCESSIBILITY - Similar (both well-developed), FAME - Wadi Rum (Mars movies, Lawrence of Arabia) more cinematic fame. VERDICT - Different experiences. Sossusvlei for pure desert/dune spectacle; Wadi Rum for culture-nature combination. SOSSUSVLEI VS DEATH VALLEY, USA: DUNES - Sossusvlei vastly superior (Death Valley\'s Mesquite Dunes tiny ~30m vs Sossusvlei 300m), HEAT - Death Valley more extreme (world record 54°C vs Sossusvlei 45°C max), DIVERSITY - Death Valley more varied (salt flats, rock formations, canyons vs Sossusvlei dune-focused), EXCLUSIVITY - Sossusvlei quieter (Death Valley busy tourist), PHOTOGRAPHY - Sossusvlei more iconic (Dead Vlei unmatched). VERDICT - Sossusvlei hands-down for dunes specifically. SOSSUSVLEI VS ATACAMA DESERT, CHILE: ARIDITY - Atacama driest (some areas zero recorded rain!) vs Namib ~20-100mm/year, LANDSCAPES - Different (Atacama salt flats, geysers, volcanoes vs Sossusvlei dunes), DUNES - Sossusvlei taller, more dramatic, STARGAZING - Both exceptional (international observatories both), ACTIVITIES - Atacama more varied (astronomy, geysers, flamingos, hot springs), COST - Similar luxury pricing. VERDICT - Atacama for variety; Sossusvlei for pure dune drama. SOSSUSVLEI VS DUBAI/ABU DHABI DESERT, UAE: DUNES - Sossusvlei far superior (Dubai desert small dunes ~50m, beige vs Sossusvlei red giants 300m), DEVELOPMENT - Dubai commercialized (resorts, dune bashing tourism) vs Sossusvlei protected wilderness, AUTHENTICITY - Sossusvlei wins completely (Dubai feels manufactured), ACTIVITIES - Dubai more (quad bikes, sandboarding, camel rides) vs Sossusvlei photography-focused, EXCLUSIVITY - Sossusvlei remote/wild vs Dubai tourist-crowded. VERDICT - Not comparable. Sossusvlei authentic wilderness; Dubai entertainment desert. SOSSUSVLEI\'S UNIQUE SELLING POINTS: 1. DEAD VLEI - Nowhere else has 900-year-old dead trees on white clay pan ringed by red dunes (globally unique!), 2. COLOR - Iron-oxide red-orange most vibrant desert sand worldwide, 3. HEIGHT - Among world\'s tallest dunes (top 5), 4. AGE - Namib is world\'s OLDEST desert (55-80 million years), 5. PHOTOGRAPHIC - Most photographed dunes globally (iconic imagery), 6. INFRASTRUCTURE - Luxury lodges amid wilderness (rare combo), 7. DARK SKIES - International Dark Sky Reserve (world-class stargazing). GLOBAL RANKING: Sossusvlei consistently ranks top 5 desert destinations worldwide alongside Sahara, Atacama, Wadi Rum, Monument Valley. Many photographers/travelers rate it #1 for pure dune beauty. VERDICT - Sossusvlei offers world\'s most dramatic sand dune landscapes with Dead Vlei as unique cherry on top. Combine spectacular dunes, vivid colors, luxury lodges, accessibility, and unmatched photography = bucket-list essential deserving global fame!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Namibia visa (many nationalities visa-free 90 days)',
@@ -3386,7 +3386,7 @@ export const tours: Tour[] = [
       'Malaria-free area (no prophylaxis needed)',
       'Suitable for ages 8+ (dune climbing demands)'
     ],
-    
+
     coverImage: '/images/tours/Namibia-Sossusvlei.jpg',
     gallery: [
       '/images/tours/Namibia-Sossusvlei.jpg',
@@ -3395,7 +3395,7 @@ export const tours: Tour[] = [
       '/images/tours/Namibia-Sossusvlei4.jpg',
       '/images/tours/Namibia-Sossusvlei5.jpg',
     ],
-    
+
     metaDescription: '5-day Sossusvlei desert adventure: Climb Big Daddy dune 325m, photograph Dead Vlei surreal landscape, world\'s oldest desert, luxury lodges, darkest sky stargazing. Namibia bucket-list!',
     keywords: ['Sossusvlei', 'Namib Desert', 'Dead Vlei', 'Big Daddy dune', 'Namibia tours', 'desert safari', 'Sesriem Canyon', 'dune climbing', 'Namibia photography', 'desert adventure']
   },
@@ -3411,24 +3411,24 @@ export const tours: Tour[] = [
     priceKES: 299500,
     published: true,
     durationDays: 4,
-    
+
     country: 'Namibia',
     countryCode: 'NA',
     city: 'Etosha National Park',
     region: 'Southern Africa',
     latitude: -18.8556,
     longitude: 16.3293,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 8,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome (excellent family safari destination)',
-    
+
     accommodationType: 'Safari Lodge',
     mealPlan: 'Full Board (All Meals)',
-    
+
     bestMonths: ['May', 'June', 'July', 'August', 'September', 'October', 'November'],
-    
+
     highlights: [
       'Etosha Pan - 4,800 sq km salt pan (visible from space!)',
       'Waterhole viewing - exceptional wildlife concentrations',
@@ -3441,7 +3441,7 @@ export const tours: Tour[] = [
       'Springbok migrations - largest antelope migrations outside East Africa',
       'Photographic opportunities - animals approach close to waterholes'
     ],
-    
+
     inclusions: [
       'Windhoek transfers or self-drive vehicle assistance',
       'Safari lodge accommodation 3 nights inside park',
@@ -3454,7 +3454,7 @@ export const tours: Tour[] = [
       'Park maps and wildlife guides',
       'Conservation fees'
     ],
-    
+
     exclusions: [
       'International flights to Namibia',
       'Namibia visa (many nationalities visa-free 90 days)',
@@ -3466,7 +3466,7 @@ export const tours: Tour[] = [
       'Gratuities for guides and staff',
       'Personal expenses and curio purchases'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -3497,7 +3497,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'How does Etosha compare to other famous African safari parks like Serengeti or Kruger?',
@@ -3524,7 +3524,7 @@ export const tours: Tour[] = [
         answer: 'YES - Etosha is EXCELLENT family safari destination and arguably Africa\'s BEST for children: FAMILY-FRIENDLY FACTORS: 1. SAFE ENVIRONMENT - Enclosed vehicle safety (stay in car = protected from wildlife). Fenced rest camps (children walk freely within Okaukuejo/Halali/Namutoni compounds - no lion danger!). Malaria-free (no prophylaxis, fewer health worries). Self-drive option (family privacy, flexible schedule, cost savings). 2. ENGAGING ACTIVITIES - Waterhole viewing (action-packed! Animals arriving constantly, drinking, bathing, interacting - kids mesmerized). Floodlit waterholes (nighttime wildlife viewing - exciting for kids staying up late!). Swimming pools (rest camps + lodges have pools - essential heat relief + fun). Wildlife spotting game ("First to spot elephant gets ice cream!" - keeps kids engaged), Picnic sites (break from vehicle, run around, eat - Olifantsbad, Okondeka). 3. EDUCATIONAL - Species identification (challenge: who can identify most animals?), Animal behavior observation (why elephants spray water? Why zebras kick lions?), Conservation lessons (rhino protection, ecosystem importance), Astronomy (dark skies, southern hemisphere constellations), Geography (salt pan formation, climate adaptation). 4. SHORT DRIVES - Compact park (waterholes 10-30km apart, 15-45 min drives between) vs East African parks (hours between sightings). Attention spans accommodated! 5. PREDICTABLE SIGHTINGS - Waterholes guarantee animal presence (rare "boring" days with zero sightings). Kids don\'t lose interest! 6. FACILITIES - Rest camps have restaurants (no cooking stress!), shops (snacks, ice cream, toys), playgrounds (Okaukuejo, Namutoni), swimming pools, clean toilets (regularly serviced). AGE RECOMMENDATIONS: ALL AGES technically possible but sweet spots: 0-3 YEARS (Infants/Toddlers) - POSSIBLE with caveats: CHALLENGES - Long car seat time (toddlers restless), Heat risk (babies dehydrate faster, overheat easier), Noise (crying disturbs quiet game viewing, other guests), Nighttime wakings (floodlit waterhole viewing difficult with infant sleep schedules), Minimal memory (won\'t remember experience). TIPS IF BRINGING - Visit winter only (May-Oct avoiding heat), Short morning drive only (2-3 hours max), Prioritize lodge pool time, Low expectations (accept limited game viewing), Private vehicle essential (rental car or private guide - not shared safari), Base one rest camp (avoid long drives between camps). VERDICT - Consider waiting until older unless Africa-based or once-in-lifetime trip. 4-7 YEARS - GOOD! Attention spans longer (can sit 3-4 hours with breaks/snacks), Animals exciting ("Look mommy, elephant!"), Educational concepts understood (species names, conservation basics), Memory formation (will remember trip!), Floodlit waterholes magical ("We saw rhino at night!"). TIPS - Involve in spotting game (provide cheap binoculars, wildlife checklist), Bring entertainment (coloring books, tablets with downloaded shows for midday rest), Swim breaks (promise pool time after morning drive = motivation), Snacks constantly (cheerful fed kids!), Low-pressure schedule (skip 5AM sunrise drives - let kids sleep, depart 7-8AM instead). 8-12 YEARS - IDEAL! Perfect age! Independence (manage own binoculars, camera, checklist), Genuine interest (asking questions, engaged learning), Appropriate attention span (full-day drives manageable), Photography (give disposable camera or phone - kids love documenting!), Floodlit waterhole dedication (will sit 1-2 hours watching patiently), Memory (transformative experience remembered lifelong). TIPS - Empower with responsibilities (navigator, species identifier, photographer), Challenge with goals ("Find Big Four!"), Educational materials (field guides, apps, journals), Involve planning (which waterholes to visit? what animals priority?), Reward system (ice cream at shop after good behavior!). 13-18 YEARS (TEENS) - EXCELLENT! Adult capabilities (long drives no problem), Mature appreciation (understand ecosystem complexity, conservation urgency), Photography passion (Instagram-worthy shots!), Independence (bring friend for social component?), Minimal complaining (hopefully!). TIPS - Provide good camera (photographer teens thrive!), Respect opinions (involve destination choices), Challenge intellectually (conservation debates, ecology discussions), Freedom within safety (walk rest camp independently, choose meals), Quality family time (teens often distant - safari togetherness valuable). FAMILY LOGISTICS: ACCOMMODATION - NWR Rest Camps offer FAMILY UNITS (2-4 beds, kitchenette, lounge) at Okaukuejo/Halali/Namutoni ($100-180/night budget option). Private lodges (Onguma, Mushara, Ongava) offer FAMILY SUITES (interconnecting rooms or large family rooms, $400-800/night luxury). VEHICLES - Self-drive rent SUV (space for kids, bags, snacks, comfort). Private guided safari request PRIVATE VEHICLE (not sharing with strangers - more flexible with kid needs). MEALS - Rest camps have family-friendly restaurants (burgers, pizzas alongside game dishes - picky eaters accommodated!). Lodges typically buffet style (options for everyone). TIMING - Visit WINTER (May-Oct) with children (comfortable temperatures, safer for little bodies). Avoid summer heat (Nov-Mar dangerous for young children - heat exhaustion, dehydration risk). DURATION - 3-4 days optimal families (longer risks boredom for younger kids). Combine with other destinations (Sossusvlei 5 days + Etosha 4 days + Swakopmund 3 days = 12-day family Namibia adventure!). FAMILY CHALLENGES: Heat (summer), Long drives (boredom), Early wake-ups (cranky kids), Quiet requirements (car noise disturbs wildlife), Limited kid-specific entertainment (no playgrounds at waterholes!). FAMILY ADVANTAGES: Safe environment, Engaging wildlife action, Educational, Swimming pools, Flexible self-drive, Malaria-free, Affordable (family rooms economical), Memories! VERDICT - Etosha HIGHLY RECOMMENDED families with children 4+ years. Ages 8-12 absolute sweet spot (old enough appreciate, young enough wonder-filled). Visit winter avoiding heat, stay rest camps (economical family facilities) or luxury family lodges (premium comfort), engage kids actively (spotting, photography, checklists), balance game viewing with pool time, and create transformative family memories! Many families rate Etosha as trip highlight and children develop lifelong passion for wildlife conservation. Absolutely worthwhile!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Namibia visa (many nationalities visa-free 90 days)',
@@ -3540,7 +3540,7 @@ export const tours: Tour[] = [
       'Malaria-free area (no prophylaxis needed)',
       'Suitable for all ages (excellent family destination)'
     ],
-    
+
     coverImage: '/images/tours/Namibia-Etosha.jpg',
     gallery: [
       '/images/tours/Namibia-Etosha.jpg',
@@ -3549,7 +3549,7 @@ export const tours: Tour[] = [
       '/images/tours/Namibia-Etosha4.jpg',
       '/images/tours/Namibia-Etosha5.jpg',
     ],
-    
+
     metaDescription: '4-day Etosha National Park safari: Big Five, 4,800 sq km salt pan, floodlit waterhole viewing, black rhinos, self-drive freedom. Namibia\'s premier wildlife destination!',
     keywords: ['Etosha National Park', 'Etosha safari', 'Namibia wildlife', 'salt pan', 'black rhino safari', 'self-drive safari', 'Big Five Namibia', 'Etosha tours', 'waterhole viewing', 'Namibia safari']
   },
@@ -3566,24 +3566,24 @@ export const tours: Tour[] = [
     priceKES: 371000,
     published: true,
     durationDays: 5,
-    
+
     country: 'Zambia',
     countryCode: 'ZM',
     city: 'South Luangwa National Park',
     region: 'Southern Africa',
     latitude: -13.0890,
     longitude: 31.8368,
-    
+
     difficulty: 'Moderate',
     maxGroupSize: 8,
     minGroupSize: 2,
     ageRestriction: '16+ for walking safaris (age restrictions safety-based)',
-    
+
     accommodationType: 'Safari Bush Camp',
     mealPlan: 'Full Board (All Meals)',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'October', 'November'],
-    
+
     highlights: [
       'Walking safaris - birthplace of walking safaris (Norman Carr pioneer)',
       'Leopard capital - highest leopard density Africa (~1,100 population)',
@@ -3596,7 +3596,7 @@ export const tours: Tour[] = [
       'Bush camps - intimate authentic accommodation (6-12 guests)',
       'Conservation success - pristine wilderness, anti-poaching effective'
     ],
-    
+
     inclusions: [
       'Mfuwe Airport transfers',
       'Safari bush camp accommodation 4 nights',
@@ -3610,7 +3610,7 @@ export const tours: Tour[] = [
       'Conservation fees and community levies',
       'Laundry service'
     ],
-    
+
     exclusions: [
       'International flights to Zambia',
       'Lusaka to Mfuwe domestic flights ($200-350 return)',
@@ -3621,7 +3621,7 @@ export const tours: Tour[] = [
       'Personal expenses and curio purchases',
       'Optional extra activities (river cruises, village visits)'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -3659,7 +3659,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'How safe are walking safaris? What happens if we encounter dangerous animals on foot?',
@@ -3674,7 +3674,7 @@ export const tours: Tour[] = [
         answer: 'South Luangwa rewards visits YEAR-ROUND with dramatically different seasonal experiences, though dry season is "best" for most visitors: DRY SEASON (May-November) - Prime Time: PEAK MONTHS: JUNE-OCTOBER absolute prime. ADVANTAGES: 1. EXCEPTIONAL WILDLIFE VIEWING - Luangwa River is ONLY water source (animals forced to visit = concentrated sightings!), Vegetation dies back (grass short, leaves drop = visibility excellent, animals can\'t hide), Hundreds of elephants/hippos/crocodiles concentrated river, Predators (leopards, lions, hyenas) follow prey concentrations. 2. WEATHER PERFECT - May-August: Cool pleasant (days 25-30°C, nights 10-18°C, comfortable all activities), September-October: Hot (32-40°C) but dry, clear skies, September-October HOTTEST = most wildlife concentrated (extreme heat drives animals to water constantly!). 3. BEST LEOPARD SIGHTINGS - Dry season leopards more active visible (following prey, easier spotting in sparse vegetation). 4. CARMINE BEE-EATERS (August-October) - 10,000+ carmine bee-eaters nest in Luangwa riverbanks (stunning pink clouds, nesting burrows, aerial feeding = spectacular!). Peak September. Gone by early November (migrate north). 5. WALKING SAFARIS OPTIMAL - Ground dry (pleasant walking, less mud, fewer insects), Wildlife concentrated (easier finding on foot), Comfortable temperatures (May-August ideal, Sep-Oct hot but manageable with early starts). 6. NIGHT DRIVES PRODUCTIVE - Animals active (predators hunting, prey alert), Dry conditions (easier driving, less mud). 7. BEST PHOTOGRAPHY LIGHT - Low humidity = crisp clear air, Deep blue skies, Dust creates atmospheric golden hour light. DISADVANTAGES: 1. BUSIEST SEASON - Most tourists (though South Luangwa never feels crowded - 20 camps vs Serengeti\'s 100+), 2. HIGHER PRICES - Peak season rates 20-40% premium over rainy season, 3. DUSTY - Dry roads create dust (hazy photography, respiratory irritation), 4. BARREN LANDSCAPES - Brown dry vegetation (less photogenic for some), 5. EXTREME HEAT (Sept-Oct) - 38-42°C midday uncomfortable (dehydration risk, exhausting). SPECIFIC MONTHS: MAY - Transition (late rains ending, greening fading, animals concentrating = excellent value!), JUNE-AUGUST - Perfect (comfortable weather, good wildlife, manageable tourists, high-season rates), SEPTEMBER-OCTOBER - PEAK WILDLIFE (hottest months = extreme concentrations, carmine bee-eaters, best sightings BUT uncomfortable heat), NOVEMBER - Transition (rains arriving, cooling, greening begins, prices drop). RAINY SEASON (December-April) - Emerald Season: PEAK MONTHS: JANUARY-MARCH (full rainy season). ADVANTAGES: 1. DRAMATIC LANDSCAPES - Lush green vegetation (grass 2m high, trees sprout leaves, flowers bloom), Luangwa River FLOODS (water spreads across floodplains creating lagoons, oxbows), Stunning photography (storm clouds, rainbow light, vivid greens, dramatic skies), Waterfalls flowing (seasonal tributaries swell). 2. BABY ANIMALS - Birthing season (impala, puku lambs Dec-Feb), Predators with cubs/young (lions breed year-round but more cubs visible), Migratory birds raising chicks. 3. BIRDLIFE EXPLOSION - Resident 400+ species PLUS migrants (480+ total!), Carmine bee-eaters return (nesting August onwards but some present late rainy season), Breeding plumage (stunning colors), Waterbirds (storks, herons, egrets on flooded plains). 4. FEWER TOURISTS - Off-season solitude (maybe 30-50% occupancy), Entire game drives to yourself (no other vehicles!), Intimate bush experience. 5. LOWER PRICES - Significant discounts (40-60% off peak rates!), Exceptional value. 6. DIFFERENT WILDLIFE BEHAVIOR - Animals dispersed (drink from rain pools, not concentrated), More natural (not stressed by heat/thirst), Predator hunting (easier with tall grass cover). DISADVANTAGES: 1. DIFFICULT WILDLIFE VIEWING - Animals dispersed (not river-dependent = spread across park), Thick vegetation (tall grass, dense bush = animals hidden, harder spotting), More driving (searching widely vs sitting at waterholes), Fewer sightings (compensation: dramatic landscapes, birds, atmosphere). 2. WEATHER CHALLENGES - Heavy afternoon storms (drives cut short, return camp soaked!), High humidity (85-95%, oppressive, clothes never dry!), Mud (roads slippery, impassable after heavy rain, vehicles stuck occasionally), Flooding (some areas inaccessible, camps close November-December rebuilding after floods). 3. SEASONAL CAMP CLOSURES - Many camps close December-March (rebuilding, maintenance, staff leave), Limited accommodation options (maybe 8-10 camps open vs 20 in dry season), Book ahead! 4. WALKING SAFARIS LIMITED - Some camps suspend walking (mud, thick bush, dispersed dangerous animals, tsetse flies!), Focus more on vehicle drives. 5. NIGHT DRIVES CHALLENGING - Rain cancels drives, Muddy roads dangerous darkness, Animals less active (dispersed, don\'t need waterholes). SPECIFIC MONTHS: DECEMBER - Early rains (sporadic storms, greening begins, many camps still closed), JANUARY-MARCH - Peak rains (heavy storms, flooding, humidity, mud, dramatic but challenging), APRIL-MAY - Late rains (tapering off, still green, animals concentrating, EXCELLENT SHOULDER SEASON!). GREEN SEASON STRATEGY: If visiting rainy season: Choose camps open year-round (Mfuwe Lodge, Nsefu Camp, Flatdogs, few others), Accept different experience (landscapes/birds/atmosphere vs concentrated wildlife), Pack rain gear + quick-dry clothes, Embrace storms (dramatic, exhilarating!), Bring good camera (vivid colors, rainbow light, storm photography), Flexible schedule (some days confined to camp by rain). BEST FOR SPECIFIC INTERESTS: Classic safari (concentrated wildlife, leopards) = JUNE-OCTOBER, Best value = APRIL-MAY (late rains, still green, animals concentrating, fewer tourists, lower rates), Photography landscapes = JANUARY-MARCH (lush, dramatic skies), Birdwatching = DECEMBER-APRIL (migrants, breeding, waterbirds), Carmine bee-eaters = AUGUST-OCTOBER (nesting colonies), Comfortable weather = JUNE-AUGUST (cool, dry), Extreme wildlife concentrations = SEPTEMBER-OCTOBER (hottest, most concentrated), Avoiding crowds = DECEMBER-APRIL (solitude!), Budget = JANUARY-MARCH (steepest discounts). WALKING SAFARI FOCUS: Best months JUNE-AUGUST (comfortable temperatures, dry ground, concentrated wildlife), SEPTEMBER-OCTOBER hot but manageable early starts, AVOID December-March (mud, thick vegetation, tsetse flies, suspended walks many camps). VERDICT - FIRST-TIME VISITORS: JUNE-OCTOBER safe bet (guaranteed great wildlife, comfortable, walking safaris, carmine bee-eaters, peak experience). APRIL-MAY SHOULDER SEASON excellent value (still good wildlife, beautiful, fewer tourists, lower rates). EXPERIENCED SAFARI TRAVELERS OR PHOTOGRAPHERS: Consider RAINY SEASON (December-March) for dramatically different Africa - lush dramatic landscapes, storm photography, birding, solitude, budget. Accept trade-off: fewer wildlife sightings but more atmosphere. I personally love SEPTEMBER (hottest, extreme wildlife concentrations, carmine bee-eaters peak, willing to tolerate heat for unmatched action!). Friends prefer JUNE-JULY (comfortable, excellent wildlife, manageable tourists, best overall balance).'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Zambia visa ($50 USD single-entry, available on arrival Mfuwe Airport)',
@@ -3692,7 +3692,7 @@ export const tours: Tour[] = [
       'Warm layers for early mornings (10-18°C May-August)',
       'Suitable for ages 16+ (walking safari restrictions)'
     ],
-    
+
     coverImage: '/images/tours/Zambia-South-Luangwa.jpg',
     gallery: [
       '/images/tours/Zambia-South-Luangwa.jpg',
@@ -3701,7 +3701,7 @@ export const tours: Tour[] = [
       '/images/tours/Zambia-South-Luangwa4.jpg',
       '/images/tours/Zambia-South-Luangwa5.jpg',
     ],
-    
+
     metaDescription: '5-day South Luangwa walking safari: Leopard capital of Africa, birthplace of walking safaris, track elephants/lions on foot, carmine bee-eaters, authentic bush camps. Zambia\'s best!',
     keywords: ['South Luangwa', 'walking safari', 'leopard safari', 'Zambia wildlife', 'Luangwa River', 'carmine bee-eaters', 'bush camps Zambia', 'Africa walking tours', 'leopard capital', 'South Luangwa tours']
   },
@@ -3717,24 +3717,24 @@ export const tours: Tour[] = [
     priceKES: 228000,
     published: true,
     durationDays: 3,
-    
+
     country: 'Zambia',
     countryCode: 'ZM',
     city: 'Livingstone / Victoria Falls',
     region: 'Southern Africa',
     latitude: -17.9244,
     longitude: 25.8567,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 12,
     minGroupSize: 2,
     ageRestriction: 'All ages (adventure activities have individual age restrictions)',
-    
+
     accommodationType: 'Safari Lodge',
     mealPlan: 'Bed & Breakfast (lunch and dinner optional)',
-    
+
     bestMonths: ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    
+
     highlights: [
       'Devil\'s Pool - swim on the edge of the Falls (September-December only)',
       'Livingstone Island - exclusive Zambian island at Falls lip',
@@ -3747,7 +3747,7 @@ export const tours: Tour[] = [
       'Livingstone town - colonial history, museums, local culture',
       'Bridge of Batoka Gorge - iconic view from Zambia-Zimbabwe border'
     ],
-    
+
     inclusions: [
       'Livingstone Airport transfers',
       'Accommodation 2 nights (lodge near Falls)',
@@ -3757,7 +3757,7 @@ export const tours: Tour[] = [
       'Zambezi sunset cruise with drinks and snacks',
       'All park fees and conservation levies'
     ],
-    
+
     exclusions: [
       'International flights to Zambia',
       'Zambia visa ($50 single-entry, $80 Kaza Univisa for Zambia+Zimbabwe)',
@@ -3774,7 +3774,7 @@ export const tours: Tour[] = [
       'Village visits, market tours',
       'Gratuities for guides and staff'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -3798,7 +3798,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Should I visit Victoria Falls from the Zambian side or Zimbabwe side? What are the differences?',
@@ -3809,7 +3809,7 @@ export const tours: Tour[] = [
         answer: 'Devil\'s Pool is SAFE with professional guides, though obviously carries inherent risk (you\'re swimming at edge of 108-meter waterfall!): SAFETY RECORD: Excellent! Devil\'s Pool has operated 20+ years with ZERO tourist fatalities. Tens of thousands have swum safely. Occasionally someone panics/changes mind (guide assists back), minor scrapes on rocks occur, but serious incidents virtually non-existent. SAFETY SYSTEMS: 1. SEASONAL ACCESS ONLY - September-December ONLY when Zambezi water levels drop (flow ~20,000-60,000 liters/second). January-August water levels too high = dangerous currents would sweep swimmers over Falls! Strict monthly monitoring - if levels spike, pool closes immediately. 2. PROFESSIONAL GUIDES - Trained guides lead every group (max 10 people), guide enters pool first assessing conditions, holds swimmers physically at edge (arm around waist preventing you going over), knows EXACTLY where safe vs dangerous (rock barrier creates pool but weak points exist where current stronger). 3. LIFE JACKETS - Everyone wears buoyancy aid (not full life jacket but flotation). 4. SMALL GROUPS - Maximum 10 people per session (manageable, guide controls everyone). 5. MEDICAL SCREENING - Not formal but guide assesses: Ages (generally 12+ years, some operators 16+), Swimming ability (you need basic swimming - not Olympic but can\'t be non-swimmer), Pregnancy (pregnant women excluded - liability), Intoxication (obviously excluded!), Physical capability (frail elderly, severe disabilities excluded for safety). 6. SAFETY BRIEFING - Before entering pool: "Follow my instructions exactly," "Stay where I position you," "Don\'t swim independently toward edge," "If scared, tell me immediately - I\'ll assist you back." 7. GRADUAL APPROACH - Guide leads group into pool incrementally: First: Shallow section (getting used to current, water movement), Second: Mid-pool (feeling stronger current), Third: Edge (guide holds you, you peer over). You can stop at any point! No shame turning back. RISKS - REALISTIC ASSESSMENT: PRIMARY RISK: Human error (panicking, breaking free from guide, swimming beyond safe zone, ignoring instructions). Guides mitigate through: Constant physical control (holding swimmers), Verbal commands (talking you through), Reading body language (if someone panicking, guide pulls them back). SECONDARY RISK: Sudden water level change (flash flood upstream reaches pool rapidly). Mitigated through: Daily water level monitoring (flow gauges, radio communication), Conservative operations (if borderline, pool closes), Seasonal restriction (only Sep-Dec when levels stable low). TERTIARY RISK: Medical emergency (heart attack, panic attack, seizure). Mitigated through: Medical screening (excluding high-risk individuals), Short duration in pool (30-45 min sessions, not hours of exertion), Radio communication (emergency evacuation possible via boat). REALITY: With professional operators (Tongabezi, Royal Livingstone), following instructions, during approved season, Devil\'s Pool is statistically very safe - far safer than white-water rafting, bungee jumping, or driving to the Falls! PHYSICAL REQUIREMENTS: SWIMMING - Must be able to swim 50m comfortably (pool depth 1-2m, currents present, you need basic swimming ability). Non-swimmers excluded. FITNESS - Moderate fitness (walking across island, scrambling on rocks, swimming in current, holding position at edge = physical exertion). AGE - Generally 12-16+ years minimum (operator-dependent). Maximum age flexible (fit 70-year-olds do it; unfit 40-year-olds struggle). PREGNANCY - Excluded (liability, physical risk). MEDICAL - No severe heart conditions, seizure disorders, or conditions where sudden stress dangerous. FEAR FACTOR vs DANGER: FEAR FACTOR: 10/10! Peering over edge 108m above churning Batoka Gorge = terrifying! Many people scream, cry happy tears, shake with adrenaline. Psychological thrill enormous! ACTUAL DANGER: 2/10 with guides. Rock barrier holds water reliably, guides prevent anyone going over barrier, escape to shallow section always available. Perceived danger >>> actual danger (which is the point!). COMPARISON OTHER ACTIVITIES: Devil\'s Pool feels scarier than bungee jumping (you\'re in control of body, see the drop, water rushing around you). Bungee you jump and trust cord - over quickly. But statistically, Devil\'s Pool probably safer (guide controls you; bungee depends on equipment). WHEN TO VISIT (Seasonal Guide): SEPTEMBER - Pool just opens (water levels recently dropped), flows still relatively strong (more current, more adrenaline!), fewer tourists (season start), operators cautious (if flows spike, closes). OCTOBER - Peak season (perfect water levels, stable flows, comfortable temperatures 28-35°C), busiest (more tourists), BEST MONTH overall for combination weather/water/crowds. NOVEMBER - Excellent (flows continue dropping, very safe, hot 30-38°C), approaching end of season. DECEMBER - Final month (flows lowest, minimal current, easiest/safest BUT less dramatic), very hot 32-40°C, season ends late December/early January (exact date water-level-dependent). JANUARY-AUGUST - CLOSED (water levels too high). Don\'t plan Devil\'s Pool visit these months! BOOKING: Book through reputable operators: TONGABEZI (original operators, longest-running, $125-165), ROYAL LIVINGSTONE (luxury hotel concession, $165 including island breakfast), LIVING STONE ADVENTURES (independent operator, $125). Book IN ADVANCE (especially Oct-Nov peak season) - popular activity sells out! Options: DEVIL\'S POOL ONLY ($125-140, 2-3 hours, morning session typically 7:00-9:30 AM), LIVINGSTONE ISLAND BREAKFAST + DEVIL\'S POOL ($165-180, 3-4 hours, includes champagne breakfast on island - ultimate luxury!). WHAT TO BRING: Swimwear (modest - you\'ll be photographed!), Towel (provided usually but bring own), Closed shoes that can get wet (water shoes, old sneakers - walking on slippery rocks), Waterproof camera or GoPro (get someone to hold phone/camera unless waterproof!), Sunscreen (reapply after swimming - washes off!), Sense of adventure + trust in guide. PHOTOGRAPHY: Guides take photos with your camera/phone (included), you swimming at edge, peering over, screaming with joy/terror! Epic shots guaranteed. Bring GoPro for underwater/action shots. VERDICT - Devil\'s Pool is SAFE with professional operators, exhilarating bucket-list experience, available ONLY September-December, requires basic swimming/fitness, and is statistically very safe despite terrifying appearance! If visiting Victoria Falls Sep-Dec, don\'t miss it - genuinely once-in-lifetime experience. If visiting Jan-Aug, pool closed (accept reality, enjoy other Falls activities). Trust your guide, follow instructions, embrace adrenaline, and create incredible memories swimming at edge of world\'s largest waterfall!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Zambia visa ($50 USD single-entry, available on arrival, OR $80 Kaza Univisa for Zambia+Zimbabwe+Botswana)',
@@ -3825,7 +3825,7 @@ export const tours: Tour[] = [
       'Camera with waterproofing (spray at Falls)',
       'Suitable for most ages and fitness levels (adventure activities optional)'
     ],
-    
+
     coverImage: '/images/tours/Zambia-Victoria-Falls.jpg',
     gallery: [
       '/images/tours/Zambia-Victoria-Falls.jpg',
@@ -3834,7 +3834,7 @@ export const tours: Tour[] = [
       '/images/tours/Zambia-Victoria-Falls4.jpg',
       '/images/tours/Zambia-Victoria-Falls5.jpg',
     ],
-    
+
     metaDescription: '3-day Victoria Falls Zambia experience: Devil\'s Pool swim on Falls edge (seasonal), Livingstone Island, microlight flights, intimate viewpoints, Zambezi adventures. Mosi-oa-Tunya!',
     keywords: ['Victoria Falls Zambia', 'Devil\'s Pool', 'Livingstone Island', 'Mosi-oa-Tunya', 'Zambia Victoria Falls', 'microlight flights', 'Zambezi River', 'white-water rafting Zambia', 'Livingstone Zambia', 'Victoria Falls tours']
   },
@@ -3851,24 +3851,24 @@ export const tours: Tour[] = [
     priceKES: 215000,
     published: true,
     durationDays: 5,
-    
+
     country: 'Tanzania',
     countryCode: 'TZ',
     city: 'Zanzibar',
     region: 'Islands',
     latitude: -6.1659,
     longitude: 39.2026,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 16,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome (ideal family beach destination)',
-    
+
     accommodationType: 'Beach Resort',
     mealPlan: 'Half Board (Breakfast + Dinner, or All-Inclusive options)',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'October', 'December', 'January', 'February'],
-    
+
     highlights: [
       'Nungwi Beach - pristine white sand, turquoise water, north coast paradise',
       'Kendwa Beach - sunset beach parties, no seaweed, swimming paradise',
@@ -3881,7 +3881,7 @@ export const tours: Tour[] = [
       'Beach relaxation - hammocks, palm trees, Indian Ocean bliss',
       'Post-safari perfect - unwind after safari adventure'
     ],
-    
+
     inclusions: [
       'Zanzibar Airport transfers',
       'Beach resort accommodation 4 nights',
@@ -3893,7 +3893,7 @@ export const tours: Tour[] = [
       'Snorkeling equipment (if resort-based snorkeling)',
       'Beach activities (kayaks, paddleboards at some resorts)'
     ],
-    
+
     exclusions: [
       'International flights to Zanzibar',
       'Tanzania visa ($50 USD single-entry or $100 multi-entry)',
@@ -3908,7 +3908,7 @@ export const tours: Tour[] = [
       'Prison Island tour ($40-60)',
       'Gratuities for staff'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -3946,7 +3946,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'Which Zanzibar beach is best for me? How do I choose between Nungwi, Kendwa, Paje, and others?',
@@ -3957,7 +3957,7 @@ export const tours: Tour[] = [
         answer: 'Zanzibar is VERY SAFE for tourists overall, with some sensitivities and precautions: SAFETY - REALISTIC ASSESSMENT: BEACH RESORTS - Very safe! Resorts have security, fenced compounds (some), staff monitoring. Violent crime virtually non-existent against tourists at resorts. Theft minimal (lock valuables, but not paranoia-level). BEACH AREAS (Nungwi, Kendwa) - Safe walking during day and evening. Tourist areas patrolled, restaurants/bars open late, crowds provide safety. Petty theft possible (bag snatching rare but watch belongings on beach). STONE TOWN - Generally safe but more caution needed: Daytime walking safe (get lost in alleys - okay!), Evening/night exercise more caution (poorly lit alleys, fewer people, pickpockets target tourists), Use taxi after 10:00 PM (cheap $5-10, safer than walking dark alleys), Keep valuables secure (passports in hotel safe, don\'t flash cash/expensive cameras). RURAL AREAS/VILLAGES - Safe! Locals friendly, welcoming. Rare issues. OCEAN - Currents can be strong! Swim marked areas (some beaches have dangerous currents - ask locals, observe warning flags), Dhow operators licensed (accidents rare), Alcohol + ocean = bad idea (drowning risk!). SPECIFIC RISKS TO MANAGE: PETTY THEFT - Keep eye on beach bags (while swimming, phone/wallet in waterproof bag or locked resort safe), Pickpockets (Stone Town crowded areas), Bag snatching (rare but hold bags securely Stone Town). SCAMS - Beach vendors selling "spice tours" (book through resort - more reliable), Persistent hawkers (firm "No thank you" usually works; some tourists find annoying but mostly harmless), Taxi overcharging (agree price before ride, or use apps like Uber if available). DRUGS - Marijuana illegal Tanzania (20+ years prison!). Don\'t buy from beach vendors (police stings occur). Reject offers immediately. MARINE HAZARDS - Sea urchins (watch where stepping reef walks!), Jellyfish (rare, seasonal), Strong currents (respect warning flags, ask locals). COMPARISON: Zanzibar safer than: Nairobi (Kenya - higher crime), Johannesburg (South Africa - much higher crime), Dar es Salaam (Tanzania mainland - more urban crime). Zanzibar similar safety level to: Mauritus, Seychelles, Maasai Mara lodges (tourist areas generally safe). CULTURAL SENSITIVITIES (CRITICAL!): Zanzibar is 99% MUSLIM (conservative Islamic culture, Swahili traditions, Arab influences). Respect essential: DRESS CODE: BEACH/RESORT - Swimwear, bikinis, shorts acceptable (tourist areas expect this). STONE TOWN/VILLAGES - MODEST DRESS required: Women: Cover shoulders (no tank tops), knees (no short shorts/mini skirts). Loose clothing preferred. Light scarf useful (cover shoulders entering mosques/conservative areas). Men: Long pants preferred (shorts okay but knee-length minimum), Shirts (no shirtless walking Stone Town!). RATIONALE - Respect local culture (locals dress modestly, expect visitors to reciprocate), Avoid unwanted attention (immodest dress attracts stares, comments, harassment), Mosques require modesty (women cover heads, men long pants - if visiting). RELIGIOUS RESPECT: RAMADAN - If visiting during Ramadan (9th Islamic month, dates shift yearly): Muslims fast sunrise to sunset (no eating, drinking, smoking public during day), Restaurants close daytime (reopen evening for Iftar - breaking fast), Tourists can eat privately (resort restaurants serve discreetly), Avoid eating/drinking publicly in villages (disrespectful), Expect subdued atmosphere (less music, parties). CALL TO PRAYER - Five daily prayers broadcast from mosques (early morning ~5:00 AM can wake you!). Earplugs help light sleepers. Part of cultural experience! MOSQUES - Remove shoes entering, women cover hair (scarves provided usually), ask permission before entering (some mosques non-Muslims not allowed). ALCOHOL - Zanzibar permits alcohol (despite Muslim majority) in tourist areas: Resorts/hotels serve alcohol freely, Stone Town has licensed bars/restaurants, HOWEVER avoid drinking publicly outside tourist zones (disrespectful), don\'t stagger drunk through villages (very disrespectful!). LGBTQ+ TRAVELERS: Tanzania law criminalizes homosexuality (though rarely enforced against tourists). Zanzibar conservative: Avoid public displays of affection (regardless of orientation actually - even heterosexual couples keep PDA minimal), Same-sex couples may attract stares (discretion advised), Private resort behavior fine (resorts tolerant), Open LGBTQ+ scene non-existent. VERDICT - Zanzibar is welcoming + safe for LGBTQ+ travelers exercising discretion. Not hostile but not openly accepting. PHOTOGRAPHY: Ask permission before photographing people (especially Muslim women - many refuse, respect their wishes), Kids love being photographed (parents usually okay but ask!), Mosques require permission, Sensitive sites (prisons, government buildings) avoid. GREETINGS: Learn basics: "Jambo" (Hello - tourist Swahili), "Karibu" (Welcome), "Asante" (Thank you), "Hakuna matata" (No problem - yes, from Lion King, actually used!). Locals appreciate effort even if pronunciation terrible! TIPPING: Expected (tourism staff rely on tips): Restaurants 10% (if service charge not included), Guides $10-20 (spice tour, Stone Town tour), Drivers $5-10, Housekeeping $5-10/week, Porters $2-5/bag. USD widely accepted tips. BARGAINING: Expected markets/curio shops! Start ~50% of asking price, negotiate friendly banter, settle ~60-70% original price. Fixed prices resorts/restaurants. SWIMMING DRESS CODE: Topless sunbathing NOT acceptable (even resorts - illegal + culturally offensive), One-piece vs bikini both fine (bikinis widely worn tourist beaches), Covering up walking beach → village essential (sarong, cover-up). OVERALL VERDICT: Zanzibar is safe + welcoming destination with conservative Muslim culture requiring respectful modest dress outside resorts, some street hassle (vendors) requiring firm boundaries, and typical tropical developing-world precautions (lock valuables, don\'t flash wealth, stay aware). Follow cultural norms + basic safety practices = wonderful problem-free experience! Locals genuinely friendly + proud of their island. Respect their culture, they respect you!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Tanzania visa ($50 USD single-entry online or on arrival, $100 multi-entry)',
@@ -3975,7 +3975,7 @@ export const tours: Tour[] = [
       'Cash USD (widely accepted, ATMs available but cards not always)',
       'Suitable for all ages (ideal family beach destination)'
     ],
-    
+
     coverImage: '/images/tours/Zanzibar-Beach.jpg',
     gallery: [
       '/images/tours/Zanzibar-Beach.jpg',
@@ -3984,7 +3984,7 @@ export const tours: Tour[] = [
       '/images/tours/Zanzibar-Beach4.jpg',
       '/images/tours/Zanzibar-Beach5.jpg',
     ],
-    
+
     metaDescription: '5-day Zanzibar beach paradise: Nungwi white sand, snorkel Mnemba Atoll, dhow sunset cruises, spice tours, Stone Town UNESCO heritage. Perfect post-safari relaxation!',
     keywords: ['Zanzibar beach', 'Nungwi', 'Kendwa Beach', 'Zanzibar tours', 'Spice Island', 'Mnemba snorkeling', 'Stone Town', 'dhow cruise', 'Tanzania beach', 'Zanzibar vacation']
   },
@@ -4000,24 +4000,24 @@ export const tours: Tour[] = [
     priceKES: 189000,
     published: true,
     durationDays: 3,
-    
+
     country: 'Tanzania',
     countryCode: 'TZ',
     city: 'Stone Town / Zanzibar',
     region: 'East Africa',
     latitude: -6.1639,
     longitude: 39.1938,
-    
+
     difficulty: 'Easy',
     maxGroupSize: 12,
     minGroupSize: 2,
     ageRestriction: 'All ages welcome (cultural tour suitable for families)',
-    
+
     accommodationType: 'Historic Stone Town Hotel',
     mealPlan: 'Bed & Breakfast',
-    
+
     bestMonths: ['June', 'July', 'August', 'September', 'October', 'December', 'January', 'February'],
-    
+
     highlights: [
       'Stone Town UNESCO heritage - maze-like alleys, Swahili architecture',
       '500+ carved Zanzibari doors - intricate designs, brass studs, historic',
@@ -4030,7 +4030,7 @@ export const tours: Tour[] = [
       'Swahili-Arab cuisine - biryani, pilau, Urojo soup, fresh seafood',
       'Cultural immersion - living history, authentic East African culture'
     ],
-    
+
     inclusions: [
       'Zanzibar Airport transfers',
       'Historic Stone Town hotel 2 nights (boutique heritage property)',
@@ -4041,7 +4041,7 @@ export const tours: Tour[] = [
       'Entrance fees (museums, monuments, sites)',
       'Forodhani Night Market tour with guide'
     ],
-    
+
     exclusions: [
       'International flights to Zanzibar',
       'Tanzania visa ($50 USD single-entry)',
@@ -4053,7 +4053,7 @@ export const tours: Tour[] = [
       'Gratuities for guides',
       'Personal expenses'
     ],
-    
+
     itinerary: [
       {
         day: 1,
@@ -4077,7 +4077,7 @@ export const tours: Tour[] = [
         accommodation: 'None (end of tour)'
       }
     ],
-    
+
     faqs: [
       {
         question: 'What makes Stone Town UNESCO World Heritage significant? Is it really worth visiting?',
@@ -4088,7 +4088,7 @@ export const tours: Tour[] = [
         answer: '3 DAYS IS IDEAL for most travelers! Here\'s day-by-day breakdown of what you can cover: DAY 1 (Arrival + Stone Town Orientation): Arrive, check-in hotel, Walking tour (2-3 hours covering main sites: House of Wonders exterior, Old Fort, Palace Museum, Anglican Cathedral/slave chambers, carved doors), Market visit (Darajani Market chaos immersion), Forodhani Night Market street food dinner. By end Day 1: Oriented to layout, seen major monuments, experienced markets, tasted Swahili food. DAY 2 (Spice Tour + Prison Island): Morning spice plantation tour (half-day, understanding "Spice Island" heritage), Afternoon Prison Island (giant tortoises, swimming, ruins). By end Day 2: Understood Zanzibar agricultural history, met tortoises, experienced island environment. DAY 3 (Deep Dive OR Optional Excursions): Morning optional: Jozani Forest (endemic red colobus monkeys), OR final Stone Town exploration (areas missed Day 1), OR shopping (souvenirs, spices, crafts), OR beach excursion nearby. Afternoon departure. By end Day 3: Comprehensive Stone Town + key Zanzibar experiences covered! WHAT 3 DAYS ALLOWS: SEE: All major sites (forts, palaces, cathedrals, museums, markets, doors), EXPERIENCE: Authentic culture (markets, street food, calls to prayer, daily life), UNDERSTAND: History (spice trade, slave trade, sultanate, colonial period), PHOTOGRAPH: Extensive opportunities (doors, alleys, markets, tortoises, spices), TASTE: Swahili cuisine variety (Forodhani market, restaurants, spices), EXPLORE: Maze-like alleys wandering getting lost (part of charm!), RELAX: Not rushed (3 days allows leisurely pace). WOULD 2 DAYS WORK? YES but tighter: Day 1 - Arrival + Stone Town walking tour + Forodhani Night Market, Day 2 - Spice tour + Prison Island + departure. Skips: Jozani Forest (monkeys), Deep alley wandering, Museum interiors (quick exterior photos only), Shopping time, Buffer for getting lost/discovering hidden spots. VERDICT 2 DAYS: Feasible seeing highlights but feels rushed. Miss serendipity factor (discovering hidden cafe, stumbling on interesting shop, lingering at atmospheric spot). WOULD 4-5 DAYS BE TOO LONG? Depends on traveler: CULTURE ENTHUSIASTS - 4-5 days perfect! Add: DAY 4 - North coast historical sites (Maruhubi Palace ruins, Kidichi Persian Baths, Mangapwani slave caves), OR Pemba Island day trip (sister island, less touristed), OR deeper museum immersion (Beit el-Sahel Palace Museum, Peace Memorial Museum), OR dhow sailing lesson, fishing village visits. DAY 5 - Relaxation (rooftop cafes, reading history books absorbing, sketching architecture, slow morning coffee ritual). VERDICT 4-5 DAYS: Wonderful for those loving history/photography/culture. Allows deep immersion, repeat favorite spots, befriend local shop owners, develop rhythm. BEACH-FOCUSED TRAVELERS - 4-5 days too long! After 2-3 days culture, beach beckons. Stone Town is urban, busy, hot - beach relaxation needed! FAMILIES WITH YOUNG CHILDREN - 3 days maximum! Kids enjoy: Day 1 - Getting lost alleys, ice cream, Forodhani night market, Day 2 - Spice tour (interactive!), giant tortoises Prison Island (kids LOVE feeding tortoises!), Day 3 - Jozani monkeys. Beyond 3 days kids get bored (not much child-specific activities). Better to combine 2 days Stone Town + 5-7 days beach family resort. RECOMMENDED COMBINATIONS: SAFARI + STONE TOWN + BEACH: Perfect triple combo! 6-7 days safari (Serengeti, Ngorongoro, Tarangire) + 2-3 days Stone Town culture + 5-6 days beach Zanzibar (Nungwi/Kendwa) = 13-16 days comprehensive Tanzania! STONE TOWN + BEACH ONLY: If no safari, split Zanzibar time: 3 days Stone Town + 7-10 days beach = 10-13 days total Zanzibar relaxation + culture. STONE TOWN INTENSIVE: Culture/history lovers can do: 5-7 days Stone Town deep dive (museums, dhow building yards, conservation projects, cooking classes, language lessons, village homestays) = immersive cultural experience. STONE TOWN STOPOVER: Travelers connecting flights sometimes do: 1 day Stone Town quick highlights (arrive morning, walking tour afternoon, Forodhani evening, depart next morning) = Better than nothing but very rushed! Not ideal. OPTIMAL FORMULA: 3 DAYS STONE TOWN = Sweet spot! Allows: Comprehensive sightseeing (all main sites), Cultural immersion (not just checkbox tourism), Wandering + discovery (getting lost productively!), Shopping time (souvenirs, spices, crafts), Leisurely meals (trying various restaurants/markets), Buffer (if something closed/interesting new thing discovered), Not overstaying (urban environment, heat, hustle - 3 days enough before beach craving!). 90% of travelers find 3 days Stone Town perfect. Cultural depth achieved without fatigue. Combine 3 days Stone Town + beach extension = ideal Zanzibar experience! FLEXIBILITY TIP: Book accommodation minimum 2 nights (covers arrival + Day 2). If falling in love with Stone Town, extend 1-2 nights (easy booking another night same hotel or different property). If ready for beach after 2 days, depart early. Flexibility built in!'
       }
     ],
-    
+
     requirements: [
       'Valid passport with 6+ months validity',
       'Tanzania visa ($50 USD single-entry online or on arrival)',
@@ -4105,7 +4105,7 @@ export const tours: Tour[] = [
       'Daypack (carrying water, camera, purchases while exploring)',
       'Suitable for all ages (family-friendly cultural tour)'
     ],
-    
+
     coverImage: '/images/tours/Zanzibar-Stonetown.jpg',
     gallery: [
       '/images/tours/Zanzibar-Stonetown.jpg',
@@ -4114,7 +4114,7 @@ export const tours: Tour[] = [
       '/images/tours/Zanzibar-Stonetown4.jpg',
       '/images/tours/Zanzibar-Stonetown5.jpg',
     ],
-    
+
     metaDescription: '3-day Stone Town cultural tour: UNESCO heritage, 500+ carved Zanzibari doors, slave trade history, spice plantations, Prison Island tortoises, Swahili cuisine. Authentic Zanzibar culture!',
     keywords: ['Stone Town Zanzibar', 'Zanzibar culture', 'UNESCO heritage', 'Zanzibari doors', 'Spice Island', 'Prison Island', 'Swahili architecture', 'Zanzibar history', 'cultural tours Tanzania', 'Forodhani Market']
   },
@@ -4153,7 +4153,7 @@ export function getToursByRegion(region: string): Tour[] {
  */
 export function searchTours(query: string): Tour[] {
   const lowerQuery = query.toLowerCase();
-  return tours.filter(tour => 
+  return tours.filter(tour =>
     tour.published && (
       tour.title.toLowerCase().includes(lowerQuery) ||
       tour.description.toLowerCase().includes(lowerQuery) ||

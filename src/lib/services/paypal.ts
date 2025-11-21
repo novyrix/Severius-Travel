@@ -3,6 +3,8 @@
  * Documentation: https://developer.paypal.com/docs/api/overview/
  */
 
+import { logger } from '../logger';
+
 interface PayPalConfig {
   clientId: string;
   clientSecret: string;
@@ -110,7 +112,7 @@ class PayPalService {
 
     if (!response.ok) {
       const error = await response.json();
-      console.error('PayPal create order error:', error);
+      logger.error('PayPal create order error:', error);
       throw new Error('Failed to create PayPal order');
     }
 
@@ -143,7 +145,7 @@ class PayPalService {
 
     if (!response.ok) {
       const error = await response.json();
-      console.error('PayPal capture order error:', error);
+      logger.error('PayPal capture order error:', error);
       throw new Error('Failed to capture PayPal order');
     }
 
