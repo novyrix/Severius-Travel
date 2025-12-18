@@ -20,7 +20,7 @@ interface OrganizationSchemaProps {
 export function OrganizationSchema({
   name = 'Severius Tours & Adventures',
   url = process.env.NEXT_PUBLIC_SITE_URL || 'https://severiustours.com',
-  logo = '/images/logo.png',
+  logo = '/images/logo/landscape.png',
   description = 'Premier travel and adventure company specializing in African safaris, Moroccan tours, and exotic destinations worldwide.',
   contactEmail = 'info@severiustours.com',
   contactPhone = '+1-234-567-8900',
@@ -192,7 +192,7 @@ export function BlogSchema({
       name: 'Severius Tours & Adventures',
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/images/logo.png`,
+        url: `${siteUrl}/images/logo/landscape.png`,
       },
     },
     datePublished: publishedTime,

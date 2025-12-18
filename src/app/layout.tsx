@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     '@type': 'TravelAgency',
     name: 'Severius Tours & Adventures',
     url: siteUrl,
-    logo: `${siteUrl}/images/logo.png`,
+    logo: `${siteUrl}/images/logo/landscape.png`,
     description: 'Experience unforgettable African safaris, cultural tours, and adventure travel with Severius Tours & Adventures. Expert-guided tours across Kenya, Tanzania, Morocco, Egypt, and beyond.',
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@severiustours.com',
     telephone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1-234-567-8900',

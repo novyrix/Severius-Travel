@@ -15,13 +15,12 @@ export function Header() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2 font-bold text-xl text-[rgb(var(--color-brown))]">
             <Image
-              src="/images/logo.svg"
+              src="/images/logo/landscape.png"
               alt="Severius Adventures & Travel"
-              width={32}
+              width={120}
               height={32}
-              className="w-8 h-8 object-contain"
+              className="h-8 w-auto object-contain"
             />
-            Severius Travel
           </Link>
           <div className="hidden md:flex items-center gap-6">
             <Link href="/tours" className="text-sm font-medium text-neutral-700 hover:text-[rgb(var(--color-gold))] transition-colors">

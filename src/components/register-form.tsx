@@ -86,10 +86,10 @@ export function RegisterForm() {
         console.log("🔄 Starting auto-login process...");
         console.log("📧 Email:", formData.email);
         console.log("🔑 Password length:", formData.password.length);
-        
+
         // Auto-login the user
         const { signIn } = await import("next-auth/react");
-        
+
         // IMPORTANT: Use the exact same email that was stored (lowercase)
         const loginResult = await signIn("credentials", {
           email: formData.email.toLowerCase(), // ✅ Normalize to match DB
@@ -101,11 +101,11 @@ export function RegisterForm() {
 
         if (loginResult?.error) {
           console.error("❌ Auto-login failed:", loginResult.error);
-          
+
           // Show helpful error message
           setError(`Account created successfully! However, auto-login failed. Please login manually with email: ${formData.email.toLowerCase()}`);
           setIsLoading(false);
-          
+
           // Redirect to login page with email pre-filled
           setTimeout(() => {
             router.push(`/login?registered=true&email=${encodeURIComponent(formData.email.toLowerCase())}`);
@@ -115,16 +115,16 @@ export function RegisterForm() {
 
         if (loginResult?.ok) {
           console.log("✅ User registered and logged in successfully");
-          
+
           // Wait a moment for session to be established
           await new Promise(resolve => setTimeout(resolve, 500));
-          
+
           // Refresh router to get new session
           router.refresh();
-          
+
           // Redirect to callback URL or dashboard
-          const redirectUrl = callbackUrl && callbackUrl.startsWith('/') 
-            ? callbackUrl 
+          const redirectUrl = callbackUrl && callbackUrl.startsWith('/')
+            ? callbackUrl
             : "/dashboard";
           window.location.href = redirectUrl;
         } else {

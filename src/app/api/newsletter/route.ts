@@ -61,7 +61,7 @@ export async function POST(request: Request) {
         { status: 201 }
       );
     }
-    
+
     // Validate email
     const validation = newsletterSchema.safeParse(body);
     if (!validation.success) {

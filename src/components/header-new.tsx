@@ -85,13 +85,12 @@ export function HeaderNew() {
             className="flex items-center gap-2 font-bold text-xl text-[rgb(var(--color-brown))] hover:opacity-80 transition-opacity"
           >
             <Image
-              src="/images/logo.svg"
+              src="/images/logo/landscape.png"
               alt="Severius Adventures & Travel"
-              width={40}
+              width={150}
               height={40}
-              className="w-10 h-10 object-contain"
+              className="h-10 w-auto object-contain"
             />
-            <span>Severius Travel</span>
           </Link>
 
           {/* Desktop Navigation */}

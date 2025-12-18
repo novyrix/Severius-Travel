@@ -12,7 +12,7 @@ const contactSchema = z.object({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    
+
     // Validate input
     const validation = contactSchema.safeParse(body);
     if (!validation.success) {

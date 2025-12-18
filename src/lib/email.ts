@@ -108,7 +108,7 @@ export async function sendWelcomeEmail(to: string, name: string) {
         <div class="content">
           <h2 style="color: #4E342E;">Hello ${name}! 👋</h2>
           <p>Thank you for joining Severius Tours! We're thrilled to have you as part of our travel community.</p>
-          
+
           <div class="highlight">
             <strong>🌍 What's Next?</strong>
             <ul>
@@ -119,13 +119,13 @@ export async function sendWelcomeEmail(to: string, name: string) {
           </div>
 
           <p>Ready to start your journey? Browse our featured tours:</p>
-          
+
           <a href="${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/tours" class="button">
             Explore Tours
           </a>
 
           <p>If you have any questions, our team is here to help!</p>
-          
+
           <p style="margin-top: 30px;">
             Safe travels,<br>
             <strong>The Severius Tours Team</strong>
@@ -226,7 +226,7 @@ export async function sendBookingConfirmation(
         <div class="content">
           <h2 style="color: #4E342E;">Hello ${name}!</h2>
           <p>Great news! Your booking has been confirmed. We're excited to help you create unforgettable memories!</p>
-          
+
           <div class="booking-details">
             <h3 style="margin-top: 0; color: #4E342E;">Booking Details</h3>
             <div class="detail-row">
@@ -243,10 +243,10 @@ export async function sendBookingConfirmation(
             </div>
             <div class="detail-row">
               <strong>Booking Date:</strong>
-              <span>${booking.date.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+              <span>${booking.date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
               })}</span>
             </div>
           </div>
@@ -257,7 +257,7 @@ export async function sendBookingConfirmation(
             <li>You'll receive travel documents 7 days before departure</li>
             <li>Contact us if you have any questions</li>
           </ul>
-          
+
           <a href="${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/dashboard" class="button">
             View My Bookings
           </a>
@@ -323,7 +323,7 @@ export async function sendContactFormNotification(
       <body>
         <div class="container">
           <h2 style="color: #4E342E;">New Contact Form Submission</h2>
-          
+
           <div class="field">
             <span class="label">Name:</span>
             ${formData.name}
@@ -468,14 +468,14 @@ export async function sendNewsletterWelcome(to: string) {
             <img src="${baseUrl}/images/logo/landscape.png" alt="Severius Travel" class="logo" />
             <h1 style="margin: 0; font-size: 32px; font-weight: 700;">Welcome Aboard! 🎉</h1>
           </div>
-          
+
           <div class="content">
             <h2 class="welcome-title">You're Part of the Adventure Now!</h2>
-            
+
             <p style="font-size: 16px; color: #555555; margin-bottom: 20px;">
               Thank you for subscribing to the Severius Travel newsletter! We're thrilled to have you join our community of adventure seekers and travel enthusiasts.
             </p>
-            
+
             <div class="benefits">
               <h3>🌟 Here's What You'll Receive:</h3>
               <ul>
@@ -500,7 +500,7 @@ export async function sendNewsletterWelcome(to: string) {
             </div>
 
             <div class="divider"></div>
-            
+
             <p style="margin-top: 30px; color: #666666;">
               <strong>Stay tuned</strong> for amazing travel opportunities, insider tips, and exclusive deals coming your way!
             </p>
@@ -510,19 +510,19 @@ export async function sendNewsletterWelcome(to: string) {
               <strong style="color: rgb(101, 67, 33); font-size: 16px;">The Severius Travel Team</strong>
             </p>
           </div>
-          
+
           <div class="footer">
             <p><strong>Severius Adventures & Travel</strong></p>
             <p>Your trusted partner for unforgettable African adventures</p>
             <p style="margin-top: 16px;">
-              📧 <a href="mailto:info@severiusadventuresandtravel.com">info@severiusadventuresandtravel.com</a> | 
+              📧 <a href="mailto:info@severiusadventuresandtravel.com">info@severiusadventuresandtravel.com</a> |
               📞 +254 780 419 605
             </p>
             <p style="margin-top: 12px; font-size: 11px; color: #aaa;">
               © ${new Date().getFullYear()} Severius Adventures & Travel. All rights reserved.
             </p>
             <p style="margin-top: 8px;">
-              <a href="${baseUrl}/api/newsletter/unsubscribe?email=${encodeURIComponent(to)}">Unsubscribe</a> | 
+              <a href="${baseUrl}/api/newsletter/unsubscribe?email=${encodeURIComponent(to)}">Unsubscribe</a> |
               <a href="${baseUrl}/privacy">Privacy Policy</a>
             </p>
           </div>

@@ -16,9 +16,9 @@ interface WhatsAppPaymentButtonProps {
   userEmail: string;
 }
 
-export function WhatsAppPaymentButton({ 
-  bookingRef, 
-  amount, 
+export function WhatsAppPaymentButton({
+  bookingRef,
+  amount,
   tourTitle,
   guests,
   startDate,
@@ -34,7 +34,7 @@ export function WhatsAppPaymentButton({
     try {
       // Format booking details for WhatsApp
       const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254712345678";
-      
+
       const message = `
 🎫 *NEW BOOKING REQUEST*
 
@@ -44,11 +44,11 @@ export function WhatsAppPaymentButton({
 
 👥 *Details:*
 • Number of Guests: ${guests}
-• Start Date: ${new Date(startDate).toLocaleDateString('en-US', { 
-  weekday: 'long', 
-  year: 'numeric', 
-  month: 'long', 
-  day: 'numeric' 
+• Start Date: ${new Date(startDate).toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
 })}
 • Customer Name: ${userName}
 • Email: ${userEmail}
@@ -63,15 +63,15 @@ I would like to proceed with this booking and arrange payment details.
       // Open WhatsApp with pre-filled message
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-      
+
       // Open WhatsApp in new window
       window.open(whatsappUrl, '_blank');
-      
+
       // Redirect to success page after a short delay
       setTimeout(() => {
         router.push(`/payment/success?ref=${bookingRef}&method=whatsapp`);
       }, 2000);
-      
+
     } catch (error) {
       alert('Failed to initiate WhatsApp payment. Please try again.');
       setLoading(false);
@@ -92,10 +92,10 @@ I would like to proceed with this booking and arrange payment details.
         </>
       ) : (
         <>
-          <Image 
-            src="/images/whatsapp.svg" 
-            alt="WhatsApp" 
-            width={20} 
+          <Image
+            src="/images/whatsapp.svg"
+            alt="WhatsApp"
+            width={20}
             height={20}
             className="w-5 h-5 mr-2"
           />

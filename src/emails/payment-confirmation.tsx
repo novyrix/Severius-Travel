@@ -45,7 +45,7 @@ export const PaymentConfirmationEmail = ({
           {/* Logo Section */}
           <Section style={logoSection}>
             <Img
-              src="https://severiusadventuresandtravel.com/images/logo.png"
+              src="https://severiusadventuresandtravel.com/images/logo/landscape.png"
               alt="Severius Adventures & Travel"
               width="200"
               height="auto"

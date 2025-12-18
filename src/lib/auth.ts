@@ -20,37 +20,37 @@ export const authOptions: NextAuthOptions = {
           logger.log('❌ Missing credentials');
           return null;
         }
-        
+
         logger.log('🔍 Attempting login for:', creds.email);
-        
-        const user = await prisma.user.findUnique({ 
-          where: { email: creds.email.toLowerCase() } 
+
+        const user = await prisma.user.findUnique({
+          where: { email: creds.email.toLowerCase() }
         });
-        
+
         if (!user) {
           logger.log('❌ User not found:', creds.email);
           return null;
         }
-        
+
         if (!user.hashedPassword) {
           logger.log('❌ User has no password:', creds.email);
           return null;
         }
-        
+
         logger.log('🔐 Verifying password...');
         const ok = compareSync(creds.password, user.hashedPassword);
-        
+
         if (!ok) {
           logger.log('❌ Invalid password for:', creds.email);
           return null;
         }
-        
+
         logger.log('✅ Login successful for:', creds.email);
-        return { 
-          id: user.id, 
-          email: user.email ?? undefined, 
+        return {
+          id: user.id,
+          email: user.email ?? undefined,
           name: user.name ?? undefined,
-          role: user.role 
+          role: user.role
         } as any;
       },
     }),
@@ -64,7 +64,7 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.userId = (user as any).id;
       }
-      
+
       // Fetch latest user data on each request
       if (token.email) {
         const dbUser = await prisma.user.findUnique({
@@ -75,14 +75,14 @@ export const authOptions: NextAuthOptions = {
             role: true
           }
         });
-        
+
         if (dbUser) {
           token.userId = dbUser.id;
           token.isActive = dbUser.isActive;
           token.role = dbUser.role;
         }
       }
-      
+
       return token;
     },
     async session({ session, token }) {
