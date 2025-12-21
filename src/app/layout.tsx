@@ -41,11 +41,11 @@ export const metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.png', type: 'image/png' },
       { url: '/images/logo/severius-icon.png', type: 'image/png' },
       { url: '/images/logo/portrait.png', sizes: '192x192', type: 'image/png' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
-    shortcut: '/images/logo/severius-icon.png',
+    shortcut: '/favicon.png',
     apple: '/images/logo/portrait.png',
   },
   manifest: '/site.webmanifest',
