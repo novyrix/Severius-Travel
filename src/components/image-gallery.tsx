@@ -67,7 +67,7 @@ export default function ImageGallery({ images, tourName }: ImageGalleryProps) {
             onClick={() => openLightbox(0)}
           >
             <Image
-              src={images[0]}
+              src={images[0] || '/images/placeholder.jpg'}
               alt={`${tourName} - Main view`}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -105,7 +105,7 @@ export default function ImageGallery({ images, tourName }: ImageGalleryProps) {
             onClick={() => openLightbox(5)}
           >
             <Image
-              src={images[5] || images[0]}
+              src={images[5] || images[0] || '/images/placeholder.jpg'}
               alt={`${tourName} - More images`}
               fill
               className="object-cover opacity-60"
@@ -169,7 +169,7 @@ export default function ImageGallery({ images, tourName }: ImageGalleryProps) {
           <div className={`relative w-full h-full flex items-center justify-center p-4 ${zoom ? 'overflow-auto' : 'overflow-hidden'}`}>
             <div className={`relative ${zoom ? 'w-auto h-auto max-w-none' : 'w-full h-full'}`}>
               <Image
-                src={images[currentIndex]}
+                src={images[currentIndex] || '/images/placeholder.jpg'}
                 alt={`${tourName} - Image ${currentIndex + 1}`}
                 width={zoom ? 2400 : 1600}
                 height={zoom ? 1350 : 900}

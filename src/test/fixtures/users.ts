@@ -4,6 +4,7 @@ export const mockUser: Omit<User, 'createdAt' | 'updatedAt'> = {
   id: 'test-user-001',
   email: 'test@example.com',
   name: 'Test User',
+  image: null,
   hashedPassword: '$2a$10$mockhashedpassword',
   role: 'USER',
   isActive: true,

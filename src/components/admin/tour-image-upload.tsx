@@ -44,7 +44,7 @@ export function TourImageUpload({ tourId, existingImages = [], onUploadComplete 
         }
 
         setUploadProgress('Upload complete!');
-        
+
         // Refresh the page to show new images
         if (onUploadComplete) {
           onUploadComplete();
@@ -90,7 +90,7 @@ export function TourImageUpload({ tourId, existingImages = [], onUploadComplete 
 
       // Remove from local state
       setImages(images.filter((img) => img.id !== imageId));
-      
+
       if (onUploadComplete) {
         onUploadComplete();
       }
@@ -102,8 +102,6 @@ export function TourImageUpload({ tourId, existingImages = [], onUploadComplete 
 
   const handleSetCover = async (imageUrl: string) => {
     try {
-      const formData = new FormData();
-      
       // Create a dummy file upload with the URL
       const response = await fetch(`/api/admin/tours/${tourId}`, {
         method: 'PUT',

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, MapPin, User as UserIcon, FileText, Download, Mail, Phone, MapPinIcon } from 'lucide-react';
+import { Calendar, MapPin, User as UserIcon, FileText, Download } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -81,7 +81,7 @@ export function DashboardTabs({ bookings, user }: Props) {
                   // Get tour data from static tours
                   const tour = getTourBySlug(booking.tourSlug);
                   const mainImage = tour?.coverImage || tour?.gallery?.[0];
-                  
+
                   return (
                     <div
                       key={booking.id}

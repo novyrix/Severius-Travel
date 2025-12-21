@@ -32,7 +32,7 @@ interface BlogEditFormProps {
     createdAt: Date;
     author: {
       name: string | null;
-      email: string;
+      email: string | null;
     } | null;
   };
 }

@@ -10,7 +10,7 @@ interface HoneypotFieldsProps {
  * Honeypot fields component - include in all forms to detect bots
  * These fields are hidden from users but visible to bots
  */
-export function HoneypotFields({ onLoad }: HoneypotFieldsProps) {
+export function HoneypotFields({ onLoad: _onLoad }: HoneypotFieldsProps) {
   return (
     <>
       <style jsx global>{`

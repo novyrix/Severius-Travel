@@ -1,14 +1,13 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, Clock, MapPin, Users, Check, X, ChevronDown, Star, TrendingUp, Shield, Award, Utensils, Home, AlertCircle, HelpCircle } from 'lucide-react';
+import { Calendar, Clock, MapPin, Check, X, ChevronDown, Star, TrendingUp, Shield, Award, Utensils, Home, AlertCircle, HelpCircle } from 'lucide-react';
 import { getTourBySlug } from '@/data/tours';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { formatCurrency } from '@/lib/utils';
 import ImageGallery from '@/components/image-gallery';
-import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
@@ -55,7 +54,7 @@ export default async function TourDetailPage({ params }: PageProps) {
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-        
+
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 right-0 container mx-auto px-6 pb-12">
           <div className="max-w-4xl">
@@ -93,7 +92,7 @@ export default async function TourDetailPage({ params }: PageProps) {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            
+
             {/* Image Gallery */}
             {gallery && gallery.length > 0 && (
               <Card>
@@ -115,7 +114,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                 <p className="text-neutral-900 leading-relaxed mb-6">
                   {tour.description}
                 </p>
-                
+
                 {tour.metaDescription && tour.metaDescription !== tour.description && (
                   <p className="text-neutral-700 italic">
                     {tour.metaDescription}
@@ -292,8 +291,8 @@ export default async function TourDetailPage({ params }: PageProps) {
                 <CardContent>
                   <div className="space-y-3">
                     {faqs.map((faq: any, index: number) => (
-                      <details 
-                        key={index} 
+                      <details
+                        key={index}
                         className="group bg-white rounded-lg border border-neutral-200 overflow-hidden transition-all hover:shadow-md"
                       >
                         <summary className="font-semibold text-[rgb(var(--color-brown))] list-none flex items-start justify-between gap-4 p-4 cursor-pointer hover:bg-neutral-50 transition-colors">
@@ -329,7 +328,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                       {formatCurrency(tour.price)}
                     </div>
                     <div className="text-sm text-neutral-600 dark:text-neutral-400">per person</div>
-                    
+
                     {/* Alternative currencies on one line */}
                     {(tour.priceEUR || tour.priceGBP || tour.priceKES) && (
                       <div className="mt-3 pt-3 border-t text-xs text-neutral-500 dark:text-neutral-400">
@@ -343,7 +342,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                       </div>
                     )}
                   </div>
-                  
+
                   {/* Tour Details */}
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">

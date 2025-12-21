@@ -2,18 +2,18 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Home, Map, Calendar, User, Info, HelpCircle, Mail } from "lucide-react";
+import { Home, Map, User, Info, HelpCircle, Mail } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 export function MobileNav() {
   const pathname = usePathname();
   const { data: session, status } = useSession();
-  const [showMore, setShowMore] = useState(false);
+  const [_showMore, _setShowMore] = useState(false);
 
   // Determine dashboard URL based on user role
   const dashboardUrl = (session as any)?.role === 'ADMIN' ? '/admin' : '/dashboard';
-  
+
   // Hide on admin pages
   if (pathname?.startsWith('/admin')) {
     return null;
@@ -25,23 +25,23 @@ export function MobileNav() {
     { id: "about", href: "/about", icon: Info, label: "About" },
     { id: "faq", href: "/faq", icon: HelpCircle, label: "FAQ" },
     { id: "contact", href: "/contact", icon: Mail, label: "Contact" },
-    { 
-      id: "profile", 
-      href: status === "authenticated" ? dashboardUrl : "/login", 
-      icon: User, 
-      label: session?.user ? "Profile" : "Login" 
+    {
+      id: "profile",
+      href: status === "authenticated" ? dashboardUrl : "/login",
+      icon: User,
+      label: session?.user ? "Profile" : "Login"
     },
   ];
 
   const isActive = (item: typeof navItems[0]) => {
     // Home is only active on exact match
     if (item.href === "/") return pathname === "/";
-    
+
     // For profile/login, check both dashboard, admin, and login paths
     if (item.id === "profile") {
       return pathname.startsWith("/dashboard") || pathname.startsWith("/admin") || pathname.startsWith("/login");
     }
-    
+
     return pathname.startsWith(item.href);
   };
 
@@ -51,7 +51,7 @@ export function MobileNav() {
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = isActive(item);
-          
+
           return (
             <Link
               key={item.id}

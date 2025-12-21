@@ -26,7 +26,7 @@ interface PaymentConfirmationEmailProps {
 
 export const PaymentConfirmationEmail = ({
   customerName = 'Valued Customer',
-  userEmail,
+  userEmail: _userEmail,
   tourName = 'Amazing Safari Adventure',
   bookingRef = 'SEV-123456',
   amount = 150000,
@@ -65,7 +65,7 @@ export const PaymentConfirmationEmail = ({
               Dear {customerName},
             </Text>
             <Text style={text}>
-              Thank you! Your payment has been successfully processed. Your adventure with 
+              Thank you! Your payment has been successfully processed. Your adventure with
               Severius Adventures & Travel is now fully confirmed.
             </Text>
 
@@ -144,7 +144,7 @@ export const PaymentConfirmationEmail = ({
             </Text>
 
             <Text style={thankYouText}>
-              Thank you for choosing Severius Adventures & Travel. We can't wait to show you 
+              Thank you for choosing Severius Adventures & Travel. We can't wait to show you
               the wonders of Africa!
             </Text>
           </Section>
@@ -198,22 +198,6 @@ const logoSection = {
 const logoImage = {
   margin: '0 auto',
   display: 'block',
-};
-
-const header = {
-  textAlign: 'center' as const,
-  padding: '30px 20px',
-};
-
-const logo = {
-  margin: '0 auto',
-};
-
-const heading = {
-  color: '#4e342e',
-  fontSize: '24px',
-  fontWeight: 'bold',
-  margin: '10px 0 0 0',
 };
 
 const successBadge = {

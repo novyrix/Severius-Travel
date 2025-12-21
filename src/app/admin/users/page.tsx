@@ -4,9 +4,8 @@ import { prisma } from '@/lib/prisma';
 import { redirect } from 'next/navigation';
 import { AdminLayout } from '@/components/admin/admin-layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Shield, User, Mail, CheckCircle, XCircle } from 'lucide-react';
+import { Shield, User, CheckCircle, XCircle } from 'lucide-react';
 import { UserActions } from '@/components/admin/user-actions';
 
 export const dynamic = 'force-dynamic';
@@ -134,7 +133,7 @@ export default async function AdminUsersPage() {
                           <UserActions
                             userId={user.id}
                             userName={user.name}
-                            userEmail={user.email}
+                            userEmail={user.email || ''}
                             userRole={user.role}
                             isActive={user.isActive}
                           />

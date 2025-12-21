@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     const validation = newsletterSchema.safeParse(body);
     if (!validation.success) {
       return NextResponse.json(
-        { error: validation.error.issues[0].message },
+        { error: validation.error.issues[0]?.message || 'Invalid email' },
         { status: 400 }
       );
     }

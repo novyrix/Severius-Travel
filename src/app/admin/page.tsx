@@ -3,7 +3,6 @@ import { authOptions } from '../../lib/auth';
 import { prisma } from '../../lib/prisma';
 import { redirect } from 'next/navigation';
 import { AdminLayout } from '@/components/admin/admin-layout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { formatCurrency, formatDate } from '@/lib/utils';
@@ -49,7 +48,7 @@ export default async function AdminPage() {
     <AdminLayout>
       {/* Gradient Background */}
       <div className="fixed inset-0 -z-10 bg-gradient-to-br from-amber-50 via-white to-yellow-50" />
-      
+
       <div className="space-y-8">
         {/* Welcome Header */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[rgb(var(--color-brown))] to-[rgb(var(--color-gold))] p-8 text-white shadow-2xl">

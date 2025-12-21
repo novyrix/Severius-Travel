@@ -252,7 +252,7 @@ export function TourForm({ tour, countries, mode }: TourFormProps) {
           <CardTitle>Highlights</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {formData.highlights.map((highlight, index) => (
+          {formData.highlights.map((highlight: string, index: number) => (
             <div key={index} className="flex gap-2">
               <Input
                 value={highlight}
@@ -289,7 +289,7 @@ export function TourForm({ tour, countries, mode }: TourFormProps) {
           <CardTitle>Inclusions</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {formData.inclusions.map((inclusion, index) => (
+          {formData.inclusions.map((inclusion: string, index: number) => (
             <div key={index} className="flex gap-2">
               <Input
                 value={inclusion}
@@ -326,7 +326,7 @@ export function TourForm({ tour, countries, mode }: TourFormProps) {
           <CardTitle>Exclusions</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {formData.exclusions.map((exclusion, index) => (
+          {formData.exclusions.map((exclusion: string, index: number) => (
             <div key={index} className="flex gap-2">
               <Input
                 value={exclusion}
@@ -363,7 +363,7 @@ export function TourForm({ tour, countries, mode }: TourFormProps) {
           <CardTitle>Requirements</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {formData.requirements.map((requirement, index) => (
+          {formData.requirements.map((requirement: string, index: number) => (
             <div key={index} className="flex gap-2">
               <Input
                 value={requirement}
@@ -400,7 +400,7 @@ export function TourForm({ tour, countries, mode }: TourFormProps) {
           <CardTitle>FAQs</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {formData.faqs.map((faq, index) => (
+          {formData.faqs.map((faq: { question: string; answer: string }, index: number) => (
             <div key={index} className="border rounded-lg p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <h4 className="font-medium">FAQ {index + 1}</h4>

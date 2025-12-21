@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Loader2, CreditCard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -10,8 +9,7 @@ interface PaymentButtonProps {
   amount: number;
 }
 
-export function PaymentButton({ bookingRef, amount }: PaymentButtonProps) {
-  const router = useRouter();
+export function PaymentButton({ bookingRef, amount: _amount }: PaymentButtonProps) {
   const [loading, setLoading] = useState(false);
 
   const handlePayment = async () => {

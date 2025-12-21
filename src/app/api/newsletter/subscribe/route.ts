@@ -10,12 +10,12 @@ const subscribeSchema = z.object({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    
+
     // Validate input
     const validation = subscribeSchema.safeParse(body);
     if (!validation.success) {
       return NextResponse.json(
-        { error: validation.error.issues[0].message },
+        { error: validation.error.issues[0]?.message || 'Invalid email address' },
         { status: 400 }
       );
     }
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         );
       }
-      
+
       // Resubscribe if previously unsubscribed
       await prisma.newsletter.update({
         where: { email },

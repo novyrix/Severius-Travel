@@ -9,16 +9,12 @@ import {
   User,
   LogOut,
   LayoutDashboard,
-  Plane,
   ChevronDown,
   MapPin,
   Globe,
   Compass,
   Mountain,
   Palmtree,
-  Building2,
-  Menu,
-  X,
 } from "lucide-react";
 import Image from "next/image";
 import { LanguageSwitcher } from "./language-switcher";
@@ -69,7 +65,7 @@ export function HeaderNew() {
 
   // Determine dashboard URL based on user role
   const dashboardUrl = (session as any)?.role === 'ADMIN' ? '/admin' : '/dashboard';
-  
+
   // Hide on admin pages
   if (pathname?.startsWith('/admin')) {
     return null;
@@ -235,7 +231,7 @@ export function HeaderNew() {
                 className="w-6 h-6"
               />
             </a>
-            
+
             <LanguageSwitcher />
             <CurrencySwitcher />
             {status === "authenticated" ? (

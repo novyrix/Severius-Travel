@@ -10,14 +10,14 @@ export function formatCurrency(amount: number, currency: string = 'USD'): string
   if (currency === 'KES') {
     return `KES ${Math.round(amount).toLocaleString('en-US')}`;
   }
-  
+
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: currency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  
+
   return formatter.format(amount);
 }
 

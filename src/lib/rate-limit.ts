@@ -80,10 +80,10 @@ export function rateLimit(
 export function getClientIp(request: Request): string {
   // Check various headers for IP (proxy-aware)
   const headers = request.headers;
-  
+
   const forwardedFor = headers.get('x-forwarded-for');
   if (forwardedFor) {
-    return forwardedFor.split(',')[0].trim();
+    return forwardedFor.split(',')[0]?.trim() || 'unknown';
   }
 
   const realIp = headers.get('x-real-ip');
@@ -108,11 +108,11 @@ export const RATE_LIMITS = {
   login: { limit: 5, windowMs: 15 * 60 * 1000 }, // 5 attempts per 15 minutes
   register: { limit: 3, windowMs: 60 * 60 * 1000 }, // 3 registrations per hour
   resendVerification: { limit: 3, windowMs: 60 * 60 * 1000 }, // 3 resends per hour
-  
+
   // API endpoints
   api: { limit: 100, windowMs: 60 * 1000 }, // 100 requests per minute
   booking: { limit: 10, windowMs: 60 * 60 * 1000 }, // 10 bookings per hour
-  
+
   // Contact/Newsletter
   contact: { limit: 5, windowMs: 60 * 60 * 1000 }, // 5 messages per hour
   newsletter: { limit: 3, windowMs: 60 * 60 * 1000 }, // 3 subscriptions per hour
@@ -145,12 +145,12 @@ export function recordFailedLogin(identifier: string): number {
   const current = failedLoginAttempts.get(identifier) || 0;
   const newCount = current + 1;
   failedLoginAttempts.set(identifier, newCount);
-  
+
   // Auto-block after 10 failed attempts
   if (newCount >= 10) {
     blockIp(identifier);
   }
-  
+
   return newCount;
 }
 

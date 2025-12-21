@@ -109,35 +109,35 @@ function generatePasswordResetEmail(resetUrl: string, userEmail: string): string
     <div class="header">
       <h1>🔐 Password Reset Request</h1>
     </div>
-    
+
     <div class="content">
       <p>Hello,</p>
-      
+
       <p>
         We received a request to reset the password for your Severius Adventures & Travel account
         associated with <strong>${userEmail}</strong>.
       </p>
-      
+
       <p>
         Click the button below to reset your password. This link will expire in <strong>1 hour</strong> for security reasons.
       </p>
-      
+
       <div class="button-container">
         <a href="${resetUrl}" class="button">
           Reset Your Password
         </a>
       </div>
-      
+
       <div class="info-box">
         <p>
-          <strong>⚠️ Security Notice:</strong> If you didn't request this password reset, 
-          please ignore this email or contact our support team immediately. 
+          <strong>⚠️ Security Notice:</strong> If you didn't request this password reset,
+          please ignore this email or contact our support team immediately.
           Your password will remain unchanged.
         </p>
       </div>
-      
+
       <div class="divider"></div>
-      
+
       <p style="font-size: 14px; color: #888888;">
         If the button doesn't work, copy and paste this link into your browser:
       </p>
@@ -145,7 +145,7 @@ function generatePasswordResetEmail(resetUrl: string, userEmail: string): string
         ${resetUrl}
       </p>
     </div>
-    
+
     <div class="footer">
       <p><strong>Severius Adventures & Travel</strong></p>
       <p>Your trusted partner for unforgettable adventures</p>
@@ -208,8 +208,8 @@ export async function POST(req: NextRequest) {
       }
     });
 
-    console.log('✅ Password reset token generated:', { 
-      userId: user.id, 
+    console.log('✅ Password reset token generated:', {
+      userId: user.id,
       email: user.email,
       tokenExpiry: resetTokenExpiry.toISOString(),
       timestamp: new Date().toISOString()
@@ -221,17 +221,17 @@ export async function POST(req: NextRequest) {
     // Send password reset email
     try {
       // Generate the email HTML
-      const emailHtml = generatePasswordResetEmail(resetUrl, user.email);
+      const emailHtml = generatePasswordResetEmail(resetUrl, user.email || normalizedEmail);
 
       // Send email using Resend
       const emailResult = await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL || 'Severius Travel <noreply@severiusadventuresandtravel.com>',
-        to: user.email,
+        to: user.email || normalizedEmail,
         subject: 'Reset Your Password - Severius Adventures & Travel',
         html: emailHtml,
       });
 
-      console.log('✅ Password reset email sent:', { 
+      console.log('✅ Password reset email sent:', {
         emailId: emailResult.data?.id,
         to: user.email,
         timestamp: new Date().toISOString()
@@ -242,7 +242,7 @@ export async function POST(req: NextRequest) {
         to: user.email,
         timestamp: new Date().toISOString()
       });
-      
+
       // Don't fail the request if email fails - token is still valid
       // In production, you might want to queue this for retry
     }
@@ -264,9 +264,9 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(
-      { 
+      {
         success: false,
-        message: 'An error occurred. Please try again.' 
+        message: 'An error occurred. Please try again.'
       },
       { status: 500 }
     );

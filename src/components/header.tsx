@@ -6,7 +6,7 @@ import { User, LogOut, LayoutDashboard } from 'lucide-react';
 import { useI18n } from './providers/i18n-provider';
 
 export function Header() {
-  const { data: session, status } = useSession();
+  const { data: _session, status } = useSession();
   const { t } = useI18n();
 
   return (
@@ -50,8 +50,8 @@ export function Header() {
                 <LayoutDashboard className="w-4 h-4" />
                 {t('nav.dashboard')}
               </Link>
-              <button 
-                className="btn-gold flex items-center gap-2" 
+              <button
+                className="btn-gold flex items-center gap-2"
                 onClick={() => signOut({ callbackUrl: '/' })}
               >
                 <LogOut className="w-4 h-4" />
@@ -59,8 +59,8 @@ export function Header() {
               </button>
             </>
           ) : (
-            <button 
-              className="btn-gold flex items-center gap-2" 
+            <button
+              className="btn-gold flex items-center gap-2"
               onClick={() => signIn(undefined, { callbackUrl: '/' })}
             >
               <User className="w-4 h-4" />

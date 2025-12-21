@@ -2,16 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Mail, Lock, Plane } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 export function LoginFormNew() {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const { data: session } = useSession();
+  const { data: _session } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

@@ -46,7 +46,10 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
     const visible = [];
     for (let i = 0; i < 3; i++) {
       const index = (currentIndex + i) % tours.length;
-      visible.push({ tour: tours[index], position: i });
+      const tour = tours[index];
+      if (tour) {
+        visible.push({ tour, position: i });
+      }
     }
     return visible;
   };
@@ -78,7 +81,7 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
       <div className="relative overflow-hidden px-4 md:px-8">
         {/* Left Fade - Hidden on mobile */}
         <div className="hidden md:block absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-neutral-50 via-neutral-50/80 to-transparent z-10 pointer-events-none" />
-        
+
         {/* Right Fade - Hidden on mobile */}
         <div className="hidden md:block absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-neutral-50 via-neutral-50/80 to-transparent z-10 pointer-events-none" />
 
@@ -130,7 +133,7 @@ export function FeaturedToursCarousel({ tours }: FeaturedToursCarouselProps) {
       >
         <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-[rgb(var(--color-brown))] group-hover:scale-110 transition-transform" />
       </button>
-      
+
       <button
         onClick={() => {
           handleNext();

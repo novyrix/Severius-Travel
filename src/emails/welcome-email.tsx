@@ -20,7 +20,7 @@ interface WelcomeEmailProps {
 
 export const WelcomeEmail = ({
   customerName = 'Traveler',
-  userEmail,
+  userEmail: _userEmail,
 }: WelcomeEmailProps) => {
   const previewText = 'Welcome to Severius Adventures & Travel!';
 
@@ -48,7 +48,7 @@ export const WelcomeEmail = ({
               Dear {customerName},
             </Text>
             <Text style={text}>
-              Welcome to Severius Adventures & Travel! We're thrilled to have you join our 
+              Welcome to Severius Adventures & Travel! We're thrilled to have you join our
               community of adventurous travelers exploring the wonders of Africa and beyond.
             </Text>
 
@@ -62,11 +62,11 @@ export const WelcomeEmail = ({
 
             {/* What We Offer */}
             <Heading style={h2}>What You Can Expect</Heading>
-            
+
             <Section style={featureBox}>
               <Text style={featureTitle}>🌍 Authentic Adventures</Text>
               <Text style={featureText}>
-                From the Maasai Mara to the Pyramids of Egypt, we curate experiences 
+                From the Maasai Mara to the Pyramids of Egypt, we curate experiences
                 that bring you closer to Africa's heart.
               </Text>
             </Section>
@@ -205,24 +205,6 @@ const logoSection = {
 const logoImage = {
   margin: '0 auto',
   display: 'block',
-};
-
-const header = {
-  textAlign: 'center' as const,
-  padding: '40px 20px',
-  background: 'linear-gradient(135deg, #4e342e 0%, #d4af37 100%)',
-};
-
-const logo = {
-  margin: '0 auto',
-  filter: 'brightness(0) invert(1)',
-};
-
-const heading = {
-  color: '#ffffff',
-  fontSize: '24px',
-  fontWeight: 'bold',
-  margin: '15px 0 0 0',
 };
 
 const content = {

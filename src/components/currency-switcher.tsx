@@ -5,10 +5,7 @@ import { DollarSign, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCurrency, currencies, type CurrencyCode } from "@/components/providers/currency-provider";
 
-const currencyList = Object.entries(currencies).map(([code, info]) => ({
-  code: code as CurrencyCode,
-  ...info,
-}));
+const currencyList = Object.entries(currencies).map(([_key, info]) => info);
 
 export function CurrencySwitcher() {
   const [isOpen, setIsOpen] = useState(false);

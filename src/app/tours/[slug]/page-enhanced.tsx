@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, Clock, MapPin, Users, Check, X, ChevronDown, Star, TrendingUp, Shield, Award, Utensils, Home, AlertCircle } from 'lucide-react';
+import { Calendar, Clock, MapPin, Check, X, ChevronDown, Star, TrendingUp, Shield, Award, Utensils, Home, AlertCircle } from 'lucide-react';
 import { getTourBySlug } from '@/data/tours';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,7 +40,7 @@ export default async function TourDetailPage({ params }: PageProps) {
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-        
+
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 right-0 container mx-auto px-6 pb-12">
           <div className="max-w-4xl">
@@ -78,7 +78,7 @@ export default async function TourDetailPage({ params }: PageProps) {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            
+
             {/* Image Gallery */}
             {tour.gallery && tour.gallery.length > 0 && (
               <Card>
@@ -100,7 +100,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                 <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
                   {tour.description}
                 </p>
-                
+
                 {tour.metaDescription && tour.metaDescription !== tour.description && (
                   <p className="text-neutral-600 dark:text-neutral-400 italic">
                     {tour.metaDescription}
@@ -302,7 +302,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                       {formatCurrency(tour.price)}
                     </div>
                     <div className="text-sm text-neutral-600 dark:text-neutral-400">per person</div>
-                    
+
                     {/* Alternative currencies */}
                     {(tour.priceEUR || tour.priceGBP || tour.priceKES) && (
                       <div className="mt-3 pt-3 border-t text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
@@ -312,7 +312,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                       </div>
                     )}
                   </div>
-                  
+
                   {/* Tour Details */}
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
@@ -410,6 +410,3 @@ export default async function TourDetailPage({ params }: PageProps) {
     </main>
   );
 }
-
-
-

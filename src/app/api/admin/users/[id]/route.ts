@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma';
 
 // GET - Get single user
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession(authOptions);
@@ -106,7 +106,7 @@ export async function PUT(
 
 // DELETE - Delete user
 export async function DELETE(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession(authOptions);

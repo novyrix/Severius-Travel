@@ -27,7 +27,7 @@ interface BookingConfirmationEmailProps {
 
 export const BookingConfirmationEmail = ({
   customerName = 'Valued Customer',
-  userEmail,
+  userEmail: _userEmail,
   tourName = 'Amazing Safari Adventure',
   bookingRef = 'SEV-123456',
   amount = 150000,
@@ -67,7 +67,7 @@ export const BookingConfirmationEmail = ({
               Dear {customerName},
             </Text>
             <Text style={text}>
-              We're thrilled to confirm your booking with Severius Adventures & Travel. 
+              We're thrilled to confirm your booking with Severius Adventures & Travel.
               Your adventure awaits!
             </Text>
 
@@ -188,22 +188,6 @@ const logoSection = {
 const logoImage = {
   margin: '0 auto',
   display: 'block',
-};
-
-const header = {
-  textAlign: 'center' as const,
-  padding: '30px 20px',
-};
-
-const logo = {
-  margin: '0 auto',
-};
-
-const heading = {
-  color: '#4e342e',
-  fontSize: '24px',
-  fontWeight: 'bold',
-  margin: '10px 0 0 0',
 };
 
 const successBadge = {

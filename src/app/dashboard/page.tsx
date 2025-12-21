@@ -1,15 +1,8 @@
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Calendar, MapPin, User as UserIcon, FileText, Download } from 'lucide-react';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { formatCurrency, formatDate } from '@/lib/utils';
-import { useTranslations } from 'next-intl';
+import { Card, CardContent } from '@/components/ui/card';
 import { dashboardMetadata } from '@/lib/metadata';
 
 export const metadata = dashboardMetadata;
@@ -82,8 +75,8 @@ export default async function DashboardPage() {
         </div>
 
         {/* Dashboard Tabs */}
-        <DashboardTabs 
-          bookings={bookings as any} 
+        <DashboardTabs
+          bookings={bookings as any}
           user={{
             name: session.user.name || null,
             email: session.user.email!,

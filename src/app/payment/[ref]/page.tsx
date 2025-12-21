@@ -9,7 +9,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { WhatsAppPaymentButton } from '@/components/whatsapp-payment-button';
-import Image from 'next/image';
 
 interface PageProps {
   params: Promise<{ ref: string }>;
@@ -101,8 +100,8 @@ export default async function PaymentPage({ params }: PageProps) {
                   <span className="text-neutral-600">Status:</span>
                   <div className="mt-1">
                     <Badge variant={
-                      booking.status === 'PENDING' ? 'warning' : 
-                      booking.status === 'CANCELLED' ? 'destructive' : 
+                      booking.status === 'PENDING' ? 'warning' :
+                      booking.status === 'CANCELLED' ? 'destructive' :
                       'success'
                     }>
                       {booking.status}
@@ -127,8 +126,8 @@ export default async function PaymentPage({ params }: PageProps) {
               </div>
 
               <div className="border-t pt-4">
-                <WhatsAppPaymentButton 
-                  bookingRef={booking.ref} 
+                <WhatsAppPaymentButton
+                  bookingRef={booking.ref}
                   amount={booking.amount}
                   tourTitle={booking.tourTitle}
                   guests={booking.guests || 1}

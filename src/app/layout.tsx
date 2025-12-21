@@ -9,7 +9,6 @@ import { SessionProviders } from '../components/providers/session-provider';
 import { CurrencyProvider } from '../components/providers/currency-provider';
 import { I18nProvider } from '../components/providers/i18n-provider';
 import { ProgressBar } from '../components/progress-bar';
-import { GoogleAnalytics } from '../components/analytics/GoogleAnalytics';
 import Script from 'next/script';
 
 export const metadata = {

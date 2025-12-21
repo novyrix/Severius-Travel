@@ -79,7 +79,7 @@ export const authOptions: NextAuthOptions = {
         if (dbUser) {
           token.userId = dbUser.id;
           token.isActive = dbUser.isActive;
-          token.role = dbUser.role;
+          token.role = dbUser.role as 'USER' | 'ADMIN';
         }
       }
 

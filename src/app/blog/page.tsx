@@ -9,93 +9,15 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useI18n } from '@/components/providers/i18n-provider'
+import { blogPostsData } from '@/data/blog-posts'
 
-// Mock data for blog posts - replace with actual API call
-const blogPosts = [
-  {
-    id: 1,
-    title: 'The Ultimate Guide to Maasai Mara Safari',
-    excerpt: 'Discover everything you need to know about planning your dream safari adventure in Kenya\'s most famous wildlife reserve.',
-    content: 'Full content here...',
-    slug: 'ultimate-guide-maasai-mara-safari',
-    category: 'Safari Guides',
-    author: 'Sarah Johnson',
-    readTime: '8 min read',
-    createdAt: new Date('2024-01-15'),
-    image: '/images/blog/maasai-mara-safari.jpg',
-    featured: true,
-  },
-  {
-    id: 2,
-    title: 'Best Time to Visit Tanzania',
-    excerpt: 'Planning your Serengeti adventure? Learn about the best seasons, weather patterns, and wildlife migration timing.',
-    content: 'Full content here...',
-    slug: 'best-time-visit-tanzania',
-    category: 'Travel Tips',
-    author: 'Michael Chen',
-    readTime: '6 min read',
-    createdAt: new Date('2024-01-10'),
-    image: '/images/blog/tanzania-guide.jpg',
-    featured: false,
-  },
-  {
-    id: 3,
-    title: '10 Must-Visit Places in Marrakech',
-    excerpt: 'From bustling souks to serene gardens, explore the most enchanting corners of Morocco\'s red city.',
-    content: 'Full content here...',
-    slug: '10-must-visit-places-marrakech',
-    category: 'Destinations',
-    author: 'Emma Williams',
-    readTime: '7 min read',
-    createdAt: new Date('2024-01-05'),
-    image: '/images/blog/marrakech-travel.jpg',
-    featured: false,
-  },
-  {
-    id: 4,
-    title: 'Cape Town: A Complete Travel Guide',
-    excerpt: 'Everything you need to know about visiting South Africa\'s Mother City, from Table Mountain to the Waterfront.',
-    content: 'Full content here...',
-    slug: 'cape-town-complete-travel-guide',
-    category: 'Destinations',
-    author: 'David Thompson',
-    readTime: '10 min read',
-    createdAt: new Date('2024-01-01'),
-    image: '/images/blog/cape-town-guide.jpg',
-    featured: false,
-  },
-  {
-    id: 5,
-    title: 'Safari Photography Tips for Beginners',
-    excerpt: 'Capture stunning wildlife photos on your African safari with these essential photography tips and camera settings.',
-    content: 'Full content here...',
-    slug: 'safari-photography-tips-beginners',
-    category: 'Safari Guides',
-    author: 'Lisa Anderson',
-    readTime: '5 min read',
-    createdAt: new Date('2023-12-28'),
-    image: '/images/blog/safari-photography.jpg',
-    featured: false,
-  },
-  {
-    id: 6,
-    title: 'Seychelles Island Hopping Guide',
-    excerpt: 'Discover the pristine beaches and crystal-clear waters of the Seychelles archipelago with our comprehensive guide.',
-    content: 'Full content here...',
-    slug: 'seychelles-island-hopping-guide',
-    category: 'Island Escapes',
-    author: 'Robert Martinez',
-    readTime: '9 min read',
-    createdAt: new Date('2023-12-20'),
-    image: '/images/blog/seychelles-islands.jpg',
-    featured: false,
-  },
-]
+// Use imported blog posts data
+const blogPosts = blogPostsData
 
 const categories = ['All', 'Safari Guides', 'Travel Tips', 'Destinations', 'Island Escapes']
 
 export default function BlogPage() {
-  const { t } = useI18n()
+  const { t: _t } = useI18n()
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredPosts, setFilteredPosts] = useState(blogPosts)
@@ -148,7 +70,7 @@ export default function BlogPage() {
             <p className="text-xl text-gray-300 mb-8">
               Expert travel tips, destination guides, and inspiring stories from around the world
             </p>
-            
+
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto">
               <div className="relative">

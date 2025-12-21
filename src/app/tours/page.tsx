@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { getAllTours, searchTours as searchToursData, getToursByRegion, getToursByCountry } from '@/data/tours';
 import { TourCard } from '@/components/tour-card';
 import { SearchBar } from '@/components/search-bar';

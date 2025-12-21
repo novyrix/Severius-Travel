@@ -2,8 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { prisma } from '../lib/prisma';
 import { getAllTours, getPromotedTours } from '@/data/tours';
-import { SearchBar } from '@/components/search-bar';
-import { TourCard } from '@/components/tour-card';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -245,7 +243,7 @@ export default async function HomePage() {
               };
 
               const countryCode = countryCodeMap[country] || 'KE';
-              const imageUrl = countryImageMap[country] || countryImageMap['Kenya'];
+              const imageUrl = countryImageMap[country] || countryImageMap['Kenya'] || '/images/placeholder.jpg';
               const tourCount = allTours.filter(t => t.country === country).length;
 
               // Skip if no tours for this country
@@ -317,7 +315,7 @@ export default async function HomePage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-8">
-              {posts.map((post, index) => (
+              {posts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug}`} className="group">
                   <Card className="h-full overflow-hidden hover:shadow-2xl transition-all duration-300 border border-brown-100 bg-white">
                     {/* Card Image */}

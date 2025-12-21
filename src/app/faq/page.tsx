@@ -6,23 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { StaggerContainer, StaggerItem, FadeIn } from '@/components/animated-page'
+import { StaggerContainer, StaggerItem } from '@/components/animated-page'
 import { useI18n } from '@/components/providers/i18n-provider'
-
-const pageMetadata = {
-  title: 'Frequently Asked Questions | Severius Travel - African Safari & Tour FAQs',
-  description: 'Find answers to common questions about booking African safaris, tours, payments, customization, travel safety, and more with Severius Travel.',
-  keywords: 'safari booking FAQ, African travel questions, tour booking help, travel safety Africa, payment methods, custom safari tours, travel insurance, visa assistance Kenya',
-  openGraph: {
-    title: 'FAQs | Severius Travel - Your African Adventure Questions Answered',
-    description: 'Get answers to all your questions about booking safaris, payments, customization, safety, and travel planning with Severius Travel.',
-    type: 'website',
-    url: 'https://severiusadventuresandtravel.com/faq',
-  },
-  alternates: {
-    canonical: 'https://severiusadventuresandtravel.com/faq',
-  },
-}
 
 const faqs = [
   {
@@ -102,16 +87,16 @@ const faqs = [
 const categories = [...new Set(faqs.map(faq => faq.category))]
 
 export default function FAQPage() {
-  const { t } = useI18n()
+  const { t: _t } = useI18n()
   const [expandedId, setExpandedId] = useState<number | null>(null)
   const [selectedCategory, setSelectedCategory] = useState<string>('All Questions')
 
-  const filteredFaqs = selectedCategory === 'All Questions' 
-    ? faqs 
+  const filteredFaqs = selectedCategory === 'All Questions'
+    ? faqs
     : faqs.filter(faq => faq.category === selectedCategory)
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -128,7 +113,7 @@ export default function FAQPage() {
           >
             💡
           </motion.div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -136,7 +121,7 @@ export default function FAQPage() {
           >
             Frequently Asked Questions
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -151,20 +136,20 @@ export default function FAQPage() {
       <section className="py-8 bg-white sticky top-0 z-10 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-3 justify-center">
-            <Badge 
-              variant={selectedCategory === 'All Questions' ? 'default' : 'secondary'} 
+            <Badge
+              variant={selectedCategory === 'All Questions' ? 'default' : 'secondary'}
               className="text-base py-2 px-4 cursor-pointer bg-[rgb(var(--color-brown))] hover:bg-[rgb(var(--color-brown))]/90 text-white transition-colors"
               onClick={() => setSelectedCategory('All Questions')}
             >
               All Questions
             </Badge>
             {categories.map((category) => (
-              <Badge 
-                key={category} 
-                variant={selectedCategory === category ? 'default' : 'outline'} 
+              <Badge
+                key={category}
+                variant={selectedCategory === category ? 'default' : 'outline'}
                 className={`text-base py-2 px-4 cursor-pointer transition-colors ${
-                  selectedCategory === category 
-                    ? 'bg-[rgb(var(--color-gold))] text-white hover:bg-[rgb(var(--color-gold))]/90' 
+                  selectedCategory === category
+                    ? 'bg-[rgb(var(--color-gold))] text-white hover:bg-[rgb(var(--color-gold))]/90'
                     : 'hover:bg-[rgb(var(--color-gold))]/10 hover:text-[rgb(var(--color-brown))] hover:border-[rgb(var(--color-gold))]'
                 }`}
                 onClick={() => setSelectedCategory(category)}
@@ -190,7 +175,7 @@ export default function FAQPage() {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Card 
+                    <Card
                       className="hover:shadow-lg transition-all cursor-pointer hover:border-[rgb(var(--color-gold))] border-2 border-transparent"
                       onClick={() => setExpandedId(expandedId === faq.id ? null : faq.id)}
                     >
@@ -241,7 +226,7 @@ export default function FAQPage() {
           <div className="max-w-4xl mx-auto">
             <Card className="bg-gradient-to-r from-[rgb(78,52,46)] to-[rgb(212,175,55)] border-0">
               <CardContent className="p-8 md:p-12 text-center">
-                <motion.span 
+                <motion.span
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
@@ -254,7 +239,7 @@ export default function FAQPage() {
                   Still Have Questions?
                 </h2>
                 <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
-                  Our travel specialists are here to help! Whether you need booking assistance, 
+                  Our travel specialists are here to help! Whether you need booking assistance,
                   customization advice, or travel tips, we're just a message away.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -287,7 +272,7 @@ export default function FAQPage() {
                     whileHover={{ y: -5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Card 
+                    <Card
                       className="hover:shadow-lg transition-all cursor-pointer hover:border-[rgb(var(--color-gold))] border-2 h-full"
                       onClick={() => setSelectedCategory(category)}
                     >

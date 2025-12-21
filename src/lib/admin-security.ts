@@ -1,7 +1,4 @@
 import { nanoid } from 'nanoid';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
 
 /**
  * Admin Security System
@@ -20,20 +17,20 @@ export async function generateAdminSlug(userId: string, expiresInHours: number =
   // Generate a cryptographically secure random slug
   const slug = nanoid(32); // 32 characters = ~192 bits of entropy
   const expiresAt = Date.now() + (expiresInHours * 60 * 60 * 1000);
-  
+
   // Store the slug
   activeAdminSlugs.set(slug, {
     userId,
     expiresAt,
   });
-  
+
   // Cleanup old slugs for this user
   for (const [key, value] of activeAdminSlugs.entries()) {
     if (value.userId === userId && key !== slug) {
       activeAdminSlugs.delete(key);
     }
   }
-  
+
   return slug;
 }
 
@@ -44,17 +41,17 @@ export async function generateAdminSlug(userId: string, expiresInHours: number =
  */
 export function validateAdminSlug(slug: string): string | null {
   const entry = activeAdminSlugs.get(slug);
-  
+
   if (!entry) {
     return null;
   }
-  
+
   // Check if expired
   if (Date.now() > entry.expiresAt) {
     activeAdminSlugs.delete(slug);
     return null;
   }
-  
+
   return entry.userId;
 }
 

@@ -17,7 +17,7 @@ interface Post {
   createdAt: Date;
   author: {
     name: string | null;
-    email: string;
+    email: string | null;
   } | null;
 }
 
@@ -83,8 +83,8 @@ export function BlogTable({ posts, itemsPerPage = 10 }: BlogTableProps) {
                           <Edit className="w-4 h-4" />
                         </Button>
                       </Link>
-                      <BlogActions 
-                        postId={post.id} 
+                      <BlogActions
+                        postId={post.id}
                         postTitle={post.title}
                       />
                     </div>
