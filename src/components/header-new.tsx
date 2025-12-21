@@ -81,11 +81,11 @@ export function HeaderNew() {
             className="flex items-center gap-2 font-bold text-xl text-[rgb(var(--color-brown))] hover:opacity-80 transition-opacity"
           >
             <Image
-              src="/images/logo/landscape.png"
+              src="/images/logo/ST.png"
               alt="Severius Adventures & Travel"
               width={150}
-              height={40}
-              className="h-10 w-auto object-contain"
+              height={50}
+              className="h-12 w-auto object-contain rounded-lg"
             />
           </Link>
 

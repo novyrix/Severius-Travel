@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import {
-  Plane,
   Mail,
   Phone,
   MapPin,
@@ -15,6 +14,7 @@ import {
   Send,
   CheckCircle,
 } from "lucide-react";
+import Image from "next/image";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useI18n } from "./providers/i18n-provider";
@@ -99,9 +99,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <Plane className="w-8 h-8 text-[rgb(var(--color-gold))]" />
-              <span className="text-2xl font-bold">Severius Travel</span>
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <Image
+                src="/images/logo/ST.png"
+                alt="Severius Adventures & Travel"
+                width={120}
+                height={45}
+                className="h-11 w-auto object-contain rounded-lg"
+              />
             </Link>
             <p className="text-white/80 mb-6 leading-relaxed">
               Creating unforgettable travel experiences. Your trusted
