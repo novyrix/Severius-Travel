@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { normalizeBlogPostInput } from '@/lib/blog';
+import { deleteBlogImages } from '@/lib/blog-image-storage';
+import { collectReferencedBlogBlobTargets } from '@/lib/blog-images';
 
 // GET - Get single post
 export async function GET(
@@ -51,7 +54,7 @@ export async function PUT(
 
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
-    select: { role: true, id: true },
+    select: { role: true, id: true, name: true, email: true },
   });
 
   if (user?.role !== 'ADMIN') {
@@ -60,19 +63,61 @@ export async function PUT(
 
   try {
     const { id } = await params;
+    const existingPost = await prisma.post.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        publishedAt: true,
+        authorName: true,
+        featuredImage: true,
+        content: true,
+        galleryImages: {
+          select: { pathname: true, url: true },
+        },
+      },
+    });
+
+    if (!existingPost) {
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 });
+    }
+
     const body = await request.json();
-    const { title, slug, content, excerpt, published } = body;
+    const normalizedInput = normalizeBlogPostInput(body, {
+      defaultAuthorName:
+        existingPost.authorName || user.name || session.user.name || user.email || session.user.email,
+      existingPublishedAt: existingPost.publishedAt,
+    });
 
     const updatedPost = await prisma.post.update({
       where: { id },
       data: {
-        title,
-        slug,
-        content,
-        excerpt,
-        published: published === true || published === 'true',
+        ...normalizedInput,
       },
     });
+
+    const previousBlobTargets = collectReferencedBlogBlobTargets({
+      featuredImage: existingPost.featuredImage,
+      content: existingPost.content,
+      galleryImages: existingPost.galleryImages,
+    });
+
+    const nextBlobTargets = new Set(
+      collectReferencedBlogBlobTargets({
+        featuredImage: normalizedInput.featuredImage,
+        content: normalizedInput.content,
+        galleryImages: existingPost.galleryImages,
+      })
+    );
+
+    const removedBlobTargets = previousBlobTargets.filter((target) => !nextBlobTargets.has(target));
+
+    if (removedBlobTargets.length > 0) {
+      try {
+        await deleteBlogImages(removedBlobTargets);
+      } catch (error) {
+        console.warn('Error deleting removed post blobs from storage:', error);
+      }
+    }
 
     return NextResponse.json(updatedPost);
   } catch (error: any) {
@@ -105,10 +150,39 @@ export async function DELETE(
 
   try {
     const { id } = await params;
+    const post = await prisma.post.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        featuredImage: true,
+        content: true,
+        galleryImages: {
+          select: { pathname: true, url: true },
+        },
+      },
+    });
+
+    if (!post) {
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 });
+    }
 
     await prisma.post.delete({
       where: { id },
     });
+
+    const blobTargets = collectReferencedBlogBlobTargets({
+      featuredImage: post.featuredImage,
+      content: post.content,
+      galleryImages: post.galleryImages,
+    });
+
+    if (blobTargets.length > 0) {
+      try {
+        await deleteBlogImages(blobTargets);
+      } catch (error) {
+        console.warn('Error deleting post blobs from storage:', error);
+      }
+    }
 
     return NextResponse.json({ success: true, message: 'Post deleted successfully' });
   } catch (error: any) {

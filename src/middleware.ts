@@ -27,7 +27,7 @@ function addSecurityHeaders(response: NextResponse) {
     "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: https: blob:; " +
     "font-src 'self' data:; " +
-    "connect-src 'self' https://www.google-analytics.com https://www.google.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com https://region1.analytics.google.com; " +
+    "connect-src 'self' https://vercel.com https://*.vercel-storage.com https://www.google-analytics.com https://www.google.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com https://region1.analytics.google.com; " +
     "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net; " +
     "frame-ancestors 'self' https://novyrix.com https://*.novyrix.com;"
   );

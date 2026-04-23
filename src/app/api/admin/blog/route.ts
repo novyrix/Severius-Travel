@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { normalizeBlogPostInput } from '@/lib/blog';
 
 // POST - Create new blog post
 export async function POST(request: NextRequest) {
@@ -12,7 +13,7 @@ export async function POST(request: NextRequest) {
 
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
-    select: { role: true, id: true },
+    select: { role: true, id: true, name: true, email: true },
   });
 
   if (user?.role !== 'ADMIN') {
@@ -21,15 +22,13 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { title, slug, content, excerpt, published } = body;
+    const normalizedInput = normalizeBlogPostInput(body, {
+      defaultAuthorName: user.name || session.user.name || user.email || session.user.email,
+    });
 
     const post = await prisma.post.create({
       data: {
-        title,
-        slug,
-        content,
-        excerpt,
-        published: published === true || published === 'true',
+        ...normalizedInput,
         authorId: user.id,
       },
     });

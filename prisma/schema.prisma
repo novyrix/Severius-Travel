@@ -90,13 +90,39 @@ model Post {
   excerpt       String?
   content       String
   featuredImage String?
+  authorName    String?
+  category      String   @default("Travel Tips")
+  readTimeMinutes Int    @default(5)
+  featured      Boolean  @default(false)
   published     Boolean  @default(false)
+  publishedAt   DateTime?
 
-  author   User?    @relation(fields: [authorId], references: [id])
-  authorId String?
+  author        User?       @relation(fields: [authorId], references: [id])
+  authorId      String?
+  galleryImages BlogImage[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([published, createdAt])
+  @@index([category])
+  @@index([featured])
+}
+
+model BlogImage {
+  id        String   @id @default(cuid())
+  postId    String
+  url       String
+  pathname  String   @unique
+  altText   String?
+  caption   String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId, sortOrder])
 }
 
 /// Booking model - Tours are now hardcoded in the codebase

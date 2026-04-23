@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import { BLOG_BLOB_HOSTNAME_PATTERN } from './src/lib/blog-images';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
@@ -20,6 +21,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com', pathname: '/**' },
       { protocol: 'https', hostname: 'res.cloudinary.com', pathname: '/**' },
       { protocol: 'https', hostname: 'images.pexels.com', pathname: '/**' },
+      { protocol: 'https', hostname: BLOG_BLOB_HOSTNAME_PATTERN, pathname: '/**' },
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',

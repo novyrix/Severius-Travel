@@ -7,8 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RichTextEditor } from '@/components/ui/rich-text-editor';
+import { BlogFeaturedImageField } from '@/components/admin/blog-featured-image-field';
 import { ArrowLeft, Save } from 'lucide-react';
 import Link from 'next/link';
+import { BLOG_CATEGORY_OPTIONS, DEFAULT_BLOG_CATEGORY } from '@/lib/blog';
 
 export default function NewBlogPage() {
   const router = useRouter();
@@ -17,7 +19,12 @@ export default function NewBlogPage() {
     title: '',
     slug: '',
     excerpt: '',
+    authorName: '',
+    category: DEFAULT_BLOG_CATEGORY,
+    readTimeMinutes: '',
+    featuredImage: '',
     content: '',
+    featured: false,
     published: false,
   });
 
@@ -131,6 +138,59 @@ export default function NewBlogPage() {
                 />
               </div>
 
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="authorName">Author Name</Label>
+                  <Input
+                    id="authorName"
+                    value={formData.authorName}
+                    onChange={(e) => setFormData({ ...formData, authorName: e.target.value })}
+                    placeholder="Defaults to your admin profile"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="category">Category</Label>
+                  <Input
+                    id="category"
+                    list="blog-category-options"
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    placeholder="Travel Tips"
+                  />
+                  <datalist id="blog-category-options">
+                    {BLOG_CATEGORY_OPTIONS.map((category) => (
+                      <option key={category} value={category} />
+                    ))}
+                  </datalist>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="readTimeMinutes">Read Time (minutes)</Label>
+                  <Input
+                    id="readTimeMinutes"
+                    type="number"
+                    min="1"
+                    value={formData.readTimeMinutes}
+                    onChange={(e) => setFormData({ ...formData, readTimeMinutes: e.target.value })}
+                    placeholder="Leave blank to auto-calculate"
+                  />
+                  <p className="text-xs text-neutral-500">
+                    Leave this blank to let the backend estimate the read time from the content.
+                  </p>
+                </div>
+
+                <BlogFeaturedImageField
+                  value={formData.featuredImage}
+                  onChange={(featuredImage) => setFormData({ ...formData, featuredImage })}
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div className="rounded-lg border border-dashed border-neutral-300 bg-neutral-50 px-4 py-3 text-sm text-neutral-600">
+                Gallery images are managed after the post is created. Inline article images can be uploaded directly from the editor toolbar below.
+              </div>
+
               {/* Content */}
               <div className="space-y-2">
                 <Label htmlFor="content">Content *</Label>
@@ -145,22 +205,40 @@ export default function NewBlogPage() {
               </div>
 
               {/* Published */}
-              <div className="flex items-center gap-3 p-4 bg-neutral-50 rounded-lg">
-                <input
-                  type="checkbox"
-                  id="published"
-                  checked={formData.published}
-                  onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
-                  className="w-5 h-5 rounded border-neutral-300 text-[rgb(var(--color-gold))] focus:ring-[rgb(var(--color-gold))]"
-                />
-                <div>
-                  <Label htmlFor="published" className="font-medium">Publish immediately</Label>
-                  <p className="text-sm text-neutral-500">
-                    {formData.published
-                      ? 'This post will be visible to everyone'
-                      : 'Save as draft to publish later'}
-                  </p>
-                </div>
+              <div className="grid gap-4 rounded-lg bg-neutral-50 p-4 md:grid-cols-2">
+                <label className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="published"
+                    checked={formData.published}
+                    onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
+                    className="mt-0.5 h-5 w-5 rounded border-neutral-300 text-[rgb(var(--color-gold))] focus:ring-[rgb(var(--color-gold))]"
+                  />
+                  <div>
+                    <Label htmlFor="published" className="font-medium">Publish immediately</Label>
+                    <p className="text-sm text-neutral-500">
+                      {formData.published
+                        ? 'This post will be visible to everyone'
+                        : 'Save as draft to publish later'}
+                    </p>
+                  </div>
+                </label>
+
+                <label className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="featured"
+                    checked={formData.featured}
+                    onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                    className="mt-0.5 h-5 w-5 rounded border-neutral-300 text-[rgb(var(--color-gold))] focus:ring-[rgb(var(--color-gold))]"
+                  />
+                  <div>
+                    <Label htmlFor="featured" className="font-medium">Featured Post</Label>
+                    <p className="text-sm text-neutral-500">
+                      Pin this post to the top of the public blog listing.
+                    </p>
+                  </div>
+                </label>
               </div>
 
               {/* Actions */}

@@ -19,6 +19,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { BLOG_CATEGORY_OPTIONS, DEFAULT_BLOG_CATEGORY } from '@/lib/blog';
+import { BlogFeaturedImageField } from '@/components/admin/blog-featured-image-field';
+import { BlogGalleryManager } from '@/components/admin/blog-gallery-manager';
 
 interface BlogEditFormProps {
   post: {
@@ -28,8 +31,20 @@ interface BlogEditFormProps {
     excerpt: string | null;
     content: string;
     featuredImage: string | null;
+    authorName: string | null;
+    category: string;
+    readTimeMinutes: number;
+    featured: boolean;
     published: boolean;
-    createdAt: Date;
+    createdAt: Date | string;
+    galleryImages: Array<{
+      id: string;
+      url: string;
+      pathname: string;
+      altText: string | null;
+      caption: string | null;
+      sortOrder: number;
+    }>;
     author: {
       name: string | null;
       email: string | null;
@@ -46,8 +61,12 @@ export function BlogEditForm({ post }: BlogEditFormProps) {
     title: post.title,
     slug: post.slug,
     excerpt: post.excerpt || '',
+    authorName: post.authorName || '',
+    category: post.category || DEFAULT_BLOG_CATEGORY,
+    readTimeMinutes: String(post.readTimeMinutes || ''),
     content: post.content,
     published: post.published,
+    featured: post.featured,
     featuredImage: post.featuredImage || '',
   });
 
@@ -118,7 +137,7 @@ export function BlogEditForm({ post }: BlogEditFormProps) {
               <h1 className="text-3xl font-bold text-[rgb(var(--color-brown))]">Edit Blog Post</h1>
               <p className="text-sm text-neutral-500 mt-1">
                 Created {new Date(post.createdAt).toLocaleDateString()} by{' '}
-                {post.author?.name || post.author?.email || 'Unknown'}
+                {post.authorName || post.author?.name || post.author?.email || 'Unknown'}
               </p>
             </div>
           </div>
@@ -181,31 +200,53 @@ export function BlogEditForm({ post }: BlogEditFormProps) {
                 />
               </div>
 
-              {/* Featured Image */}
-              <div className="space-y-2">
-                <Label htmlFor="featuredImage">Featured Image URL</Label>
-                <Input
-                  id="featuredImage"
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="authorName">Author Name</Label>
+                  <Input
+                    id="authorName"
+                    value={formData.authorName}
+                    onChange={(e) => setFormData({ ...formData, authorName: e.target.value })}
+                    placeholder="Defaults to the current or existing author"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="category">Category</Label>
+                  <Input
+                    id="category"
+                    list="blog-category-options"
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    placeholder="Travel Tips"
+                  />
+                  <datalist id="blog-category-options">
+                    {BLOG_CATEGORY_OPTIONS.map((category) => (
+                      <option key={category} value={category} />
+                    ))}
+                  </datalist>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="readTimeMinutes">Read Time (minutes)</Label>
+                  <Input
+                    id="readTimeMinutes"
+                    type="number"
+                    min="1"
+                    value={formData.readTimeMinutes}
+                    onChange={(e) => setFormData({ ...formData, readTimeMinutes: e.target.value })}
+                    placeholder="Leave blank to auto-calculate"
+                  />
+                  <p className="text-xs text-neutral-500">
+                    Leave this blank to let the backend estimate the read time from the content.
+                  </p>
+                </div>
+
+                <BlogFeaturedImageField
                   value={formData.featuredImage}
-                  onChange={(e) => setFormData({ ...formData, featuredImage: e.target.value })}
-                  placeholder="/images/blog/post-image.jpg"
-                  className="font-mono text-sm"
+                  onChange={(featuredImage) => setFormData({ ...formData, featuredImage })}
+                  disabled={isSubmitting || isDeleting}
                 />
-                <p className="text-xs text-neutral-500">
-                  Enter the URL or path to the featured image for this blog post
-                </p>
-                {formData.featuredImage && (
-                  <div className="mt-2 border rounded-lg overflow-hidden">
-                    <img
-                      src={formData.featuredImage}
-                      alt="Featured image preview"
-                      className="w-full h-48 object-cover"
-                      onError={(e) => {
-                        e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200"%3E%3Crect fill="%23ddd" width="400" height="200"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle"%3EImage not found%3C/text%3E%3C/svg%3E';
-                      }}
-                    />
-                  </div>
-                )}
               </div>
 
               {/* Content */}
@@ -222,22 +263,40 @@ export function BlogEditForm({ post }: BlogEditFormProps) {
               </div>
 
               {/* Published */}
-              <div className="flex items-center gap-3 p-4 bg-neutral-50 rounded-lg">
-                <input
-                  type="checkbox"
-                  id="published"
-                  checked={formData.published}
-                  onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
-                  className="w-5 h-5 rounded border-neutral-300 text-[rgb(var(--color-gold))] focus:ring-[rgb(var(--color-gold))]"
-                />
-                <div>
-                  <Label htmlFor="published" className="font-medium">Published</Label>
-                  <p className="text-sm text-neutral-500">
-                    {formData.published
-                      ? 'This post is visible to everyone'
-                      : 'This post is saved as a draft'}
-                  </p>
-                </div>
+              <div className="grid gap-4 rounded-lg bg-neutral-50 p-4 md:grid-cols-2">
+                <label className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="published"
+                    checked={formData.published}
+                    onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
+                    className="mt-0.5 h-5 w-5 rounded border-neutral-300 text-[rgb(var(--color-gold))] focus:ring-[rgb(var(--color-gold))]"
+                  />
+                  <div>
+                    <Label htmlFor="published" className="font-medium">Published</Label>
+                    <p className="text-sm text-neutral-500">
+                      {formData.published
+                        ? 'This post is visible to everyone'
+                        : 'This post is saved as a draft'}
+                    </p>
+                  </div>
+                </label>
+
+                <label className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="featured"
+                    checked={formData.featured}
+                    onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                    className="mt-0.5 h-5 w-5 rounded border-neutral-300 text-[rgb(var(--color-gold))] focus:ring-[rgb(var(--color-gold))]"
+                  />
+                  <div>
+                    <Label htmlFor="featured" className="font-medium">Featured Post</Label>
+                    <p className="text-sm text-neutral-500">
+                      Pin this post to the top of the public blog listing.
+                    </p>
+                  </div>
+                </label>
               </div>
 
               {/* Actions */}
@@ -265,6 +324,15 @@ export function BlogEditForm({ post }: BlogEditFormProps) {
             </CardContent>
           </Card>
         </form>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Gallery</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <BlogGalleryManager postId={post.id} initialImages={post.galleryImages} />
+          </CardContent>
+        </Card>
 
         {/* Delete Dialog */}
         <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>

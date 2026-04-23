@@ -17,6 +17,9 @@ export default async function EditBlogPage({ params }: { params: Promise<{ id: s
       author: {
         select: { name: true, email: true },
       },
+      galleryImages: {
+        orderBy: { sortOrder: 'asc' },
+      },
     },
   });
 

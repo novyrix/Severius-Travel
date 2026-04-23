@@ -13,6 +13,9 @@ interface Post {
   id: string;
   title: string;
   slug: string;
+  authorName: string | null;
+  category: string;
+  featured: boolean;
   published: boolean;
   createdAt: Date;
   author: {
@@ -57,11 +60,15 @@ export function BlogTable({ posts, itemsPerPage = 10 }: BlogTableProps) {
                   <td className="py-4">
                     <div>
                       <p className="font-medium text-[rgb(var(--color-brown))]">{post.title}</p>
-                      <p className="text-sm text-neutral-500">{post.slug}</p>
+                      <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-neutral-500">
+                        <span>{post.slug}</span>
+                        <Badge variant="secondary">{post.category}</Badge>
+                        {post.featured && <Badge variant="success">Featured</Badge>}
+                      </div>
                     </div>
                   </td>
                   <td className="py-4 text-sm">
-                    {post.author?.name || post.author?.email || 'Unknown'}
+                    {post.authorName || post.author?.name || post.author?.email || 'Unknown'}
                   </td>
                   <td className="py-4 text-sm">
                     {new Date(post.createdAt).toLocaleDateString()}

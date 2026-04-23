@@ -10,6 +10,7 @@ import { AnimatedFeatures } from '@/components/animated-features';
 import { HeroSlider } from '@/components/hero-slider';
 import { FeaturedToursCarousel } from '@/components/featured-tours-carousel';
 import { Marquee } from '@/components/marquee';
+import { formatBlogReadTime } from '@/lib/blog-posts';
 import { homeMetadata } from '@/lib/metadata';
 
 export const metadata = homeMetadata;
@@ -22,7 +23,7 @@ export default async function HomePage() {
   const posts = await prisma.post.findMany({
     take: 3,
     where: { published: true },
-    orderBy: { createdAt: 'desc' }
+    orderBy: [{ featured: 'desc' }, { publishedAt: 'desc' }, { createdAt: 'desc' }]
   });
 
   // Get unique countries from tours
@@ -326,6 +327,7 @@ export default async function HomePage() {
                           alt={post.title}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, 33vw"
                         />
                       ) : (
                         <div className="absolute inset-0 bg-gradient-to-br from-brown-200 via-gold-200 to-beige-200" />
@@ -333,7 +335,7 @@ export default async function HomePage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent group-hover:from-black/60 transition-all duration-300" />
                       <div className="absolute top-4 left-4">
                         <Badge className="bg-gradient-to-r from-brown-600 to-brown-700 text-white border-0 shadow-lg">
-                          Travel Guide
+                          {post.category}
                         </Badge>
                       </div>
                       <div className="absolute bottom-4 right-4">
@@ -346,7 +348,7 @@ export default async function HomePage() {
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 text-xs text-brown-600 mb-3">
                         <Clock className="w-3.5 h-3.5" />
-                        <span>5 min read</span>
+                        <span>{formatBlogReadTime(post.readTimeMinutes)}</span>
                       </div>
 
                       <h3 className="text-xl font-bold text-brown-800 mb-3 group-hover:text-gold-600 transition-colors line-clamp-2 leading-snug">

@@ -1,13 +1,16 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar, Clock, User, ArrowLeft, Share2, Tag } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getBlogPostBySlug, getRelatedPosts } from "@/data/blog-posts";
-import ReactMarkdown from 'react-markdown';
+import {
+  formatBlogReadTime,
+  getPublishedBlogPostBySlug,
+  getRelatedBlogPosts,
+} from "@/lib/blog-posts";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -15,7 +18,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await getPublishedBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -29,27 +32,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: [post.image],
+      images: post.featuredImage ? [post.featuredImage] : [],
     },
   };
 }
 
 export default async function BlogPost({ params }: PageProps) {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await getPublishedBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  const relatedPosts = getRelatedPosts(slug);
+  const relatedPosts = await getRelatedBlogPosts(slug, post.category);
 
-  const formatDate = (date: Date) => {
+  const formatDate = (date: string) => {
     return new Intl.DateTimeFormat('en-US', {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
-    }).format(date);
+    }).format(new Date(date));
   };
 
   return (
@@ -78,7 +81,7 @@ export default async function BlogPost({ params }: PageProps) {
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-300">
               <div className="flex items-center gap-2">
                 <User className="w-4 h-4" />
-                <span className="font-medium">{post.author}</span>
+                <span className="font-medium">{post.authorName}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
@@ -86,7 +89,7 @@ export default async function BlogPost({ params }: PageProps) {
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                <span>{post.readTime}</span>
+                <span>{formatBlogReadTime(post.readTimeMinutes)}</span>
               </div>
             </div>
           </div>
@@ -97,13 +100,18 @@ export default async function BlogPost({ params }: PageProps) {
       <section className="container mx-auto px-6 -mt-12">
         <div className="max-w-5xl mx-auto">
           <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
+            {post.featuredImage ? (
+              <Image
+                src={post.featuredImage}
+                alt={post.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1280px) 100vw, 1200px"
+              />
+            ) : (
+              <div className="h-full w-full bg-gradient-to-br from-amber-100 to-amber-300" />
+            )}
           </div>
         </div>
       </section>
@@ -115,18 +123,48 @@ export default async function BlogPost({ params }: PageProps) {
             <Card className="mb-8">
               <CardContent className="p-8 md:p-12">
                 <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-amber-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:my-6 prose-li:my-2 prose-table:my-8 prose-th:bg-gray-100 prose-th:p-3 prose-td:p-3 prose-td:border-gray-200">
-                  <ReactMarkdown>{post.content}</ReactMarkdown>
+                  <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 </div>
+
+                {post.galleryImages.length > 0 && (
+                  <div className="mt-12 border-t border-gray-200 pt-8">
+                    <h2 className="text-2xl font-bold text-gray-900">Gallery</h2>
+                    <p className="mt-2 text-gray-600">
+                      Additional moments from this story.
+                    </p>
+
+                    <div className="mt-6 grid gap-6 md:grid-cols-2">
+                      {post.galleryImages.map((image) => (
+                        <figure key={image.id} className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                          <div className="relative aspect-[4/3]">
+                            <Image
+                              src={image.url}
+                              alt={image.altText || image.caption || post.title}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                          </div>
+                          {(image.caption || image.altText) && (
+                            <figcaption className="px-4 py-3 text-sm text-gray-600">
+                              {image.caption || image.altText}
+                            </figcaption>
+                          )}
+                        </figure>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Author Bio */}
                 <div className="mt-12 pt-8 border-t border-gray-200">
                   <div className="flex items-start gap-4">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white font-bold text-2xl">
-                      {post.author.charAt(0)}
+                      {post.authorName.charAt(0)}
                     </div>
                     <div>
                       <h3 className="font-bold text-lg text-gray-900">
-                        {post.author}
+                        {post.authorName}
                       </h3>
                       <p className="text-gray-600 mt-1">
                         Travel Expert & Safari Specialist at Severius Adventures & Travel. 
@@ -197,10 +235,11 @@ export default async function BlogPost({ params }: PageProps) {
                     >
                       <div className="relative h-32 rounded-lg overflow-hidden mb-3">
                         <Image
-                          src={relatedPost.image}
+                          src={relatedPost.featuredImage || '/images/placeholder.jpg'}
                           alt={relatedPost.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="320px"
                         />
                       </div>
                       <h4 className="font-semibold text-sm text-gray-900 group-hover:text-amber-600 transition-colors line-clamp-2">
@@ -208,7 +247,7 @@ export default async function BlogPost({ params }: PageProps) {
                       </h4>
                       <div className="flex items-center gap-2 mt-2 text-xs text-gray-600">
                         <Clock className="w-3 h-3" />
-                        <span>{relatedPost.readTime}</span>
+                        <span>{formatBlogReadTime(relatedPost.readTimeMinutes)}</span>
                       </div>
                     </Link>
                   ))}

@@ -6,7 +6,7 @@ import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import {
   Bold,
   Italic,
@@ -26,8 +26,11 @@ import {
   Heading1,
   Heading2,
   Heading3,
+  Loader2,
+  Upload,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { uploadBlogImageFromClient } from '@/lib/blog-image-upload-client';
 
 interface RichTextEditorProps {
   content: string;
@@ -40,6 +43,9 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
   const [showImageInput, setShowImageInput] = useState(false);
   const [linkUrl, setLinkUrl] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [imageUploadError, setImageUploadError] = useState('');
+  const imageFileInputRef = useRef<HTMLInputElement>(null);
 
   // Define callbacks before early return to follow Rules of Hooks
   const addLink = useCallback(() => {
@@ -55,8 +61,35 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       editor.chain().focus().setImage({ src: imageUrl }).run();
       setImageUrl('');
       setShowImageInput(false);
+      setImageUploadError('');
     }
   }, [editor, imageUrl]);
+
+  const handleImageUpload = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0];
+      if (!editor || !file) {
+        return;
+      }
+
+      setImageUploadError('');
+      setIsUploadingImage(true);
+
+      try {
+        const blob = await uploadBlogImageFromClient(file, 'inline');
+        editor.chain().focus().setImage({ src: blob.url, alt: file.name }).run();
+        setShowImageInput(false);
+        setImageUrl('');
+      } catch (error) {
+        console.error('Error uploading inline image:', error);
+        setImageUploadError(error instanceof Error ? error.message : 'Failed to upload image.');
+      } finally {
+        setIsUploadingImage(false);
+        event.target.value = '';
+      }
+    },
+    [editor]
+  );
 
   if (!editor) {
     return null;
@@ -247,6 +280,14 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
           )}
         </div>
         <div className="relative">
+          <input
+            ref={imageFileInputRef}
+            type="file"
+            accept=".jpg,.jpeg,.png,.webp"
+            className="hidden"
+            onChange={handleImageUpload}
+            disabled={isUploadingImage}
+          />
           <button
             onClick={() => setShowImageInput(!showImageInput)}
             className={buttonClass()}
@@ -274,6 +315,9 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
                   }
                 }}
               />
+              {imageUploadError && (
+                <p className="mb-2 text-sm text-red-600">{imageUploadError}</p>
+              )}
               <div className="flex gap-2">
                 <button
                   onClick={addImage}
@@ -281,6 +325,24 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
                   type="button"
                 >
                   Add
+                </button>
+                <button
+                  onClick={() => imageFileInputRef.current?.click()}
+                  className="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded text-sm inline-flex items-center gap-1"
+                  type="button"
+                  disabled={isUploadingImage}
+                >
+                  {isUploadingImage ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Uploading...
+                    </>
+                  ) : (
+                    <>
+                      <Upload className="w-4 h-4" />
+                      Upload
+                    </>
+                  )}
                 </button>
                 <button
                   onClick={() => setShowImageInput(false)}
